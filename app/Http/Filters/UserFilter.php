@@ -12,6 +12,7 @@ class UserFilter extends BaseFilters
     protected $filters = [
         'name',
         'type',
+        'email',
     ];
 
     /**
@@ -39,6 +40,21 @@ class UserFilter extends BaseFilters
     {
         if ($value) {
             return $this->builder->where('type', $value);
+        }
+
+        return $this->builder;
+    }
+
+    /**
+     * Filter the query to include users by email.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function email($value)
+    {
+        if ($value) {
+            return $this->builder->where('email', 'like', "%$value%");
         }
 
         return $this->builder;
