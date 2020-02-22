@@ -13,5 +13,5 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('locale/{locale}', 'LocaleController@update')->name('locale')->where('locale', '(ar|en)');
 
-Route::resource('admins', 'AdminController');
+Route::resource('users', 'UserController');
 

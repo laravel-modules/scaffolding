@@ -15,7 +15,7 @@
                 @endisset
 
                 @if(isset($tree) && is_array($tree))
-                    <i class="right fas fa-angle-left"></i>
+                    <i class="right fas fa-angle-right"></i>
                 @endif
             </p>
         </a>

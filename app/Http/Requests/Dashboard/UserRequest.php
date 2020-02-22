@@ -2,12 +2,10 @@
 
 namespace App\Http\Requests\Dashboard;
 
-use App\Models\Admin;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Traits\WithHashedPassword;
 
-class AdminRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     use WithHashedPassword;
     /**
@@ -17,11 +15,7 @@ class AdminRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->isMethod('POST')) {
-            return Gate::allows('create', Admin::class);
-        } else {
-            return Gate::allows('update', $this->route('admin'));
-        }
+        return true;
     }
 
     /**
@@ -61,8 +55,18 @@ class AdminRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:users,email,'.$this->route('admin')->id],
+            'email' => ['required', 'email', 'unique:users,email,'.$this->route('user')->id],
             'password' => ['nullable', 'min:8', 'confirmed'],
         ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return trans('users.attributes');
     }
 }

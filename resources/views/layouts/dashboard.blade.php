@@ -9,11 +9,7 @@
         @slot('routeActive', 'dashboard.home')
     @endcomponent
 
-    @include('dashboard.admins.partials.actions.sidebar')
-
-    {{--@include('dashboard.users.partials.actions.sidebar')--}}
-
-    {{--@include('dashboard.categories.partials.actions.sidebar')--}}
+    @include('dashboard.users.partials.actions.sidebar')
 
 @endsection
 

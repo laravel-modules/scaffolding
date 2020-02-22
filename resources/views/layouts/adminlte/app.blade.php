@@ -19,13 +19,17 @@
 
     @stack('styles')
 </head>
-<body class="sidebar-mini layout-navbar-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
 <div class="wrapper" id="app">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
+        <form class="form-inline ml-3 d-none d-md-flex">
             <div class="input-group input-group-sm">
                 <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
@@ -42,7 +46,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
                     <img src="{{ Locales::getFlag() }}" alt="">
-                    {{ Locales::getName() }}
+                    <span class="d-none d-md-inline">
+                        {{ Locales::getName() }}
+                    </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right p-0">
                     @foreach(Locales::get() as $locale)
