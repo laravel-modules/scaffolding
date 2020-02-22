@@ -24,7 +24,6 @@ class DashboardRouteServiceProvider extends RouteServiceProvider
      */
     protected $apiNamespace = 'App\Http\Controllers\Api';
 
-
     /**
      * Define the routes for the application.
      *

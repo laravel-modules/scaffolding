@@ -1,10 +1,12 @@
 body {
     min-width: 480px !important;
 }
+
 .text-ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .navbar-badge {
     right: 5px;
     top: 5px;
@@ -57,9 +59,18 @@ body {
     }
 }
 
-.nav-sidebar .menu-open>.nav-link i.right {
+.nav-sidebar .menu-open > .nav-link i.right {
     transform: rotate(90deg);
 }
+
 .popover {
     left: auto;
+}
+
+.layout-navbar-fixed {
+    .wrapper {
+        .main-header {
+            z-index: 1061;
+        }
+    }
 }

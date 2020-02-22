@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Filters\UserFilter;
 use App\Models\User;
+use App\Http\Filters\UserFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\UserRequest;
 

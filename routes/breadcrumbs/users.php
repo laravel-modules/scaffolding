@@ -1,4 +1,5 @@
 <?php
+
 Breadcrumbs::for('dashboard.users.index', function ($breadcrumb) {
     $breadcrumb->parent('dashboard.home');
     $breadcrumb->push(trans('users.plural'), route('dashboard.users.index'));

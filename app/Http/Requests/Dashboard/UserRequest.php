@@ -8,6 +8,7 @@ use App\Http\Requests\Traits\WithHashedPassword;
 class UserRequest extends FormRequest
 {
     use WithHashedPassword;
+
     /**
      * Determine if the user is authorized to make this request.
      *
