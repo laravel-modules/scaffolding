@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Dashboard\User;
 
+use App\Models\User;
 use Tests\TestCase;
 use App\Models\Admin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -34,6 +35,7 @@ class TestCreate extends TestCase
             'email' => 'user@demo.com',
             'password' => 'password',
             'password_confirmation' => 'password',
+            'type' => User::ADMIN_TYPE,
         ]);
 
         $response->assertRedirect();

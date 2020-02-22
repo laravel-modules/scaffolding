@@ -50,6 +50,8 @@ class UserController extends Controller
     {
         $user = User::create($request->allWithHashedPassword());
 
+        $user->setType($request->input('type'));
+
         flash(trans('users.messages.created'));
 
         return redirect()->route('dashboard.users.show', $user);
@@ -89,6 +91,8 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         $user->update($request->allWithHashedPassword());
+
+        $user->setType($request->input('type'));
 
         flash(trans('users.messages.updated'));
 

@@ -13,11 +13,17 @@ class TestDelete extends TestCase
     /** @test */
     public function it_can_delete_user()
     {
-        $this->be(factory(Admin::class)->create());
+        $this->be($auth = factory(Admin::class)->create());
 
         $user = factory(Admin::class)->create();
 
         $usersCount = Admin::count();
+
+        $response = $this->delete(route('dashboard.users.destroy', $auth));
+
+        $response->assertForbidden();
+
+        $this->assertEquals(Admin::count(), $usersCount);
 
         $response = $this->delete(route('dashboard.users.destroy', $user));
 

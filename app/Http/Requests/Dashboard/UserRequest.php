@@ -4,6 +4,7 @@ namespace App\Http\Requests\Dashboard;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Traits\WithHashedPassword;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -44,6 +45,7 @@ class UserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'confirmed'],
+            'type' => ['sometimes', 'nullable', Rule::in(array_keys(trans('users.types')))],
         ];
     }
 
@@ -58,6 +60,7 @@ class UserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users,email,'.$this->route('user')->id],
             'password' => ['nullable', 'min:8', 'confirmed'],
+            'type' => ['sometimes', 'nullable', Rule::in(array_keys(trans('users.types')))],
         ];
     }
 

@@ -3,6 +3,7 @@
 namespace App\Models\Helpers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Gate;
 
 trait UserHelpers
 {
@@ -24,6 +25,23 @@ trait UserHelpers
     public function isSupervisor()
     {
         return $this->type == User::SUPERVISOR_TYPE;
+    }
+
+    /**
+     * Set the user type.
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        if (Gate::allows('updateType', $this)
+            && in_array($type, array_keys(trans('users.types')))) {
+            $this->forceFill([
+                'type' => $type,
+            ])->save();
+        }
+
+        return $this;
     }
 
     /**

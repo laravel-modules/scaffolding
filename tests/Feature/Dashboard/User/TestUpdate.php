@@ -3,6 +3,7 @@
 namespace Tests\Feature\Dashboard\User;
 
 use Tests\TestCase;
+use App\Models\User;
 use App\Models\Admin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -23,7 +24,7 @@ class TestUpdate extends TestCase
     }
 
     /** @test */
-    public function it_can_create_users()
+    public function it_can_update_users()
     {
         $this->be($user = factory(Admin::class)->create());
 
@@ -32,10 +33,28 @@ class TestUpdate extends TestCase
             'email' => 'user@demo.com',
             'password' => 'password',
             'password_confirmation' => 'password',
+            'type' => User::SUPERVISOR_TYPE,
         ]);
 
         $response->assertRedirect();
 
-        $this->assertEquals($user->refresh()->name, 'User');
+        $user->refresh();
+
+        $user = factory(Admin::class)->create();
+
+        $response = $this->put(route('dashboard.users.update', $user), [
+            'name' => 'User',
+            'email' => 'other@demo.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+            'type' => User::SUPERVISOR_TYPE,
+        ]);
+
+        $response->assertRedirect();
+
+        $user->refresh();
+
+        $this->assertEquals($user->name, 'User');
+        $this->assertEquals($user->type, User::SUPERVISOR_TYPE);
     }
 }

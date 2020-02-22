@@ -29,14 +29,14 @@ class User extends Authenticatable implements HasMedia
      *
      * @var string
      */
-    const ADMIN_TYPE = 1;
+    const ADMIN_TYPE = 'admin';
 
     /**
      * The code of the supervisor type.
      *
-     * @var string|null
+     * @var string
      */
-    const SUPERVISOR_TYPE = 2;
+    const SUPERVISOR_TYPE = 'supervisor';
 
     /**
      * The attributes that are mass assignable.
@@ -44,7 +44,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type',
+        'name', 'email', 'password',
     ];
 
     /**

@@ -29,7 +29,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->is($model);
     }
 
     /**
@@ -52,7 +52,19 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->is($model);
+    }
+
+    /**
+     * Determine whether the user can update the type of the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $model
+     * @return mixed
+     */
+    public function updateType(User $user, User $model)
+    {
+        return $user->isAdmin() && $user->isNot($model);
     }
 
     /**
