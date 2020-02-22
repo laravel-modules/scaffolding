@@ -26,7 +26,7 @@
                     <td>
                         <a href="{{ route('dashboard.users.show', $user) }}"
                            class="text-decoration-none text-ellipsis">
-                            <span style="position: relative;top: 10px;right: 15px;">
+                            <span class="index-flag">
                             @include('dashboard.users.partials.flags.svg')
                             </span>
                             <img src="{{ $user->getAvatar() }}"

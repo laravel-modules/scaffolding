@@ -11,7 +11,6 @@ class DummyDataSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Admin::class, 5)->create();
-        factory(\App\Models\Supervisor::class, 10)->create();
+        $this->call(UsersTableSeeder::class);
     }
 }
