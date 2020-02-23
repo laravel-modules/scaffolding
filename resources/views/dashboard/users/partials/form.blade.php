@@ -2,6 +2,10 @@
 {{ BsForm::email('email') }}
 {{ BsForm::password('password') }}
 {{ BsForm::password('password_confirmation') }}
-@can('updateType', $user)
+@isset($user)
+    @can('updateType', $user)
+        {{ BsForm::select('type')->options(trans('users.types')) }}
+    @endcan
+@else
     {{ BsForm::select('type')->options(trans('users.types')) }}
-@endcan
+@endisset
