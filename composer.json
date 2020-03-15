@@ -70,7 +70,7 @@
         "auto-complete:generate": [
             "@php artisan ide-helper:meta --ansi --quiet",
             "@php artisan ide-helper:generate --ansi --quiet",
-            "@php artisan ide-helper:models --nowrite --quie"
+            "@php artisan ide-helper:models --nowrite --quiet"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
