@@ -3,6 +3,10 @@
 /public/storage
 /storage/*.key
 /vendor
+/Modules/*/vendor
+/Modules/*/node_modules
+/Modules/*/composer.lock
+/Modules/*/package-lock.json
 .env
 .env.backup
 .phpunit.result.cache

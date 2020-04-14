@@ -1,6 +1,9 @@
 const mix = require('laravel-mix'),
     WebpackRTLPlugin = require('webpack-rtl-plugin');
 
+require('laravel-mix-merge-manifest');
+mix.mergeManifest();
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -14,11 +17,11 @@ const mix = require('laravel-mix'),
 
 mix.copyDirectory('node_modules/admin-lte/dist/img', 'public/images');
 
-mix.js('resources/js/adminlte/adminlte.js', 'public/js')
-   .sass('resources/sass/adminlte/adminlte.scss', 'public/css');
+mix.js('Modules/Dashboard/Resources/assets/js/adminlte.js', 'public/js')
+   .sass('Modules/Dashboard/Resources/assets/sass/adminlte.scss', 'public/css');
 
-mix.js('resources/js/adminlte/auth.js', 'public/js')
-   .sass('resources/sass/adminlte/auth.scss', 'public/css');
+mix.js('Modules/Dashboard/Resources/assets/js/auth.js', 'public/js')
+   .sass('Modules/Dashboard/Resources/assets/sass/auth.scss', 'public/css');
 
 // Handle rtl
 mix.webpackConfig({

@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\User;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -14,7 +12,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        \Modules\Accounts\Entities\User::class => \Modules\Accounts\Policies\UserPolicy::class,
+        \Modules\Accounts\Entities\Admin::class => \Modules\Accounts\Policies\UserPolicy::class,
+        \Modules\Accounts\Entities\Supervisor::class => \Modules\Accounts\Policies\UserPolicy::class,
     ];
 
     /**
@@ -25,17 +25,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        Gate::guessPolicyNamesUsing(function ($modelClass) {
-            if (in_array($modelClass, [
-                \App\Models\User::class,
-                \App\Models\Admin::class,
-                \App\Models\Supervisor::class,
-            ])) {
-                return \App\Policies\UserPolicy::class;
-            }
-
-            return 'App\Policies\\'.class_basename($modelClass).'Policy';
-        });
     }
 }
