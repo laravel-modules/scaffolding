@@ -37,7 +37,7 @@ return [
     |
     */
 
-    'files' => glob(base_path('routes/breadcrumbs/*.php')),
+    'files' => glob(base_path('Modules/*/Routes/breadcrumbs/*.php')),
 
     /*
     |--------------------------------------------------------------------------

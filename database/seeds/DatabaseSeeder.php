@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
 
         $this->command->call('medialibrary:clean');
 
-        \App\Models\Admin::firstOrCreate([
+        \Modules\Accounts\Entities\Admin::firstOrCreate([
             'name' => 'Admin',
         ], [
             'email' => 'admin@demo.com',
