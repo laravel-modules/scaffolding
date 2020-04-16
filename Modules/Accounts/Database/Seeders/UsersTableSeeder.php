@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Admin;
-use App\Models\Supervisor;
 use Illuminate\Database\Seeder;
+use  Modules\Accounts\Entities\Admin;
+use Modules\Accounts\Entities\Supervisor;
 
 class UsersTableSeeder extends Seeder
 {
