@@ -11,6 +11,6 @@
 |
 */
 
-Route::middleware('dashboard')->prefix('dashboard')->as('dashboard.')->group(function() {
+Route::middleware('dashboard')->prefix('dashboard')->as('dashboard.')->group(function () {
     Route::resource('users', 'UserController');
 });

@@ -49,6 +49,5 @@ class UsersTableSeeder extends Seeder
             'name' => 'Weblate (bot)',
             'email' => 'hosted@weblate.org',
         ]);
-
     }
 }
