@@ -1,10 +1,12 @@
 {
-    "/js/adminlte.js": "/js/adminlte.js?id=f7beb70665c485ea46d5",
-    "/css/adminlte.css": "/css/adminlte.css?id=15a0cf8c2896e60553af",
-    "/css/auth.css": "/css/auth.css?id=498a911849b2a3e8f476",
-    "/js/auth.js": "/js/auth.js?id=5a5e88023b7f20827521",
+    "/js/adminlte.js": "/js/adminlte.js?id=8c3647d8f9af7b11359e",
+    "/css/adminlte.css": "/css/adminlte.css?id=fc60f968400386c43a89",
+    "/css/auth.css": "/css/auth.css?id=99e32fc8b00e33d8715d",
+    "/js/auth.js": "/js/auth.js?id=825e0b0d37095b1cdfdf",
     "/js/adminlte.js.LICENSE.txt": "/js/adminlte.js.LICENSE.txt?id=71d5ac3a95b2f19b726c",
     "/js/auth.js.LICENSE.txt": "/js/auth.js.LICENSE.txt?id=d1533448d0153fed14f0",
-    "/css/adminlte.rtl.css": "/css/adminlte.rtl.css?id=d40d97ad5c2ef04f1074",
-    "/css/auth.rtl.css": "/css/auth.rtl.css?id=a3ff1f9f88d279c0010d"
+    "/css/adminlte.rtl.css": "/css/adminlte.rtl.css?id=7a87f9e6b7b34a9bece2",
+    "/css/auth.rtl.css": "/css/auth.rtl.css?id=4d7f750fd4da54512891",
+    "/js/app.js": "/js/app.js?id=164acc60f988070d9041",
+    "/css/app.css": "/css/app.css?id=d41d8cd98f00b204e980"
 }

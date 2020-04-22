@@ -6,7 +6,7 @@
 
         {{ BsForm::resource('accounts::users')->putModel($user, route('dashboard.users.update', $user)) }}
         @component('dashboard::layouts.components.box')
-            @slot('title', trans('users.actions.edit'))
+            @slot('title', trans('accounts::users.actions.edit'))
 
             @include('accounts::partials.form')
 

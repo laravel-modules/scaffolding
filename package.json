@@ -23,6 +23,9 @@
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0",
+        "select2": "^4.1.0-beta.0",
+        "vue": "^2.6.11",
+        "vue-i18n": "^8.17.3",
         "vue-template-compiler": "^2.6.11",
         "webpack-rtl-plugin": "^2.0.0"
     }
