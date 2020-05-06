@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Accounts\Helpers;
+namespace Modules\Accounts\Entities\Helpers;
 
 use Modules\Accounts\Entities\User;
 use Illuminate\Support\Facades\Gate;

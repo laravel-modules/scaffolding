@@ -8,10 +8,10 @@ use Laravel\Passport\HasApiTokens;
 use Modules\Support\Traits\HasSelect2;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
-use Modules\Accounts\Helpers\UserHelpers;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Modules\Accounts\Presenters\UserPresenter;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Modules\Accounts\Entities\Helpers\UserHelpers;
+use Modules\Accounts\Entities\Presenters\UserPresenter;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements HasMedia

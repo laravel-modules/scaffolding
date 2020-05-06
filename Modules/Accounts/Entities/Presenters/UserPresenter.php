@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Accounts\Presenters;
+namespace Modules\Accounts\Entities\Presenters;
 
 use Laracasts\Presenter\Presenter;
 
