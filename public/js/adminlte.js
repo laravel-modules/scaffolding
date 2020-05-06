@@ -2223,6 +2223,10 @@ __webpack_require__.r(__webpack_exports__);
       required: true,
       type: String
     },
+    multiple: {
+      required: false,
+      "default": false
+    },
     label: {
       required: true,
       type: String
@@ -2236,23 +2240,40 @@ __webpack_require__.r(__webpack_exports__);
       type: String
     },
     value: {
-      required: false,
-      type: String
+      required: false
     }
   },
   data: function data() {
     return {
       items: [],
-      selected: ''
+      selected: '',
+      selected_values: []
     };
   },
   mounted: function mounted() {
     var _this = this;
 
     if (this.value) {
-      axios.get(this.remoteUrl + "?selected_id=".concat(this.value)).then(function (response) {
+      var values;
+      var query = '';
+
+      if (Array.from(this.value).length) {
+        this.selected_values = Array.from(this.value);
+        this.selected_values.forEach(function (id) {
+          query += "selected_id[]=".concat(id, "&");
+        });
+      } else {
+        query = "selected_id[]=".concat(this.value);
+      }
+
+      axios.get(this.remoteUrl + "?".concat(query)).then(function (response) {
         _this.items = response.data;
-        _this.selected = _this.value;
+
+        if (Array.from(_this.value).length) {
+          _this.selected_values = Array.from(_this.value);
+        } else {
+          _this.selected = _this.value;
+        }
       });
     }
 
@@ -2266,7 +2287,7 @@ __webpack_require__.r(__webpack_exports__);
         delay: 250,
         data: function data(params) {
           return {
-            selected_id: _this.value,
+            selected_id: _this.selected ? [_this.selected] : _this.selected_values,
             name: params.term,
             // search term
             page: params.page
@@ -2336,12 +2357,41 @@ __webpack_require__.r(__webpack_exports__);
         return this.$t('select2.searching');
       }
 
-      var $container = $("<div class='select2-result-repository clearfix'>" + "<div class='select2-result-repository__avatar'>" + "<img src='" + item.image + "' />" + "</div>" + "<div class='select2-result-repository__meta'>" + "<div class='select2-result-repository__title'></div>" + "</div>" + "</div>");
+      var $html = "<div class='select2-result-repository clearfix'>";
+
+      if (item.image) {
+        $html += "<div class='select2-result-repository__avatar'>" + "<img src='" + item.image + "' />" + "</div>";
+      }
+
+      $html += "<div class='select2-result-repository__meta'>" + "<div class='select2-result-repository__title'></div>" + "</div>" + "</div>";
+      var $container = $($html);
       $container.find(".select2-result-repository__title").text(item.text);
       return $container;
     },
     formatRepoSelection: function formatRepoSelection(item) {
-      return item.text || this.selectText;
+      var $img = $(item.element).data('image');
+      var $html = "<div class='select2-result-repository clearfix'>";
+
+      if ($img) {
+        $html += "<div class='select2-selection-result-repository__avatar'>";
+        $html += "<img src=\"".concat($img, "\"/></div>");
+      }
+
+      $html += "<div class='select2-selection-result-repository__meta'>" + "<div class='select2-selection-result-repository__title'>";
+      $html += item.text || this.selectText;
+      $html += "</div></div></div>";
+      return $($html);
+    },
+    serialize: function serialize(obj) {
+      var str = [];
+
+      for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+          str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        }
+      }
+
+      return str.join("&");
     }
   }
 });
@@ -14810,7 +14860,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.select2-result-repository__avatar, .select2-result-repository__meta {\n    display: inline-block;\n}\n.select2-result-repository__title {\n    margin: 0 10px;\n}\n.select2-result-repository__avatar img {\n    width: 30px;\n    border-radius: 50%;\n}\n.select2-container .select2-selection--single {\n    height: 34px;\n}\n.select2-container--default .select2-selection--single {\n    border: 1px solid #d2d6de;\n    border-radius: 0;\n}\n", ""]);
+exports.push([module.i, "\n.select2-result-repository__avatar, .select2-result-repository__meta,\n.select2-selection-result-repository__avatar, .select2-selection-result-repository__meta {\n    display: inline-block;\n}\n.select2-result-repository__title, .select2-selection-result-repository__title {\n    margin: 0 10px;\n}\n.select2-container[dir=rtl] .select2-selection--single .select2-selection__rendered {\n    padding: 0 10px;\n}\n.select2-result-repository__avatar img {\n    width: 30px;\n    border-radius: 50%;\n}\n.select2-selection-result-repository__avatar img {\n    width: 23px;\n    border-radius: 50%;\n}\n.select2-container .select2-selection--single {\n    height: 34px;\n}\n.select2-container--default .select2-selection--single {\n    border: 1px solid #d2d6de;\n    border-radius: 0;\n}\n.select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {\n    padding: 2px 0 2px 20px;\n}\n", ""]);
 
 // exports
 
@@ -68715,13 +68765,13 @@ var render = function() {
           {
             name: "model",
             rawName: "v-model",
-            value: _vm.selected,
-            expression: "selected"
+            value: _vm.multiple ? _vm.selected_values : _vm.selected,
+            expression: "multiple ? selected_values : selected"
           }
         ],
         ref: "select",
         staticClass: "form-control",
-        attrs: { name: _vm.name, id: _vm.name },
+        attrs: { name: _vm.name, id: _vm.name, multiple: _vm.multiple },
         on: {
           change: function($event) {
             var $$selectedVal = Array.prototype.filter
@@ -68732,9 +68782,11 @@ var render = function() {
                 var val = "_value" in o ? o._value : o.value
                 return val
               })
-            _vm.selected = $event.target.multiple
-              ? $$selectedVal
-              : $$selectedVal[0]
+            _vm.multiple
+              ? _vm.selected_values
+              : (_vm.selected = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0])
           }
         }
       },
@@ -68744,9 +68796,14 @@ var render = function() {
         ]),
         _vm._v(" "),
         _vm._l(_vm.items.data, function(item) {
-          return _c("option", { domProps: { value: item.id } }, [
-            _vm._v(_vm._s(item.text))
-          ])
+          return _c(
+            "option",
+            {
+              attrs: { "data-image": item.image },
+              domProps: { value: item.id }
+            },
+            [_vm._v(_vm._s(item.text))]
+          )
         })
       ],
       2

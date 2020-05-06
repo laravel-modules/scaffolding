@@ -5,6 +5,7 @@ namespace Modules\Accounts\Entities;
 use Parental\HasChildren;
 use App\Http\Filters\Filterable;
 use Laravel\Passport\HasApiTokens;
+use Modules\Support\Traits\HasSelect2;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
 use Modules\Accounts\Helpers\UserHelpers;
@@ -22,7 +23,8 @@ class User extends Authenticatable implements HasMedia
         HasApiTokens,
         HasChildren,
         PresentableTrait,
-        Filterable;
+        Filterable,
+        HasSelect2;
 
     /**
      * The code of the admin type.

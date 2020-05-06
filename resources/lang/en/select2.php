@@ -1,4 +1,5 @@
 <?php
+
 return [
     'errorLoading' => 'The results could not be loaded.',
     'inputTooLong' => 'Please delete :overChars characters',

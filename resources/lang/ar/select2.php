@@ -1,4 +1,5 @@
 <?php
+
 return [
     'errorLoading' => 'لا يمكن تحميل النتائج',
     'inputTooLong' => 'الرجاء حذف :overChars عناصر',

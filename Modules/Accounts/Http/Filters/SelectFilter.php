@@ -2,6 +2,7 @@
 
 namespace Modules\Accounts\Http\Filters;
 
+use Illuminate\Support\Arr;
 use App\Http\Filters\BaseFilters;
 
 class SelectFilter extends BaseFilters
@@ -40,10 +41,7 @@ class SelectFilter extends BaseFilters
     public function selectedId($value)
     {
         if ($value) {
-            $this->builder->orderByRaw(
-                "CASE WHEN id = ? THEN 0 ELSE id != ? END",
-                [$value, $value]
-            );
+            $this->builder->sortingByIds($value);
         }
 
         return $this->builder;

@@ -14,6 +14,6 @@
          label="@lang('accounts::users.singular')"
          select-text="@lang('accounts::users.select')"
          remote-url="{{ route('users.select') }}"
-         value="1"
+         :value=""
 ></select2>
 
