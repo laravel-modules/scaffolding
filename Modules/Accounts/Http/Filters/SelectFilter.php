@@ -41,7 +41,8 @@ class SelectFilter extends BaseFilters
     {
         if ($value) {
             $this->builder->orderByRaw(
-                "CASE WHEN id = $value THEN 0 ELSE id != $value END"
+                "CASE WHEN id = ? THEN 0 ELSE id != ? END",
+                [$value, $value]
             );
         }
 
