@@ -10,10 +10,11 @@
     {{ BsForm::select('type')->options(trans('accounts::users.types')) }}
 @endisset
 
-<select2 name="user_id"
+<select2 name="user_id[]"
+         :multiple="true"
          label="@lang('accounts::users.singular')"
-         select-text="@lang('accounts::users.select')"
-         remote-url="{{ route('users.select') }}"
-         :value=""
+         placeholder="@lang('accounts::users.select')"
+         remote-url="{{ route('users.select',  ['type' => 'user']) }}"
+         :value="{{ json_encode(old('user_id', [1,4])) }}"
 ></select2>
 

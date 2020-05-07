@@ -5,7 +5,10 @@ namespace Modules\Support\Traits;
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Builder;
 
-trait HasSelect2
+/**
+ * @method static \Illuminate\Database\Eloquent\Builder sortingByIds($ids)
+ */
+trait Selectable
 {
     /**
      * Sorting the query result by the given ids.
@@ -33,7 +36,7 @@ trait HasSelect2
             );
         } else {
             $builder->orderByRaw(
-                "CASE WHEN id = ? THEN 0 WHEN id = ? THEN 0 WHEN id = ? THEN 0 ELSE id != ? END",
+                "CASE WHEN id = ? THEN 0 ELSE id != ? END",
                 [$ids, $ids]
             );
         }

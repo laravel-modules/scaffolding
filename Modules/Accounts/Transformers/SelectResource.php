@@ -10,8 +10,7 @@ class SelectResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request
-     * @throws \Laracasts\Presenter\Exceptions\PresenterException
+     * @param \Illuminate\Http\Request
      * @return array
      */
     public function toArray($request)
@@ -20,8 +19,6 @@ class SelectResource extends JsonResource
             'id' => $this->id,
             'text' => $this->name,
             'image' => $this->getAvatar(),
-            'type' => $this->type,
-            'localed_type' => $this->present()->type,
         ];
     }
 }
