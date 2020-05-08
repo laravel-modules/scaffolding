@@ -14,7 +14,6 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         \Modules\Accounts\Entities\User::class => \Modules\Accounts\Policies\UserPolicy::class,
         \Modules\Accounts\Entities\Admin::class => \Modules\Accounts\Policies\UserPolicy::class,
-        \Modules\Accounts\Entities\Supervisor::class => \Modules\Accounts\Policies\UserPolicy::class,
     ];
 
     /**
