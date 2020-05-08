@@ -3,8 +3,6 @@
 namespace Modules\Dashboard\Tests\Feature;
 
 use Tests\TestCase;
-use Modules\Accounts\Entities\User;
-use Modules\Accounts\Entities\Admin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AccessTest extends TestCase
@@ -13,13 +11,13 @@ class AccessTest extends TestCase
 
     public function test_dashboard_authorization()
     {
-        $this->be(factory(User::class)->create());
+        $this->actingAsCustomer();
 
         $response = $this->get(route('dashboard.home'));
 
         $response->assertForbidden();
 
-        $this->be(factory(Admin::class)->create());
+        $this->actingAsAdmin();
 
         $response = $this->get(route('dashboard.home'));
 

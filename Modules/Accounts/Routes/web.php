@@ -11,6 +11,17 @@
 |
 */
 
-Route::middleware('dashboard')->prefix('dashboard')->as('dashboard.')->group(function () {
-    Route::resource('users', 'UserController');
-});
+Route::middleware('dashboard')
+    ->prefix('dashboard')
+    ->as('dashboard.')
+    ->group(
+        function () {
+            Route::prefix('accounts')
+                ->group(
+                    function () {
+                        Route::resource('customers', 'Dashboard\CustomerController');
+                        Route::resource('admins', 'Dashboard\AdminController');
+                    }
+                );
+        }
+    );

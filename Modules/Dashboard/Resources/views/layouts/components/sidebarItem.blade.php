@@ -3,7 +3,7 @@
     || ! isset($can))
     <li class="nav-item{{ isset($tree) && is_array($tree) ? ' has-treeview' : '' }}">
         <a href="{{ $url ?? '#' }}"
-           class="nav-link{{ isset($routeActive) ? (request()->routeIs($routeActive) ? ' active' : '') : '' }}">
+           class="nav-link{{ isset($isActive) && $isActive ?  ' active' : '' }}">
             @isset($icon)
                 <i class="nav-icon {{ $icon }}"></i>
             @endisset
@@ -27,7 +27,7 @@
                         || ! isset($item['can']))
                         <li class="nav-item">
                             <a href="{{ $item['url'] }}"
-                               class="nav-link{{ isset($item['routeActive']) ? (request()->routeIs($item['routeActive']) ? ' active' : '') : '' }}">
+                               class="nav-link{{ isset($item['isActive']) && $item['isActive'] ? ' active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     {{ $item['name'] }}

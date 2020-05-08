@@ -9,7 +9,7 @@ class UserPresenter extends Presenter
     /**
      * Display the localed type.
      *
-     * @return array|\Illuminate\Contracts\Translation\Translator|string|null
+     * @return string
      */
     public function type()
     {

@@ -5,4 +5,5 @@
     @slot('routeActive', 'dashboard.home')
 @endcomponent
 
-@include('accounts::partials.actions.sidebar')
+@include('accounts::sidebar')
+

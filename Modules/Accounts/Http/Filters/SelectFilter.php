@@ -2,7 +2,6 @@
 
 namespace Modules\Accounts\Http\Filters;
 
-use Illuminate\Support\Arr;
 use App\Http\Filters\BaseFilters;
 
 class SelectFilter extends BaseFilters
@@ -14,6 +13,7 @@ class SelectFilter extends BaseFilters
      */
     protected $filters = [
         'name',
+        'type',
         'selected_id',
     ];
 
@@ -27,6 +27,21 @@ class SelectFilter extends BaseFilters
     {
         if ($value) {
             return $this->builder->where('name', 'like', "%$value%");
+        }
+
+        return $this->builder;
+    }
+
+    /**
+     * Filter the query by a given type.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function type($value)
+    {
+        if ($value) {
+            return $this->builder->where('type', $value);
         }
 
         return $this->builder;

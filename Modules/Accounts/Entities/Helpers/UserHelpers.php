@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Gate;
 trait UserHelpers
 {
     /**
-     * Determine whether the user is admin.
+     * Determine whether the user type is admin.
      *
      * @return bool
      */
@@ -18,13 +18,13 @@ trait UserHelpers
     }
 
     /**
-     * Determine whether the user is supervisor.
+     * Determine whether the user type is customer.
      *
      * @return bool
      */
-    public function isSupervisor()
+    public function isCustomer()
     {
-        return $this->type == User::SUPERVISOR_TYPE;
+        return $this->type == User::CUSTOMER_TYPE;
     }
 
     /**
@@ -51,7 +51,7 @@ trait UserHelpers
      */
     public function canAccessDashboard()
     {
-        return $this->isAdmin() || $this->isSupervisor();
+        return $this->isAdmin();
     }
 
     /**
@@ -61,6 +61,6 @@ trait UserHelpers
      */
     public function getAvatar()
     {
-        return $this->getFirstMediaUrl('avatar');
+        return $this->getFirstMediaUrl('avatars');
     }
 }

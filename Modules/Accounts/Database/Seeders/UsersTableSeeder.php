@@ -13,41 +13,44 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Admin::class)->create([
+        factory(\Modules\Accounts\Entities\Admin::class)->create([
             'name' => 'Taylor Otwell',
             'email' => 'taylor@laravel.com',
         ]);
-        factory(Supervisor::class)->create([
+        factory(\Modules\Accounts\Entities\Admin::class)->create([
             'name' => 'Mohamed Said',
             'email' => 'themsaid@gmail.com',
         ]);
-        factory(Supervisor::class)->create([
+
+        factory(\Modules\Accounts\Entities\Admin::class)->create([
             'name' => 'Dries Vints',
             'email' => 'dries.vints@gmail.com',
         ]);
-        factory(Admin::class)->create([
+
+        factory(\Modules\Accounts\Entities\Customer::class)->create([
             'name' => 'Jeffrey Way',
             'email' => 'jeffrey@laracasts.com',
         ]);
-        factory(Supervisor::class)->create([
+        factory(\Modules\Accounts\Entities\Customer::class)->create([
             'name' => 'Tom Witkowski',
             'email' => 'dev.gummibeer@gmail.com',
         ]);
-        factory(Supervisor::class)->create([
+        factory(\Modules\Accounts\Entities\Customer::class)->create([
             'name' => 'Jonas Staudenmeir',
             'email' => 'mail@jonas-staudenmeir.de',
         ]);
-        factory(Admin::class)->create([
+        factory(\Modules\Accounts\Entities\Customer::class)->create([
             'name' => 'Freek Van der Herten',
             'email' => 'freek@spatie.be',
         ]);
-        factory(Supervisor::class)->create([
+        factory(\Modules\Accounts\Entities\Customer::class)->create([
             'name' => 'Raphael Jackstadt',
             'email' => 'info@rejack.de',
         ]);
-        factory(Supervisor::class)->create([
+        factory(\Modules\Accounts\Entities\Customer::class)->create([
             'name' => 'Weblate (bot)',
             'email' => 'hosted@weblate.org',
         ]);
+
     }
 }

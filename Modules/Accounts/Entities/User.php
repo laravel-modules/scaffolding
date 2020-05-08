@@ -4,15 +4,14 @@ namespace Modules\Accounts\Entities;
 
 use Parental\HasChildren;
 use App\Http\Filters\Filterable;
-use Laravel\Passport\HasApiTokens;
 use Modules\Support\Traits\Selectable;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Modules\Accounts\Entities\Helpers\UserHelpers;
-use Modules\Accounts\Entities\Presenters\UserPresenter;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Modules\Accounts\Entities\Presenters\UserPresenter;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -20,25 +19,24 @@ class User extends Authenticatable implements HasMedia
         UserHelpers,
         HasChildren,
         HasMediaTrait,
-        HasApiTokens,
         HasChildren,
         PresentableTrait,
         Filterable,
         Selectable;
 
     /**
-     * The code of the admin type.
+     * The code of admin type.
      *
      * @var string
      */
     const ADMIN_TYPE = 'admin';
 
     /**
-     * The code of the supervisor type.
+     * The code of customer type.
      *
      * @var string
      */
-    const SUPERVISOR_TYPE = 'supervisor';
+    const CUSTOMER_TYPE = 'customer';
 
     /**
      * The attributes that are mass assignable.
@@ -46,15 +44,12 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * @var array
-     */
-    protected $childTypes = [
-        self::ADMIN_TYPE => Admin::class,
-        self::SUPERVISOR_TYPE => Supervisor::class,
+        'name',
+        'email',
+        'phone',
+        'password',
+        'country_id',
+        'remember_token',
     ];
 
     /**
@@ -70,7 +65,16 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $childTypes = [
+        self::ADMIN_TYPE => Admin::class,
+        self::CUSTOMER_TYPE => Customer::class,
     ];
 
     /**
@@ -107,8 +111,8 @@ class User extends Authenticatable implements HasMedia
     public function registerMediaCollections()
     {
         $this
-            ->addMediaCollection('avatar')
-            ->useFallbackUrl('https://www.gravatar.com/avatar/' . md5($this->email) . '?d=mm')
+            ->addMediaCollection('avatars')
+            ->useFallbackUrl('https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm')
             ->singleFile();
     }
 }
