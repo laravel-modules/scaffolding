@@ -190,7 +190,7 @@
     }
 
     .select2-result-repository__title, .select2-selection-result-repository__title {
-        margin: 0 10px;
+        margin: 0 3px;
     }
 
     .select2-container[dir=rtl] .select2-selection--single .select2-selection__rendered {
@@ -218,5 +218,14 @@
 
     .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
         padding: 2px 0 2px 20px;
+    }
+    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
+        background: transparent;
+        border: 0;
+    }
+    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+         padding: 0;
+        display: flex;
+        margin: 5px;
     }
 </style>

@@ -6,19 +6,19 @@
 
 /*!
  * 
- * Super simple wysiwyg editor v0.8.15
+ * Super simple wysiwyg editor v0.8.16
  * https://summernote.org
  * 
  * 
  * Copyright 2013- Alan Hong. and other contributors
  * summernote may be freely distributed under the MIT license.
  * 
- * Date: 2020-01-04T11:44Z
+ * Date: 2020-02-19T09:12Z
  * 
  */
 
 /*!
- * AdminLTE v3.0.2 (https://adminlte.io)
+ * AdminLTE v3.0.4 (https://adminlte.io)
  * Copyright 2014-2020 Colorlib <http://colorlib.com>
  * Licensed under MIT (https://github.com/ColorlibHQ/AdminLTE/blob/master/LICENSE)
  */
@@ -33,14 +33,14 @@
  */
 
 /*!
- * Sizzle CSS Selector Engine v2.3.4
+ * Sizzle CSS Selector Engine v2.3.5
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2019-04-08
+ * Date: 2020-03-14
  */
 
 /*!
@@ -50,7 +50,7 @@
  */
 
 /*!
- * jQuery JavaScript Library v3.4.1
+ * jQuery JavaScript Library v3.5.1
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -60,7 +60,7 @@
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2019-05-01T21:04Z
+ * Date: 2020-05-04T22:49Z
  */
 
 /*!
@@ -74,10 +74,10 @@
 /**
   * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
   *
-  * @version v3.4.0
+  * @version v3.3.4
   * @homepage https://bttstrp.github.io/bootstrap-switch
   * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
-  * @license MIT
+  * @license Apache-2.0
   */
 
 /**
@@ -123,3 +123,9 @@
  * Copyright 2016-2018 Jonathan Peterson
  * Licensed under MIT (https://github.com/tempusdominus/bootstrap-3/blob/master/LICENSE)
  */
+
+//! moment.js
+
+//! moment.js language configuration
+
+//! moment.js locale configuration
