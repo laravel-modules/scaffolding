@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->command->call('passport:install');
 
-        $this->command->call('medialibrary:clean');
+        //$this->command->call('medialibrary:clean');
 
         \Modules\Accounts\Entities\Admin::firstOrCreate([
             'name' => 'Admin',
