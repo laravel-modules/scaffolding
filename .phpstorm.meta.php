@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2020-05-08 21:17:39.
+    * Generated on 2020-05-09 00:19:31.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -13,6 +13,7 @@ namespace PHPSTORM_META {
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
         'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
+        'Astrotomic\Translatable\Locales' => \Astrotomic\Translatable\Locales::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
@@ -180,6 +181,7 @@ namespace PHPSTORM_META {
         'router' => \Illuminate\Routing\Router::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
+        'translatable.locales' => \Astrotomic\Translatable\Locales::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
@@ -192,6 +194,7 @@ namespace PHPSTORM_META {
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
         'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
+        'Astrotomic\Translatable\Locales' => \Astrotomic\Translatable\Locales::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
@@ -359,6 +362,7 @@ namespace PHPSTORM_META {
         'router' => \Illuminate\Routing\Router::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
+        'translatable.locales' => \Astrotomic\Translatable\Locales::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
@@ -371,6 +375,7 @@ namespace PHPSTORM_META {
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
         'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
+        'Astrotomic\Translatable\Locales' => \Astrotomic\Translatable\Locales::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
@@ -538,6 +543,7 @@ namespace PHPSTORM_META {
         'router' => \Illuminate\Routing\Router::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
+        'translatable.locales' => \Astrotomic\Translatable\Locales::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
@@ -550,6 +556,7 @@ namespace PHPSTORM_META {
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
         'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
+        'Astrotomic\Translatable\Locales' => \Astrotomic\Translatable\Locales::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
@@ -717,6 +724,7 @@ namespace PHPSTORM_META {
         'router' => \Illuminate\Routing\Router::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
+        'translatable.locales' => \Astrotomic\Translatable\Locales::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
@@ -729,6 +737,7 @@ namespace PHPSTORM_META {
     override(\App::make(0), map([
         '' => '@',
         'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
+        'Astrotomic\Translatable\Locales' => \Astrotomic\Translatable\Locales::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
@@ -896,6 +905,7 @@ namespace PHPSTORM_META {
         'router' => \Illuminate\Routing\Router::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
+        'translatable.locales' => \Astrotomic\Translatable\Locales::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
@@ -908,6 +918,7 @@ namespace PHPSTORM_META {
     override(\App::makeWith(0), map([
         '' => '@',
         'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
+        'Astrotomic\Translatable\Locales' => \Astrotomic\Translatable\Locales::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
@@ -1075,6 +1086,7 @@ namespace PHPSTORM_META {
         'router' => \Illuminate\Routing\Router::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
+        'translatable.locales' => \Astrotomic\Translatable\Locales::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
@@ -1087,6 +1099,7 @@ namespace PHPSTORM_META {
     override(\app(0), map([
         '' => '@',
         'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
+        'Astrotomic\Translatable\Locales' => \Astrotomic\Translatable\Locales::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
@@ -1254,6 +1267,7 @@ namespace PHPSTORM_META {
         'router' => \Illuminate\Routing\Router::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
+        'translatable.locales' => \Astrotomic\Translatable\Locales::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
@@ -1266,6 +1280,7 @@ namespace PHPSTORM_META {
     override(\resolve(0), map([
         '' => '@',
         'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
+        'Astrotomic\Translatable\Locales' => \Astrotomic\Translatable\Locales::class,
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
         'DaveJamesMiller\Breadcrumbs\BreadcrumbsManager' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
@@ -1433,6 +1448,7 @@ namespace PHPSTORM_META {
         'router' => \Illuminate\Routing\Router::class,
         'session' => \Illuminate\Session\SessionManager::class,
         'session.store' => \Illuminate\Session\Store::class,
+        'translatable.locales' => \Astrotomic\Translatable\Locales::class,
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,

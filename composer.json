@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "nwidart/laravel-modules": "^7.0",
         "spatie/laravel-medialibrary": "^7.6",
+        "astrotomic/laravel-translatable": "^11.8",
         "wikimedia/composer-merge-plugin": "^1.4"
     },
     "require-dev": {
