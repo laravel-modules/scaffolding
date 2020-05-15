@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "davejamesmiller/laravel-breadcrumbs": "^5.3",
+        "elnooronline/laravel-breadcrumbs": "^6.0",
         "elnooronline/laravel-bootstrap-forms": "^2.2",
         "elnooronline/laravel-locales": "^1.0",
         "laracasts/flash": "^3.0",
