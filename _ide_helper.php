@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.11.0 on 2020-05-15 14:21:23.
+ * Generated for Laravel 7.11.0 on 2020-05-15 18:16:37.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15700,7 +15700,7 @@ namespace Elnooronline\LaravelBootstrapForms\Facades {
         /**
          * Set the default locale code.
          *
-         * @param $code
+         * @param array|null $locale
          * @return \Elnooronline\LaravelBootstrapForms\BsForm 
          * @static 
          */ 
@@ -15801,7 +15801,7 @@ namespace Elnooronline\LaravelBootstrapForms\Facades {
         /**
          * 
          *
-         * @return \Elnooronline\LaravelBootstrapForms\Helpers\Locale[] 
+         * @return array 
          * @static 
          */ 
         public static function getLocales()
