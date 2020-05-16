@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Auth::routes();
+Route::middleware('dashboard.locales')->group(function () {
+    Auth::routes();
+});
 
 Route::get('/', function () {
     return view('welcome');

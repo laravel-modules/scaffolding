@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" dir="ltr">
+<html lang="{{ app()->getLocale() }}" dir="{{ Locales::getDir() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,11 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="{{ asset(mix('/css/auth.css')) }}">
+    @if(Locales::getDir() == 'rtl')
+        <link rel="stylesheet" href="{{ asset(mix('/css/auth.rtl.css')) }}">
+    @else
+        <link rel="stylesheet" href="{{ asset(mix('/css/auth.css')) }}">
+    @endif
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -52,6 +56,15 @@
                     </div>
                     <!-- /.col -->
                 </div>
+                <small class="mb-1 mt-2 text-right float-right">
+                    @foreach(Locales::get() as $locale)
+                        <a href="{{ route('login', ['language' => $locale->code]) }}"
+                           class="mx-2 {{ app()->getLocale() == $locale->code ? 'active' : '' }}">
+                            <img src="{{ $locale->flag }}" alt="">
+                            {{ $locale->name }}
+                        </a>
+                    @endforeach
+                </small>
             </form>
         </div>
         <!-- /.login-card-body -->
