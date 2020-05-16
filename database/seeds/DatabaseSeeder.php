@@ -11,8 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->command->call('passport:install');
-
         //$this->command->call('medialibrary:clean');
 
         \Modules\Accounts\Entities\Admin::firstOrCreate([

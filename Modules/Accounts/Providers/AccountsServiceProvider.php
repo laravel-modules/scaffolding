@@ -2,6 +2,7 @@
 
 namespace Modules\Accounts\Providers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
@@ -30,6 +31,7 @@ class AccountsServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
+        $this->registerBase64Validation();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
     }
 
@@ -127,5 +129,17 @@ class AccountsServiceProvider extends ServiceProvider
         }
 
         return $paths;
+    }
+
+    /**
+     * Register base64_image rule.
+     *
+     * @return void
+     */
+    private function registerBase64Validation()
+    {
+        Validator::extend('base64_image', function ($attribute, $value, $parameters, $validator) {
+            return validate_base64($value, ['png', 'jpg', 'jpeg', 'gif']);
+        });
     }
 }

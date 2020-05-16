@@ -9,7 +9,7 @@
     ],
     "require": {
         "laravel/framework": "^7.0",
-        "laravel/passport": "^7.3"
+        "laravel/sanctum": "^2.3"
     },
     "extra": {
         "laravel": {
@@ -28,6 +28,9 @@
         "classmap": [
             "Database/Seeders",
             "Database/factories"
+        ],
+        "files": [
+            "Support/helpers.php"
         ]
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Modules\Accounts\Entities;
 
+use Modules\Accounts\Transformers\CustomerResource;
 use Parental\HasParent;
 use Modules\Accounts\Entities\Relations\CustomerRelations;
 
@@ -29,5 +30,13 @@ class Customer extends User
         return 'user_id';
     }
 
-
+    /**
+     * Get the resource for customer type.
+     *
+     * @return \Modules\Accounts\Transformers\CustomerResource
+     */
+    public function getResource()
+    {
+        return new CustomerResource($this);
+    }
 }

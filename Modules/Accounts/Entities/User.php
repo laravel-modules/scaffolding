@@ -2,8 +2,10 @@
 
 namespace Modules\Accounts\Entities;
 
+use Modules\Accounts\Transformers\CustomerResource;
 use Parental\HasChildren;
 use App\Http\Filters\Filterable;
+use Laravel\Sanctum\HasApiTokens;
 use Modules\Support\Traits\Selectable;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
@@ -19,6 +21,7 @@ class User extends Authenticatable implements HasMedia
         UserHelpers,
         HasChildren,
         HasMediaTrait,
+        HasApiTokens,
         HasChildren,
         PresentableTrait,
         Filterable,
@@ -114,5 +117,30 @@ class User extends Authenticatable implements HasMedia
             ->addMediaCollection('avatars')
             ->useFallbackUrl('https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm')
             ->singleFile();
+    }
+
+    /**
+     * Get the resource for customer type.
+     *
+     * @return \Modules\Accounts\Transformers\CustomerResource
+     */
+    public function getResource()
+    {
+        return new CustomerResource($this);
+    }
+
+    /**
+     * Get the access token currently associated with the user. Create a new.
+     *
+     * @param string|null $device
+     * @return string
+     */
+    public function createTokenForDevice($device = null)
+    {
+        $device = $device ?: 'Unknown Device';
+
+        $this->tokens()->where('name', $device)->delete();
+
+        return $this->createToken($device)->plainTextToken;
     }
 }

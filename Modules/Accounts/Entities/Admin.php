@@ -2,6 +2,7 @@
 
 namespace Modules\Accounts\Entities;
 
+use Modules\Accounts\Transformers\AdminResource;
 use Parental\HasParent;
 
 class Admin extends User
@@ -26,5 +27,15 @@ class Admin extends User
     public function getForeignKey()
     {
         return 'user_id';
+    }
+
+    /**
+     * Get the resource for admin type.
+     *
+     * @return \Modules\Accounts\Transformers\AdminResource
+     */
+    public function getResource()
+    {
+        return new AdminResource($this);
     }
 }
