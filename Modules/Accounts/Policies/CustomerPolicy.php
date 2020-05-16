@@ -79,5 +79,4 @@ class CustomerPolicy
     {
         return $user->isAdmin() && $user->isNot($customer);
     }
-
 }

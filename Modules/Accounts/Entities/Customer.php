@@ -2,8 +2,8 @@
 
 namespace Modules\Accounts\Entities;
 
-use Modules\Accounts\Transformers\CustomerResource;
 use Parental\HasParent;
+use Modules\Accounts\Transformers\CustomerResource;
 use Modules\Accounts\Entities\Relations\CustomerRelations;
 
 class Customer extends User

@@ -2,7 +2,6 @@
 
 namespace Modules\Accounts\Transformers;
 
-
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \Modules\Accounts\Entities\Admin */

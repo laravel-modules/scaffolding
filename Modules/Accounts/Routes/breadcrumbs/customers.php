@@ -1,4 +1,5 @@
 <?php
+
 Breadcrumbs::for('dashboard.customers.index', function ($breadcrumb) {
     $breadcrumb->parent('dashboard.home');
     $breadcrumb->push(trans('accounts::customers.plural'), route('dashboard.customers.index'));
@@ -18,4 +19,3 @@ Breadcrumbs::for('dashboard.customers.edit', function ($breadcrumb, $customer) {
     $breadcrumb->parent('dashboard.customers.show', $customer);
     $breadcrumb->push(trans('accounts::customers.actions.edit'), route('dashboard.customers.edit', $customer));
 });
-

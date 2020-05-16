@@ -3,15 +3,15 @@
 namespace Modules\Accounts\Http\Controllers\Api;
 
 use Illuminate\Auth\Events\Login;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Routing\Controller;
 use Modules\Accounts\Entities\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\ValidationException;
 use Modules\Accounts\Http\Requests\Api\LoginRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Modules\Accounts\Http\Requests\Api\RegisterRequest;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class RegisterController extends Controller
 {

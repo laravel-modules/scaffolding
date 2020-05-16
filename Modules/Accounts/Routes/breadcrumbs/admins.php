@@ -1,4 +1,5 @@
 <?php
+
 Breadcrumbs::for('dashboard.admins.index', function ($breadcrumb) {
     $breadcrumb->parent('dashboard.home');
     $breadcrumb->push(trans('accounts::admins.plural'), route('dashboard.admins.index'));

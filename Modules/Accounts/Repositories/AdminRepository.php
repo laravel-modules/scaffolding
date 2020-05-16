@@ -2,8 +2,8 @@
 
 namespace Modules\Accounts\Repositories;
 
-use Modules\Contracts\CrudRepository;
 use Modules\Accounts\Entities\Admin;
+use Modules\Contracts\CrudRepository;
 use Modules\Accounts\Http\Filters\AdminFilter;
 
 class AdminRepository implements CrudRepository

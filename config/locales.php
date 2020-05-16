@@ -1,4 +1,5 @@
 <?php
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -12,12 +13,12 @@ return [
         'code' => 'en',
         'name' => 'English',
         'dir' => 'ltr',
-        'flag' => '/images/flags/us.png'
+        'flag' => '/images/flags/us.png',
     ],
     'ar' => [
         'code' => 'ar',
         'name' => 'العربية',
         'dir' => 'rtl',
-        'flag' => '/images/flags/sa.png'
+        'flag' => '/images/flags/sa.png',
     ],
 ];

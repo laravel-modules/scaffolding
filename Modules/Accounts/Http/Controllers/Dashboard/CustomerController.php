@@ -4,10 +4,10 @@ namespace Modules\Accounts\Http\Controllers\Dashboard;
 
 use Illuminate\Routing\Controller;
 use Modules\Accounts\Entities\Customer;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Modules\Accounts\Http\Requests\CustomerRequest;
 use Modules\Accounts\Repositories\CustomerRepository;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class CustomerController extends Controller
 {

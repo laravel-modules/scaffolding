@@ -2,8 +2,8 @@
 
 namespace Modules\Accounts\Entities;
 
-use Modules\Accounts\Transformers\AdminResource;
 use Parental\HasParent;
+use Modules\Accounts\Transformers\AdminResource;
 
 class Admin extends User
 {

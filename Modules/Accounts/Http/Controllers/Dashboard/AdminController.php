@@ -4,10 +4,10 @@ namespace Modules\Accounts\Http\Controllers\Dashboard;
 
 use Illuminate\Routing\Controller;
 use Modules\Accounts\Entities\Admin;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Modules\Accounts\Http\Requests\AdminRequest;
 use Modules\Accounts\Repositories\AdminRepository;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AdminController extends Controller
 {

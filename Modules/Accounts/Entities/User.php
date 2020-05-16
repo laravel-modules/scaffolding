@@ -2,7 +2,6 @@
 
 namespace Modules\Accounts\Entities;
 
-use Modules\Accounts\Transformers\CustomerResource;
 use Parental\HasChildren;
 use App\Http\Filters\Filterable;
 use Laravel\Sanctum\HasApiTokens;
@@ -12,6 +11,7 @@ use Laracasts\Presenter\PresentableTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Modules\Accounts\Entities\Helpers\UserHelpers;
+use Modules\Accounts\Transformers\CustomerResource;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Accounts\Entities\Presenters\UserPresenter;
 

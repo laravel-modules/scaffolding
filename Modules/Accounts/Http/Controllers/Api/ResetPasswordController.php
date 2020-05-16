@@ -2,23 +2,23 @@
 
 namespace Modules\Accounts\Http\Controllers\Api;
 
+use Illuminate\Support\Str;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Str;
-use Modules\Accounts\Entities\ResetPasswordCode;
-use Modules\Accounts\Entities\ResetPasswordToken;
 use Modules\Accounts\Entities\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
-use Modules\Accounts\Http\Requests\Api\ForgetPasswordRequest;
+use Modules\Accounts\Entities\ResetPasswordCode;
+use Modules\Accounts\Entities\ResetPasswordToken;
 use Modules\Accounts\Http\Requests\Api\LoginRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Modules\Accounts\Http\Requests\Api\ResetPasswordRequest;
+use Modules\Accounts\Http\Requests\Api\ForgetPasswordRequest;
+use Modules\Accounts\Notifications\PasswordUpdatedNotification;
 use Modules\Accounts\Http\Requests\Api\PasswordLessLoginRequest;
 use Modules\Accounts\Http\Requests\Api\ResetPasswordCodeRequest;
-use Modules\Accounts\Http\Requests\Api\ResetPasswordRequest;
-use Modules\Accounts\Notifications\PasswordUpdatedNotification;
 use Modules\Accounts\Notifications\SendForgetPasswordCodeNotification;
 
 class ResetPasswordController extends Controller

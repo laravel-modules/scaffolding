@@ -79,5 +79,4 @@ class AdminPolicy
     {
         return $user->isAdmin() && $user->isNot($admin);
     }
-
 }
