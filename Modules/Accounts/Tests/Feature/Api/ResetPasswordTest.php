@@ -2,13 +2,14 @@
 
 namespace Modules\Accounts\Tests\Feature\Api;
 
-use Illuminate\Support\Str;
-use Modules\Accounts\Entities\ResetPasswordCode;
-use Modules\Accounts\Entities\ResetPasswordToken;
 use Tests\TestCase;
+use Illuminate\Support\Str;
 use Modules\Accounts\Entities\Customer;
 use Illuminate\Support\Facades\Notification;
+use Modules\Accounts\Entities\ResetPasswordCode;
+use Modules\Accounts\Entities\ResetPasswordToken;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Modules\Accounts\Notifications\PasswordUpdatedNotification;
 use Modules\Accounts\Notifications\SendForgetPasswordCodeNotification;
 
 class ResetPasswordTest extends TestCase
@@ -75,6 +76,8 @@ class ResetPasswordTest extends TestCase
 
     public function test_password_can_be_updated_by_reset_token()
     {
+        Notification::fake();
+
         $user = factory(Customer::class)->create(['email' => 'user@user.com']);
 
         ResetPasswordToken::create([
@@ -91,6 +94,8 @@ class ResetPasswordTest extends TestCase
             'password_confirmation' => '12345678',
         ])
             ->assertJsonValidationErrors(['token']);
+
+        Notification::assertNothingSent();
 
         $this->postJson(route('api.password.reset'), [
             'token' => $token,
@@ -114,5 +119,7 @@ class ResetPasswordTest extends TestCase
                 'data' => $user->getResource()->jsonSerialize(),
             ])
             ->assertJsonStructure(['token']);
+
+        Notification::assertSentTo($user, PasswordUpdatedNotification::class);
     }
 }
