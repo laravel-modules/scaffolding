@@ -21,9 +21,22 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
+        \Modules\Accounts\Entities\Customer::firstOrCreate([
+            'name' => 'Customer',
+        ], [
+            'email' => 'customer@demo.com',
+            'phone' => '01552416535',
+            'password' => Hash::make('password'),
+        ]);
+
         $this->command->info('Default Admin Information:');
 
         $this->command->warn('Email : admin@demo.com');
+        $this->command->warn('Password : password');
+
+        $this->command->info('Default Customer Information:');
+
+        $this->command->warn('Email : customer@demo.com');
         $this->command->warn('Password : password');
 
         $this->command->warn('Do not consider seed dummy data while in production mode!');
