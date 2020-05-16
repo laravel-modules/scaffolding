@@ -18,6 +18,8 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'attributes' => [
         'email' => 'Email',
+        'phone' => 'phone',
+        'username' => 'Email Or Phone',
         'password' => 'Password',
     ],
 ];

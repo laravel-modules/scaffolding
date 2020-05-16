@@ -9,7 +9,8 @@
     ],
     "require": {
         "laravel/framework": "^7.0",
-        "laravel/sanctum": "^2.3"
+        "laravel/sanctum": "^2.3",
+        "kreait/firebase-tokens": "^1.10"
     },
     "extra": {
         "laravel": {

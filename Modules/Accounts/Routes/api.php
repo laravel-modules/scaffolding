@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 Route::post('/login', 'Api\LoginController@login')->name('sanctum.login');
+Route::post('/firebase/login', 'Api\LoginController@firebase')->name('sanctum.login.firebase');
+
 Route::post('/register', 'Api\RegisterController@register')->name('sanctum.register');
 Route::get('/select/users', 'SelectController@index')->name('users.select');
 
