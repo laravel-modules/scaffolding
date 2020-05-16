@@ -1,10 +1,10 @@
 {
-    "name": "elnooronline/dashboard",
+    "name": "laravel-modules/dashboard",
     "description": "",
     "authors": [
         {
-            "name": "Elnooronline",
-            "email": "info@elnooronline.com"
+            "name": "Ahmed Fathy",
+            "email": "fathy.dev@gmail.com"
         }
     ],
     "require": {

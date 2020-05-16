@@ -1,14 +1,13 @@
 {
-    "name": "elnooronline/accounts",
+    "name": "laravel-modules/accounts",
     "description": "",
     "authors": [
         {
-            "name": "Elnooronline",
-            "email": "info@elnooronline.com"
+            "name": "Ahmed Fathy",
+            "email": "fathy.dev@gmail.com"
         }
     ],
     "require": {
-        "laravel/framework": "^7.0",
         "laravel/sanctum": "^2.3",
         "kreait/firebase-tokens": "^1.10"
     },
