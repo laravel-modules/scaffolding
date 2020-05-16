@@ -4,69 +4,39 @@
         @slot('title', $admin->name)
         @slot('breadcrumbs', ['dashboard.admins.show', $admin])
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-widget widget-user">
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="widget-user-header bg-info">
-                        <h3 class="widget-user-username">{{ $admin->name }}</h3>
-                        <h5 class="widget-user-desc">
-                            {{ $admin->present()->type }}
-                        </h5>
-                    </div>
-                    <div class="widget-user-image">
-                        <img class="img-circle elevation-2"
-                             src="{{ $admin->getAvatar() }}"
+        @component('dashboard::layouts.components.box')
+            @slot('bodyClass', 'p-0')
+
+            <table class="table table-striped table-middle">
+                <tbody>
+                <tr>
+                    <th width="200">@lang('accounts::admins.attributes.name')</th>
+                    <td>{{ $admin->name }}</td>
+                </tr>
+                <tr>
+                    <th width="200">@lang('accounts::admins.attributes.email')</th>
+                    <td>{{ $admin->email }}</td>
+                </tr>
+                <tr>
+                    <th width="200">@lang('accounts::admins.attributes.phone')</th>
+                    <td>{{ $admin->phone }}</td>
+                </tr>
+                <tr>
+                    <th width="200">@lang('accounts::admins.attributes.avatar')</th>
+                    <td>
+                        <img src="{{ $admin->getAvatar() }}"
+                             class="img img-size-64"
                              alt="{{ $admin->name }}">
-                    </div>
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-sm-4 border-right">
-                                <div class="description-block">
-                                    <h5 class="description-header mb-2">
-                                        <i class="fas fa-envelope fa-lg"></i>
-                                    </h5>
-                                    <span class="description-text">
-                                         {{ $admin->email }}
-                                    </span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4 border-right">
-                                <div class="description-block">
-                                    <h5 class="description-header mb-2">
-                                        <i class="fas fa-phone fa-lg"></i>
-                                    </h5>
-                                    <span class="description-text">
-                                        {{ $admin->phone }}
-                                    </span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4">
-                                <div class="description-block">
-                                    <h5 class="description-header mb-2">
-                                        <i class="fas fa-calendar-alt fa-lg"></i>
-                                    </h5>
-                                    <span class="description-text">
-                                        {{ $admin->created_at->diffForHumans() }}
-                                    </span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-                        <div class="mt-4">
-                            @include('accounts::admins.partials.actions.edit')
-                            @include('accounts::admins.partials.actions.delete')
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            @slot('footer')
+                @include('accounts::admins.partials.actions.edit')
+                @include('accounts::admins.partials.actions.delete')
+            @endslot
+        @endcomponent
 
     @endcomponent
 @endsection
