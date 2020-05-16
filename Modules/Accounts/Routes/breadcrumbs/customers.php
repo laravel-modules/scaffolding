@@ -1,20 +1,21 @@
 <?php
-Breadcrumbs::for('dashboard.admins.index', function ($breadcrumb) {
+Breadcrumbs::for('dashboard.customers.index', function ($breadcrumb) {
     $breadcrumb->parent('dashboard.home');
-    $breadcrumb->push(trans('accounts::admins.plural'), route('dashboard.admins.index'));
+    $breadcrumb->push(trans('accounts::customers.plural'), route('dashboard.customers.index'));
 });
 
-Breadcrumbs::for('dashboard.admins.create', function ($breadcrumb) {
-    $breadcrumb->parent('dashboard.admins.index');
-    $breadcrumb->push(trans('accounts::admins.actions.create'), route('dashboard.admins.create'));
+Breadcrumbs::for('dashboard.customers.create', function ($breadcrumb) {
+    $breadcrumb->parent('dashboard.customers.index');
+    $breadcrumb->push(trans('accounts::customers.actions.create'), route('dashboard.customers.create'));
 });
 
-Breadcrumbs::for('dashboard.admins.show', function ($breadcrumb, $admin) {
-    $breadcrumb->parent('dashboard.admins.index');
-    $breadcrumb->push($admin->name, route('dashboard.admins.show', $admin));
+Breadcrumbs::for('dashboard.customers.show', function ($breadcrumb, $customer) {
+    $breadcrumb->parent('dashboard.customers.index');
+    $breadcrumb->push($customer->name, route('dashboard.customers.show', $customer));
 });
 
-Breadcrumbs::for('dashboard.admins.edit', function ($breadcrumb, $admin) {
-    $breadcrumb->parent('dashboard.admins.show', $admin);
-    $breadcrumb->push(trans('accounts::admins.actions.edit'), route('dashboard.admins.edit', $admin));
+Breadcrumbs::for('dashboard.customers.edit', function ($breadcrumb, $customer) {
+    $breadcrumb->parent('dashboard.customers.show', $customer);
+    $breadcrumb->push(trans('accounts::customers.actions.edit'), route('dashboard.customers.edit', $customer));
 });
+
