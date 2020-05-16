@@ -13,13 +13,13 @@ class LoginTest extends TestCase
     public function test_login_validation()
     {
         $this->postJson(route('sanctum.login'), [])
-            ->assertJsonValidationErrors(['email', 'password']);
+            ->assertJsonValidationErrors(['username', 'password']);
 
         $this->postJson(route('sanctum.login'), [
-            'email' => 'user@demo.com',
+            'username' => 'user@demo.com',
             'password' => 'password',
         ])
-            ->assertJsonValidationErrors(['email']);
+            ->assertJsonValidationErrors(['username']);
     }
 
     public function test_sanctum_login()
@@ -28,7 +28,19 @@ class LoginTest extends TestCase
         $user = factory(User::class)->create();
 
         $response = $this->postJson(route('sanctum.login'), [
-            'email' => $user->email,
+            'username' => $user->email,
+            'password' => 'password',
+            'device_name' => 'testing',
+        ]);
+
+        $response->assertSuccessful()
+            ->assertJson([
+                'data' => $user->getResource()->jsonSerialize(),
+            ])
+            ->assertJsonStructure(['token']);
+
+        $response = $this->postJson(route('sanctum.login'), [
+            'username' => $user->phone,
             'password' => 'password',
             'device_name' => 'testing',
         ]);

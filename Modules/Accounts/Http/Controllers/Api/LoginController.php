@@ -3,6 +3,7 @@
 namespace Modules\Accounts\Http\Controllers\Api;
 
 use Illuminate\Auth\Events\Login;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Routing\Controller;
 use Modules\Accounts\Entities\User;
 use Illuminate\Support\Facades\Hash;
@@ -24,11 +25,14 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        $user = User::where('email', $request->email)->first();
+        $user = User::where(function (Builder $query) use ($request) {
+            $query->where('email', $request->username);
+            $query->orWhere('phone', $request->username);
+        })->first();
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
-                'email' => [trans('accounts::auth.failed')],
+                'username' => [trans('accounts::auth.failed')],
             ]);
         }
 
