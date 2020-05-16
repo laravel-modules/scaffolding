@@ -27,3 +27,7 @@ $factory->define(Admin::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->afterCreating(Admin::class, function (Admin $admin) {
+    $admin->update(['name' => 'Admin #'.$admin->id]);
+});

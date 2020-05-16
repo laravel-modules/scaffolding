@@ -27,3 +27,7 @@ $factory->define(Customer::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->afterCreating(Customer::class, function (Customer $customer) {
+    $customer->update(['name' => 'Customer #'.$customer->id]);
+});
