@@ -17,11 +17,11 @@ mix.mergeManifest();
 
 mix.copyDirectory('node_modules/admin-lte/dist/img', 'public/images');
 
-mix.js('Modules/Dashboard/Resources/assets/js/adminlte.js', 'public/js')
-   .sass('Modules/Dashboard/Resources/assets/sass/adminlte.scss', 'public/css');
+mix.js('Modules/Dashboard/Resources/assets/js/adminlte/adminlte.js', 'public/js')
+   .sass('Modules/Dashboard/Resources/assets/sass/adminlte/adminlte.scss', 'public/css');
 
-mix.js('Modules/Dashboard/Resources/assets/js/auth.js', 'public/js')
-   .sass('Modules/Dashboard/Resources/assets/sass/auth.scss', 'public/css');
+mix.js('Modules/Dashboard/Resources/assets/js/adminlte/adminlte-auth.js', 'public/js')
+   .sass('Modules/Dashboard/Resources/assets/sass/adminlte/adminlte-auth.scss', 'public/css');
 
 // Handle rtl
 mix.webpackConfig({
@@ -37,5 +37,5 @@ mix.version([
     'public/js/*',
     'public/css/*',
     'public/css/adminlte.rtl.css',
-    'public/css/auth.rtl.css',
+    'public/css/adminlte-auth.rtl.css',
 ]);

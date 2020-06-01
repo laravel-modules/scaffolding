@@ -1,13 +1,13 @@
 {
-    "/js/adminlte.js": "/js/adminlte.js?id=b43b91a5f8244f3fac01",
-    "/css/adminlte.css": "/css/adminlte.css?id=c2f2a435352be7adf4f3",
-    "/css/auth.css": "/css/auth.css?id=389853d358fe1db2aadd",
-    "/js/auth.js": "/js/auth.js?id=6268c05a5135f658d4e7",
+    "/js/adminlte.js": "/js/adminlte.js?id=6d974246b578ee0ec915",
+    "/css/adminlte.css": "/css/adminlte.css?id=1cb1a7677808395fd2b1",
+    "/css/adminlte-auth.css": "/css/adminlte-auth.css?id=ac43cc21642decd3ca98",
+    "/css/adminlte.rtl.css": "/css/adminlte.rtl.css?id=78cac5688f6938c13be0",
+    "/css/adminlte-auth.rtl.css": "/css/adminlte-auth.rtl.css?id=b69588ec9ffa4d790849",
+    "/js/adminlte-auth.js": "/js/adminlte-auth.js?id=26018907b6f6bdb97795",
+    "/js/adminlte-auth.js.LICENSE.txt": "/js/adminlte-auth.js.LICENSE.txt?id=7818dfd2d63f4422b2b5",
     "/js/adminlte.js.LICENSE.txt": "/js/adminlte.js.LICENSE.txt?id=f510ef572ce948a86fe7",
-    "/js/auth.js.LICENSE.txt": "/js/auth.js.LICENSE.txt?id=7818dfd2d63f4422b2b5",
-    "/css/adminlte.rtl.css": "/css/adminlte.rtl.css?id=67c377c4db6ac4998451",
-    "/css/auth.rtl.css": "/css/auth.rtl.css?id=eb46dcac97ab0ff2b8be",
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/app.js.LICENSE.txt": "/js/app.js.LICENSE.txt?id=275fe79abee3b697f167"
+    "/js/app.js": "/js/app.js?id=efe4ab141a3597f22e8a",
+    "/js/app.js.LICENSE.txt": "/js/app.js.LICENSE.txt?id=275fe79abee3b697f167",
+    "/css/app.css": "/css/app.css?id=d41d8cd98f00b204e980"
 }

@@ -1,6 +1,6 @@
-@extends('dashboard::layouts.master')
+@extends('layout::master')
 @section('content')
-    @component('dashboard::layouts.components.page')
+    @component('layout::components.page')
         @slot('title', trans('dashboard::dashboard.home'))
         @slot('breadcrumbs', ['dashboard.home'])
 

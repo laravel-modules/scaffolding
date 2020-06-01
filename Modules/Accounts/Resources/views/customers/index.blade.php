@@ -1,13 +1,13 @@
-@extends('dashboard::layouts.master', ['title' => trans('accounts::customers.plural')])
+@extends('layout::master', ['title' => trans('accounts::customers.plural')])
 @section('content')
-    @component('dashboard::layouts.components.page')
+    @component('layout::components.page')
         @slot('title', trans('accounts::customers.plural'))
 
         @slot('breadcrumbs', ['dashboard.customers.index'])
 
         @include('accounts::customers.partials.filter')
 
-        @component('dashboard::layouts.components.table-box')
+        @component('layout::components.table-box')
 
             @slot('title', trans('accounts::customers.actions.list'))
 

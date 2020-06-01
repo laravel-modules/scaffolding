@@ -2,6 +2,7 @@
 
 namespace Modules\Dashboard\Providers;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
@@ -68,11 +69,16 @@ class DashboardServiceProvider extends ServiceProvider
 
         $sourcePath = module_path($this->moduleName, 'Resources/views');
 
+        $layoutPath = $sourcePath . '/layouts/' . Config::get($this->moduleNameLower.'.layout');
+
         $this->publishes([
             $sourcePath => $viewPath,
+            $layoutPath => $viewPath . '/layouts/' . Config::get($this->moduleNameLower.'.layout'),
         ], ['views', $this->moduleNameLower . '-module-views']);
 
         $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
+
+        $this->loadViewsFrom(array_merge($this->getPublishableViewLayoutPaths(), [$layoutPath]), 'layout');
     }
 
     /**
@@ -119,6 +125,20 @@ class DashboardServiceProvider extends ServiceProvider
         foreach (\Config::get('view.paths') as $path) {
             if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
                 $paths[] = $path . '/modules/' . $this->moduleNameLower;
+            }
+        }
+
+        return $paths;
+    }
+
+    private function getPublishableViewLayoutPaths(): array
+    {
+        $paths = [];
+        foreach (\Config::get('view.paths') as $path) {
+            if (is_dir($path . '/modules/' . $this->moduleNameLower . '/layouts/'
+                . Config::get($this->moduleNameLower.'.layout'))) {
+                $paths[] = $path . '/modules/' . $this->moduleNameLower . '/layouts/'
+                    . Config::get($this->moduleNameLower.'.layout');
             }
         }
 

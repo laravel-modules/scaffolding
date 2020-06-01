@@ -1,9 +1,9 @@
 {
     "private": true,
     "scripts": {
-        "adminlte:dev": "npm run development -- --env.mixfile=webpack.adminlte.mix.js",
-        "adminlte:watch": "npm run watch -- --env.mixfile=webpack.adminlte.mix.js",
-        "adminlte:prod": "npm run production -- --env.mixfile=webpack.adminlte.mix.js",
+        "dashboard:dev": "npm run development -- --env.mixfile=Modules/Dashboard/webpack.mix.js",
+        "dashboard:watch": "npm run watch -- --env.mixfile=Modules/Dashboard/webpack.mix.js",
+        "dashboard:prod": "npm run production -- --env.mixfile=Modules/Dashboard/webpack.mix.js",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",

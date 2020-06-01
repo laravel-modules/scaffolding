@@ -28,7 +28,7 @@ if (token) {
 
 import Vue from 'vue';
 import VueInternationalization from 'vue-i18n';
-import Locale from '../../../../../resources/js/vue-i18n-locales.generated';
+import Locale from '../../../../../../resources/js/vue-i18n-locales.generated';
 
 Vue.use(VueInternationalization);
 
@@ -45,7 +45,7 @@ const i18n = new VueInternationalization({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('select2', require('./components/Select2Component').default);
+Vue.component('select2', require('../components/Select2Component').default);
 
 const app = new Vue({
     el: '#app',

@@ -1,10 +1,10 @@
-@extends('dashboard::layouts.master', ['title' => $admin->name])
+@extends('layout::master', ['title' => $admin->name])
 @section('content')
-    @component('dashboard::layouts.components.page')
+    @component('layout::components.page')
         @slot('title', $admin->name)
         @slot('breadcrumbs', ['dashboard.admins.show', $admin])
 
-        @component('dashboard::layouts.components.box')
+        @component('layout::components.box')
             @slot('bodyClass', 'p-0')
 
             <table class="table table-striped table-middle">

@@ -1,4 +1,4 @@
-@component('dashboard::layouts.components.sidebarItem')
+@component('layout::components.sidebarItem')
     @slot('can', ['ability' => 'viewAny', 'model' => \Modules\Accounts\Entities\User::class])
     @slot('url', '#')
     @slot('name', trans('accounts::users.plural'))

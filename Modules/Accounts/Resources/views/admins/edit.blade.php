@@ -1,11 +1,11 @@
-@extends('dashboard::layouts.master', ['title' => $admin->name])
+@extends('layout::master', ['title' => $admin->name])
 @section('content')
-    @component('dashboard::layouts.components.page')
+    @component('layout::components.page')
         @slot('title', $admin->name)
         @slot('breadcrumbs', ['dashboard.admins.edit', $admin])
 
         {{ BsForm::resource('accounts::admins')->putModel($admin, route('dashboard.admins.update', $admin), ['files' => true]) }}
-        @component('dashboard::layouts.components.box')
+        @component('layout::components.box')
             @slot('title', trans('accounts::admins.actions.edit'))
 
             @include('accounts::admins.partials.form')

@@ -1,5 +1,5 @@
 {{ BsForm::resource('accounts::customers')->get(url()->current()) }}
-@component('dashboard::layouts.components.box')
+@component('layout::components.box')
     @slot('title', trans('accounts::customers.actions.filter'))
 
     <div class="row">
