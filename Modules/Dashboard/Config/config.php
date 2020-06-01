@@ -11,5 +11,5 @@ return [
      *
      * supported "adminlte", "vali"
      */
-    'layout' => 'adminlte',
+    'layout' => 'vali',
 ];
