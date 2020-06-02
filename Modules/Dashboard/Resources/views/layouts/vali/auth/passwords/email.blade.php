@@ -45,8 +45,8 @@
                 </button>
             </div>
             <div class="form-group mt-3">
-                <p class="semibold-text mb-0"><a href="#" data-toggle="flip">
-                        <i class="fa fa-angle-left fa-fw mr-2"></i>
+                <p class="semibold-text mb-0"><a href="{{ route('login') }}">
+                        <i class="fas fa-angle-left fa-fw mr-2"></i>
                         @lang('dashboard.auth.login.title')
                     </a>
                 </p>
