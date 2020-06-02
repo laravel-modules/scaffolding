@@ -155,7 +155,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-md dropdown-menu-right user-dropdown-menu">
                     <a href="#" onclick="event.preventDefault();document.getElementById('logoutForm').submit()" class="dropdown-item">
-                        <i class="fas fa-sign-out-alt mr-2"></i> @lang('adminlte.auth.logout')
+                        <i class="fas fa-sign-out-alt mr-2"></i> @lang('dashboard.auth.logout')
                     </a>
                     <form style="display: none;" action="{{ route('logout') }}" method="post" id="logoutForm">
                         @csrf

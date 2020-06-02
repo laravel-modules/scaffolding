@@ -20,6 +20,7 @@ class FirebaseToken
         $projectId = Config::get('accounts.firebase_project_id');
 
         $verifier = new Verifier($projectId);
+
         try {
             $verifiedIdToken = $verifier->verifyIdToken($accessToken);
 

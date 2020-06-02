@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@lang('adminlte.auth.forget.title') | {{ config('app.name', 'Laravel') }}</title>
+    <title>@lang('dashboard.auth.forget.title') | {{ config('app.name', 'Laravel') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,7 +21,7 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">@lang('adminlte.auth.forget.info')</p>
+            <p class="login-box-msg">@lang('dashboard.auth.forget.info')</p>
 
             <form action="{{ route('password.email') }}" method="post">
                 @csrf
@@ -36,7 +36,7 @@
                            name="email"
                            value="{{ old('email') }}"
                            autofocus
-                           placeholder="@lang('adminlte.auth.forget.email')">
+                           placeholder="@lang('dashboard.auth.forget.email')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="col">
                         <button type="submit" class="btn btn-primary btn-block">
-                            @lang('adminlte.auth.forget.submit')
+                            @lang('dashboard.auth.forget.submit')
                         </button>
                     </div>
                     <!-- /.col -->

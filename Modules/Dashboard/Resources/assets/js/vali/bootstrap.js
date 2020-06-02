@@ -9,6 +9,12 @@ try {
     window.$ = window.jQuery = require('jquery');
     global.moment = require('moment');
     require('bootstrap');
+
+    // The javascript plugin to display page loading on top
+    require('pace');
+
+    window.toastr = require('toastr');
+
     require('bootstrap4-duallistbox');
     require('daterangepicker');
     require('bootstrap-colorpicker');
@@ -16,5 +22,4 @@ try {
     require('bootstrap-switch');
     require('summernote');
     require('select2/dist/js/select2.full');
-    require('admin-lte');
 } catch (e) {}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@lang('adminlte.auth.confirm.title') | {{ config('app.name', 'Laravel') }}</title>
+    <title>@lang('dashboard.auth.confirm.title') | {{ config('app.name', 'Laravel') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -47,7 +47,7 @@
                        required
                        name="password"
                        autocomplete="current-password"
-                       placeholder="@lang('adminlte.auth.confirm.password')">
+                       placeholder="@lang('dashboard.auth.confirm.password')">
 
                 <div class="input-group-append">
                     <button type="submit" class="btn">
@@ -61,7 +61,7 @@
     </div>
     <!-- /.lockscreen-item -->
     <div class="help-block text-center">
-        @lang('adminlte.auth.confirm.info')
+        @lang('dashboard.auth.confirm.info')
     </div>
 </div>
 <!-- /.center -->

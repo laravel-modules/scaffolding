@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@lang('adminlte.auth.login.title') | {{ config('app.name', 'Laravel') }}</title>
+    <title>@lang('dashboard.auth.login.title') | {{ config('app.name', 'Laravel') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +22,7 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">@lang('adminlte.auth.login.info')</p>
+            <p class="login-box-msg">@lang('dashboard.auth.login.info')</p>
 
             <form action="{{ route('login') }}" method="post">
                 @csrf
@@ -32,7 +32,7 @@
                            name="email"
                            value="{{ old('email') }}"
                            autofocus
-                           placeholder="@lang('adminlte.auth.login.email')">
+                           placeholder="@lang('dashboard.auth.login.email')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -50,7 +50,7 @@
                            required
                            name="password"
                            autocomplete="current-password"
-                           placeholder="@lang('adminlte.auth.login.password')">
+                           placeholder="@lang('dashboard.auth.login.password')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -70,14 +70,14 @@
                                    {{ old('remember') ? 'checked' : '' }}
                                    id="remember">
                             <label for="remember">
-                                @lang('adminlte.auth.login.remember')
+                                @lang('dashboard.auth.login.remember')
                             </label>
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-6">
                         <button type="submit" class="btn btn-primary btn-block">
-                            @lang('adminlte.auth.login.submit')
+                            @lang('dashboard.auth.login.submit')
                         </button>
                     </div>
                     <!-- /.col -->
@@ -85,7 +85,7 @@
             </form>
 
             <p class="mb-1 mt-2">
-                <a href="{{ route('password.request') }}">@lang('adminlte.auth.login.forget')</a>
+                <a href="{{ route('password.request') }}">@lang('dashboard.auth.login.forget')</a>
             </p>
             <small class="mb-1 mt-2 text-right float-right">
                 @foreach(Locales::get() as $locale)

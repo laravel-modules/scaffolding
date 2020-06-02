@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@lang('adminlte.auth.register.title') | {{ config('app.name', 'Laravel') }}</title>
+    <title>@lang('dashboard.auth.register.title') | {{ config('app.name', 'Laravel') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,7 +29,7 @@
                            name="name"
                            value="{{ old('name') }}"
                            autofocus
-                           placeholder="@lang('adminlte.auth.register.name')">
+                           placeholder="@lang('dashboard.auth.register.name')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -46,7 +46,7 @@
                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                            name="email"
                            value="{{ old('email') }}"
-                           placeholder="@lang('adminlte.auth.register.email')">
+                           placeholder="@lang('dashboard.auth.register.email')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -64,7 +64,7 @@
                            required
                            name="password"
                            autocomplete="new-password"
-                           placeholder="@lang('adminlte.auth.register.password')">
+                           placeholder="@lang('dashboard.auth.register.password')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -83,7 +83,7 @@
                            required
                            name="password_confirmation"
                            autocomplete="new-password"
-                           placeholder="@lang('adminlte.auth.register.password_confirmation')">
+                           placeholder="@lang('dashboard.auth.register.password_confirmation')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -93,13 +93,13 @@
                 <div class="row">
                     <div class="col-8">
                         <p class="mb-1 mt-2">
-                            <a href="{{ route('login') }}">@lang('adminlte.auth.register.login')</a>
+                            <a href="{{ route('login') }}">@lang('dashboard.auth.register.login')</a>
                         </p>
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary btn-block">
-                            @lang('adminlte.auth.register.submit')
+                            @lang('dashboard.auth.register.submit')
                         </button>
                     </div>
                     <!-- /.col -->

@@ -66,6 +66,8 @@ const app = new Vue({
 // Initialization
 $(function () {
 
+    toastr.options.rtl = $('html').attr('dir') === 'rtl';
+
     //Date range picker
     $('#reservation').daterangepicker();
     //Date range picker with time picker

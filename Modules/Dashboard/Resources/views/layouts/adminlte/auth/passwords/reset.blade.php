@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@lang('adminlte.auth.reset.title') | {{ config('app.name', 'Laravel') }}</title>
+    <title>@lang('dashboard.auth.reset.title') | {{ config('app.name', 'Laravel') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,7 +29,7 @@
                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                            name="email"
                            value="{{ $email ?? old('email') }}"
-                           placeholder="@lang('adminlte.auth.reset.email')">
+                           placeholder="@lang('dashboard.auth.reset.email')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -47,7 +47,7 @@
                            required
                            name="password"
                            autocomplete="new-password"
-                           placeholder="@lang('adminlte.auth.reset.password')">
+                           placeholder="@lang('dashboard.auth.reset.password')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -66,7 +66,7 @@
                            required
                            name="password_confirmation"
                            autocomplete="new-password"
-                           placeholder="@lang('adminlte.auth.reset.password_confirmation')">
+                           placeholder="@lang('dashboard.auth.reset.password_confirmation')">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col">
                         <button type="submit" class="btn btn-primary btn-block">
-                            @lang('adminlte.auth.reset.submit')
+                            @lang('dashboard.auth.reset.submit')
                         </button>
                     </div>
                     <!-- /.col -->
