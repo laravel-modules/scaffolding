@@ -1,0 +1,30 @@
+{
+    "name": "laravel-modules/media",
+    "description": "",
+    "authors": [
+        {
+            "name": "Ahmed Fathy",
+            "email": "ahmed-aliraqi@gmail.com"
+        }
+    ],
+    "required": {
+        "spatie/image": "^1.7",
+        "spatie/laravel-medialibrary": "^7.6",
+        "php-ffmpeg/php-ffmpeg": "^0.16.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Media\\Providers\\MediaServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Media\\": ""
+        }
+    }
+}

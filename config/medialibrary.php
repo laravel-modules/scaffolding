@@ -74,7 +74,7 @@ return [
      * When urls to files get generated, this class will be called. Leave empty
      * if your files are stored locally above the site root or on s3.
      */
-    'url_generator' => \App\MediaLibrary\UrlGenerator::class,
+    'url_generator' => null,
 
     /*
      * Whether to activate versioning when urls to files get generated.
@@ -150,7 +150,7 @@ return [
      * your custom jobs extend the ones provided by the package.
      */
     'jobs' => [
-        'perform_conversions' => Spatie\MediaLibrary\Jobs\PerformConversions::class,
+        'perform_conversions' => \Modules\Media\Jobs\PerformConversions::class,
         'generate_responsive_images' => Spatie\MediaLibrary\Jobs\GenerateResponsiveImages::class,
     ],
 ];

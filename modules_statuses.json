@@ -1,4 +1,5 @@
 {
     "Accounts": true,
-    "Dashboard": true
+    "Dashboard": true,
+    "Media": true
 }
