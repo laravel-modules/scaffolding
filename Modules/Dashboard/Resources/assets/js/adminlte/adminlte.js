@@ -46,6 +46,7 @@ const i18n = new VueInternationalization({
  */
 
 Vue.component('select2', require('../components/Select2Component').default);
+Vue.component('file-uploader', require('../../../../../Media/Resources/assets/js/components/FileUploader').default);
 
 const app = new Vue({
     el: '#app',

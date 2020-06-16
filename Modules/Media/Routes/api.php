@@ -17,5 +17,6 @@ Route::middleware('auth:sanctum')->get('/media', function (Request $request) {
     return \Modules\Media\Transformers\MediaResource::collection(\App\Media::all());
 });
 
-Route::middleware('auth:sanctum')->post('media/upload', 'MediaController@store');
+Route::post('media/upload', 'MediaController@store')->name('media.store');
+Route::delete('media/{media}', 'MediaController@destroy')->name('media.destroy');
 

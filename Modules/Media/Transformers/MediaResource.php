@@ -2,8 +2,8 @@
 
 namespace Modules\Media\Transformers;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 /** @mixin \App\Media */
 class MediaResource extends JsonResource
@@ -19,8 +19,12 @@ class MediaResource extends JsonResource
         return [
             'id' => $this->id,
             'url' => $this->getFullUrl(),
+            'name' => $this->name,
+            'file_name' => $this->file_name,
             'type' => $this->getType(),
             'mime_type' => $this->mime_type,
+            'size' => $this->size,
+            'human_readable_size' => $this->human_readable_size,
             'details' => $this->mediaDetails(),
             'status' => $this->mediaStatus(),
             'progress' => $this->when($this->mediaStatus() == 'processing', $this->getCustomProperty('progress')),
@@ -32,7 +36,7 @@ class MediaResource extends JsonResource
             ]),
             'links' => [
                 'delete' => [
-                    'href' => '#',
+                    'href' => route('media.destroy', $this),
                     'method' => 'DELETE',
                     'ability' => Gate::allows('delete', $this->resource),
                 ],

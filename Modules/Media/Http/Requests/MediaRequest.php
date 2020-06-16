@@ -15,8 +15,9 @@ class MediaRequest extends FormRequest
     public function rules()
     {
         return [
-            'files' => ['required', 'array'],
-            'files.*' => ['required', new MediaRule('image', 'video', 'audio', 'document')],
+            'file' => ['sometimes', 'required', new MediaRule('image', 'video', 'audio', 'document')],
+            'files' => ['sometimes', 'required', 'array'],
+            'files.*' => ['sometimes', 'required', new MediaRule('image', 'video', 'audio', 'document')],
             'collection' => ['nullable', 'string'],
         ];
     }
