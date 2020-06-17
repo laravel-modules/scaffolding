@@ -3,18 +3,22 @@
 namespace Modules\Media\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
 use Modules\Media\Support\FFmpegDriver;
+use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Console\Scheduling\Schedule;
+use Modules\Media\Console\TemporaryClearCommand;
+use Modules\Media\Forms\Components\ImageComponent;
+use Elnooronline\LaravelBootstrapForms\Facades\BsForm;
 
 class MediaServiceProvider extends ServiceProvider
 {
     /**
-     * @var string $moduleName
+     * @var string
      */
     protected $moduleName = 'Media';
 
     /**
-     * @var string $moduleNameLower
+     * @var string
      */
     protected $moduleNameLower = 'media';
 
@@ -30,6 +34,17 @@ class MediaServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+
+        $this->commands([
+            TemporaryClearCommand::class,
+        ]);
+
+        $this->app->booted(function () {
+            $schedule = $this->app->make(Schedule::class);
+            $schedule->command('temporary:clean')->everyMinute();
+        });
+
+        BsForm::registerComponent('image', ImageComponent::class);
     }
 
     /**
@@ -57,7 +72,8 @@ class MediaServiceProvider extends ServiceProvider
             module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower.'.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
+            module_path($this->moduleName, 'Config/config.php'),
+            $this->moduleNameLower
         );
     }
 

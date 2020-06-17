@@ -19,6 +19,7 @@ class MediaResource extends JsonResource
         return [
             'id' => $this->id,
             'url' => $this->getFullUrl(),
+            'preview' => $this->getPreviewUrl(),
             'name' => $this->name,
             'file_name' => $this->file_name,
             'type' => $this->getType(),
@@ -38,7 +39,6 @@ class MediaResource extends JsonResource
                 'delete' => [
                     'href' => route('media.destroy', $this),
                     'method' => 'DELETE',
-                    'ability' => Gate::allows('delete', $this->resource),
                 ],
             ],
         ];
@@ -85,18 +85,32 @@ class MediaResource extends JsonResource
     }
 
     /**
+     * Get the preview url.
+     *
+     * @return mixed|string
+     */
+    public function getPreviewUrl()
+    {
+        if ($this->getType() == 'image') {
+            return $this->getFullUrl();
+        }
+
+        return asset('/images/attach.png');
+    }
+
+    /**
      * @return array
      */
     protected function mediaDetails(): array
     {
-        $duration = (float) $this->getCustomProperty('duration');
+        $duration = (float)$this->getCustomProperty('duration');
 
         return [
             'thumb' => $this->when($this->isVideo(), $this->getFullUrl('thumb')),
             $this->mergeWhen($this->isImage(), [
                 'width' => $this->getCustomProperty('width'),
                 'height' => $this->getCustomProperty('height'),
-                'ratio' => (float) $this->getCustomProperty('ratio'),
+                'ratio' => (float)$this->getCustomProperty('ratio'),
             ]),
             'duration' => $this->when($this->isVideo() || $this->isAudio(), $duration),
         ];

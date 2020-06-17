@@ -5,11 +5,12 @@ namespace Modules\Accounts\Entities;
 use Parental\HasChildren;
 use App\Http\Filters\Filterable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\Models\Media;
 use Modules\Support\Traits\Selectable;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Modules\Media\Entities\Concerns\HasMediaTrait;
 use Modules\Accounts\Entities\Helpers\UserHelpers;
 use Modules\Accounts\Transformers\CustomerResource;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -142,5 +143,31 @@ class User extends Authenticatable implements HasMedia
         $this->tokens()->where('name', $device)->delete();
 
         return $this->createToken($device)->plainTextToken;
+    }
+
+
+    /**
+     * Register the conversions for the specified model.
+     *
+     * @param \Spatie\MediaLibrary\Models\Media $media
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(70)
+            ->format('png');
+
+        $this->addMediaConversion('small')
+            ->width(120)
+            ->format('png');
+
+        $this->addMediaConversion('medium')
+            ->width(160)
+            ->format('png');
+
+        $this->addMediaConversion('large')
+            ->width(320)
+            ->format('png');
     }
 }

@@ -4,9 +4,8 @@ namespace Modules\Media\Http\Controllers;
 
 use App\Media;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Media\Entities\TemporaryFile;
 use Modules\Media\Http\Requests\MediaRequest;
 use Modules\Media\Transformers\MediaResource;
@@ -16,30 +15,26 @@ class MediaController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return view('media::index');
-    }
+        $tokens = is_array(request('tokens')) ? request('tokens') : [];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('media::create');
+        $media = Media::whereHasMorph('model', [TemporaryFile::class], function (Builder $builder) use ($tokens) {
+            $builder->whereIn('token', $tokens);
+        })->get();
+
+        return MediaResource::collection($media);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Modules\Media\Http\Requests\MediaRequest $request
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
+     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function store(MediaRequest $request)
@@ -68,10 +63,7 @@ class MediaController extends Controller
                 $temporaryFile->collection ?: 'default'
             )
         )->additional([
-            'token' => [
-                'key' => 'media',
-                'value' => $temporaryFile->token,
-            ],
+            'token' => $temporaryFile->token,
         ]);
     }
 
@@ -92,8 +84,8 @@ class MediaController extends Controller
 
     /**
      * @param \App\Media $media
-     * @return \Illuminate\Http\JsonResponse
      * @throws \Exception
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Media $media)
     {

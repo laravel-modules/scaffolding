@@ -4,4 +4,8 @@
 {{ BsForm::text('phone')->required() }}
 {{ BsForm::password('password') }}
 {{ BsForm::password('password_confirmation') }}
-{{ BsForm::file('avatar')}}
+@isset($admin)
+    {{ BsForm::image('avatar')->files($admin->getMediaResource('avatars')) }}
+@else
+    {{ BsForm::image('avatar') }}
+@endisset

@@ -37,9 +37,6 @@ class CustomerRepository implements CrudRepository
      * Save the created model to storage.
      *
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @return \Modules\Accounts\Entities\Customer
      */
     public function create(array $data)
@@ -48,7 +45,7 @@ class CustomerRepository implements CrudRepository
 
         $this->setType($customer, $data);
 
-        $this->uploadAvatar($customer, $data);
+        $customer->addAllMediaFromTokens();
 
         return $customer;
     }
@@ -73,9 +70,6 @@ class CustomerRepository implements CrudRepository
      *
      * @param mixed $model
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function update($model, array $data)
@@ -86,7 +80,7 @@ class CustomerRepository implements CrudRepository
 
         $this->setType($customer, $data);
 
-        $this->uploadAvatar($customer, $data);
+        $customer->addAllMediaFromTokens();
 
         return $customer;
     }
@@ -114,25 +108,6 @@ class CustomerRepository implements CrudRepository
     {
         if (isset($data['type'])) {
             $customer->setType($data['type']);
-        }
-
-        return $customer;
-    }
-
-    /**
-     * Upload the avatar image.
-     *
-     * @param \Modules\Accounts\Entities\Customer $customer
-     * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
-     * @return \Modules\Accounts\Entities\Customer
-     */
-    private function uploadAvatar(Customer $customer, array $data)
-    {
-        if (isset($data['avatar'])) {
-            $customer->addMedia($data['avatar'])->toMediaCollection('avatars');
         }
 
         return $customer;
