@@ -7,9 +7,9 @@
             "email": "ahmed-aliraqi@gmail.com"
         }
     ],
-    "required": {
+    "require": {
         "spatie/image": "^1.7",
-        "spatie/laravel-medialibrary": "^7.6",
+        "spatie/laravel-medialibrary": "^7.19",
         "php-ffmpeg/php-ffmpeg": "^0.16.0"
     },
     "extra": {

@@ -37,9 +37,6 @@ class AdminRepository implements CrudRepository
      * Save the created model to storage.
      *
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
      * @return \Modules\Accounts\Entities\Admin
      */
     public function create(array $data)
@@ -48,7 +45,7 @@ class AdminRepository implements CrudRepository
 
         $this->setType($admin, $data);
 
-        $this->uploadAvatar($admin, $data);
+        $admin->addAllMediaFromTokens();
 
         return $admin;
     }
@@ -73,9 +70,6 @@ class AdminRepository implements CrudRepository
      *
      * @param mixed $model
      * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function update($model, array $data)
@@ -86,7 +80,7 @@ class AdminRepository implements CrudRepository
 
         $this->setType($admin, $data);
 
-        $this->uploadAvatar($admin, $data);
+        $admin->addAllMediaFromTokens();
 
         return $admin;
     }
@@ -114,25 +108,6 @@ class AdminRepository implements CrudRepository
     {
         if (isset($data['type'])) {
             $admin->setType($data['type']);
-        }
-
-        return $admin;
-    }
-
-    /**
-     * Upload the avatar image.
-     *
-     * @param \Modules\Accounts\Entities\Admin $admin
-     * @param array $data
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig
-     * @return \Modules\Accounts\Entities\Admin
-     */
-    private function uploadAvatar(Admin $admin, array $data)
-    {
-        if (isset($data['avatar'])) {
-            $admin->addMedia($data['avatar'])->toMediaCollection('avatars');
         }
 
         return $admin;

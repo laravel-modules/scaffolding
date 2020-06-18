@@ -18,7 +18,6 @@
         "laravel/sanctum": "^2.3",
         "laravel/tinker": "^2.0",
         "nwidart/laravel-modules": "^7.0",
-        "spatie/laravel-medialibrary": "^7.19",
         "wikimedia/composer-merge-plugin": "^1.4"
     },
     "require-dev": {

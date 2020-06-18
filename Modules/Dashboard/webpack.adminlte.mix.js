@@ -24,14 +24,14 @@ mix.js('Modules/Dashboard/Resources/assets/js/adminlte/adminlte.js', 'public/js'
 //    .sass('Modules/Dashboard/Resources/assets/sass/adminlte/adminlte-auth.scss', 'public/css');
 
 // Handle rtl
-// mix.webpackConfig({
-//     plugins: [
-//         new WebpackRTLPlugin({
-//             diffOnly: false,
-//             minify: true,
-//         }),
-//     ],
-// });
+mix.webpackConfig({
+    plugins: [
+        new WebpackRTLPlugin({
+            diffOnly: false,
+            minify: true,
+        }),
+    ],
+});
 
 mix.version([
     'public/js/*',
