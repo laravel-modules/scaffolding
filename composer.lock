@@ -764,20 +764,20 @@
         },
         {
             "name": "elnooronline/laravel-bootstrap-forms",
-            "version": "v3.0.1",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elnooronline/laravel-bootstrap-forms.git",
-                "reference": "eda671a007dc59fb9ce13dc31e26ad6361474a06"
+                "reference": "57da4b33dd13f3b4dbecd15267e5c79a5d5cb1d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elnooronline/laravel-bootstrap-forms/zipball/eda671a007dc59fb9ce13dc31e26ad6361474a06",
-                "reference": "eda671a007dc59fb9ce13dc31e26ad6361474a06",
+                "url": "https://api.github.com/repos/Elnooronline/laravel-bootstrap-forms/zipball/57da4b33dd13f3b4dbecd15267e5c79a5d5cb1d6",
+                "reference": "57da4b33dd13f3b4dbecd15267e5c79a5d5cb1d6",
                 "shasum": ""
             },
             "require": {
-                "elnooronline/laravel-locales": "^1.0",
+                "elnooronline/laravel-locales": "^2.0",
                 "laravel/framework": "~5.5|^6.0|^7.0",
                 "laravelcollective/html": "^5.6|^6.0|^7.0",
                 "ramsey/uuid": "^3.7"
@@ -814,7 +814,7 @@
                 }
             ],
             "description": "Provides an easy way to use bootstrap components within your Laravel projects.",
-            "time": "2020-06-17T15:12:35+00:00"
+            "time": "2020-06-18T19:20:31+00:00"
         },
         {
             "name": "elnooronline/laravel-breadcrumbs",
@@ -876,16 +876,16 @@
         },
         {
             "name": "elnooronline/laravel-locales",
-            "version": "v1.0.4",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Elnooronline/laravel-locales.git",
-                "reference": "23720ab5a465665a228f8c161b4ef107882d4dbb"
+                "reference": "5ec242c9a25b2673e3c56e935653aa00c631bfc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Elnooronline/laravel-locales/zipball/23720ab5a465665a228f8c161b4ef107882d4dbb",
-                "reference": "23720ab5a465665a228f8c161b4ef107882d4dbb",
+                "url": "https://api.github.com/repos/Elnooronline/laravel-locales/zipball/5ec242c9a25b2673e3c56e935653aa00c631bfc6",
+                "reference": "5ec242c9a25b2673e3c56e935653aa00c631bfc6",
                 "shasum": ""
             },
             "require": {
@@ -922,7 +922,7 @@
                 }
             ],
             "description": "The package used to support multi locales in your application.",
-            "time": "2020-03-11T18:07:46+00:00"
+            "time": "2020-06-18T18:56:22+00:00"
         },
         {
             "name": "evenement/evenement",
