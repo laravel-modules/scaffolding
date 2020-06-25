@@ -29,6 +29,11 @@ class ImageComponent extends BaseComponent
     protected $notes;
 
     /**
+     * @var string
+     */
+    protected $collection = 'default';
+
+    /**
      * Initialized the input arguments.
      *
      * @param null $name
@@ -75,6 +80,19 @@ class ImageComponent extends BaseComponent
     }
 
     /**
+     * Set the maximum files length.
+     *
+     * @param null $collection
+     * @return $this
+     */
+    public function collection($collection = null)
+    {
+        $this->collection = $collection ?: 'default';
+
+        return $this;
+    }
+
+    /**
      * @param string $notes
      * @return $this
      */
@@ -96,6 +114,7 @@ class ImageComponent extends BaseComponent
             'files' => $this->files,
             'max' => $this->max,
             'notes' => $this->notes,
+            'collection' => $this->collection,
         ];
     }
 }

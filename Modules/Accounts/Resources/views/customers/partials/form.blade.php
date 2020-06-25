@@ -6,7 +6,7 @@
 {{ BsForm::password('password_confirmation') }}
 
 @isset($customer)
-    {{ BsForm::image('avatar')->files($customer->getMediaResource('avatars')) }}
+    {{ BsForm::image('avatar')->collection('avatars')->files($customer->getMediaResource('avatars')) }}
 @else
-    {{ BsForm::image('avatar') }}
+    {{ BsForm::image('avatar')->collection('avatars') }}
 @endisset
