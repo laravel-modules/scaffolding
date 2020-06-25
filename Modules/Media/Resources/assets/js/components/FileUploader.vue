@@ -156,3 +156,90 @@
         }
     }
 </script>
+<style scoped>
+    .uploader .img-item:not(.add) {
+        position: relative;
+        text-align: center;
+        border: 2px dashed grey;
+        border-radius: 0 15px;
+        overflow: hidden
+    }
+
+    .uploader .img-item:not(.add) img {
+        text-align: center;
+        max-width: 100%
+    }
+
+    @media (min-width: 992px) {
+        .uploader .img-item:not(.add) img {
+            height: 100px
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        .uploader .img-item:not(.add) img {
+            height: 130px
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .uploader .img-item:not(.add) img {
+            height: 100px
+        }
+    }
+
+    .uploader .img-item:not(.add) a.delete {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #fff !important;
+        background: red;
+        padding: 1px;
+        text-align: center;
+        width: 20px;
+        height: 20px;
+        font-size: 13px
+    }
+
+    .uploader .img-item:not(.add) .size {
+        position: absolute;
+        width: 100%;
+        right: 0;
+        bottom: 0;
+        background: hsla(0, 0%, 50.2%, .84);
+        border-radius: 0 0 0 15px;
+        color: #fff;
+        font-weight: 700
+    }
+
+    .uploader .add {
+        cursor: pointer;
+        border: 2px dashed grey;
+        border-radius: 0 15px;
+        display: flex;
+        align-items: center
+    }
+
+    @media (min-width: 992px) {
+        .uploader .add {
+            height: 100px
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        .uploader .add {
+            height: 130px
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .uploader .add {
+            height: 100px
+        }
+    }
+
+    .uploader .add img {
+        width: 30%;
+        margin: 0 auto
+    }
+</style>

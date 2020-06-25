@@ -15,13 +15,13 @@ mix.mergeManifest();
  |
  */
 
-// mix.copyDirectory('node_modules/admin-lte/dist/img', 'public/images');
+mix.copyDirectory('node_modules/admin-lte/dist/img', 'public/images');
 
 mix.js('Modules/Dashboard/Resources/assets/js/adminlte/adminlte.js', 'public/js')
    .sass('Modules/Dashboard/Resources/assets/sass/adminlte/adminlte.scss', 'public/css');
 
-// mix.js('Modules/Dashboard/Resources/assets/js/adminlte/adminlte-auth.js', 'public/js')
-//    .sass('Modules/Dashboard/Resources/assets/sass/adminlte/adminlte-auth.scss', 'public/css');
+mix.js('Modules/Dashboard/Resources/assets/js/adminlte/adminlte-auth.js', 'public/js')
+   .sass('Modules/Dashboard/Resources/assets/sass/adminlte/adminlte-auth.scss', 'public/css');
 
 // Handle rtl
 mix.webpackConfig({

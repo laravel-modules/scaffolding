@@ -35,6 +35,8 @@ class MediaServiceProvider extends ServiceProvider
         $this->registerFactories();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
 
+        $this->publishes([__DIR__.'/../public/js' => public_path('vendor/media.js')], 'media.assets');
+
         $this->commands([
             TemporaryClearCommand::class,
         ]);
