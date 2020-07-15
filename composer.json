@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "ext-intl": "*",
         "astrotomic/laravel-translatable": "^11.8",
         "calebporzio/parental": "^0.10",
         "doctrine/dbal": "^2.9",
