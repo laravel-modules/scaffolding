@@ -17,6 +17,7 @@
         "axios": "^0.19",
         "cross-env": "^7.0.2",
         "icomoon": "^1.0.0",
+        "laravel-file-uploader": "^1.0.17",
         "laravel-mix": "^5.0.4",
         "laravel-mix-merge-manifest": "^0.1.2",
         "lodash": "^4.17.13",

@@ -4,8 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce6025e139198ffa95e7754eb9b70224",
+    "content-hash": "3d4eccc6056bb726a90bdc1f2650aa48",
     "packages": [
+        {
+            "name": "ahmed-aliraqi/laravel-media-uploader",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ahmed-aliraqi/laravel-media-uploader.git",
+                "reference": "71f5cabf5116c8bd968b8238110c08d8068dab06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ahmed-aliraqi/laravel-media-uploader/zipball/71f5cabf5116c8bd968b8238110c08d8068dab06",
+                "reference": "71f5cabf5116c8bd968b8238110c08d8068dab06",
+                "shasum": ""
+            },
+            "require": {
+                "elnooronline/laravel-bootstrap-forms": "^3.0|^4.0",
+                "laravel/framework": "~5.7|~5.8|^6.0|^7.0",
+                "php-ffmpeg/php-ffmpeg": "^0.16.0",
+                "spatie/image": "^1.7",
+                "spatie/laravel-medialibrary": "^7.19"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2",
+                "orchestra/testbench": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AhmedAliraqi\\LaravelMediaUploader\\Providers\\UploaderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AhmedAliraqi\\LaravelMediaUploader\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Fathy",
+                    "email": "aliraqi.dev@gmail.com"
+                }
+            ],
+            "description": "This package used to upload files using laravel-media-library",
+            "time": "2020-07-13T15:10:20+00:00"
+        },
         {
             "name": "alchemy/binary-driver",
             "version": "v5.2.0",
@@ -3674,12 +3725,6 @@
                 "media",
                 "spatie"
             ],
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
             "time": "2020-03-09T16:43:55+00:00"
         },
         {
@@ -3729,12 +3774,6 @@
                 "pdf",
                 "pdf-to-image",
                 "spatie"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/spatie",
-                    "type": "patreon"
-                }
             ],
             "time": "2020-04-29T08:21:17+00:00"
         },
@@ -8901,8 +8940,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2"
+        "php": "^7.2",
+        "ext-intl": "*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }

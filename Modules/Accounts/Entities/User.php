@@ -10,11 +10,12 @@ use Modules\Support\Traits\Selectable;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Modules\Media\Entities\Concerns\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Modules\Accounts\Entities\Helpers\UserHelpers;
 use Modules\Accounts\Transformers\CustomerResource;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Accounts\Entities\Presenters\UserPresenter;
+use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -26,7 +27,8 @@ class User extends Authenticatable implements HasMedia
         HasChildren,
         PresentableTrait,
         Filterable,
-        Selectable;
+        Selectable,
+        HasUploader;
 
     /**
      * The code of admin type.
@@ -108,19 +110,6 @@ class User extends Authenticatable implements HasMedia
     }
 
     /**
-     * Define the media collections.
-     *
-     * @return void
-     */
-    public function registerMediaCollections()
-    {
-        $this
-            ->addMediaCollection('avatars')
-            ->useFallbackUrl('https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm')
-            ->singleFile();
-    }
-
-    /**
      * Get the resource for customer type.
      *
      * @return \Modules\Accounts\Transformers\CustomerResource
@@ -145,29 +134,33 @@ class User extends Authenticatable implements HasMedia
         return $this->createToken($device)->plainTextToken;
     }
 
-
     /**
-     * Register the conversions for the specified model.
+     * Define the media collections.
      *
-     * @param \Spatie\MediaLibrary\Models\Media $media
-     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     * @return void
      */
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaCollections()
     {
-        $this->addMediaConversion('thumb')
-            ->width(70)
-            ->format('png');
+        $this
+            ->addMediaCollection('avatars')
+            ->useFallbackUrl('https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm')
+            ->singleFile()
+            ->registerMediaConversions(function () {
+                $this->addMediaConversion('thumb')
+                    ->width(70)
+                    ->format('png');
 
-        $this->addMediaConversion('small')
-            ->width(120)
-            ->format('png');
+                $this->addMediaConversion('small')
+                    ->width(120)
+                    ->format('png');
 
-        $this->addMediaConversion('medium')
-            ->width(160)
-            ->format('png');
+                $this->addMediaConversion('medium')
+                    ->width(160)
+                    ->format('png');
 
-        $this->addMediaConversion('large')
-            ->width(320)
-            ->format('png');
+                $this->addMediaConversion('large')
+                    ->width(320)
+                    ->format('png');
+            });
     }
 }

@@ -29,7 +29,9 @@ if (token) {
 import Vue from 'vue';
 import VueInternationalization from 'vue-i18n';
 import Locale from '../../../../../../resources/js/vue-i18n-locales.generated';
+import FileUploader from 'laravel-file-uploader';
 
+Vue.use(FileUploader);
 Vue.use(VueInternationalization);
 
 // or however you determine your current app locale
@@ -46,7 +48,6 @@ const i18n = new VueInternationalization({
  */
 
 Vue.component('select2', require('../components/Select2Component').default);
-Vue.component('file-uploader', require('../../../../../Media/Resources/assets/js/components/FileUploader').default);
 
 const app = new Vue({
     el: '#app',
