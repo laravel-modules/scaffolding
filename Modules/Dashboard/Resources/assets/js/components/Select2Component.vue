@@ -131,8 +131,10 @@
                 templateResult: this.formatRepo,
                 templateSelection: this.formatRepoSelection
             });
-            $(document).on('change', this.$refs.select, (e) => {
-                this.selected = e.target.value;
+            $(document).on('change', this.$refs.select, () => {
+                if (! this.multiple) {
+                    this.selected = this.$refs.select.value;
+                }
             });
         },
         methods: {
@@ -184,6 +186,13 @@
 </script>
 
 <style>
+    .select2-container--bootstrap4.select2-container--focus .select2-selection,
+    .select2-container--bootstrap4 .select2-selection{
+        display: inline-block !important;
+    }
+    .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__rendered {
+        display: block !important;
+    }
     .select2-result-repository__avatar, .select2-result-repository__meta,
     .select2-selection-result-repository__avatar, .select2-selection-result-repository__meta {
         display: inline-block;
@@ -219,12 +228,14 @@
     .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
         padding: 2px 0 2px 20px;
     }
+
     .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
         background: transparent;
         border: 0;
     }
+
     .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
-         padding: 0;
+        padding: 0;
         display: flex;
         margin: 5px;
     }
