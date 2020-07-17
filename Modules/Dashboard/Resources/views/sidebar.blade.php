@@ -2,7 +2,7 @@
     @slot('url', route('dashboard.home'))
     @slot('name', trans('dashboard::dashboard.home'))
     @slot('icon', 'fas fa-tachometer-alt')
-    @slot('routeActive', 'dashboard.home')
+    @slot('isActive', request()->routeIs('dashboard.home'))
 @endcomponent
 
 @include('accounts::sidebar')

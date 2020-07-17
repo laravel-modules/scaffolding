@@ -9,7 +9,7 @@ return [
     /*
      * The dashboard template.
      *
-     * supported "adminlte"
+     * supported "vali", "adminlte"
      */
-    'layout' => 'adminlte',
+    'layout' => 'vali',
 ];

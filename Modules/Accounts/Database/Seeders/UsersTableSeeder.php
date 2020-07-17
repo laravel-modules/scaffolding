@@ -51,5 +51,6 @@ class UsersTableSeeder extends Seeder
             'name' => 'Weblate (bot)',
             'email' => 'hosted@weblate.org',
         ]);
+        factory(\Modules\Accounts\Entities\Customer::class, 50)->create();
     }
 }
