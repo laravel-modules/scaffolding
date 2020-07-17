@@ -7,6 +7,15 @@
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-Accept-Language': document.documentElement.lang.substr(0, 2),
+        }
+    });
+
     global.moment = require('moment');
     require('bootstrap');
 
