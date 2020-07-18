@@ -5,6 +5,7 @@
         @slot('breadcrumbs', ['dashboard.admins.show', $admin])
 
         @component('layout::components.box')
+            @slot('class', 'p-0')
             @slot('bodyClass', 'p-0')
 
             <table class="table table-striped table-middle">
@@ -20,6 +21,10 @@
                 <tr>
                     <th width="200">@lang('accounts::admins.attributes.phone')</th>
                     <td>{{ $admin->phone }}</td>
+                </tr>
+                <tr>
+                    <th width="200">@lang('accounts::admins.attributes.created_at')</th>
+                    <td>{{ $admin->created_at->toDayDateTimeString() }}</td>
                 </tr>
                 <tr>
                     <th width="200">@lang('accounts::admins.attributes.avatar')</th>

@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.16.1 on 2020-07-15 17:02:50.
+ * Generated for Laravel 7.16.1 on 2020-07-18 01:52:11.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -8209,61 +8209,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Release a reserved job back onto the queue.
-         *
-         * @param string $queue
-         * @param \Illuminate\Queue\Jobs\DatabaseJobRecord $job
-         * @param int $delay
-         * @return mixed 
-         * @static 
-         */ 
-        public static function release($queue, $job, $delay)
-        {
-                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
-                        return $instance->release($queue, $job, $delay);
-        }
-        
-        /**
-         * Delete a reserved job from the queue.
-         *
-         * @param string $queue
-         * @param string $id
-         * @return void 
-         * @throws \Throwable
-         * @static 
-         */ 
-        public static function deleteReserved($queue, $id)
-        {
-                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
-                        $instance->deleteReserved($queue, $id);
-        }
-        
-        /**
-         * Get the queue or return the default.
-         *
-         * @param string|null $queue
-         * @return string 
-         * @static 
-         */ 
-        public static function getQueue($queue)
-        {
-                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
-                        return $instance->getQueue($queue);
-        }
-        
-        /**
-         * Get the underlying database instance.
-         *
-         * @return \Illuminate\Database\Connection 
-         * @static 
-         */ 
-        public static function getDatabase()
-        {
-                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
-                        return $instance->getDatabase();
-        }
-        
-        /**
          * Get the retry delay for an object-based queue handler.
          *
          * @param mixed $job
@@ -8273,7 +8218,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobRetryDelay($job)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        /** @var \Illuminate\Queue\SyncQueue $instance */
                         return $instance->getJobRetryDelay($job);
         }
         
@@ -8287,7 +8232,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobExpiration($job)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        /** @var \Illuminate\Queue\SyncQueue $instance */
                         return $instance->getJobExpiration($job);
         }
         
@@ -8301,7 +8246,7 @@ namespace Illuminate\Support\Facades {
         public static function createPayloadUsing($callback)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-                        \Illuminate\Queue\DatabaseQueue::createPayloadUsing($callback);
+                        \Illuminate\Queue\SyncQueue::createPayloadUsing($callback);
         }
         
         /**
@@ -8314,7 +8259,7 @@ namespace Illuminate\Support\Facades {
         public static function setContainer($container)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        /** @var \Illuminate\Queue\SyncQueue $instance */
                         $instance->setContainer($container);
         }
          
@@ -18646,6 +18591,95 @@ namespace Nwidart\Modules\Facades {
  
 }
 
+namespace Torann\GeoIP\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class GeoIP {
+        
+        /**
+         * Get the location from the provided IP.
+         *
+         * @param string $ip
+         * @return \Torann\GeoIP\Location 
+         * @static 
+         */ 
+        public static function getLocation($ip = null)
+        {
+                        /** @var \Torann\GeoIP\GeoIP $instance */
+                        return $instance->getLocation($ip);
+        }
+        
+        /**
+         * Get the currency code from ISO.
+         *
+         * @param string $iso
+         * @return string 
+         * @static 
+         */ 
+        public static function getCurrency($iso)
+        {
+                        /** @var \Torann\GeoIP\GeoIP $instance */
+                        return $instance->getCurrency($iso);
+        }
+        
+        /**
+         * Get service instance.
+         *
+         * @return \Torann\GeoIP\Contracts\ServiceInterface 
+         * @throws Exception
+         * @static 
+         */ 
+        public static function getService()
+        {
+                        /** @var \Torann\GeoIP\GeoIP $instance */
+                        return $instance->getService();
+        }
+        
+        /**
+         * Get cache instance.
+         *
+         * @return \Torann\GeoIP\Cache 
+         * @static 
+         */ 
+        public static function getCache()
+        {
+                        /** @var \Torann\GeoIP\GeoIP $instance */
+                        return $instance->getCache();
+        }
+        
+        /**
+         * Get the client IP address.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getClientIP()
+        {
+                        /** @var \Torann\GeoIP\GeoIP $instance */
+                        return $instance->getClientIP();
+        }
+        
+        /**
+         * Get configuration value.
+         *
+         * @param string $key
+         * @param mixed $default
+         * @return mixed 
+         * @static 
+         */ 
+        public static function config($key, $default = null)
+        {
+                        /** @var \Torann\GeoIP\GeoIP $instance */
+                        return $instance->config($key, $default);
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -21612,6 +21646,8 @@ namespace  {
     class Html extends \Collective\Html\HtmlFacade {}
 
     class Module extends \Nwidart\Modules\Facades\Module {}
+
+    class GeoIP extends \Torann\GeoIP\Facades\GeoIP {}
  
 }
 

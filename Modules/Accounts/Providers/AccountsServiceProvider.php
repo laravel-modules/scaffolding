@@ -2,9 +2,11 @@
 
 namespace Modules\Accounts\Providers;
 
+use Modules\Accounts\Entities\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\Validator;
+use Modules\Accounts\Entities\Observers\UserObserver;
 
 class AccountsServiceProvider extends ServiceProvider
 {
@@ -33,6 +35,8 @@ class AccountsServiceProvider extends ServiceProvider
         $this->registerFactories();
         $this->registerBase64Validation();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+
+        User::observe(UserObserver::class);
     }
 
     /**

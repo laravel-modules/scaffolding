@@ -44,7 +44,7 @@
                         {{ $customer->email }}
                     </td>
                     <td>{{ $customer->phone }}</td>
-                    <td>{{ $customer->created_at->format('Y-m-d') }}</td>
+                    <td>{{ $customer->created_at->toDayDateTimeString() }}</td>
 
                     <td style="width: 160px">
                         @include('accounts::customers.partials.actions.show')

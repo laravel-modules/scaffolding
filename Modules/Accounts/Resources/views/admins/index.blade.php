@@ -44,7 +44,7 @@
                         {{ $admin->email }}
                     </td>
                     <td>{{ $admin->phone }}</td>
-                    <td>{{ $admin->created_at->format('Y-m-d') }}</td>
+                    <td>{{ $admin->created_at->toDayDateTimeString() }}</td>
 
                     <td style="width: 160px">
                         @include('accounts::admins.partials.actions.show')

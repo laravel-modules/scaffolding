@@ -20,6 +20,7 @@
         "laravel/sanctum": "^2.3",
         "laravel/tinker": "^2.0",
         "nwidart/laravel-modules": "^7.0",
+        "torann/geoip": "^1.2",
         "wikimedia/composer-merge-plugin": "^1.4"
     },
     "require-dev": {

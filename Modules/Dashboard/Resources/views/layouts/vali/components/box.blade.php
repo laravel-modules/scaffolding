@@ -1,4 +1,4 @@
-<div class="tile">
+<div class="tile {{ $class ?? '' }}">
     @if(isset($title) || isset($tools))
         <div class="tile-title-w-btn">
             <h3 class="title">{{ $title ?? '' }}</h3>

@@ -1,8 +1,4 @@
-const mix = require('laravel-mix'),
-  WebpackRTLPlugin = require('webpack-rtl-plugin');
-
-require('laravel-mix-merge-manifest');
-mix.mergeManifest();;
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -17,18 +13,3 @@ mix.mergeManifest();;
 
 mix.js('Modules/Dashboard/Resources/assets/js/vali/vali.js', 'public/js')
   .sass('Modules/Dashboard/Resources/assets/sass/vali/vali.scss', 'public/css');
-
-// Handle rtl
-mix.webpackConfig({
-    plugins: [
-        new WebpackRTLPlugin({
-            diffOnly: false,
-            minify: true,
-        }),
-    ],
-});
-
-mix.version([
-    'public/js/*',
-    'public/css/*',
-]);

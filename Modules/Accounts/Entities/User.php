@@ -5,11 +5,11 @@ namespace Modules\Accounts\Entities;
 use Parental\HasChildren;
 use App\Http\Filters\Filterable;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\MediaLibrary\Models\Media;
 use Modules\Support\Traits\Selectable;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Modules\Support\Traits\HasLocalTimezone;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Modules\Accounts\Entities\Helpers\UserHelpers;
 use Modules\Accounts\Transformers\CustomerResource;
@@ -28,7 +28,8 @@ class User extends Authenticatable implements HasMedia
         PresentableTrait,
         Filterable,
         Selectable,
-        HasUploader;
+        HasUploader,
+        HasLocalTimezone;
 
     /**
      * The code of admin type.
@@ -55,6 +56,7 @@ class User extends Authenticatable implements HasMedia
         'phone',
         'password',
         'country_id',
+        'timezone',
         'remember_token',
     ];
 

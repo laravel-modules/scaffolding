@@ -5,6 +5,7 @@
         @slot('breadcrumbs', ['dashboard.customers.show', $customer])
 
         @component('layout::components.box')
+            @slot('class', 'p-0')
             @slot('bodyClass', 'p-0')
 
             <table class="table table-striped table-middle">
@@ -20,6 +21,10 @@
                 <tr>
                     <th width="200">@lang('accounts::customers.attributes.phone')</th>
                     <td>{{ $customer->phone }}</td>
+                </tr>
+                <tr>
+                    <th width="200">@lang('accounts::customers.attributes.created_at')</th>
+                    <td>{{ $customer->created_at->toDayDateTimeString() }}</td>
                 </tr>
                 <tr>
                     <th width="200">@lang('accounts::customers.attributes.avatar')</th>

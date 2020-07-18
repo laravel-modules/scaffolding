@@ -1,7 +1,7 @@
 <div class="tile p-0">
     @if(isset($title) || isset($tools))
         <div class="tile-title-w-btn p-4">
-            <h3 class="title">{{ $title ?? '' }}</h3>
+            <h4 class="title">{{ $title ?? '' }}</h4>
             <p>
                 {{ $tools ?? '' }}
             </p>
