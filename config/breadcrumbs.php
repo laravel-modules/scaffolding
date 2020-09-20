@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'view' => 'layout::components.breadcrumbs',
+    'view' => 'dashboard::components.breadcrumbs',
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +37,7 @@ return [
     |
     */
 
-    'files' => glob(base_path('Modules/*/Routes/breadcrumbs/*.php')),
+    'files' => glob(base_path('routes/breadcrumbs/*.php')),
 
     /*
     |--------------------------------------------------------------------------

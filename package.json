@@ -1,9 +1,9 @@
 {
     "private": true,
     "scripts": {
-        "dashboard:dev": "npm run development -- --env.mixfile=Modules/Dashboard/webpack.mix.js",
-        "dashboard:watch": "npm run watch -- --env.mixfile=Modules/Dashboard/webpack.mix.js",
-        "dashboard:prod": "npm run production -- --env.mixfile=Modules/Dashboard/webpack.mix.js",
+        "vali:dev": "npm run development -- --env.mixfile=webpack.vali.mix.js",
+        "vali:watch": "npm run watch -- --env.mixfile=webpack.vali.mix.js",
+        "vali:prod": "npm run production -- --env.mixfile=webpack.vali.mix.js",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
@@ -13,9 +13,10 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "admin-lte": "^3.0.4",
+        "@fortawesome/fontawesome-free": "^5.14.0",
         "axios": "^0.19",
         "cross-env": "^7.0.2",
+        "icheck-bootstrap": "^3.0.1",
         "icomoon": "^1.0.0",
         "laravel-file-uploader": "^1.0.17",
         "laravel-mix": "^5.0.4",
@@ -31,6 +32,13 @@
         "vue": "^2.6.11",
         "vue-i18n": "^8.17.4",
         "vue-template-compiler": "^2.6.11",
-        "webpack-rtl-plugin": "^2.0.0"
+        "webpack-rtl-plugin": "^2.0.0",
+        "bootstrap": "^4.4.1",
+        "bootstrap-colorpicker": "^3.2.0",
+        "tempusdominus-bootstrap-4": "^5.1.2",
+        "bootstrap-switch": "3.3.4",
+        "bootstrap4-duallistbox": "^4.0.1",
+        "daterangepicker": "^3.0.5",
+        "summernote": "^0.8.16"
     }
 }

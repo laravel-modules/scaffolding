@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,22 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->command->call('medialibrary:clean');
+        $this->command->call('media-library:clean');
 
-        \Modules\Accounts\Entities\Admin::firstOrCreate([
+        Admin::factory()->createOne([
             'name' => 'Admin',
-        ], [
             'email' => 'admin@demo.com',
-            'phone' => '01098135318',
-            'password' => Hash::make('password'),
-        ]);
-
-        \Modules\Accounts\Entities\Customer::firstOrCreate([
-            'name' => 'Customer',
-        ], [
-            'email' => 'customer@demo.com',
-            'phone' => '01552416535',
-            'password' => Hash::make('password'),
         ]);
 
         $this->command->info('Default Admin Information:');

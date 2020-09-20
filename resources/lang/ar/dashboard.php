@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'home' => 'الرئيسية',
     'auth' => [
         'logout' => 'تسجيل خروج',
         'login' => [

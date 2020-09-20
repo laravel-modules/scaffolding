@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'home' => 'Dashboard',
     'auth' => [
         'logout' => 'Logout',
         'login' => [

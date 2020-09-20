@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use Modules\Accounts\Entities\Admin;
-use Modules\Accounts\Entities\Customer;
+use App\Models\Admin;
+use App\Models\Customer;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -14,11 +14,11 @@ abstract class TestCase extends BaseTestCase
      * Set the currently logged in admin for the application.
      *
      * @param null $driver
-     * @return \Modules\Accounts\Entities\Admin
+     * @return \App\Models\Admin
      */
     public function actingAsAdmin($driver = null)
     {
-        $admin = factory(Admin::class)->create();
+        $admin = Admin::factory()->create();
 
         $this->be($admin, $driver);
 
@@ -29,11 +29,11 @@ abstract class TestCase extends BaseTestCase
      * Set the currently logged in customer for the application.
      *
      * @param null $driver
-     * @return \Modules\Accounts\Entities\Customer
+     * @return \App\Models\Customer
      */
     public function actingAsCustomer($driver = null)
     {
-        $customer = factory(Customer::class)->create();
+        $customer = Customer::factory()->create();
 
         $this->be($customer, $driver);
 
