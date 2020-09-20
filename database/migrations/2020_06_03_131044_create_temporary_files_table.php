@@ -14,7 +14,7 @@ class CreateTemporaryFilesTable extends Migration
     public function up()
     {
         Schema::create('temporary_files', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id('id');
             $table->string('token');
             $table->string('collection')->default('default');
             $table->timestamps();

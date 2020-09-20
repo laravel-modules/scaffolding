@@ -14,7 +14,7 @@ class CreateResetPasswordCodesTable extends Migration
     public function up()
     {
         Schema::create('reset_password_codes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id('id');
             $table->string('username')->index();
             $table->string('code');
             $table->timestamp('created_at');

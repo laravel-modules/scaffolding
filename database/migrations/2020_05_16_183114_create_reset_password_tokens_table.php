@@ -14,7 +14,7 @@ class CreateResetPasswordTokensTable extends Migration
     public function up()
     {
         Schema::create('reset_password_tokens', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('token');
