@@ -18,12 +18,6 @@
  */
 
 /*!
- * AdminLTE v3.0.5 (https://adminlte.io)
- * Copyright 2014-2020 Colorlib <http://colorlib.com>
- * Licensed under MIT (https://github.com/ColorlibHQ/AdminLTE/blob/master/LICENSE)
- */
-
-/*!
  * Bootstrap Colorpicker - Bootstrap Colorpicker is a modular color picker plugin for Bootstrap 4.
  * @package bootstrap-colorpicker
  * @version v3.2.0
@@ -41,6 +35,13 @@
  * https://js.foundation/
  *
  * Date: 2020-03-14
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
  */
 
 /*!
