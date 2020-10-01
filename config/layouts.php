@@ -4,14 +4,14 @@ return [
     /*
      * The layout of dashboard.
      *
-     * Supported : "vali"
+     * Supported : "vali", "adminlte"
      */
-    'dashboard' => 'vali',
+    'dashboard' => 'adminlte',
 
     /*
      * The layout of front end.
      *
-     * Supported : "vali"
+     * Supported : "vali", "adminlte"
      */
-    'frontend' => 'vali',
+    'frontend' => 'adminlte',
 ];

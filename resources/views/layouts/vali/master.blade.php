@@ -15,7 +15,6 @@
     @endif
 
     @stack('styles')
-    @livewireStyles
 </head>
 <body class="app sidebar-mini">
 <div id="app">
@@ -77,7 +76,6 @@
         {{ $slot }}
     </main>
 </div>
-@livewireScripts
 <!-- Scripts -->
 <script src="{{ asset(mix('/js/vali.js')) }}"></script>
 
