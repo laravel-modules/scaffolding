@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Accounts\Api;
 
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Accounts\Dashboard;
 
-use App\Models\Admin;
 use Tests\TestCase;
+use App\Models\Admin;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AdminTest extends TestCase

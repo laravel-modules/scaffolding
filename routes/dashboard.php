@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LocaleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Accounts\Dashboard\AdminController;
 use App\Http\Controllers\Accounts\Dashboard\CustomerController;
 

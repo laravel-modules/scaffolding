@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests\Accounts;
+
 //namespace App\Http\Requests\Accounts;
 
 use Illuminate\Validation\Rule;
