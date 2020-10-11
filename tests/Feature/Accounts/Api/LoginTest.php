@@ -55,10 +55,11 @@ class LoginTest extends TestCase
     public function test_firebase_login()
     {
         $this->partialMock(FirebaseToken::class, function ($mock) {
-            $mock->shouldReceive('getPhoneNumber')
-                ->once()
-                ->with('dummy token')
-                ->andReturns('123456789');
+            $mock->shouldReceive('accessToken')->with('dummy token')->andReturnSelf();
+            $mock->shouldReceive('getPhoneNumber')->andReturns('123456789');
+            $mock->shouldReceive('getEmail')->andReturns('demo@demo.com');
+            $mock->shouldReceive('getName')->andReturns('Ahmed');
+            $mock->shouldReceive('getFirebaseId')->andReturns(123);
         });
 
         // Test validation.
@@ -75,5 +76,9 @@ class LoginTest extends TestCase
             ->assertJsonStructure(['token']);
 
         $this->assertEquals($user->phone, '123456789');
+        $this->assertEquals($user->phone, '123456789');
+        $this->assertEquals($user->email, 'demo@demo.com');
+        $this->assertEquals($user->name, 'Ahmed');
+        $this->assertEquals($user->firebase_id, 123);
     }
 }

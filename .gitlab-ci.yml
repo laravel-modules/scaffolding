@@ -4,7 +4,7 @@ stages:
 # Variables: these have to match
 # the .env.example credentials in your Laravel app
 # use the default homestead/secret combination, since
-# that database gets created in the edbizarro/gitlab-ci-pipeline-php:7.3
+# that database gets created in the edbizarro/gitlab-ci-pipeline-php:7.4
 # docker image.
 variables:
   MYSQL_ROOT_PASSWORD: root
@@ -24,7 +24,7 @@ test:
   stage: test
   services:
   - mysql:5.7
-  image: edbizarro/gitlab-ci-pipeline-php:7.3
+  image: edbizarro/gitlab-ci-pipeline-php:7.4
   script:
   - composer install
   - cp .env.example .env

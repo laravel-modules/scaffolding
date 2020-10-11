@@ -69,14 +69,29 @@ class LoginController extends Controller
      */
     public function firebase(PasswordLessLoginRequest $request)
     {
-        $phone = $this->firebaseToken->getPhoneNumber($request->access_token);
+        $verifier = $this->firebaseToken->accessToken($request->access_token);
 
-        $user = User::firstOrCreate([
-            'phone' => $phone,
-        ], [
-            'name' => 'Anonymous User',
-            'phone' => $phone,
-        ]);
+        $phone = $verifier->getPhoneNumber();
+
+        $email = $verifier->getEmail();
+        $name = $verifier->getName();
+
+        $firebaseId = $verifier->getFirebaseId();
+
+        $userQuery = User::where(compact('phone'))
+            ->orWhere(compact('email'))
+            ->orWhere('firebase_id', $firebaseId);
+
+        if ($userQuery->exists()) {
+            $user = $userQuery->first();
+        } else {
+            $user = User::forceCreate([
+                'firebase_id' => $firebaseId,
+                'name' => $name ?: 'Anonymous User',
+                'email' => $email,
+                'phone' => $phone,
+            ]);
+        }
 
         event(new Login('sanctum', $user, false));
 
