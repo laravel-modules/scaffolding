@@ -13,6 +13,6 @@ class UserPresenter extends Presenter
      */
     public function type()
     {
-        return trans('accounts::users.types.'.$this->entity->type);
+        return trans('users.types.'.$this->entity->type);
     }
 }
