@@ -16,7 +16,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "admin-lte": "^3.0.4",
+        "admin-lte": "^3.0.5",
         "axios": "^0.19",
         "cross-env": "^7.0.2",
         "icomoon": "^1.0.0",
@@ -25,7 +25,7 @@
         "laravel-mix-merge-manifest": "^0.1.2",
         "lodash": "^4.17.20",
         "pace": "0.0.4",
-        "resolve-url-loader": "^3.1.0",
+        "resolve-url-loader": "^3.1.2",
         "sass": "^1.26.11",
         "sass-loader": "^8.0.0",
         "select2": "^4.1.0-beta.1",
