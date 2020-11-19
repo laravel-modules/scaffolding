@@ -1,11 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Accounts\Dashboard\AdminController;
-use App\Http\Controllers\Accounts\Dashboard\CustomerController;
-use App\Http\Controllers\DeleteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +12,14 @@ use App\Http\Controllers\DeleteController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('locale/{locale}', [LocaleController::class, 'update'])
+Route::get('locale/{locale}', 'LocaleController@update')
     ->name('locale')
     ->where('locale', '(ar|en)');
 
-Route::get('/', [DashboardController::class, 'index'])->name('home');
+Route::get('/', 'DashboardController@index')->name('home');
 
 Route::prefix('accounts')->group(function () {
-    Route::delete('delete', [DeleteController::class, 'destroy'])->name('delete.selected');
-    Route::resource('customers', CustomerController::class);
-    Route::resource('admins', AdminController::class);
+    Route::delete('delete', 'DeleteController@destroy')->name('delete.selected');
+    Route::resource('customers', 'Accounts\Dashboard\CustomerController');
+    Route::resource('admins', 'Accounts\Dashboard\AdminController');
 });
