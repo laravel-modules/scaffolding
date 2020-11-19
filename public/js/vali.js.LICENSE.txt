@@ -72,6 +72,8 @@
  * http://jquery.org/license
  */
 
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
 /**
   * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
   *
