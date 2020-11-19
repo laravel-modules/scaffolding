@@ -11,7 +11,7 @@
         "php": "^7.4",
         "ext-intl": "*",
         "kreait/firebase-tokens": "^1.10",
-        "ahmed-aliraqi/laravel-media-uploader": "^4.0",
+        "ahmed-aliraqi/laravel-media-uploader": "^5.0",
         "astrotomic/laravel-translatable": "^11.8",
         "calebporzio/parental": "^0.11.0",
         "doctrine/dbal": "^2.9",
