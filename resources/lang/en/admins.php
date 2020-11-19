@@ -9,7 +9,7 @@ return [
     'actions' => [
         'list' => 'List Admins',
         'show' => 'Show Admin',
-        'create' => 'Create a new admin',
+        'create' => 'Create',
         'new' => 'New',
         'edit' => 'Edit Admin',
         'delete' => 'Delete Admin',

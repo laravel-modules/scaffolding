@@ -16,6 +16,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@ahmed-aliraqi/check-all": "^1.0.4",
         "admin-lte": "^3.0.5",
         "axios": "^0.19",
         "cross-env": "^7.0.2",
@@ -29,6 +30,7 @@
         "sass": "^1.26.11",
         "sass-loader": "^8.0.0",
         "select2": "^4.1.0-beta.1",
+        "tailwind-color-palette": "^1.0.3",
         "toastr": "^2.1.4",
         "vali-admin": "^3.0.0",
         "vue": "^2.6.12",

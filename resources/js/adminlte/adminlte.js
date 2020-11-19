@@ -51,7 +51,15 @@ const app = new Vue({
     el: '#app',
     i18n
 });
+require('@ahmed-aliraqi/check-all');
 
+CheckAll.onChange(function (el) {
+    if (el.checked) {
+        el.closest('tr').classList.add("tw-bg-gray-400");
+    } else {
+        el.closest('tr').classList.remove("tw-bg-gray-400");
+    }
+});
 (function ($) {
 
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);

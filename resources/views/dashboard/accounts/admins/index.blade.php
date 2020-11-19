@@ -4,12 +4,20 @@
 
         @slot('title', trans('admins.actions.list'))
 
-        @slot('tools')
-            @include('dashboard.accounts.admins.partials.actions.create')
-        @endslot
-
         <thead>
         <tr>
+            <th colspan="100">
+                <x-check-all-delete
+                        type="{{ \App\Models\Admin::class }}"
+                        :resource="trans('admins.plural')"></x-check-all-delete>
+
+                @include('dashboard.accounts.admins.partials.actions.create')
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <x-check-all></x-check-all>
+            </th>
             <th>@lang('admins.attributes.name')</th>
             <th class="d-none d-md-table-cell">@lang('admins.attributes.email')</th>
             <th>@lang('admins.attributes.phone')</th>
@@ -20,6 +28,9 @@
         <tbody>
         @forelse($admins as $admin)
             <tr>
+                <td>
+                    <x-check-all-item :model="$admin"></x-check-all-item>
+                </td>
                 <td>
                     <a href="{{ route('dashboard.admins.show', $admin) }}"
                        class="text-decoration-none text-ellipsis">

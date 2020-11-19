@@ -5,12 +5,20 @@
 
         @slot('title', trans('customers.actions.list'))
 
-        @slot('tools')
-            @include('dashboard.accounts.customers.partials.actions.create')
-        @endslot
-
         <thead>
         <tr>
+            <th colspan="100">
+                <x-check-all-delete
+                        type="{{ \App\Models\Customer::class }}"
+                        :resource="trans('customers.plural')"></x-check-all-delete>
+
+                @include('dashboard.accounts.customers.partials.actions.create')
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <x-check-all></x-check-all>
+            </th>
             <th>@lang('customers.attributes.name')</th>
             <th class="d-none d-md-table-cell">@lang('customers.attributes.email')</th>
             <th>@lang('customers.attributes.phone')</th>
@@ -21,6 +29,9 @@
         <tbody>
         @forelse($customers as $customer)
             <tr>
+                <td>
+                    <x-check-all-item :model="$customer"></x-check-all-item>
+                </td>
                 <td>
                     <a href="{{ route('dashboard.customers.show', $customer) }}"
                        class="text-decoration-none text-ellipsis">

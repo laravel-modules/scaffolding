@@ -5,6 +5,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Accounts\Dashboard\AdminController;
 use App\Http\Controllers\Accounts\Dashboard\CustomerController;
+use App\Http\Controllers\DeleteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('locale/{locale}', [LocaleController::class, 'update'])
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 Route::prefix('accounts')->group(function () {
+    Route::delete('delete', [DeleteController::class, 'destroy'])->name('delete.selected');
     Route::resource('customers', CustomerController::class);
     Route::resource('admins', AdminController::class);
 });

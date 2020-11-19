@@ -9,7 +9,7 @@ return [
     'actions' => [
         'list' => 'List Customers',
         'show' => 'Show Customer',
-        'create' => 'Create a new customer',
+        'create' => 'Create',
         'new' => 'New',
         'edit' => 'Edit Customer',
         'delete' => 'Delete Customer',
