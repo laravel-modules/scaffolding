@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Dashboard\Tests\Feature;
+namespace Tests\Feature\Dashboard;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
