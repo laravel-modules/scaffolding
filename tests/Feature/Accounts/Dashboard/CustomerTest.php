@@ -15,13 +15,13 @@ class CustomerTest extends TestCase
     {
         $this->actingAsAdmin();
 
-        $customer = Customer::factory()->create();
+        Customer::factory()->create(['name' => 'Ahmed']);
 
         $response = $this->get(route('dashboard.customers.index'));
 
         $response->assertSuccessful();
 
-        $response->assertSee(e($customer->name));
+        $response->assertSee('Ahmed');
     }
 
     /** @test */
@@ -29,13 +29,13 @@ class CustomerTest extends TestCase
     {
         $this->actingAsAdmin();
 
-        $customer = Customer::factory()->create();
+        $customer = Customer::factory()->create(['name' => 'Ahmed']);
 
         $response = $this->get(route('dashboard.customers.show', $customer));
 
         $response->assertSuccessful();
 
-        $response->assertSee(e($customer->name));
+        $response->assertSee('Ahmed');
     }
 
     /** @test */
