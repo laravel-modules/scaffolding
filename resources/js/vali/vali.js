@@ -106,6 +106,10 @@ CheckAll.onChange(function (el) {
 
 // Initialization
 $(function () {
+    var Inputmask = require('inputmask').default;
+    // $('.price').mask('9999.999');
+    // $(".price").inputmask({ alias : "currency", prefix: '₱ ' });
+    Inputmask().mask(document.querySelectorAll("input"));
 
     toastr.options.rtl = $('html').attr('dir') === 'rtl';
 

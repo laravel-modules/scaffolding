@@ -9,5 +9,5 @@ try {
     window.$ = window.jQuery = require('jquery');
     require('bootstrap');
     require('bootstrap-switch');
-    require('admin-lte');
+    require('admin-lte/dist/js/adminlte.min.js')
 } catch (e) {}
