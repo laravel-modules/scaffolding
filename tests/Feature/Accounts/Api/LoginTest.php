@@ -30,7 +30,6 @@ class LoginTest extends TestCase
         $response = $this->postJson(route('sanctum.login'), [
             'username' => $user->email,
             'password' => 'password',
-            'device_name' => 'testing',
         ]);
 
         $response->assertSuccessful()
@@ -42,7 +41,6 @@ class LoginTest extends TestCase
         $response = $this->postJson(route('sanctum.login'), [
             'username' => $user->phone,
             'password' => 'password',
-            'device_name' => 'testing',
         ]);
 
         $response->assertSuccessful()
