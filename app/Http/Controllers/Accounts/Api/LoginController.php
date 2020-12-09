@@ -49,7 +49,7 @@ class LoginController extends Controller
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
-                'username' => [trans('accounts::auth.failed')],
+                'username' => [trans('auth.failed')],
             ]);
         }
 
