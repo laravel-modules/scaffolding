@@ -136,7 +136,9 @@ class ResetPasswordController extends Controller
         $resetPasswordToken->delete();
 
         return $user->getResource()->additional([
-            'token' => $user->createTokenForDevice($request->device_name),
+            'token' => $user->createTokenForDevice(
+                $request->header('user-agent')
+            ),
         ]);
     }
 }

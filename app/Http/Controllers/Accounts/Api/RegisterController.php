@@ -28,7 +28,9 @@ class RegisterController extends Controller
         event(new Registered($user));
 
         return $user->getResource()->additional([
-            'token' => $user->createTokenForDevice($request->device_name),
+            'token' => $user->createTokenForDevice(
+                $request->header('user-agent')
+            ),
         ]);
     }
 }

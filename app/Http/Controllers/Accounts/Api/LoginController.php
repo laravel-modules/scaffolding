@@ -57,7 +57,7 @@ class LoginController extends Controller
 
         return $user->getResource()->additional([
             'token' => $user->createTokenForDevice(
-                $this->getDeviceNameFromRequest($request)
+                $request->header('user-agent')
             ),
         ]);
     }
@@ -99,18 +99,8 @@ class LoginController extends Controller
 
         return $user->getResource()->additional([
             'token' => $user->createTokenForDevice(
-                $this->getDeviceNameFromRequest($request)
+                $request->header('user-agent')
             ),
         ]);
-    }
-
-    /**
-     * Get the device name from the given request.
-     *
-     * @return string
-     */
-    public function getDeviceNameFromRequest($request)
-    {
-        return $request->header('user-agent');
     }
 }
