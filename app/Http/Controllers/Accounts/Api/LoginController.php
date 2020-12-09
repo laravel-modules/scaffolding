@@ -56,7 +56,9 @@ class LoginController extends Controller
         event(new Login('sanctum', $user, false));
 
         return $user->getResource()->additional([
-            'token' => $user->createTokenForDevice($request->device_name),
+            'token' => $user->createTokenForDevice(
+                $this->getDeviceNameFromRequest($request)
+            ),
         ]);
     }
 
@@ -96,7 +98,19 @@ class LoginController extends Controller
         event(new Login('sanctum', $user, false));
 
         return $user->getResource()->additional([
-            'token' => $user->createTokenForDevice($request->device_name),
+            'token' => $user->createTokenForDevice(
+                $this->getDeviceNameFromRequest($request)
+            ),
         ]);
+    }
+
+    /**
+     * Get the device name from the given request.
+     *
+     * @return string
+     */
+    public function getDeviceNameFromRequest($request)
+    {
+        return $request->header('user-agent');
     }
 }
