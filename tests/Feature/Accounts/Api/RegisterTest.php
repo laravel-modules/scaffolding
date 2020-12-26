@@ -36,10 +36,9 @@ class RegisterTest extends TestCase
         ]);
 
         $response->assertSuccessful()
-            ->assertJson([
-                'data' => ($user = User::all()->last())->getResource()->jsonSerialize(),
-            ])
             ->assertJsonStructure(['token']);
+
+        $user = User::all()->last();
 
         $this->assertEquals($user->name, 'User');
     }

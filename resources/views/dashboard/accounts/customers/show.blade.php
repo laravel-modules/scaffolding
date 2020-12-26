@@ -14,7 +14,9 @@
             </tr>
             <tr>
                 <th width="200">@lang('customers.attributes.phone')</th>
-                <td>{{ $customer->phone }}</td>
+                <td>
+                    @include('dashboard.accounts.customers.partials.flags.phone')
+                </td>
             </tr>
             <tr>
                 <th width="200">@lang('customers.attributes.avatar')</th>

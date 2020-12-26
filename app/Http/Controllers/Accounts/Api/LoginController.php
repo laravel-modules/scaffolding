@@ -92,6 +92,8 @@ class LoginController extends Controller
                 'name' => $name ?: 'Anonymous User',
                 'email' => $email,
                 'phone' => $phone,
+                'phone_verified_at' => $phone ? now() : null,
+                'email_verified_at' => $email ? now() : null,
             ]);
         }
 

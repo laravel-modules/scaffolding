@@ -112,7 +112,6 @@ class ResetPasswordTest extends TestCase
         $this->postJson(route('sanctum.login'), [
             'username' => $user->email,
             'password' => '12345678',
-            'device_name' => 'testing',
         ])
             ->assertSuccessful()
             ->assertJson([

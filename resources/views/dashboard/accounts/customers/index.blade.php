@@ -48,7 +48,9 @@
                 <td class="d-none d-md-table-cell">
                     {{ $customer->email }}
                 </td>
-                <td>{{ $customer->phone }}</td>
+                <td>
+                    @include('dashboard.accounts.customers.partials.flags.phone')
+                </td>
                 <td>{{ $customer->created_at->format('Y-m-d') }}</td>
 
                 <td style="width: 160px">

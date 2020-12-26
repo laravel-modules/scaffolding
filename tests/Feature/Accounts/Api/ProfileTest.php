@@ -22,10 +22,7 @@ class ProfileTest extends TestCase
         Sanctum::actingAs($user, ['*']);
 
         $this->getJson(route('api.profile.show'))
-            ->assertSuccessful()
-            ->assertJson([
-                'data' => $user->getResource()->jsonSerialize(),
-            ]);
+            ->assertSuccessful();
     }
 
     /** @test */
@@ -55,9 +52,6 @@ class ProfileTest extends TestCase
             'name' => 'Mohamed',
             'email' => 'mohamed@demo.com',
             'phone' => '12345678',
-        ])->assertSuccessful()
-            ->assertJson([
-                'data' => $user->refresh()->getResource()->jsonSerialize(),
-            ]);
+        ])->assertSuccessful();
     }
 }

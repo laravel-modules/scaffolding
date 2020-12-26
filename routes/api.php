@@ -19,6 +19,8 @@ Route::post('/firebase/login', 'Accounts\Api\LoginController@firebase')->name('s
 Route::post('/password/forget', 'Accounts\Api\ResetPasswordController@forget')->name('api.password.forget');
 Route::post('/password/code', 'Accounts\Api\ResetPasswordController@code')->name('api.password.code');
 Route::post('/password/reset', 'Accounts\Api\ResetPasswordController@reset')->name('api.password.reset');
+Route::post('verification/send', 'Accounts\Api\VerificationController@send')->name('api.verification.send');
+Route::post('verification/verify', 'Accounts\Api\VerificationController@verify')->name('api.verification.verify');
 Route::get('/select/users', 'Accounts\SelectController@index')->name('users.select');
 
 Route::middleware('auth:sanctum')->group(

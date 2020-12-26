@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Accounts\Api;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\ResetPasswordCode;
 use Illuminate\Auth\Events\Login;
@@ -39,7 +40,7 @@ class ResetPasswordController extends Controller
 
         if (! $user) {
             throw ValidationException::withMessages([
-                'username' => [trans('accounts::auth.failed')],
+                'username' => [trans('auth.failed')],
             ]);
         }
 
@@ -52,8 +53,16 @@ class ResetPasswordController extends Controller
 
         $user->notify(new SendForgetPasswordCodeNotification($resetPasswordCode->code));
 
+
+        if (app()->environment('local')) {
+            Storage::disk('public')->append(
+                'verification.txt',
+                "The reset password code for user {$request->username} is {$resetPasswordCode->code} generated at ".now()->toDateTimeString()."\n"
+            );
+        }
+
         return response()->json([
-            'message' => trans('accounts::auth.messages.forget-password-code-sent'),
+            'message' => trans('auth.messages.forget-password-code-sent'),
             'links' => [
                 'code' => [
                     'href' => route('api.password.code'),
@@ -85,7 +94,7 @@ class ResetPasswordController extends Controller
             throw ValidationException::withMessages([
                 'code' => [
                     trans('validation.exists', [
-                        'attribute' => trans('accounts::auth.attributes.code'),
+                        'attribute' => trans('auth.attributes.code'),
                     ]),
                 ],
             ]);
@@ -117,7 +126,7 @@ class ResetPasswordController extends Controller
             throw ValidationException::withMessages([
                 'token' => [
                     trans('validation.exists', [
-                        'attribute' => trans('accounts::auth.attributes.token'),
+                        'attribute' => trans('auth.attributes.token'),
                     ]),
                 ],
             ]);
