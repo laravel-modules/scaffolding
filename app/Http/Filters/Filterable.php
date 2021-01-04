@@ -24,4 +24,14 @@ trait Filterable
 
         return $filters->apply($query);
     }
+
+    /**
+     * Get the number of models to return per page.
+     *
+     * @return int
+     */
+    public function getPerPage()
+    {
+        return request('perPage', parent::getPerPage());
+    }
 }
