@@ -4,7 +4,7 @@ The laravel scaffolding of our projects.
 ## Deploying To Local Server
 - Clone the project to your local server using the following command:
     ```bash
-    git clone https://gitlab.com/laravel-modules/scaffolding.git project
+    git clone https://github.com/laravel-modules/scaffolding.git project
     ```
   > Then enter your own credentials.
 - Go to the project path and configure your environment:
