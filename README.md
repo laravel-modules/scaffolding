@@ -46,3 +46,6 @@ The laravel scaffolding of our projects.
 - Send `X-Accept-Language` header globally with ajax requests in poth templates.
 - Add language bar to `vali` temolate.
 - Add `price` form component to poth templates.
+- Add `settings` management.
+- Add `notifications` management.
+- Add `database backup` feature.
