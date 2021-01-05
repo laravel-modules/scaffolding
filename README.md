@@ -41,3 +41,8 @@ The laravel scaffolding of our projects.
         - Default Admin  Credentials:
             - **Email:** admin@demo.com
             - **Password:** password
+
+### TODO
+- Send `X-Accept-Language` header globally with ajax requests in poth templates.
+- Add language bar to `vali` temolate.
+- Add `price` form component to poth templates.
