@@ -18,7 +18,7 @@
     "devDependencies": {
         "@ahmed-aliraqi/check-all": "^1.0.4",
         "admin-lte": "^3.0.5",
-        "axios": "^0.19",
+        "axios": "^0.21",
         "cross-env": "^7.0.2",
         "icomoon": "^1.0.0",
         "laravel-file-uploader": "^2.0.4",
