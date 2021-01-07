@@ -25,6 +25,12 @@ if (token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        'X-Accept-Language': lang
+    }
+});
 
 import Vue from 'vue';
 import VueInternationalization from 'vue-i18n';
@@ -96,14 +102,5 @@ $(function () {
                 ['view', ['fullscreen', 'codeview']]
             ]
         });
-    });
-    // Hide filter popover on click outside
-    $(document).on('click', 'body', (e) => {
-        //did not click a popover toggle or popover
-        let isBtn = e.target == $('#filter-popover')[0]
-            || e.target.innerHTML == $('#filter-popover').html();
-        if (! isBtn && $(e.target).parents('.popover').length === 0) {
-            $('#filter-popover').popover('hide');
-        }
     });
 });
