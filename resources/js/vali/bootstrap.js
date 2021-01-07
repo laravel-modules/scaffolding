@@ -10,9 +10,6 @@ try {
     global.moment = require('moment');
     require('bootstrap');
 
-    // The javascript plugin to display page loading on top
-    require('pace');
-
     window.toastr = require('toastr');
 
     require('bootstrap4-duallistbox');
