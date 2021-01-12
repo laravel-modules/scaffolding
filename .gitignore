@@ -6,11 +6,12 @@
 /storage/settings.json
 /storage/debugbar
 /vendor
+.env
+.env.ba*
+.phpunit.result.cache
+docker-compose.override.yml
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
 .php_cs.cache
-.phpunit.result.cache
-.env
-.env.backup
