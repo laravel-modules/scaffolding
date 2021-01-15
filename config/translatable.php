@@ -89,7 +89,7 @@ return [
     | set this to 'App\Translations'.
     |
     */
-    'translation_model_namespace' => null,
+    'translation_model_namespace' => 'App\Models\Translations',
 
     /*
     |--------------------------------------------------------------------------
