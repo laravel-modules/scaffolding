@@ -10,19 +10,19 @@
     "require": {
         "php": "^7.4",
         "ext-intl": "*",
-        "kreait/firebase-tokens": "^1.10",
         "ahmed-aliraqi/laravel-media-uploader": "^5.0",
         "astrotomic/laravel-translatable": "^11.8",
         "calebporzio/parental": "^0.11.0",
+        "diglactic/laravel-breadcrumbs": "^6.0",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
+        "kreait/firebase-tokens": "^1.10",
+        "laracasts/flash": "^3.0",
+        "laracasts/presenter": "^0.2.1",
         "laravel/framework": "^8.0",
         "laravel/sanctum": "^2.3",
         "laravel/tinker": "^2.0",
-        "elnooronline/laravel-breadcrumbs": "^6.0",
-        "laracasts/flash": "^3.0",
-        "laracasts/presenter": "^0.2.1",
         "laravel/ui": "^3.0"
     },
     "require-dev": {

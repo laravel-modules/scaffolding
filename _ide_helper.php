@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.18.0.
+ * Generated for Laravel 8.22.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -5296,6 +5296,17 @@
                         $instance->assertNotDispatched($event, $callback);
         }
                     /**
+         * Assert that no events were dispatched.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNothingDispatched()
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\EventFake $instance */
+                        $instance->assertNothingDispatched();
+        }
+                    /**
          * Get all of the events matching a truth-test callback.
          *
          * @param string $event
@@ -7094,7 +7105,7 @@
                     /**
          * Queue a new e-mail message for sending.
          *
-         * @param string|array $view
+         * @param \Illuminate\Contracts\Mail\Mailable|string|array $view
          * @param string|null $queue
          * @return mixed 
          * @static 
@@ -8763,7 +8774,6 @@
          *
          * @param array $proxies A list of trusted proxies, the string 'REMOTE_ADDR' will be replaced with $_SERVER['REMOTE_ADDR']
          * @param int $trustedHeaderSet A bit field of Request::HEADER_*, to set which headers to trust from your proxies
-         * @throws \InvalidArgumentException When $trustedHeaderSet is invalid
          * @static 
          */ 
         public static function setTrustedProxies($proxies, $trustedHeaderSet)
@@ -9433,7 +9443,6 @@
          *
          * @param bool $asResource If true, a resource will be returned
          * @return string|resource The request body content or a resource to read the body stream
-         * @throws \LogicException
          * @static 
          */ 
         public static function getContent($asResource = false)
@@ -10131,6 +10140,7 @@
                     /**
          * 
          *
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestValidation()
          * @param array $rules
          * @param mixed $params
          * @static 
@@ -10142,6 +10152,7 @@
                     /**
          * 
          *
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestValidation()
          * @param string $errorBag
          * @param array $rules
          * @param mixed $params
@@ -10154,6 +10165,7 @@
                     /**
          * 
          *
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestSignatureValidation()
          * @param mixed $absolute
          * @static 
          */ 
@@ -10164,6 +10176,7 @@
                     /**
          * 
          *
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestSignatureValidation()
          * @static 
          */ 
         public static function hasValidRelativeSignature()
@@ -11274,6 +11287,7 @@
                     /**
          * 
          *
+         * @see \Laravel\Ui\AuthRouteMethods::auth()
          * @param mixed $options
          * @static 
          */ 
@@ -11284,6 +11298,7 @@
                     /**
          * 
          *
+         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
          * @static 
          */ 
         public static function resetPassword()
@@ -11293,6 +11308,7 @@
                     /**
          * 
          *
+         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
          * @static 
          */ 
         public static function confirmPassword()
@@ -11302,6 +11318,7 @@
                     /**
          * 
          *
+         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
          * @static 
          */ 
         public static function emailVerification()
@@ -14326,6 +14343,23 @@
         class Str {
          
     }
+            /**
+     * 
+     *
+     */ 
+        class Collection {
+                    /**
+         * 
+         *
+         * @see \Barryvdh\Debugbar\ServiceProvider::register()
+         * @static 
+         */ 
+        public static function debug()
+        {
+                        return \Illuminate\Support\Collection::debug();
+        }
+         
+    }
      
 }
 
@@ -14866,13 +14900,13 @@
      
 }
 
-    namespace Elnooronline\Breadcrumbs\Facades { 
+    namespace Diglactic\Breadcrumbs { 
             /**
      * Breadcrumbs facade - allows easy access to the Manager instance.
      *
      * @method static array getCurrentRoute()
      * @mixin \Illuminate\Support\Traits\Macroable
-     * @see BreadcrumbsManager
+     * @see Manager
      */ 
         class Breadcrumbs {
                     /**
@@ -14882,13 +14916,13 @@
          * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
          *     accept additional parameters.
          * @return void 
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
+         * @throws \Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
          *     used.
          * @static 
          */ 
         public static function for($name, $callback)
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->for($name, $callback);
         }
                     /**
@@ -14900,14 +14934,14 @@
          * @param callable $callback The callback, which should accept a Generator instance as the first parameter and may
          *     accept additional parameters.
          * @return void 
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
+         * @throws \Diglactic\Breadcrumbs\Exceptions\DuplicateBreadcrumbException If the given name has already been
          *     used.
          * @see self::for()
          * @static 
          */ 
         public static function register($name, $callback)
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->register($name, $callback);
         }
                     /**
@@ -14921,7 +14955,7 @@
          */ 
         public static function before($callback)
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->before($callback);
         }
                     /**
@@ -14935,7 +14969,7 @@
          */ 
         public static function after($callback)
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->after($callback);
         }
                     /**
@@ -14949,7 +14983,7 @@
          */ 
         public static function exists($name = null)
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->exists($name);
         }
                     /**
@@ -14958,15 +14992,15 @@
          * @param string|null $name The name of the current page.
          * @param mixed $params The parameters to pass to the closure for the current page.
          * @return \Illuminate\Support\Collection The generated breadcrumbs.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route
+         * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route
          *     doesn't have an associated name.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names
+         * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names
          *     are) not registered.
          * @static 
          */ 
         public static function generate($name = null, ...$params)
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->generate($name, ...$params);
         }
                     /**
@@ -14976,14 +15010,14 @@
          * @param string|null $name The name of the current page.
          * @param mixed $params The parameters to pass to the closure for the current page.
          * @return \Illuminate\Support\HtmlString The generated HTML.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
          * @static 
          */ 
         public static function view($view, $name = null, ...$params)
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->view($view, $name, ...$params);
         }
                     /**
@@ -14992,14 +15026,14 @@
          * @param string|null $name The name of the current page.
          * @param mixed $params The parameters to pass to the closure for the current page.
          * @return \Illuminate\Support\HtmlString The generated HTML.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if no name is given and the current route doesn't have an associated name.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\ViewNotSetException if no view has been set.
          * @static 
          */ 
         public static function render($name = null, ...$params)
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->render($name, ...$params);
         }
                     /**
@@ -15008,13 +15042,13 @@
          * Optionally pass a
          *
          * @return \stdClass|null The breadcrumb for the current page.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
-         * @throws \Elnooronline\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\UnnamedRouteException if the current route doesn't have an associated name.
+         * @throws \Diglactic\Breadcrumbs\Exceptions\InvalidBreadcrumbException if the name is (or any ancestor names are) not registered.
          * @static 
          */ 
         public static function current()
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         return $instance->current();
         }
                     /**
@@ -15027,7 +15061,7 @@
          */ 
         public static function setCurrentRoute($name, ...$params)
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->setCurrentRoute($name, ...$params);
         }
                     /**
@@ -15040,7 +15074,7 @@
          */ 
         public static function clearCurrentRoute()
         {
-                        /** @var \Elnooronline\Breadcrumbs\BreadcrumbsManager $instance */
+                        /** @var \Diglactic\Breadcrumbs\Manager $instance */
                         $instance->clearCurrentRoute();
         }
                     /**
@@ -15053,7 +15087,7 @@
          */ 
         public static function macro($name, $macro)
         {
-                        \Elnooronline\Breadcrumbs\BreadcrumbsManager::macro($name, $macro);
+                        \Diglactic\Breadcrumbs\Manager::macro($name, $macro);
         }
                     /**
          * Mix another object into the class.
@@ -15066,7 +15100,7 @@
          */ 
         public static function mixin($mixin, $replace = true)
         {
-                        \Elnooronline\Breadcrumbs\BreadcrumbsManager::mixin($mixin, $replace);
+                        \Diglactic\Breadcrumbs\Manager::mixin($mixin, $replace);
         }
                     /**
          * Checks if macro is registered.
@@ -15077,7 +15111,7 @@
          */ 
         public static function hasMacro($name)
         {
-                        return \Elnooronline\Breadcrumbs\BreadcrumbsManager::hasMacro($name);
+                        return \Diglactic\Breadcrumbs\Manager::hasMacro($name);
         }
          
     }
@@ -17014,6 +17048,7 @@
                     /**
          * 
          *
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestValidation()
          * @param array $rules
          * @param mixed $params
          * @static 
@@ -17025,6 +17060,7 @@
                     /**
          * 
          *
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestValidation()
          * @param string $errorBag
          * @param array $rules
          * @param mixed $params
@@ -17037,6 +17073,7 @@
                     /**
          * 
          *
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestSignatureValidation()
          * @param mixed $absolute
          * @static 
          */ 
@@ -17047,6 +17084,7 @@
                     /**
          * 
          *
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestSignatureValidation()
          * @static 
          */ 
         public static function hasValidRelativeSignature()
@@ -17068,6 +17106,7 @@
                     /**
          * 
          *
+         * @see \Laravel\Ui\AuthRouteMethods::auth()
          * @param mixed $options
          * @static 
          */ 
@@ -17078,6 +17117,7 @@
                     /**
          * 
          *
+         * @see \Laravel\Ui\AuthRouteMethods::resetPassword()
          * @static 
          */ 
         public static function resetPassword()
@@ -17087,6 +17127,7 @@
                     /**
          * 
          *
+         * @see \Laravel\Ui\AuthRouteMethods::confirmPassword()
          * @static 
          */ 
         public static function confirmPassword()
@@ -17096,6 +17137,7 @@
                     /**
          * 
          *
+         * @see \Laravel\Ui\AuthRouteMethods::emailVerification()
          * @static 
          */ 
         public static function emailVerification()
@@ -20218,7 +20260,7 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Debugbar extends \Barryvdh\Debugbar\Facade {}
-            class Breadcrumbs extends \Elnooronline\Breadcrumbs\Facades\Breadcrumbs {}
+            class Breadcrumbs extends \Diglactic\Breadcrumbs\Breadcrumbs {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Image extends \Intervention\Image\Facades\Image {}
             class Flash extends \Laracasts\Flash\Flash {}
