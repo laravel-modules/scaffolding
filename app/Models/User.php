@@ -20,17 +20,17 @@ use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasFactory,
-        Notifiable,
-        UserHelpers,
-        HasChildren,
-        InteractsWithMedia,
-        HasApiTokens,
-        HasChildren,
-        PresentableTrait,
-        Filterable,
-        Selectable,
-        HasUploader;
+    use HasFactory;
+    use Notifiable;
+    use UserHelpers;
+    use HasChildren;
+    use InteractsWithMedia;
+    use HasApiTokens;
+    use HasChildren;
+    use PresentableTrait;
+    use Filterable;
+    use Selectable;
+    use HasUploader;
 
     /**
      * The code of admin type.
