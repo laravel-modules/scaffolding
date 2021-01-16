@@ -4,7 +4,7 @@
     @component('dashboard::components.table-box')
 
         @slot('title')
-            @lang('customers.actions.list') ({{ number_format($customers->total()) }})
+            @lang('customers.actions.list') ({{ count_formatted($customers->total()) }})
         @endslot
 
         <thead>

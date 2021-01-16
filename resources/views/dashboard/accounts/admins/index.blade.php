@@ -3,7 +3,7 @@
     @component('dashboard::components.table-box')
 
         @slot('title')
-            @lang('admins.actions.list') ({{ number_format($admins->total()) }})
+            @lang('admins.actions.list') ({{ count_formatted($admins->total()) }})
         @endslot
 
         <thead>
