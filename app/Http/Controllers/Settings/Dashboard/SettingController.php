@@ -6,6 +6,9 @@ use App\Models\Setting;
 use App\Support\SettingJson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use Laraeast\LaravelSettings\Facades\Settings;
 
 class SettingController extends Controller
@@ -67,5 +70,30 @@ class SettingController extends Controller
         flash(trans('settings.messages.updated'));
 
         return back();
+    }
+
+    /**
+     * Download a fresh database and storage backup.
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function downloadBackup()
+    {
+        Artisan::call('backup:run');
+
+        $lastBackup = collect(Storage::disk('local')->files('laravel-backup'))->last();
+
+        if (! $lastBackup) {
+            throw ValidationException::withMessages([
+                'backup' => trans('backup.not-found'),
+            ]);
+        }
+
+        return response()
+            ->download(
+                Storage::disk('local')->path($lastBackup)
+            )
+            ->deleteFileAfterSend();
     }
 }

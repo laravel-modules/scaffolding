@@ -40,6 +40,10 @@
             'url' => route('dashboard.settings.index', ['tab' => 'pusher']),
             'active' => request()->routeIs('*settings*') && request('tab') == 'pusher',
         ],
+        [
+            'name' => trans('backup.download'),
+            'url' => route('dashboard.backup.download'),
+        ],
     ])
 @endcomponent
 
