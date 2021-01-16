@@ -46,4 +46,14 @@ class Customer extends User
     {
         return new CustomerResource($this);
     }
+
+    /**
+     * Get the dashboard profile link.
+     *
+     * @return string
+     */
+    public function dashboardProfile(): string
+    {
+        return route('dashboard.customers.show', $this);
+    }
 }

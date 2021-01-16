@@ -136,6 +136,12 @@
                 </a>
                 <ul class="dropdown-menu settings-menu dropdown-menu-right">
                     <li>
+                        <a class="dropdown-item" href="{{ auth()->user()->dashboardProfile() }}">
+                            <i class="fas fa-user mr-2"></i>
+                            @lang('users.profile')
+                        </a>
+                    </li>
+                    <li>
                         <a class="dropdown-item" href="#"
                            onclick="event.preventDefault();document.getElementById('logoutForm').submit()">
                             <i class="fas fa-sign-out-alt mr-2"></i>
@@ -153,12 +159,22 @@
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
         <div class="app-sidebar__user">
-            <img class="app-sidebar__user-avatar"
-                 src="{{ auth()->user()->getFirstMediaUrl('avatars') }}"
-                 alt="{{ auth()->user()->name }}">
+            <a href="{{ auth()->user()->dashboardProfile() }}">
+                <img class="app-sidebar__user-avatar"
+                     src="{{ auth()->user()->getFirstMediaUrl('avatars') }}"
+                     alt="{{ auth()->user()->name }}">
+            </a>
             <div>
-                <p class="app-sidebar__user-name">{{ auth()->user()->name }}</p>
-                <p class="app-sidebar__user-designation">{{ auth()->user()->email }}</p>
+                <p class="app-sidebar__user-name">
+                    <a class="text-white" href="{{ auth()->user()->dashboardProfile() }}">
+                        {{ auth()->user()->name }}
+                    </a>
+                </p>
+                <p class="app-sidebar__user-designation">
+                    <a class="text-white" href="{{ auth()->user()->dashboardProfile() }}">
+                        {{ auth()->user()->email }}
+                    </a>
+                </p>
             </div>
         </div>
         <ul class="app-menu">

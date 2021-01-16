@@ -45,4 +45,14 @@ class Admin extends User
     {
         return new AdminResource($this);
     }
+
+    /**
+     * Get the dashboard profile link.
+     *
+     * @return string
+     */
+    public function dashboardProfile(): string
+    {
+        return route('dashboard.admins.show', $this);
+    }
 }

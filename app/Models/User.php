@@ -109,6 +109,16 @@ class User extends Authenticatable implements HasMedia
     protected $filter = UserFilter::class;
 
     /**
+     * Get the dashboard profile link.
+     *
+     * @return string
+     */
+    public function dashboardProfile(): string
+    {
+        return '#';
+    }
+
+    /**
      * Get the number of models to return per page.
      *
      * @return int

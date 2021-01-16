@@ -182,7 +182,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">@lang('users.profile')</a>
+                        <a href="{{ auth()->user()->dashboardProfile() }}" class="btn btn-default btn-flat">@lang('users.profile')</a>
                         <a href="#"
                            onclick="event.preventDefault();document.getElementById('logoutForm').submit()"
                            class="btn btn-default btn-flat float-right">@lang('dashboard.auth.logout')</a>
@@ -215,7 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          alt="{{ auth()->user()->name }}">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">
+                    <a href="{{ auth()->user()->dashboardProfile() }}" class="d-block">
                         {{ auth()->user()->name }}
                     </a>
                 </div>
