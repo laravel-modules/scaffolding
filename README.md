@@ -43,6 +43,5 @@ The laravel scaffolding of our projects.
             - **Password:** password
 
 ### TODO
-- Add `price` form component to poth templates.
 - Add `notifications` management.
 - Add `database backup` feature.
