@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Support\SettingJson;
 use Illuminate\Database\Seeder;
 use Laraeast\LaravelSettings\Facades\Settings;
 
@@ -58,5 +59,7 @@ class SettingSeeder extends Seeder
         Settings::set('android', '#');
         Settings::set('phone', '123456');
         Settings::set('email', 'support@demo.com');
+
+        app(SettingJson::class)->update();
     }
 }
