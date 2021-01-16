@@ -28,6 +28,7 @@
         "spatie/laravel-backup": "^6.14"
     },
     "require-dev": {
+        "ahmed-aliraqi/crud-generator": "9999999-dev",
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.6",
         "facade/ignition": "^2.3.6",

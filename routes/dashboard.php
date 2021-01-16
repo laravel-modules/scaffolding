@@ -26,3 +26,5 @@ Route::prefix('accounts')->group(function () {
 Route::get('settings', 'Settings\Dashboard\SettingController@index')->name('settings.index');
 Route::patch('settings', 'Settings\Dashboard\SettingController@update')->name('settings.update');
 Route::get('backup/download', 'Settings\Dashboard\SettingController@downloadBackup')->name('backup.download');
+
+/*  The routes of generated crud will set here: Don't remove this line  */

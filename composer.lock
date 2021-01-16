@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "565fc7ab453e507f5b22c3fa4ab14325",
+    "content-hash": "bc5737c67279cd235771eb30493ef342",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
@@ -7319,6 +7319,56 @@
     ],
     "packages-dev": [
         {
+            "name": "ahmed-aliraqi/crud-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ahmed-aliraqi/crud-generator.git",
+                "reference": "0a624c60c2bec52b32ab9b4f86828f0056ab5962"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ahmed-aliraqi/crud-generator/zipball/0a624c60c2bec52b32ab9b4f86828f0056ab5962",
+                "reference": "0a624c60c2bec52b32ab9b4f86828f0056ab5962",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AhmedAliraqi\\CrudGenerator\\CrudServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AhmedAliraqi\\CrudGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Fathy",
+                    "email": "aliraqi.dev@gmail.com"
+                }
+            ],
+            "description": "This package is a useful tool to generate simple crud for laravel-modules/scaffolding",
+            "support": {
+                "issues": "https://github.com/ahmed-aliraqi/crud-generator/issues",
+                "source": "https://github.com/ahmed-aliraqi/crud-generator/tree/master"
+            },
+            "time": "2021-01-05T14:44:28+00:00"
+        },
+        {
             "name": "barryvdh/laravel-debugbar",
             "version": "v3.5.2",
             "source": {
@@ -11163,7 +11213,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "ahmed-aliraqi/crud-generator": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

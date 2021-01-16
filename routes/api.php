@@ -35,3 +35,5 @@ Route::get('/settings', 'Settings\Api\SettingController@index')->name('api.setti
 Route::get('/settings/pages/{page}', 'Settings\Api\SettingController@page')
     ->where('page', 'about|terms|privacy')
     ->name('api.settings.page');
+
+/*  The routes of generated crud will set here: Don't remove this line  */
