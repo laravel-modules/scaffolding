@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Feedback;
 use Illuminate\Database\Seeder;
 
-class DummyDataSeeder extends Seeder
+class FeedbackSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +14,6 @@ class DummyDataSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(SettingSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(FeedbackSeeder::class);
+        Feedback::factory(5000)->create();
     }
 }

@@ -36,4 +36,5 @@ Route::get('/settings/pages/{page}', 'Settings\Api\SettingController@page')
     ->where('page', 'about|terms|privacy')
     ->name('api.settings.page');
 
+Route::post('feedback', 'Feedback\Api\FeedbackController@store')->name('api.feedback.send');
 /*  The routes of generated crud will set here: Don't remove this line  */

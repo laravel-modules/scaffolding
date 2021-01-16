@@ -26,5 +26,8 @@ Route::prefix('accounts')->group(function () {
 Route::get('settings', 'Settings\Dashboard\SettingController@index')->name('settings.index');
 Route::patch('settings', 'Settings\Dashboard\SettingController@update')->name('settings.update');
 Route::get('backup/download', 'Settings\Dashboard\SettingController@downloadBackup')->name('backup.download');
+Route::patch('feedback/read', 'Feedback\Dashboard\FeedbackController@read')->name('feedback.read');
+Route::patch('feedback/unread', 'Feedback\Dashboard\FeedbackController@unread')->name('feedback.unread');
+Route::resource('feedback', 'Feedback\Dashboard\FeedbackController')->only('index', 'show', 'destroy');
 
 /*  The routes of generated crud will set here: Don't remove this line  */
