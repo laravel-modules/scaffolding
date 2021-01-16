@@ -49,5 +49,14 @@ class SettingSeeder extends Seeder
 
         Settings::set('copyright:en', 'Copyright © '.date('Y').' '.app_name().' All rights reserved.');
         Settings::set('copyright:ar', 'جميع الحقوق محفوظة');
+
+        Settings::set('facebook', 'https://facebook.com');
+        Settings::set('instagram', 'https://instagram.com');
+        Settings::set('snapchat', 'https://snapchat.com');
+        Settings::set('twitter', 'https://twitter.com');
+        Settings::set('apple', '#');
+        Settings::set('android', '#');
+        Settings::set('phone', '123456');
+        Settings::set('email', 'support@demo.com');
     }
 }
