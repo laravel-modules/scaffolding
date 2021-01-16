@@ -1,1 +1,1 @@
-@extends('frontend::auth.passwords.reset')
+@extends('dashboard::auth.passwords.reset')

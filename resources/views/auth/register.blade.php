@@ -1,1 +1,1 @@
-@extends('frontend::auth.register')
+@extends('dashboard::auth.register')

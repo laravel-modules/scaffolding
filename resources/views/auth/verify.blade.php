@@ -1,1 +1,1 @@
-@extends('frontend::auth.verify')
+@extends('dashboard::auth.verify')

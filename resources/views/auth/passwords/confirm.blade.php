@@ -1,1 +1,1 @@
-@extends('frontend::auth.passwords.confirm')
+@extends('dashboard::auth.passwords.confirm')
