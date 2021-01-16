@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Customer;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,28 +17,25 @@ class DatabaseSeeder extends Seeder
     {
         $this->command->call('media-library:clean');
 
-        Admin::factory()->createOne([
+        $admin = Admin::factory()->createOne([
             'name' => 'Admin',
             'email' => 'admin@demo.com',
+            'phone' => '111111111',
         ]);
 
-        $this->command->info('Default Admin Information:');
+        $customer = Customer::factory()->createOne([
+            'name' => 'Customer',
+            'email' => 'customer@demo.com',
+            'phone' => '222222222',
+        ]);
 
-        $this->command->warn('Email : admin@demo.com');
-        $this->command->warn('Password : password');
+        $this->call([
+            DummyDataSeeder::class,
+        ]);
 
-        $this->command->info('Default Customer Information:');
-
-        $this->command->warn('Email : customer@demo.com');
-        $this->command->warn('Password : password');
-
-        $this->command->warn('Do not consider seed dummy data while in production mode!');
-        $seedDummyData = $this->command->confirm('Are you want to seed dummy data?', false);
-
-        if ($seedDummyData) {
-            $this->call([
-                DummyDataSeeder::class,
-            ]);
-        }
+        $this->command->table(['ID', 'Name', 'Email', 'Phone', 'Password', 'Type', 'Type Code'], [
+            [$admin->id, $admin->name, $admin->email, $admin->phone, 'password', 'Admin', $admin->type],
+            [$customer->id, $customer->name, $customer->email, $customer->phone, 'password', 'Customer', $customer->type],
+        ]);
     }
 }
