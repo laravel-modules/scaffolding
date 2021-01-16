@@ -44,3 +44,4 @@ The laravel scaffolding of our projects.
 
 ### TODO
 - Add `notifications` management.
+- Add `feedback` management.
