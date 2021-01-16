@@ -3,7 +3,9 @@
 
     @component('dashboard::components.table-box')
 
-        @slot('title', trans('customers.actions.list'))
+        @slot('title')
+            @lang('customers.actions.list') ({{ number_format($customers->total()) }})
+        @endslot
 
         <thead>
         <tr>

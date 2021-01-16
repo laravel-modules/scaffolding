@@ -2,7 +2,9 @@
     @include('dashboard.accounts.admins.partials.filter')
     @component('dashboard::components.table-box')
 
-        @slot('title', trans('admins.actions.list'))
+        @slot('title')
+            @lang('admins.actions.list') ({{ number_format($admins->total()) }})
+        @endslot
 
         <thead>
         <tr>
