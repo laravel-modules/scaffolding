@@ -20,4 +20,5 @@ try {
     require('summernote');
     require('select2/dist/js/select2.full');
     require('../echo');
+    require('../editor');
 } catch (e) {}
