@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\Accounts\Api;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Accounts\WithHashedPassword;
+use Illuminate\Validation\Rule;
 
 class RegisterRequest extends FormRequest
 {
@@ -31,7 +33,13 @@ class RegisterRequest extends FormRequest
             'email' => ['required', 'email', 'unique:users,email'],
             'phone' => ['required', 'unique:users,phone'],
             'password' => ['required', 'min:8', 'confirmed'],
-            'avatar' => ['nullable', 'base64_image'],
+            'avatar' => ['nullable', 'image'],
+            'type' => [
+                'nullable',
+                Rule::in([
+                    User::CUSTOMER_TYPE,
+                ]),
+            ],
         ];
     }
 

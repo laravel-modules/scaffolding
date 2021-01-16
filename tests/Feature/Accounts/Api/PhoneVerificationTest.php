@@ -14,36 +14,18 @@ class PhoneVerificationTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_mark_phone_number_as_unverified_when_change_it()
-    {
-        $customer = Customer::factory()->create();
-
-        $customer->forceFill([
-            'phone_verified_at' => now(),
-        ])->save();
-
-        $this->assertNotNull($customer->phone_verified_at);
-
-        $customer->update([
-            'phone' => 123456789,
-        ]);
-
-        $this->assertNull($customer->phone_verified_at);
-    }
-
-    /** @test */
     public function it_can_send_or_resend_the_phone_verification_code()
     {
+        $this->actingAsCustomer();
+
         Event::fake();
 
         Customer::factory(['phone' => '123456789'])->create();
 
-        $this->postJson(route('api.verification.send'), [
-            'phone' => '123',
-        ])->assertJsonValidationErrors(['phone']);
 
         $this->postJson(route('api.verification.send'), [
-            'phone' => '123456789',
+            'phone' => '123456',
+            'password' => 'password',
         ])->assertSuccessful();
 
         Event::assertDispatched(VerificationCreated::class);
@@ -52,39 +34,37 @@ class PhoneVerificationTest extends TestCase
     /** @test */
     public function it_can_verify_the_phone_number()
     {
-        Event::fake();
+        $customer = $this->actingAsCustomer();
 
-        $customer = Customer::factory(['phone' => '123456789'])->create();
+        Event::fake();
 
         Verification::create([
             'user_id' => $customer->id,
-            'phone' => '123456789',
+            'phone' => '12345678',
             'code' => 'foobar',
         ]);
 
         $this->assertEquals(Verification::count(), 1);
 
         $this->postJson(route('api.verification.verify'), [
-            'phone' => '123456789',
             'code' => 'foo',
         ])->assertJsonValidationErrors(['code']);
 
         $this->travelTo(now()->addMinutes(5));
 
         $this->postJson(route('api.verification.verify'), [
-            'phone' => '123456789',
             'code' => 'foobar',
         ])->assertJsonValidationErrors(['code']);
 
         $this->travelBack();
 
         $this->postJson(route('api.verification.verify'), [
-            'phone' => '123456789',
             'code' => 'foobar',
         ])->assertSuccessful();
 
         $this->assertEquals(Verification::count(), 0);
 
         $this->assertNotNull($customer->refresh()->phone_verified_at);
+        $this->assertEquals($customer->phone, '12345678');
     }
 }

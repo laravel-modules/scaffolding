@@ -4,13 +4,17 @@ namespace Tests\Feature\Accounts\Api;
 
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Http\UploadedFile;
+use App\Events\VerificationCreated;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RegisterTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_register_validation()
+    public function test_customer_register_validation()
     {
         $this->postJson(route('sanctum.register'), [])
             ->assertJsonValidationErrors(['name', 'email', 'phone', 'password']);
@@ -19,20 +23,28 @@ class RegisterTest extends TestCase
             'name' => 'User',
             'email' => 'user.demo.com',
             'phone' => '123456',
+            'type' => User::CUSTOMER_TYPE,
+            'avatar' => UploadedFile::fake()->create('file.pdf'),
             'password' => 'password',
             'password_confirmation' => '123456',
         ])
-            ->assertJsonValidationErrors(['email', 'password']);
+            ->assertJsonValidationErrors(['email', 'password', 'avatar']);
     }
 
-    public function test_register()
+    public function test_customer_register()
     {
+        Event::fake();
+
+        Storage::fake('avatars');
+
         $response = $this->postJson(route('sanctum.register'), [
             'name' => 'User',
             'email' => 'user@demo.com',
             'phone' => '123456',
             'password' => 'password',
+            'type' => User::CUSTOMER_TYPE,
             'password_confirmation' => 'password',
+            'avatar' => UploadedFile::fake()->image('avatar.jpg'),
         ]);
 
         $response->assertSuccessful()
@@ -41,5 +53,9 @@ class RegisterTest extends TestCase
         $user = User::all()->last();
 
         $this->assertEquals($user->name, 'User');
+
+        $this->assertCount(1, $user->getMedia('avatars'));
+
+        Event::assertDispatched(VerificationCreated::class);
     }
 }

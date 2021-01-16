@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Accounts\Api;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\ResetPasswordCode;
 use Illuminate\Auth\Events\Login;
 use App\Models\ResetPasswordToken;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -51,8 +51,10 @@ class ResetPasswordController extends Controller
             'code' => Str::random(6),
         ]);
 
-        $user->notify(new SendForgetPasswordCodeNotification($resetPasswordCode->code));
-
+        try {
+            $user->notify(new SendForgetPasswordCodeNotification($resetPasswordCode->code));
+        } catch (\Exception $exception) {
+        }
 
         if (app()->environment('local')) {
             Storage::disk('public')->append(
@@ -138,7 +140,10 @@ class ResetPasswordController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user->notify(new PasswordUpdatedNotification());
+        try {
+            $user->notify(new PasswordUpdatedNotification());
+        } catch (\Exception $exception) {
+        }
 
         event(new Login('sanctum', $user, false));
 

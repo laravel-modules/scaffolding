@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Accounts\Api;
 
+use App\Models\User;
 use App\Models\Customer;
-use App\Models\Delegate;
-use Illuminate\Support\Facades\DB;
+use App\Models\Verification;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use App\Events\VerificationCreated;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\ValidationException;
 use App\Http\Requests\Accounts\Api\RegisterRequest;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use App\Http\Requests\Accounts\Api\DelegateRegisterRequest;
 
 class RegisterController extends Controller
 {
@@ -20,50 +22,77 @@ class RegisterController extends Controller
      * Handle a login request to the application.
      *
      * @param \App\Http\Requests\Accounts\Api\RegisterRequest $request
+     * @throws \Illuminate\Validation\ValidationException
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function register(RegisterRequest $request)
     {
-        $user = Customer::create($request->allWithHashedPassword());
+        switch ($request->type) {
+            case User::CUSTOMER_TYPE:
+            default:
+                $user = $this->createCustomer($request);
+                break;
+        }
 
-        $user->addAllMediaFromTokens();
+        if ($request->hasFile('avatar')) {
+            $user->addMediaFromRequest('avatar')
+                ->toMediaCollection('avatars');
+        }
 
         event(new Registered($user));
+
+        $this->sendVerificationCode($user);
 
         return $user->getResource()->additional([
             'token' => $user->createTokenForDevice(
                 $request->header('user-agent')
             ),
+            'message' => trans('verification.sent'),
         ]);
     }
 
     /**
-     * Handle a login request to the application.
+     * Create new customer to register to the application.
      *
-     * @param \App\Http\Requests\Accounts\Api\DelegateRegisterRequest $request
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @param \App\Http\Requests\Accounts\Api\RegisterRequest $request
+     * @return \App\Models\Customer
      */
-    public function delegateRegister(DelegateRegisterRequest $request)
+    public function createCustomer(RegisterRequest $request)
     {
-        DB::beginTransaction();
+        $customer = new Customer();
 
-        $delegate = Delegate::create($request->allWithHashedPassword());
+        $customer
+            ->forceFill($request->only('phone', 'type'))
+            ->fill($request->allWithHashedPassword())
+            ->save();
 
-        // Save the delegate meta.
-        $delegate->meta()->create($request->all());
+        return $customer;
+    }
 
-        $delegate->addAllMediaFromTokens([], 'avatars');
-        $delegate->meta->addAllMediaFromTokens([], 'identifier');
-        $delegate->meta->addAllMediaFromTokens([], 'vehicle_number');
+    /**
+     * Send the phone number verification code.
+     *
+     * @param \App\Models\User $user
+     * @throws \Illuminate\Validation\ValidationException
+     * @return void
+     */
+    protected function sendVerificationCode(User $user): void
+    {
+        if (! $user || $user->phone_verified_at) {
+            throw ValidationException::withMessages([
+                'phone' => [trans('verification.verified')],
+            ]);
+        }
 
-        DB::commit();
-
-        event(new Registered($delegate));
-
-        return $delegate->getResource()->additional([
-            'token' => $delegate->createTokenForDevice(
-                $request->header('user-agent')
-            ),
+        $verification = Verification::updateOrCreate([
+            'user_id' => $user->id,
+            'phone' => $user->phone,
+        ], [
+            'code' => rand(111111, 999999),
         ]);
+
+        event(new VerificationCreated($verification));
     }
 }

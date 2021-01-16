@@ -2,36 +2,44 @@
 
 namespace App\Http\Controllers\Accounts\Api;
 
+use App\Models\Verification;
+use Illuminate\Http\Request;
 use App\Events\VerificationCreated;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\Verification;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class VerificationController extends Controller
 {
     use ValidatesRequests;
 
+    /**
+     * Send or resend the verification code.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @throws \Illuminate\Validation\ValidationException
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function send(Request $request)
     {
         $this->validate($request, [
-            'phone' => 'required',
+            'phone' => ['required', 'unique:users,phone,'.auth()->id()],
+            'password' => 'required',
         ], [], trans('verification.attributes'));
 
-        $user = User::where('phone', $request->input('phone'))->first();
+        $user = auth()->user();
 
-        if (! $user || $user->phone_verified_at) {
+        if (! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
-                'phone' => [trans('verification.verified')],
+                'password' => [trans('auth.password')],
             ]);
         }
 
         $verification = Verification::updateOrCreate([
             'user_id' => $user->id,
-            'phone' => $request->phone,
         ], [
+            'phone' => $request->phone,
             'code' => rand(111111, 999999),
         ]);
 
@@ -42,15 +50,21 @@ class VerificationController extends Controller
         ]);
     }
 
+    /**
+     * Verify the user's phone number.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @throws \Illuminate\Validation\ValidationException
+     * @return \Illuminate\Http\Resources\Json\JsonResource
+     */
     public function verify(Request $request)
     {
         $this->validate($request, [
-            'phone' => 'required',
             'code' => 'required',
         ], [], trans('verification.attributes'));
 
         $verification = Verification::where([
-            'phone' => $request->phone,
+            'user_id' => auth()->id(),
             'code' => $request->code,
         ])->first();
 
@@ -61,6 +75,7 @@ class VerificationController extends Controller
         }
 
         $verification->user->forceFill([
+            'phone' => $verification->phone,
             'phone_verified_at' => now(),
         ])->save();
 
