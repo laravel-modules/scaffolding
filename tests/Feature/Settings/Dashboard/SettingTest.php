@@ -3,6 +3,7 @@
 namespace Tests\Feature\Settings\Dashboard;
 
 use Tests\TestCase;
+use App\Support\SettingJson;
 use Laraeast\LaravelSettings\Facades\Settings;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -13,6 +14,10 @@ class SettingTest extends TestCase
     /** @test */
     public function test_settings()
     {
+        $this->partialMock(SettingJson::class, function ($m) {
+            $m->shouldReceive('update');
+        });
+
         $this->actingAsAdmin();
 
         $this->assertFalse(Settings::locale()->has('about'));

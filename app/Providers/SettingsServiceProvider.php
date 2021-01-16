@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
+use App\Support\SettingJson;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Laraeast\LaravelSettings\Facades\Settings;
-use Illuminate\Contracts\Support\DeferrableProvider;
 
-class SettingsServiceProvider extends ServiceProvider implements DeferrableProvider
+class SettingsServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
@@ -17,21 +17,11 @@ class SettingsServiceProvider extends ServiceProvider implements DeferrableProvi
     public function boot()
     {
         if (Schema::hasTable('settings')) {
-            $this->configureAppName();
             $this->configureTemplates();
             $this->configureMail();
             $this->configurePusher();
         }
-    }
-
-    /**
-     * Configure the application name.
-     *
-     * @return void
-     */
-    protected function configureAppName()
-    {
-        $this->setConfigValue('name', 'app.name');
+        //dd(config('broadcasting.connections.pusher'));
     }
 
     /**
@@ -100,7 +90,7 @@ class SettingsServiceProvider extends ServiceProvider implements DeferrableProvi
      */
     protected function setConfigValue($settingKey, $config, $force = false, $bool = false)
     {
-        if (($value = Settings::get($settingKey)) || $force) {
+        if (($value = $this->app->make(SettingJson::class)->get($settingKey)) || $force) {
             config()->set([
                 $config => $bool ? ! ! $value : $value,
             ]);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Settings\Dashboard;
 
 use App\Models\Setting;
+use App\Support\SettingJson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Laraeast\LaravelSettings\Facades\Settings;
@@ -60,6 +61,8 @@ class SettingController extends Controller
         foreach ($this->files as $file) {
             Settings::set($file)->addAllMediaFromTokens([], $file);
         }
+
+        app(SettingJson::class)->update();
 
         flash(trans('settings.messages.updated'));
 
