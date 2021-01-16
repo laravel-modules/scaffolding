@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\View\Forms\Components\ColorComponent;
+use App\View\Forms\Components\PriceComponent;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Laraeast\LaravelBootstrapForms\Facades\BsForm;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        BsForm::registerComponent('price', PriceComponent::class);
+        BsForm::registerComponent('color', ColorComponent::class);
         Paginator::useBootstrap();
     }
 }
