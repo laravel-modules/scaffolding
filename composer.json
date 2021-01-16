@@ -20,6 +20,7 @@
         "kreait/firebase-tokens": "^1.10",
         "laracasts/flash": "^3.0",
         "laracasts/presenter": "^0.2.1",
+        "laraeast/laravel-settings": "^1.1",
         "laravel/framework": "^8.0",
         "laravel/sanctum": "^2.3",
         "laravel/tinker": "^2.0",

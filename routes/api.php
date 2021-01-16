@@ -30,3 +30,7 @@ Route::middleware('auth:sanctum')->group(
             ->name('api.profile.update');
     }
 );
+Route::get('/settings', 'Settings\Api\SettingController@index')->name('api.settings.index');
+Route::get('/settings/pages/{page}', 'Settings\Api\SettingController@page')
+    ->where('page', 'about|terms|privacy')
+    ->name('api.settings.page');

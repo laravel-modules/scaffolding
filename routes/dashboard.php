@@ -23,3 +23,5 @@ Route::prefix('accounts')->group(function () {
     Route::resource('customers', 'Accounts\Dashboard\CustomerController');
     Route::resource('admins', 'Accounts\Dashboard\AdminController');
 });
+Route::get('settings', 'Settings\Dashboard\SettingController@index')->name('settings.index');
+Route::patch('settings', 'Settings\Dashboard\SettingController@update')->name('settings.update');

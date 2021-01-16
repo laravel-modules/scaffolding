@@ -15,4 +15,5 @@ try {
     require('bootstrap-switch');
     require('summernote');
     require('select2/dist/js/select2.full');
+    require('../echo');
 } catch (e) {}

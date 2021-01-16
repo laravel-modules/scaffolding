@@ -15927,6 +15927,92 @@
      
 }
 
+    namespace Laraeast\LaravelSettings\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Settings {
+                    /**
+         * Set a new settings item.
+         *
+         * @param $key
+         * @param null $value
+         * @return \Laraeast\LaravelSettings\Models\Setting 
+         * @static 
+         */ 
+        public static function set($key, $value = null)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->set($key, $value);
+        }
+                    /**
+         * Set the settings locale.
+         *
+         * @param null $locale
+         * @return \Laraeast\LaravelSettings\DatabaseSettingsHandler 
+         * @static 
+         */ 
+        public static function locale($locale = null)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->locale($locale);
+        }
+                    /**
+         * Get the given item.
+         *
+         * @param $key
+         * @param null $default
+         * @return mixed 
+         * @static 
+         */ 
+        public static function get($key, $default = null)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->get($key, $default);
+        }
+                    /**
+         * Get the settings row.
+         *
+         * @param $key
+         * @param null $default
+         * @return mixed 
+         * @static 
+         */ 
+        public static function instance($key, $default = null)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->instance($key, $default);
+        }
+                    /**
+         * Determine whether the key is already exists.
+         *
+         * @param string $key
+         * @return bool 
+         * @static 
+         */ 
+        public static function has($key)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->has($key);
+        }
+                    /**
+         * Delete the given key from storage.
+         *
+         * @param string $key
+         * @return \Laraeast\LaravelSettings\DatabaseSettingsHandler 
+         * @static 
+         */ 
+        public static function delete($key)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->delete($key);
+        }
+         
+    }
+     
+}
+
     namespace Collective\Html { 
             /**
      * 
@@ -20266,6 +20352,7 @@ namespace  {
             class Flash extends \Laracasts\Flash\Flash {}
             class BsForm extends \Laraeast\LaravelBootstrapForms\Facades\BsForm {}
             class Locales extends \Laraeast\LaravelLocales\Facades\Locales {}
+            class Settings extends \Laraeast\LaravelSettings\Facades\Settings {}
             class Form extends \Collective\Html\FormFacade {}
             class Html extends \Collective\Html\HtmlFacade {}
      

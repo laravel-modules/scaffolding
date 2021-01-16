@@ -23,7 +23,7 @@ class SetApplicationLocale
             )
         );
 
-        $locale = $request->header('x-accept-language') ?: $locale;
+        $locale = $request->header('x-accept-language') ?: request()->query('language', $locale);
 
         if (in_array($locale, array_keys(config('locales.languages')))) {
             app()->setLocale($locale);

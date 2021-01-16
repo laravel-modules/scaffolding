@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a1edee8a37dab94faa9c10daf7e52bb",
+    "content-hash": "790d9fddd6afd7395b31ab700225e84f",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
@@ -2100,6 +2100,63 @@
                 "source": "https://github.com/laraeast/laravel-locales/tree/v3.1.1"
             },
             "time": "2020-09-18T13:34:49+00:00"
+        },
+        {
+            "name": "laraeast/laravel-settings",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laraeast/laravel-settings.git",
+                "reference": "f19bb43b6692141b248600699624b6a4cb4c2201"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laraeast/laravel-settings/zipball/f19bb43b6692141b248600699624b6a4cb4c2201",
+                "reference": "f19bb43b6692141b248600699624b6a4cb4c2201",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.2|^6.0|^7.0|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "~3.0|~4.0|~5.0|~6.0"
+            },
+            "type": "package",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laraeast\\LaravelSettings\\Providers\\SettingsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Settings": "Laraeast\\LaravelSettings\\Facades\\Settings"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laraeast\\LaravelSettings\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Fathy",
+                    "email": "aliraqi.dev@gmail.com"
+                }
+            ],
+            "description": "Persistent key-value storage for Laravel",
+            "support": {
+                "issues": "https://github.com/laraeast/laravel-settings/issues",
+                "source": "https://github.com/laraeast/laravel-settings/tree/v1.1.0"
+            },
+            "time": "2020-09-09T22:28:14+00:00"
         },
         {
             "name": "laravel/framework",

@@ -6,3 +6,4 @@
 @endcomponent
 
 @include('dashboard.accounts.sidebar')
+@include('dashboard.settings.sidebar')

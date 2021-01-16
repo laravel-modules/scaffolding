@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html dir="{{ Locales::getDir() }}" lang="{{ app()->getLocale() }}" xmlns:livewire="http://www.w3.org/1999/html">
+<html dir="{{ Locales::getDir() }}" lang="{{ app()->getLocale() }}">
 <head>
-    <title>{{ $title ? $title .' | '. config('app.name', 'Laravel') : config('app.name', 'Laravel')}}</title>
+    <title>{{ $title ? $title .' | '. app_name() : app_name() }}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta name="PUSHER_APP_KEY" content="{{ config('broadcasting.connections.pusher.key') }}">
+    <meta name="PUSHER_APP_CLUSTER" content="{{ config('broadcasting.connections.pusher.options.cluster') }}">
+    <meta name="PUSHER_APP_HOST" content="{{ config('broadcasting.connections.pusher.options.host') }}">
+    <meta name="PUSHER_APP_PORT" content="{{ config('broadcasting.connections.pusher.options.port') }}">
+
+    <link rel="icon" href="{{ app_favicon() }}" type="image/x-icon" />
+
     <!-- Vali -->
     @if(Locales::getDir() == 'rtl')
         <link rel="stylesheet" href="{{ asset(mix('/css/vali.rtl.css')) }}">
@@ -21,7 +29,7 @@
     <!-- Navbar-->
     <header class="app-header">
         <a class="app-header__logo" href="{{ url('/') }}" target="_blank">
-            {{ config('app.name') }}
+            {{ app_name() }}
         </a>
         <!-- Sidebar toggle button-->
         <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
