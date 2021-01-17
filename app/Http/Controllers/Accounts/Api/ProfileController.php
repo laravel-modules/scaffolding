@@ -33,8 +33,11 @@ class ProfileController extends Controller
 
         $user->update($request->allWithHashedPassword());
 
-        $user->addAllMediaFromTokens([], 'avatars');
+        if ($request->hasFile('avatar')) {
+            $user->addMediaFromRequest('avatar')
+                ->toMediaCollection('avatars');
+        }
 
-        return $user->getResource();
+        return $user->refresh()->getResource();
     }
 }

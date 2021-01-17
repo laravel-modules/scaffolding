@@ -34,7 +34,7 @@ class ProfileRequest extends FormRequest
             'phone' => ['sometimes', 'required', 'unique:users,phone,'.auth()->id()],
             'old_password' => ['required_with:password', new PasswordRule(auth()->user()->password)],
             'password' => ['nullable', 'min:8', 'confirmed'],
-            'avatar' => ['nullable', 'base64_image'],
+            'avatar' => ['nullable', 'image'],
         ];
     }
 
