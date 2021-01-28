@@ -57,6 +57,11 @@ class User extends Authenticatable implements HasMedia
      */
     const CUSTOMER_TYPE = 'customer';
 
+    /**
+     * The guard name of the user permissions.
+     *
+     * @var string
+     */
     protected $guard_name = 'web';
 
     /**
