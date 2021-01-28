@@ -32,4 +32,20 @@ class UserFactory extends Factory
             'type' => User::CUSTOMER_TYPE,
         ];
     }
+
+    /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+            User::withoutEvents(function () use ($user) {
+                $user->forceFill([
+                    'phone_verified_at' => now(),
+                ])->save();
+            });
+        });
+    }
 }
