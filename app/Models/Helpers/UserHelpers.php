@@ -61,7 +61,7 @@ trait UserHelpers
      */
     public function canAccessDashboard()
     {
-        return $this->isAdmin();
+        return $this->isAdmin() || $this->isSupervisor();
     }
 
     /**
