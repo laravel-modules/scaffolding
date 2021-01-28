@@ -11,4 +11,8 @@ return [
         \App\Models\User::SUPERVISOR_TYPE => 'مشرف',
         \App\Models\User::CUSTOMER_TYPE => 'عميل',
     ],
+    'impersonate' => [
+        'go' => 'الذهاب للوحة التحكم',
+        'leave' => 'العودة للحساب السابق',
+    ],
 ];

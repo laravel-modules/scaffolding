@@ -18,6 +18,8 @@ Route::middleware('dashboard.locales')->group(function () {
     Auth::routes();
 });
 
+Route::impersonate();
+
 Route::get('/', function () {
     return view('welcome');
 });

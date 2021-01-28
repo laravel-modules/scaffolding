@@ -61,6 +61,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+            @impersonating
+            <li class="nav-item dropdown">
+                <a class="nav-link d-flex align-items-center"
+                   href="{{ route('impersonate.leave') }}" aria-expanded="true">
+                    <span class="d-none d-md-inline">
+                       @lang('users.impersonate.leave')
+                    </span>
+                </a>
+            </li>
+            @endImpersonating
             <!-- Language Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link d-flex align-items-center" data-toggle="dropdown" href="#">

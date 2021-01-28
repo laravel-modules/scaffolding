@@ -35,6 +35,17 @@
         <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
         <!-- Navbar Right Menu-->
         <ul class="app-nav">
+            @impersonating
+            <li class="dropdown">
+                <a class="app-nav__item text-decoration-none"
+                   href="{{ route('impersonate.leave') }}" aria-expanded="true">
+                    <span class="d-none d-md-inline">
+                       @lang('users.impersonate.leave')
+                    </span>
+                </a>
+            </li>
+            @endImpersonating
+
             <!-- Language Menu-->
             <li class="dropdown">
                 <a class="app-nav__item text-decoration-none"

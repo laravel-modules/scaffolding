@@ -11,4 +11,8 @@ return [
         \App\Models\User::SUPERVISOR_TYPE => 'Supervisor',
         \App\Models\User::CUSTOMER_TYPE => 'Customer',
     ],
+    'impersonate' => [
+        'go' => 'Go To Dashboard',
+        'leave' => 'Back To Previous Account',
+    ],
 ];

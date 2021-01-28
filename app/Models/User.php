@@ -13,6 +13,7 @@ use App\Http\Resources\CustomerResource;
 use App\Models\Presenters\UserPresenter;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
+use Lab404\Impersonate\Models\Impersonate;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -31,6 +32,7 @@ class User extends Authenticatable implements HasMedia
     use Filterable;
     use Selectable;
     use HasUploader;
+    use Impersonate;
 
     /**
      * The code of admin type.
@@ -189,5 +191,25 @@ class User extends Authenticatable implements HasMedia
                     ->width(320)
                     ->format('png');
             });
+    }
+
+    /**
+     * Determine whither the user can impersonate another user.
+     *
+     * @return bool
+     */
+    public function canImpersonate()
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Determine whither the user can be impersonated by the admin.
+     *
+     * @return bool
+     */
+    public function canBeImpersonated()
+    {
+        return $this->isSupervisor();
     }
 }

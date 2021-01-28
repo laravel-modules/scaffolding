@@ -30,6 +30,7 @@
         </table>
 
         @slot('footer')
+            @include('dashboard.accounts.supervisors.partials.actions.impersonate')
             @include('dashboard.accounts.supervisors.partials.actions.edit')
             @include('dashboard.accounts.supervisors.partials.actions.delete')
         @endslot
