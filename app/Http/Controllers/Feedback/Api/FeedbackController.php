@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Feedback\Api;
 
-use App\Events\FeedbackSent;
 use App\Models\Feedback;
+use App\Events\FeedbackSent;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;

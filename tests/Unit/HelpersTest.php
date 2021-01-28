@@ -18,5 +18,4 @@ class HelpersTest extends TestCase
         $this->assertEquals(count_formatted(22200000000), '22.2B');
         $this->assertEquals(count_formatted(1000000000000), '1T');
     }
-
 }

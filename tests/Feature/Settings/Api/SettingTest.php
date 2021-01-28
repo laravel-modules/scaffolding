@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Settings\Api;
 
+use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Tests\TestCase;
 use Laraeast\LaravelSettings\Facades\Settings;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

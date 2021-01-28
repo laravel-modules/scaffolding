@@ -1,4 +1,5 @@
 <?php
+
 return [
     'arabicWords' => [
         'country' => ['الدولة', 'الدول', 'دولة', 'دول'],

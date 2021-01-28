@@ -34,6 +34,7 @@ class SettingJson
             'pusher_app_scheme' => Settings::get('pusher_app_scheme'),
         ];
     }
+
     /**
      * Set the settings json file.
      *

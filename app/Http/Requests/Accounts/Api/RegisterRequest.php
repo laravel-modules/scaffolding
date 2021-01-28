@@ -3,9 +3,9 @@
 namespace App\Http\Requests\Accounts\Api;
 
 use App\Models\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Accounts\WithHashedPassword;
-use Illuminate\Validation\Rule;
 
 class RegisterRequest extends FormRequest
 {
