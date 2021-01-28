@@ -8,14 +8,11 @@ use Illuminate\Support\Str;
 use App\Models\ResetPasswordCode;
 use App\Models\ResetPasswordToken;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Notifications\Accounts\PasswordUpdatedNotification;
 use App\Notifications\Accounts\SendForgetPasswordCodeNotification;
 
 class ResetPasswordTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function it_can_send_password_reset_verification_code_to_user()
     {

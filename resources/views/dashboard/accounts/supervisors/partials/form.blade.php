@@ -5,6 +5,18 @@
 {{ BsForm::password('password') }}
 {{ BsForm::password('password_confirmation') }}
 
+@if(auth()->user()->isAdmin())
+    <fieldset>
+        <legend>@lang('permissions.plural')</legend>
+        @foreach(config('permission.supported') as $permission)
+            {{ BsForm::checkbox('permissions[]')
+                    ->value($permission)
+                    ->label(trans('permissions.'.$permission))
+                    ->checked(isset($supervisor) && $supervisor->hasPermissionTo($permission)) }}
+        @endforeach
+    </fieldset>
+@endif
+
 @isset($supervisor)
     {{ BsForm::image('avatar')->collection('avatars')->files($supervisor->getMediaResource('avatars')) }}
 @else

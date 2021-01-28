@@ -54,6 +54,10 @@ class SupervisorController extends Controller
 
         $supervisor->setType($request->type);
 
+        if ($request->user()->isAdmin()) {
+            $supervisor->syncPermissions($request->input('permissions', []));
+        }
+
         $supervisor->addAllMediaFromTokens();
 
         flash(trans('supervisors.messages.created'));
@@ -95,6 +99,10 @@ class SupervisorController extends Controller
         $supervisor->update($request->allWithHashedPassword());
 
         $supervisor->setType($request->type);
+
+        if ($request->user()->isAdmin()) {
+            $supervisor->syncPermissions($request->input('permissions', []));
+        }
 
         $supervisor->addAllMediaFromTokens();
 

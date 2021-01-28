@@ -18,7 +18,7 @@ class CustomerPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->hasPermissionTo('manage.customers');
     }
 
     /**
@@ -30,7 +30,7 @@ class CustomerPolicy
      */
     public function view(User $user, Customer $customer)
     {
-        return $user->isAdmin() || $user->is($customer);
+        return $user->isAdmin() || $user->is($customer) || $user->hasPermissionTo('manage.customers');
     }
 
     /**
@@ -41,7 +41,7 @@ class CustomerPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->hasPermissionTo('manage.customers');
     }
 
     /**
@@ -53,7 +53,7 @@ class CustomerPolicy
      */
     public function update(User $user, Customer $customer)
     {
-        return $user->isAdmin() || $user->is($customer);
+        return $user->isAdmin() || $user->is($customer) || $user->hasPermissionTo('manage.customers');
     }
 
     /**
@@ -65,7 +65,7 @@ class CustomerPolicy
      */
     public function updateType(User $user, Customer $customer)
     {
-        return $user->isAdmin() && $user->isNot($customer);
+        return $user->isAdmin() && $user->isNot($customer) || $user->hasPermissionTo('manage.customers');
     }
 
     /**
@@ -77,6 +77,6 @@ class CustomerPolicy
      */
     public function delete(User $user, Customer $customer)
     {
-        return $user->isAdmin() && $user->isNot($customer);
+        return $user->isAdmin() && $user->isNot($customer) || $user->hasPermissionTo('manage.customers');
     }
 }

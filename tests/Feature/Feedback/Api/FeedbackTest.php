@@ -6,12 +6,9 @@ use Tests\TestCase;
 use App\Models\Feedback;
 use App\Events\FeedbackSent;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class FeedbackTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function anyone_can_send_feedback_message()
     {

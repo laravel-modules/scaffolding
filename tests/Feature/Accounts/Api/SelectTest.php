@@ -4,12 +4,9 @@ namespace Tests\Feature\Accounts\Api;
 
 use Tests\TestCase;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SelectTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_select2_api()
     {
         User::factory()->count(5)->create();

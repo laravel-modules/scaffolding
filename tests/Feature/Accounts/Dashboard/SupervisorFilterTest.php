@@ -4,12 +4,9 @@ namespace Tests\Feature\Accounts\Dashboard;
 
 use Tests\TestCase;
 use App\Models\Supervisor;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SupervisorFilterTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function it_can_filter_supervisors_by_name()
     {

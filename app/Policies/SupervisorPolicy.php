@@ -18,7 +18,7 @@ class SupervisorPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->hasPermissionTo('manage.supervisors');
     }
 
     /**
@@ -30,7 +30,7 @@ class SupervisorPolicy
      */
     public function view(User $user, Supervisor $supervisor)
     {
-        return $user->isAdmin() || $user->is($supervisor);
+        return $user->isAdmin() || $user->is($supervisor) || $user->hasPermissionTo('manage.supervisors');
     }
 
     /**
@@ -41,7 +41,7 @@ class SupervisorPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->hasPermissionTo('manage.supervisors');
     }
 
     /**
@@ -53,7 +53,7 @@ class SupervisorPolicy
      */
     public function update(User $user, Supervisor $supervisor)
     {
-        return $user->isAdmin() || $user->is($supervisor);
+        return $user->isAdmin() || $user->is($supervisor) || $user->hasPermissionTo('manage.supervisors');
     }
 
     /**
@@ -77,6 +77,6 @@ class SupervisorPolicy
      */
     public function delete(User $user, Supervisor $supervisor)
     {
-        return $user->isAdmin() && $user->isNot($supervisor);
+        return $user->isAdmin() && $user->isNot($supervisor) || $user->hasPermissionTo('manage.supervisors');
     }
 }

@@ -8,12 +8,9 @@ use Illuminate\Http\UploadedFile;
 use App\Events\VerificationCreated;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RegisterTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_customer_register_validation()
     {
         $this->postJson(route('sanctum.register'), [])

@@ -9,6 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use App\Support\Traits\Selectable;
 use App\Models\Helpers\UserHelpers;
+use Spatie\Permission\Traits\HasRoles;
 use App\Http\Resources\CustomerResource;
 use App\Models\Presenters\UserPresenter;
 use Illuminate\Notifications\Notifiable;
@@ -33,6 +34,7 @@ class User extends Authenticatable implements HasMedia
     use Selectable;
     use HasUploader;
     use Impersonate;
+    use HasRoles;
 
     /**
      * The code of admin type.
@@ -54,6 +56,8 @@ class User extends Authenticatable implements HasMedia
      * @var string
      */
     const CUSTOMER_TYPE = 'customer';
+
+    protected $guard_name = 'web';
 
     /**
      * The attributes that are mass assignable.

@@ -17,6 +17,6 @@ class SettingPolicy
      */
     public function manage(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->hasPermissionTo('manage.settings');
     }
 }

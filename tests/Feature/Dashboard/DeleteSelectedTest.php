@@ -4,12 +4,9 @@ namespace Tests\Feature\Dashboard;
 
 use Tests\TestCase;
 use App\Models\Customer;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DeleteSelectedTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function it_can_delete_multiple_models()
     {

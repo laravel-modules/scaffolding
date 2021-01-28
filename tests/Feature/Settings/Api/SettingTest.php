@@ -6,12 +6,9 @@ use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Laraeast\LaravelSettings\Facades\Settings;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SettingTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_settings_api()
     {
         $this->app->setLocale('en');

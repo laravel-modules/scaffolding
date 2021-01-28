@@ -7,12 +7,9 @@ use App\Models\Customer;
 use App\Models\Verification;
 use App\Events\VerificationCreated;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PhoneVerificationTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function it_can_send_or_resend_the_phone_verification_code()
     {

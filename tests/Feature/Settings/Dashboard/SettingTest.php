@@ -5,12 +5,9 @@ namespace Tests\Feature\Settings\Dashboard;
 use Tests\TestCase;
 use App\Support\SettingJson;
 use Laraeast\LaravelSettings\Facades\Settings;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SettingTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function test_settings()
     {

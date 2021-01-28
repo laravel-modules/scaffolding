@@ -5,12 +5,9 @@ namespace Tests\Feature\Accounts\Api;
 use Tests\TestCase;
 use App\Models\User;
 use App\Support\FirebaseToken;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LoginTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_login_validation()
     {
         $this->postJson(route('sanctum.login'), [])

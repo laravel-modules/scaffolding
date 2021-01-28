@@ -18,7 +18,7 @@ class FeedbackPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->hasPermissionTo('manage.feedback');
     }
 
     /**
@@ -30,7 +30,7 @@ class FeedbackPolicy
      */
     public function view(User $user, Feedback $feedback)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->hasPermissionTo('manage.feedback');
     }
 
     /**
@@ -53,7 +53,7 @@ class FeedbackPolicy
      */
     public function update(User $user, Feedback $feedback)
     {
-        return $user->isAdmin();
+        return false;
     }
 
     /**
@@ -65,6 +65,6 @@ class FeedbackPolicy
      */
     public function delete(User $user, Feedback $feedback)
     {
-        return $user->isAdmin();
+        return $user->isAdmin() || $user->hasPermissionTo('manage.feedback');
     }
 }

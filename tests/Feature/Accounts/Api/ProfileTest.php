@@ -5,12 +5,9 @@ namespace Tests\Feature\Accounts\Api;
 use Tests\TestCase;
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProfileTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function only_to_authenticated_user_can_display_his_profile()
     {

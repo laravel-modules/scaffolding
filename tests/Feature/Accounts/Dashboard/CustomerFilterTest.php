@@ -4,12 +4,9 @@ namespace Tests\Feature\Accounts\Dashboard;
 
 use Tests\TestCase;
 use App\Models\Customer;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CustomerFilterTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function it_can_filter_customers_by_name()
     {

@@ -4,12 +4,9 @@ namespace Tests\Feature\Accounts\Dashboard;
 
 use Tests\TestCase;
 use App\Models\Customer;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CustomerTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function it_can_display_list_of_customers()
     {

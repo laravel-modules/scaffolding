@@ -4,12 +4,9 @@ namespace Tests\Feature\Accounts\Dashboard;
 
 use Tests\TestCase;
 use App\Models\Admin;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AdminFilterTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function it_can_filter_admins_by_name()
     {

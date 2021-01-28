@@ -4,12 +4,9 @@ namespace Tests\Feature\Feedback\Dashboard;
 
 use Tests\TestCase;
 use App\Models\Feedback;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class FeedbackTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function it_can_display_a_list_of_feedback_messages()
     {
