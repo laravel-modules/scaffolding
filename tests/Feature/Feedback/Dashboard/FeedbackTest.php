@@ -43,7 +43,7 @@ class FeedbackTest extends TestCase
     {
         $this->actingAsAdmin();
 
-        $feedback = Feedback::factory()->create(['name' => 'User']);
+        $feedback = Feedback::factory()->create(['name' => 'User', 'read_at' => null]);
 
         $this->assertFalse($feedback->read());
 
