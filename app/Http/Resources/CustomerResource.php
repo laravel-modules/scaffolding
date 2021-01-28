@@ -25,7 +25,7 @@ class CustomerResource extends JsonResource
             'avatar' => $this->getAvatar(),
             'localed_type' => $this->present()->type,
             'created_at' => $this->created_at->toDateTimeString(),
-            'created_at_formated' => $this->created_at->diffForHumans(),
+            'created_at_formatted' => $this->created_at->diffForHumans(),
         ];
     }
 }
