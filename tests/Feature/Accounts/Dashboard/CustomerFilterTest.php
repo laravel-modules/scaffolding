@@ -33,12 +33,12 @@ class CustomerFilterTest extends TestCase
         $this->actingAsAdmin();
 
         Customer::factory()->create([
-            'name' => 'User 1',
+            'name' => 'FooBar1',
             'email' => 'user1@demo.com',
         ]);
 
         Customer::factory()->create([
-            'name' => 'User 2',
+            'name' => 'FooBar2',
             'email' => 'user2@demo.com',
         ]);
 
@@ -46,8 +46,8 @@ class CustomerFilterTest extends TestCase
             'email' => 'user1@',
         ]))
             ->assertSuccessful()
-            ->assertSee('User 1')
-            ->assertDontSee('User 2');
+            ->assertSee('FooBar1')
+            ->assertDontSee('FooBar2');
     }
 
     /** @test */
@@ -56,12 +56,12 @@ class CustomerFilterTest extends TestCase
         $this->actingAsAdmin();
 
         Customer::factory()->create([
-            'name' => 'User 1',
+            'name' => 'FooBar1',
             'phone' => '123',
         ]);
 
         Customer::factory()->create([
-            'name' => 'User 2',
+            'name' => 'FooBar2',
             'email' => '456',
         ]);
 
@@ -69,7 +69,7 @@ class CustomerFilterTest extends TestCase
             'phone' => '123',
         ]))
             ->assertSuccessful()
-            ->assertSee('User 1')
-            ->assertDontSee('User 2');
+            ->assertSee('FooBar1')
+            ->assertDontSee('FooBar2');
     }
 }

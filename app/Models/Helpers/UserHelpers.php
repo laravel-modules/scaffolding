@@ -18,6 +18,16 @@ trait UserHelpers
     }
 
     /**
+     * Determine whether the user type is supervisor.
+     *
+     * @return bool
+     */
+    public function isSupervisor()
+    {
+        return $this->type == User::SUPERVISOR_TYPE;
+    }
+
+    /**
      * Determine whether the user type is customer.
      *
      * @return bool

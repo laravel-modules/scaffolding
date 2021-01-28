@@ -8,6 +8,7 @@ return [
     'unverified' => 'Unverified',
     'types' => [
         \App\Models\User::ADMIN_TYPE => 'Admin',
+        \App\Models\User::SUPERVISOR_TYPE => 'Supervisor',
         \App\Models\User::CUSTOMER_TYPE => 'Customer',
     ],
 ];

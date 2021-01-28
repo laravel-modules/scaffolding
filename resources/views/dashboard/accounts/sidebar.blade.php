@@ -12,6 +12,12 @@
             'active' => request()->routeIs('*admins*'),
         ],
         [
+            'name' => trans('supervisors.plural'),
+            'url' => route('dashboard.supervisors.index'),
+            'can' => ['ability' => 'create', 'model' => \App\Models\Supervisor::class],
+            'active' => request()->routeIs('*supervisors*'),
+        ],
+        [
             'name' => trans('customers.plural'),
             'url' => route('dashboard.customers.index'),
             'can' => ['ability' => 'create', 'model' => \App\Models\Customer::class],

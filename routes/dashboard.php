@@ -21,6 +21,7 @@ Route::get('/', 'DashboardController@index')->name('home');
 Route::prefix('accounts')->group(function () {
     Route::delete('delete', 'DeleteController@destroy')->name('delete.selected');
     Route::resource('customers', 'Accounts\Dashboard\CustomerController');
+    Route::resource('supervisors', 'Accounts\Dashboard\SupervisorController');
     Route::resource('admins', 'Accounts\Dashboard\AdminController');
 });
 Route::get('settings', 'Settings\Dashboard\SettingController@index')->name('settings.index');

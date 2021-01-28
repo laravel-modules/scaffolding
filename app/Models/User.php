@@ -40,6 +40,13 @@ class User extends Authenticatable implements HasMedia
     const ADMIN_TYPE = 'admin';
 
     /**
+     * The code of supervisor type.
+     *
+     * @var string
+     */
+    const SUPERVISOR_TYPE = 'supervisor';
+
+    /**
      * The code of customer type.
      *
      * @var string
@@ -82,6 +89,7 @@ class User extends Authenticatable implements HasMedia
      */
     protected $childTypes = [
         self::ADMIN_TYPE => Admin::class,
+        self::SUPERVISOR_TYPE => Supervisor::class,
         self::CUSTOMER_TYPE => Customer::class,
     ];
 
