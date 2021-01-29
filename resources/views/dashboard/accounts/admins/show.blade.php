@@ -19,9 +19,13 @@
             <tr>
                 <th width="200">@lang('admins.attributes.avatar')</th>
                 <td>
-                    <img src="{{ $admin->getAvatar() }}"
-                         class="img img-size-64"
-                         alt="{{ $admin->name }}">
+                    @if($admin->getFirstMedia('avatars'))
+                        <file-preview :media="{{ $admin->getMediaResource('avatars') }}"></file-preview>
+                    @else
+                        <img src="{{ $admin->getAvatar() }}"
+                             class="img img-size-64"
+                             alt="{{ $admin->name }}">
+                    @endif
                 </td>
             </tr>
             </tbody>

@@ -21,9 +21,13 @@
             <tr>
                 <th width="200">@lang('customers.attributes.avatar')</th>
                 <td>
-                    <img src="{{ $customer->getAvatar() }}"
-                         class="img img-size-64"
-                         alt="{{ $customer->name }}">
+                    @if($customer->getFirstMedia('avatars'))
+                        <file-preview :media="{{ $customer->getMediaResource('avatars') }}"></file-preview>
+                    @else
+                        <img src="{{ $customer->getAvatar() }}"
+                             class="img img-size-64"
+                             alt="{{ $customer->name }}">
+                    @endif
                 </td>
             </tr>
             </tbody>

@@ -21,9 +21,13 @@
             <tr>
                 <th width="200">@lang('supervisors.attributes.avatar')</th>
                 <td>
-                    <img src="{{ $supervisor->getAvatar() }}"
-                         class="img img-size-64"
-                         alt="{{ $supervisor->name }}">
+                    @if($supervisor->getFirstMedia('avatars'))
+                        <file-preview :media="{{ $supervisor->getMediaResource('avatars') }}"></file-preview>
+                    @else
+                        <img src="{{ $supervisor->getAvatar() }}"
+                             class="img img-size-64"
+                             alt="{{ $supervisor->name }}">
+                    @endif
                 </td>
             </tr>
             </tbody>
