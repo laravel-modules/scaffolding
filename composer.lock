@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7de51fdb0ba2cd3a1b8f81c1c39531e4",
+    "content-hash": "7f76bc67e5c447f701819a72ebdf2b68",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
@@ -7472,16 +7472,16 @@
     "packages-dev": [
         {
             "name": "ahmed-aliraqi/crud-generator",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ahmed-aliraqi/crud-generator.git",
-                "reference": "0a624c60c2bec52b32ab9b4f86828f0056ab5962"
+                "reference": "2dc6c00460b675ec79aaa86ee0db599000212709"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ahmed-aliraqi/crud-generator/zipball/0a624c60c2bec52b32ab9b4f86828f0056ab5962",
-                "reference": "0a624c60c2bec52b32ab9b4f86828f0056ab5962",
+                "url": "https://api.github.com/repos/ahmed-aliraqi/crud-generator/zipball/2dc6c00460b675ec79aaa86ee0db599000212709",
+                "reference": "2dc6c00460b675ec79aaa86ee0db599000212709",
                 "shasum": ""
             },
             "require": {
@@ -7489,7 +7489,6 @@
                 "illuminate/support": "^6.0|^7.0|^8.0",
                 "php": "^7.4"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -7516,9 +7515,9 @@
             "description": "This package is a useful tool to generate simple crud for laravel-modules/scaffolding",
             "support": {
                 "issues": "https://github.com/ahmed-aliraqi/crud-generator/issues",
-                "source": "https://github.com/ahmed-aliraqi/crud-generator/tree/master"
+                "source": "https://github.com/ahmed-aliraqi/crud-generator/tree/v1.0.0"
             },
-            "time": "2021-01-05T14:44:28+00:00"
+            "time": "2021-01-29T22:00:11+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -11429,9 +11428,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "ahmed-aliraqi/crud-generator": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
