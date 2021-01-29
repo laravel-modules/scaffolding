@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
-            "version": "v5.0.2",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ahmed-aliraqi/laravel-media-uploader.git",
-                "reference": "f4619d948460404bf20b2fd938f06146326fe29c"
+                "reference": "40154df6438355f649f00ef7160b32cbb3cff74c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ahmed-aliraqi/laravel-media-uploader/zipball/f4619d948460404bf20b2fd938f06146326fe29c",
-                "reference": "f4619d948460404bf20b2fd938f06146326fe29c",
+                "url": "https://api.github.com/repos/ahmed-aliraqi/laravel-media-uploader/zipball/40154df6438355f649f00ef7160b32cbb3cff74c",
+                "reference": "40154df6438355f649f00ef7160b32cbb3cff74c",
                 "shasum": ""
             },
             "require": {
@@ -57,9 +57,9 @@
             "description": "This package used to upload files using laravel-media-library",
             "support": {
                 "issues": "https://github.com/ahmed-aliraqi/laravel-media-uploader/issues",
-                "source": "https://github.com/ahmed-aliraqi/laravel-media-uploader/tree/v5.0.2"
+                "source": "https://github.com/ahmed-aliraqi/laravel-media-uploader/tree/v5.1.0"
             },
-            "time": "2021-01-19T11:51:11+00:00"
+            "time": "2021-01-29T21:03:49+00:00"
         },
         {
             "name": "alchemy/binary-driver",
@@ -3337,16 +3337,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.43.0",
+            "version": "2.44.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "d32c57d8389113742f4a88725a170236470012e2"
+                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d32c57d8389113742f4a88725a170236470012e2",
-                "reference": "d32c57d8389113742f4a88725a170236470012e2",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
+                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
                 "shasum": ""
             },
             "require": {
@@ -3362,7 +3362,7 @@
                 "phpmd/phpmd": "^2.9",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^0.12.54",
-                "phpunit/phpunit": "^7.5 || ^8.0",
+                "phpunit/phpunit": "^7.5.20 || ^8.5.14",
                 "squizlabs/php_codesniffer": "^3.4"
             },
             "bin": [
@@ -3426,7 +3426,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-17T20:55:32+00:00"
+            "time": "2021-01-26T20:46:41+00:00"
         },
         {
             "name": "neutron/temporary-filesystem",
@@ -4580,16 +4580,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "6.14.3",
+            "version": "6.14.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "8a4c95bffffde831edaca64bdef55aac213d0eef"
+                "reference": "54bdd6d1f460ff16dc1322bbb249be46b2b28b7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/8a4c95bffffde831edaca64bdef55aac213d0eef",
-                "reference": "8a4c95bffffde831edaca64bdef55aac213d0eef",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/54bdd6d1f460ff16dc1322bbb249be46b2b28b7b",
+                "reference": "54bdd6d1f460ff16dc1322bbb249be46b2b28b7b",
                 "shasum": ""
             },
             "require": {
@@ -4653,7 +4653,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-backup/issues",
-                "source": "https://github.com/spatie/laravel-backup/tree/6.14.3"
+                "source": "https://github.com/spatie/laravel-backup/tree/6.14.4"
             },
             "funding": [
                 {
@@ -4665,7 +4665,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-01-15T13:25:43+00:00"
+            "time": "2021-01-29T07:29:58+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",

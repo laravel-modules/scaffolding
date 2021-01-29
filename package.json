@@ -16,7 +16,7 @@
         "icomoon": "^1.0.0",
         "inputmask": "^5.0.5",
         "laravel-echo": "^1.10.0",
-        "laravel-file-uploader": "^2.0.6",
+        "laravel-file-uploader": "^2.1.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
