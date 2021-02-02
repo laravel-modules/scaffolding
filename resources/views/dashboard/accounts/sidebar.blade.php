@@ -10,19 +10,19 @@
             [
                 'name' => trans('admins.plural'),
                 'url' => route('dashboard.admins.index'),
-                'can' => ['ability' => 'create', 'model' => \App\Models\Admin::class],
+                'can' => ['ability' => 'viewAny', 'model' => \App\Models\Admin::class],
                 'active' => request()->routeIs('*admins*'),
             ],
             [
                 'name' => trans('supervisors.plural'),
                 'url' => route('dashboard.supervisors.index'),
-                'can' => ['ability' => 'create', 'model' => \App\Models\Supervisor::class],
+                'can' => ['ability' => 'viewAny', 'model' => \App\Models\Supervisor::class],
                 'active' => request()->routeIs('*supervisors*'),
             ],
             [
                 'name' => trans('customers.plural'),
                 'url' => route('dashboard.customers.index'),
-                'can' => ['ability' => 'create', 'model' => \App\Models\Customer::class],
+                'can' => ['ability' => 'viewAny', 'model' => \App\Models\Customer::class],
                 'active' => request()->routeIs('*customers*'),
             ],
         ])
