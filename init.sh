@@ -35,4 +35,4 @@ php artisan storage:link
 php artisan migrate:fresh --seed
 
 # Print the project's URL.
-echo APP_URL: http://$PROJECT_NAME.test
+echo APP_URL: http://$APP_DOMAIN
