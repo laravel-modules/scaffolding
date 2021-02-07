@@ -1,6 +1,5 @@
 #!/bin/bash
 # Initialize the project's environment.
-# This script only works with valet
 
 # Set the project's name from directory.
 PROJECT_NAME=$(basename $(pwd))
