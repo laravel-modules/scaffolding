@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Admin extends User
 {
-    use HasFactory, HasParent;
+    use HasFactory;
+    use HasParent;
 
     /**
      * The model filter name.

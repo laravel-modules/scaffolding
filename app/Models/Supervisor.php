@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Parental\HasParent;
 use App\Http\Resources\CustomerResource;
-use App\Models\Relations\CustomerRelations;
 use App\Http\Filters\Accounts\SupervisorFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Supervisor extends User
 {
-    use HasFactory, HasParent, CustomerRelations;
+    use HasFactory;
+    use HasParent;
 
     /**
      * The model filter name.

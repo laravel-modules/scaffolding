@@ -10,7 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends User
 {
-    use HasFactory, HasParent, CustomerRelations;
+    use HasFactory;
+    use HasParent;
+    use CustomerRelations;
 
     /**
      * The model filter name.
