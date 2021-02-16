@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.4",
         "ext-intl": "*",
-        "ahmed-aliraqi/laravel-media-uploader": "^5.0",
+        "ahmed-aliraqi/laravel-media-uploader": "^6.0",
         "astrotomic/laravel-translatable": "^11.8",
         "calebporzio/parental": "^0.11.0",
         "diglactic/laravel-breadcrumbs": "^6.0",

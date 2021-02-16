@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.25.0.
+ * Generated for Laravel 8.27.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -325,7 +325,7 @@
                         return $instance->environment(...$environments);
         }
                     /**
-         * Determine if application is in local environment.
+         * Determine if the application is in the local environment.
          *
          * @return bool 
          * @static 
@@ -336,7 +336,7 @@
                         return $instance->isLocal();
         }
                     /**
-         * Determine if application is in production environment.
+         * Determine if the application is in the production environment.
          *
          * @return bool 
          * @static 
@@ -858,7 +858,7 @@
                         $instance->setFallbackLocale($fallbackLocale);
         }
                     /**
-         * Determine if application locale is the given locale.
+         * Determine if the application locale is the given locale.
          *
          * @param string $locale
          * @return bool 
@@ -2076,7 +2076,7 @@
                         return $instance->setRequest($request);
         }
                     /**
-         * Determine if current user is authenticated. If not, throw an exception.
+         * Determine if the current user is authenticated. If not, throw an exception.
          *
          * @return \App\Models\User 
          * @throws \Illuminate\Auth\AuthenticationException
@@ -7128,7 +7128,7 @@
                     /**
          * Send a new message using a view.
          *
-         * @param string|array $view
+         * @param \Illuminate\Contracts\Mail\Mailable|string|array $view
          * @param array $data
          * @param \Closure|string|null $callback
          * @return void 
@@ -8359,7 +8359,7 @@
                         return $instance->routeIs(...$patterns);
         }
                     /**
-         * Determine if the current request URL and query string matches a pattern.
+         * Determine if the current request URL and query string match a pattern.
          *
          * @param mixed $patterns
          * @return bool 
@@ -8382,7 +8382,7 @@
                         return $instance->ajax();
         }
                     /**
-         * Determine if the request is the result of an PJAX call.
+         * Determine if the request is the result of a PJAX call.
          *
          * @return bool 
          * @static 
@@ -8393,7 +8393,7 @@
                         return $instance->pjax();
         }
                     /**
-         * Determine if the request is the result of an prefetch call.
+         * Determine if the request is the result of a prefetch call.
          *
          * @return bool 
          * @static 
@@ -14183,7 +14183,7 @@
                         return \Illuminate\View\Factory::parentPlaceholder($section);
         }
                     /**
-         * Check if section exists.
+         * Check if the section exists.
          *
          * @param string $name
          * @return bool 
@@ -18429,6 +18429,20 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->chunk($count, $callback);
+            }
+             
+                /**
+             * Run a map over each item while chunking.
+             *
+             * @param callable $callback
+             * @param int $count
+             * @return \Illuminate\Support\Collection 
+             * @static 
+             */ 
+            public static function chunkMap($callback, $count = 1000)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->chunkMap($callback, $count);
             }
              
                 /**
