@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Parental\HasParent;
+use App\Http\Filters\CustomerFilter;
 use App\Http\Resources\CustomerResource;
 use App\Models\Relations\CustomerRelations;
-use App\Http\Filters\Accounts\CustomerFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends User

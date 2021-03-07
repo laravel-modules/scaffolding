@@ -12,23 +12,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('locale/{locale}', 'LocaleController@update')
-    ->name('locale')
-    ->where('locale', '(ar|en)');
+Route::get('locale/{locale}', 'LocaleController@update')->name('locale')->where('locale', '(ar|en)');
 
 Route::get('/', 'DashboardController@index')->name('home');
 
-Route::prefix('accounts')->group(function () {
-    Route::delete('delete', 'DeleteController@destroy')->name('delete.selected');
-    Route::resource('customers', 'Accounts\Dashboard\CustomerController');
-    Route::resource('supervisors', 'Accounts\Dashboard\SupervisorController');
-    Route::resource('admins', 'Accounts\Dashboard\AdminController');
-});
-Route::get('settings', 'Settings\Dashboard\SettingController@index')->name('settings.index');
-Route::patch('settings', 'Settings\Dashboard\SettingController@update')->name('settings.update');
-Route::get('backup/download', 'Settings\Dashboard\SettingController@downloadBackup')->name('backup.download');
-Route::patch('feedback/read', 'Feedback\Dashboard\FeedbackController@read')->name('feedback.read');
-Route::patch('feedback/unread', 'Feedback\Dashboard\FeedbackController@unread')->name('feedback.unread');
-Route::resource('feedback', 'Feedback\Dashboard\FeedbackController')->only('index', 'show', 'destroy');
+// Accounts Routes.
+Route::delete('delete', 'DeleteController@destroy')->name('delete.selected');
+Route::resource('customers', 'CustomerController');
+Route::resource('supervisors', 'SupervisorController');
+Route::resource('admins', 'AdminController');
+
+// Settings Routes.
+Route::get('settings', 'SettingController@index')->name('settings.index');
+Route::patch('settings', 'SettingController@update')->name('settings.update');
+Route::get('backup/download', 'SettingController@downloadBackup')->name('backup.download');
+
+// Feedback Routes.
+Route::patch('feedback/read', 'FeedbackController@read')->name('feedback.read');
+Route::patch('feedback/unread', 'FeedbackController@unread')->name('feedback.unread');
+Route::resource('feedback', 'FeedbackController')->only('index', 'show', 'destroy');
 
 /*  The routes of generated crud will set here: Don't remove this line  */

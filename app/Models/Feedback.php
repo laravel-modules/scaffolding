@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\Http\Filters\Filterable;
 use App\Support\Traits\Selectable;
+use App\Http\Filters\FeedbackFilter;
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Filters\Feedback\FeedbackFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Feedback extends Model

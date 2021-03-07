@@ -2,7 +2,7 @@
 
 namespace App\Http\Filters;
 
-class UserFilter extends BaseFilters
+class AdminFilter extends BaseFilters
 {
     /**
      * Registered filters to operate upon.
@@ -13,6 +13,7 @@ class UserFilter extends BaseFilters
         'name',
         'type',
         'email',
+        'phone',
         'selected_id',
     ];
 
@@ -56,6 +57,21 @@ class UserFilter extends BaseFilters
     {
         if ($value) {
             return $this->builder->where('email', 'like', "%$value%");
+        }
+
+        return $this->builder;
+    }
+
+    /**
+     * Filter the query to include users by phone.
+     *
+     * @param string|int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function phone($value)
+    {
+        if ($value) {
+            return $this->builder->where('phone', 'like', "%$value%");
         }
 
         return $this->builder;

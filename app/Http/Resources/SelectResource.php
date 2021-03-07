@@ -3,8 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Spatie\MediaLibrary\HasMedia;
 
-/** @mixin \App\Models\User */
+
 class SelectResource extends JsonResource
 {
     /**
@@ -18,7 +19,17 @@ class SelectResource extends JsonResource
         return [
             'id' => $this->id,
             'text' => $this->name,
-            'image' => $this->getAvatar(),
+            'image' => $this->getImage(),
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        if ($this->resource instanceof HasMedia) {
+            return $this->getFirstMediaUrl();
+        }
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Parental\HasParent;
+use App\Http\Filters\SupervisorFilter;
 use App\Http\Resources\CustomerResource;
-use App\Http\Filters\Accounts\SupervisorFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Supervisor extends User

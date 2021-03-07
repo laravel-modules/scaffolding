@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Parental\HasParent;
+use App\Http\Filters\AdminFilter;
 use App\Http\Resources\AdminResource;
-use App\Http\Filters\Accounts\AdminFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Admin extends User

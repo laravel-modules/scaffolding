@@ -9,32 +9,29 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
+| is assigned the "api" middleware group and "App\Http\Controllers\Api" namespace.
+| and "" route's alias name. Enjoy building your API!
 |
 */
-Route::post('/register', 'Accounts\Api\RegisterController@register')->name('sanctum.register');
-Route::post('/login', 'Accounts\Api\LoginController@login')->name('sanctum.login');
-Route::post('/firebase/login', 'Accounts\Api\LoginController@firebase')->name('sanctum.login.firebase');
+Route::post('/register', 'RegisterController@register')->name('sanctum.register');
+Route::post('/login', 'LoginController@login')->name('sanctum.login');
+Route::post('/firebase/login', 'LoginController@firebase')->name('sanctum.login.firebase');
 
-Route::post('/password/forget', 'Accounts\Api\ResetPasswordController@forget')->name('api.password.forget');
-Route::post('/password/code', 'Accounts\Api\ResetPasswordController@code')->name('api.password.code');
-Route::post('/password/reset', 'Accounts\Api\ResetPasswordController@reset')->name('api.password.reset');
-Route::get('/select/users', 'Accounts\SelectController@index')->name('users.select');
+Route::post('/password/forget', 'ResetPasswordController@forget')->name('password.forget');
+Route::post('/password/code', 'ResetPasswordController@code')->name('password.code');
+Route::post('/password/reset', 'ResetPasswordController@reset')->name('password.reset');
+Route::get('/select/users', 'UserController@select')->name('users.select');
 
-Route::middleware('auth:sanctum')->group(
-    function () {
-        Route::post('verification/send', 'Accounts\Api\VerificationController@send')->name('api.verification.send');
-        Route::post('verification/verify', 'Accounts\Api\VerificationController@verify')->name('api.verification.verify');
-        Route::get('profile', 'Accounts\Api\ProfileController@show')->name('api.profile.show');
-        Route::match(['put', 'patch'], 'profile', 'Accounts\Api\ProfileController@update')
-            ->name('api.profile.update');
-    }
-);
-Route::post('/editor/upload', 'MediaController@editorUpload')->name('api.editor.upload');
-Route::get('/settings', 'Settings\Api\SettingController@index')->name('api.settings.index');
-Route::get('/settings/pages/{page}', 'Settings\Api\SettingController@page')
-    ->where('page', 'about|terms|privacy')
-    ->name('api.settings.page');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('verification/send', 'VerificationController@send')->name('verification.send');
+    Route::post('verification/verify', 'VerificationController@verify')->name('verification.verify');
+    Route::get('profile', 'ProfileController@show')->name('profile.show');
+    Route::match(['put', 'patch'], 'profile', 'ProfileController@update')->name('profile.update');
+});
+Route::post('/editor/upload', 'MediaController@editorUpload')->name('editor.upload');
+Route::get('/settings', 'SettingController@index')->name('settings.index');
+Route::get('/settings/pages/{page}', 'SettingController@page')
+    ->where('page', 'about|terms|privacy')->name('settings.page');
 
-Route::post('feedback', 'Feedback\Api\FeedbackController@store')->name('api.feedback.send');
+Route::post('feedback', 'FeedbackController@store')->name('feedback.send');
 /*  The routes of generated crud will set here: Don't remove this line  */
