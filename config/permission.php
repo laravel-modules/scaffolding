@@ -140,10 +140,5 @@ return [
 
         'store' => 'default',
     ],
-    'supported' => [
-        'manage.supervisors',
-        'manage.customers',
-        'manage.feedback',
-        'manage.settings',
-    ],
+    'supported' => @json_decode(file_get_contents(storage_path('permissions.json'))) ?? [],
 ];

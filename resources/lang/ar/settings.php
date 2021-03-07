@@ -2,6 +2,7 @@
 
 return [
     'plural' => 'الاعدادات',
+    'permission' => 'التحكم بإعدادات الموقع',
     'actions' => [
         'save' => 'حفظ',
     ],

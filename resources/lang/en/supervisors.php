@@ -5,6 +5,7 @@ return [
     'singular' => 'Supervisor',
     'empty' => 'There are no supervisors',
     'select' => 'Select Supervisor',
+    'permission' => 'Manage Supervisors',
     'perPage' => 'Count Results Per Page',
     'actions' => [
         'list' => 'List Supervisors',

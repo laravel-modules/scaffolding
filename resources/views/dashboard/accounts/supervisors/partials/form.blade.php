@@ -11,7 +11,7 @@
         @foreach(config('permission.supported') as $permission)
             {{ BsForm::checkbox('permissions[]')
                     ->value($permission)
-                    ->label(trans('permissions.'.$permission))
+                    ->label(trans(str_replace('manage.', '', $permission.'.permission')))
                     ->checked(isset($supervisor) && $supervisor->hasPermissionTo($permission)) }}
         @endforeach
     </fieldset>

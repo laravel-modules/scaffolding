@@ -2,6 +2,7 @@
 
 return [
     'plural' => 'Settings',
+    'permission' => 'Manage Settings',
     'actions' => [
         'save' => 'Save',
     ],

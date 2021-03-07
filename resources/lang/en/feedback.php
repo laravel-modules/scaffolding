@@ -7,6 +7,7 @@ return [
     'count' => 'Feedback Count.',
     'search' => 'Search',
     'select' => 'Select Feedback',
+    'permission' => 'Manage Feedback',
     'perPage' => 'Results Per Page',
     'filter' => 'Search for feedback',
     'actions' => [

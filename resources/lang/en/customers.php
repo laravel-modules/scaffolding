@@ -5,6 +5,7 @@ return [
     'singular' => 'Customer',
     'empty' => 'There are no customers',
     'select' => 'Select Customer',
+    'permission' => 'Manage Customers',
     'perPage' => 'Count Results Per Page',
     'actions' => [
         'list' => 'List Customers',
