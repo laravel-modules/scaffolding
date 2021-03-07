@@ -4,20 +4,35 @@
 # Set the project's name from directory.
 PROJECT_NAME=$(basename $(pwd))
 
-# Let user write his domain and the database's username & password.
-read -p "Enter the APP_DOMAIN: [$PROJECT_NAME.test]" APP_DOMAIN
-read -p "Enter the DB_USERNAME: [root]" DB_USERNAME
-read -sp "Enter the DB_PASSWORD: " DB_PASSWORD
-DB_USERNAME=${DB_USERNAME:-root}
-APP_DOMAIN=${APP_DOMAIN:-$PROJECT_NAME.test}
+ask_question(){
+    # ask_question <question> <default>
+    local ANSWER
+    read -r -p "$1 ($2): " ANSWER
+    echo "${ANSWER:-$2}"
+}
 
-echo -e "\n"
+ask_secure_question(){
+    # ask_secure_question <question> <default>
+    local ANSWER
+    if [ $2 ]; then
+        read -r -sp "$1 ($2): " ANSWER
+        else
+        read -r -sp "$1: " ANSWER
+    fi
+    echo "${ANSWER:-$2}"
+}
+# Let user write the app domain and the database name, username and password.
+APP_DOMAIN=$(ask_question "Enter App Domain" "$PROJECT_NAME.test")
+DB_DATABASE=$(ask_question "Enter The Database Name" "$PROJECT_NAME")
+DB_USERNAME=$(ask_question "Enter The Database Username" "root")
+DB_PASSWORD=$(ask_secure_question "Enter The Database Password" "")
+echo " "
 
 # Create the mysql database.
-mysql -u root --password=$DB_PASSWORD -e "create database $PROJECT_NAME CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+mysql -u root --password=$DB_PASSWORD -e "create database $DB_DATABASE CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
 
 # Create the project's .env file.
-sed -e "s|DB_DATABASE=laravel|DB_DATABASE=$PROJECT_NAME|"\
+sed -e "s|DB_DATABASE=laravel|DB_DATABASE=$DB_DATABASE|"\
     -e "s|DB_USERNAME=root|DB_USERNAME=$DB_USERNAME|"\
     -e "s|DB_PASSWORD=|DB_PASSWORD=$DB_PASSWORD|"\
     -e "s|APP_DOMAIN=localhost|APP_DOMAIN=$APP_DOMAIN|" ./.env.example > ./.env
