@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Route;
 | Dashboard Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| is assigned the "dashboard" middleware group and "App\Http\Controllers\Dashboard" namespace.
+| and "dashboard." route's alias name. Enjoy building your dashboard!
 |
 */
 Route::get('locale/{locale}', 'LocaleController@update')->name('locale')->where('locale', '(ar|en)');

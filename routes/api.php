@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group and "App\Http\Controllers\Api" namespace.
-| and "" route's alias name. Enjoy building your API!
+| and "api." route's alias name. Enjoy building your API!
 |
 */
 Route::post('/register', 'RegisterController@register')->name('sanctum.register');
