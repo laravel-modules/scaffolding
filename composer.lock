@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba72bc2380d36cb9e6a31f3d923032c3",
+    "content-hash": "4a80e7036c1250537a4f83f3b5e3b531",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
@@ -4859,16 +4859,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "9.4.2",
+            "version": "9.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "fe8dcb2a56b3061cd29d072c1e983a1e035a1671"
+                "reference": "2eae7416a6d7762e147f26f6cac7cf099eda109b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/fe8dcb2a56b3061cd29d072c1e983a1e035a1671",
-                "reference": "fe8dcb2a56b3061cd29d072c1e983a1e035a1671",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/2eae7416a6d7762e147f26f6cac7cf099eda109b",
+                "reference": "2eae7416a6d7762e147f26f6cac7cf099eda109b",
                 "shasum": ""
             },
             "require": {
@@ -4947,7 +4947,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
-                "source": "https://github.com/spatie/laravel-medialibrary/tree/9.4.2"
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/9.4.3"
             },
             "funding": [
                 {
@@ -4959,7 +4959,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-15T07:55:54+00:00"
+            "time": "2021-03-07T18:42:19+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -7662,7 +7662,7 @@
     "packages-dev": [
         {
             "name": "ahmed-aliraqi/crud-generator",
-            "version": "v1.1.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ahmed-aliraqi/crud-generator.git",
@@ -7705,7 +7705,7 @@
             "description": "This package is a useful tool to generate simple crud for laravel-modules/scaffolding",
             "support": {
                 "issues": "https://github.com/ahmed-aliraqi/crud-generator/issues",
-                "source": "https://github.com/ahmed-aliraqi/crud-generator/tree/v1.1.0"
+                "source": "https://github.com/ahmed-aliraqi/crud-generator/tree/v2.0.0"
             },
             "time": "2021-03-07T18:16:55+00:00"
         },
