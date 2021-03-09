@@ -54,7 +54,7 @@ class SupervisorPolicy
      */
     public function update(User $user, Supervisor $supervisor)
     {
-        return (($user->isAdmin() || $user->is($supervisor)) || $user->hasPermissionTo('manage.supervisors')) && ! $this->trashed($supervisor);
+        return ($user->isAdmin() || $user->is($supervisor) || $user->hasPermissionTo('manage.supervisors')) && ! $this->trashed($supervisor);
     }
 
     /**
@@ -66,7 +66,7 @@ class SupervisorPolicy
      */
     public function updateType(User $user, Supervisor $supervisor)
     {
-        return ($user->isAdmin() || $user->is($supervisor)) || $user->hasPermissionTo('manage.supervisors');
+        return $user->isAdmin() && $user->isNot($supervisor) || $user->hasPermissionTo('manage.supervisors');
     }
 
     /**

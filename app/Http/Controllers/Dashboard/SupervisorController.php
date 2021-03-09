@@ -126,4 +126,64 @@ class SupervisorController extends Controller
 
         return redirect()->route('dashboard.supervisors.index');
     }
+
+    /**
+     * Display a listing of the trashed resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        $this->authorize('viewTrash', Supervisor::class);
+
+        $supervisors = Supervisor::onlyTrashed()->paginate();
+
+        return view('dashboard.accounts.supervisors.trashed', compact('supervisors'));
+    }
+
+    /**
+     * Display the specified trashed resource.
+     *
+     * @param \App\Models\Supervisor $supervisor
+     * @return \Illuminate\Http\Response
+     */
+    public function showTrashed(Supervisor $supervisor)
+    {
+        return view('dashboard.accounts.supervisors.show', compact('supervisor'));
+    }
+
+    /**
+     * Restore the trashed resource.
+     *
+     * @param \App\Models\Supervisor $supervisor
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore(Supervisor $supervisor)
+    {
+        $this->authorize('restore', $supervisor);
+
+        $supervisor->restore();
+
+        flash()->success(trans('supervisors.messages.restored'));
+
+        return redirect()->route('dashboard.supervisors.trashed');
+    }
+
+    /**
+     * Force delete the specified resource from storage.
+     *
+     * @param \App\Models\Supervisor $supervisor
+     * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function forceDelete(Supervisor $supervisor)
+    {
+        $this->authorize('forceDelete', $supervisor);
+
+        $supervisor->forceDelete();
+
+        flash(trans('supervisors.messages.deleted'));
+
+        return redirect()->route('dashboard.supervisors.trashed');
+    }
 }

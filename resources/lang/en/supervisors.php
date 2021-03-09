@@ -6,6 +6,7 @@ return [
     'empty' => 'There are no supervisors',
     'select' => 'Select Supervisor',
     'permission' => 'Manage Supervisors',
+    'trashed' => 'Trashed Supervisor',
     'perPage' => 'Count Results Per Page',
     'actions' => [
         'list' => 'List Supervisors',
@@ -21,6 +22,7 @@ return [
         'created' => 'The supervisor has been created successfully.',
         'updated' => 'The supervisor has been updated successfully.',
         'deleted' => 'The supervisor has been deleted successfully.',
+        'restored' => 'The supervisor has been restored successfully.',
     ],
     'attributes' => [
         'name' => 'Name',
@@ -38,6 +40,18 @@ return [
             'title' => 'Warning !',
             'info' => 'Are you sure you want to delete the supervisor ?',
             'confirm' => 'Delete',
+            'cancel' => 'Cancel',
+        ],
+        'restore' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to restore the supervisor ?',
+            'confirm' => 'Restore',
+            'cancel' => 'Cancel',
+        ],
+        'forceDelete' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to force delete the supervisor ?',
+            'confirm' => 'Force',
             'cancel' => 'Cancel',
         ],
     ],

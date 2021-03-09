@@ -1,4 +1,4 @@
-<x-layout :title="trans('supervisors.plural')" :breadcrumbs="['dashboard.supervisors.index']">
+<x-layout :title="trans('supervisors.trashed')" :breadcrumbs="['dashboard.supervisors.trashed']">
     @include('dashboard.accounts.supervisors.partials.filter')
 
     @component('dashboard::components.table-box')
@@ -10,16 +10,12 @@
         <thead>
         <tr>
             <th colspan="100">
-                <div class="d-flex">
-                    <x-check-all-delete
-                            type="{{ \App\Models\Supervisor::class }}"
-                            :resource="trans('supervisors.plural')"></x-check-all-delete>
-
-                    <div class="ml-2 d-flex justify-content-between flex-grow-1">
-                        @include('dashboard.accounts.supervisors.partials.actions.create')
-                        @include('dashboard.accounts.supervisors.partials.actions.trashed')
-                    </div>
-                </div>
+                <x-check-all-force-delete
+                        type="{{ \App\Models\Supervisor::class }}"
+                        :resource="trans('supervisors.plural')"></x-check-all-force-delete>
+                <x-check-all-restore
+                        type="{{ \App\Models\Supervisor::class }}"
+                        :resource="trans('supervisors.plural')"></x-check-all-restore>
             </th>
         </tr>
         <tr>
@@ -40,7 +36,7 @@
                     <x-check-all-item :model="$supervisor"></x-check-all-item>
                 </td>
                 <td>
-                    <a href="{{ route('dashboard.supervisors.show', $supervisor) }}"
+                    <a href="{{ route('dashboard.supervisors.trashed.show', $supervisor) }}"
                        class="text-decoration-none text-ellipsis">
                             <span class="index-flag">
                             @include('dashboard.accounts.supervisors.partials.flags.svg')
@@ -62,8 +58,8 @@
 
                 <td style="width: 160px">
                     @include('dashboard.accounts.supervisors.partials.actions.show')
-                    @include('dashboard.accounts.supervisors.partials.actions.edit')
-                    @include('dashboard.accounts.supervisors.partials.actions.delete')
+                    @include('dashboard.accounts.supervisors.partials.actions.restore')
+                    @include('dashboard.accounts.supervisors.partials.actions.forceDelete')
                 </td>
             </tr>
         @empty

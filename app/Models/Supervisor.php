@@ -5,12 +5,14 @@ namespace App\Models;
 use Parental\HasParent;
 use App\Http\Filters\SupervisorFilter;
 use App\Http\Resources\CustomerResource;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Supervisor extends User
 {
     use HasFactory;
     use HasParent;
+    use SoftDeletes;
 
     /**
      * The model filter name.
