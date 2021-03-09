@@ -120,6 +120,45 @@ class AdminTest extends TestCase
         $this->assertEquals(Admin::count(), $adminsCount - 1);
     }
 
+
+    /** @test */
+    public function it_can_restore_deleted_admin()
+    {
+        if (! $this->useSoftDeletes($model = Admin::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        $admin = Admin::factory()->create(['deleted_at' => now()]);
+
+        $this->actingAsAdmin();
+
+        $response = $this->post(route('dashboard.admins.restore', $admin));
+
+        $response->assertRedirect();
+
+        $this->assertNull($admin->refresh()->deleted_at);
+    }
+
+    /** @test */
+    public function it_can_force_delete_admin()
+    {
+        if (! $this->useSoftDeletes($model = Admin::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        $admin = Admin::factory()->create(['deleted_at' => now()]);
+
+        $this->actingAsAdmin();
+
+        $adminCount = Admin::withTrashed()->count();
+
+        $response = $this->delete(route('dashboard.admins.forceDelete', $admin));
+
+        $response->assertRedirect();
+
+        $this->assertEquals(Admin::withoutTrashed()->count(), $adminCount - 1);
+    }
+
     /** @test */
     public function it_can_filter_admins_by_name()
     {

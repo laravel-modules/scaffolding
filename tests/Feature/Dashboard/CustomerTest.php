@@ -121,6 +121,44 @@ class CustomerTest extends TestCase
     }
 
     /** @test */
+    public function it_can_restore_deleted_customer()
+    {
+        if (! $this->useSoftDeletes($model = Customer::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        $customer = Customer::factory()->create(['deleted_at' => now()]);
+
+        $this->actingAsAdmin();
+
+        $response = $this->post(route('dashboard.customers.restore', $customer));
+
+        $response->assertRedirect();
+
+        $this->assertNull($customer->refresh()->deleted_at);
+    }
+
+    /** @test */
+    public function it_can_force_delete_customer()
+    {
+        if (! $this->useSoftDeletes($model = Customer::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        $customer = Customer::factory()->create(['deleted_at' => now()]);
+
+        $customerCount = Customer::withTrashed()->count();
+
+        $this->actingAsAdmin();
+
+        $response = $this->delete(route('dashboard.customers.forceDelete', $customer));
+
+        $response->assertRedirect();
+
+        $this->assertEquals(Customer::withoutTrashed()->count(), $customerCount - 1);
+    }
+
+    /** @test */
     public function it_can_filter_customers_by_name()
     {
         $this->actingAsAdmin();

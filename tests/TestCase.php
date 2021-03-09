@@ -5,6 +5,7 @@ namespace Tests;
 use App\Models\Admin;
 use App\Models\Customer;
 use App\Models\Supervisor;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -73,5 +74,19 @@ abstract class TestCase extends BaseTestCase
         $this->be($customer, $driver);
 
         return $customer;
+    }
+
+    /**
+     * Determine wither the model use soft deleting trait.
+     *
+     * @param $model
+     * @return bool
+     */
+    public function useSoftDeletes($model)
+    {
+        return in_array(
+            SoftDeletes::class,
+            array_keys((new \ReflectionClass($model))->getTraits())
+        );
     }
 }
