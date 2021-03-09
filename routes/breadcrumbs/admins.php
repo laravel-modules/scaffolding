@@ -5,6 +5,11 @@ Breadcrumbs::for('dashboard.admins.index', function ($breadcrumb) {
     $breadcrumb->push(trans('admins.plural'), route('dashboard.admins.index'));
 });
 
+Breadcrumbs::for('dashboard.admins.trashed', function ($breadcrumb) {
+    $breadcrumb->parent('dashboard.admins.index');
+    $breadcrumb->push(trans('admins.trashed'), route('dashboard.admins.trashed'));
+});
+
 Breadcrumbs::for('dashboard.admins.create', function ($breadcrumb) {
     $breadcrumb->parent('dashboard.admins.index');
     $breadcrumb->push(trans('admins.actions.create'), route('dashboard.admins.create'));

@@ -5,6 +5,11 @@ Breadcrumbs::for('dashboard.customers.index', function ($breadcrumb) {
     $breadcrumb->push(trans('customers.plural'), route('dashboard.customers.index'));
 });
 
+Breadcrumbs::for('dashboard.customers.trashed', function ($breadcrumb) {
+    $breadcrumb->parent('dashboard.customers.index');
+    $breadcrumb->push(trans('customers.trashed'), route('dashboard.customers.trashed'));
+});
+
 Breadcrumbs::for('dashboard.customers.create', function ($breadcrumb) {
     $breadcrumb->parent('dashboard.customers.index');
     $breadcrumb->push(trans('customers.actions.create'), route('dashboard.customers.create'));

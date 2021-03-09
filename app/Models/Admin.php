@@ -5,12 +5,14 @@ namespace App\Models;
 use Parental\HasParent;
 use App\Http\Filters\AdminFilter;
 use App\Http\Resources\AdminResource;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Admin extends User
 {
     use HasFactory;
     use HasParent;
+    use SoftDeletes;
 
     /**
      * The model filter name.

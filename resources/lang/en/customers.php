@@ -6,6 +6,7 @@ return [
     'empty' => 'There are no customers',
     'select' => 'Select Customer',
     'permission' => 'Manage Customers',
+    'trashed' => 'Trashed Customers',
     'perPage' => 'Count Results Per Page',
     'actions' => [
         'list' => 'List Customers',
@@ -21,6 +22,7 @@ return [
         'created' => 'The customer has been created successfully.',
         'updated' => 'The customer has been updated successfully.',
         'deleted' => 'The customer has been deleted successfully.',
+        'restored' => 'The customer has been restored successfully.',
     ],
     'attributes' => [
         'name' => 'Name',
@@ -38,6 +40,18 @@ return [
             'title' => 'Warning !',
             'info' => 'Are you sure you want to delete the customer ?',
             'confirm' => 'Delete',
+            'cancel' => 'Cancel',
+        ],
+        'restore' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to restore the customer ?',
+            'confirm' => 'Restore',
+            'cancel' => 'Cancel',
+        ],
+        'forceDelete' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to force delete the customer ?',
+            'confirm' => 'Force',
             'cancel' => 'Cancel',
         ],
     ],

@@ -31,4 +31,52 @@ class DeleteController extends Controller
 
         return back();
     }
+
+    /**
+     * Restore the given items of the given model type.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore(Request $request)
+    {
+        if (class_exists($modelClass = $request->input('type'))) {
+            $modelClass::withTrashed()->whereIn('id', $request->input('items', []))
+                ->each(function ($model) {
+                    if (Gate::allows('restore', $model)) {
+                        $model->restore();
+                    }
+                });
+        }
+
+        flash(trans('check-all.messages.restored', [
+            'type' => $request->input('resource'),
+        ]));
+
+        return back();
+    }
+
+    /**
+     * Force delete the given items of the given model type.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function forceDelete(Request $request)
+    {
+        if (class_exists($modelClass = $request->input('type'))) {
+            $modelClass::withTrashed()->whereIn('id', $request->input('items', []))
+                ->each(function ($model) {
+                    if (Gate::allows('forceDelete', $model)) {
+                        $model->forceDelete();
+                    }
+                });
+        }
+
+        flash(trans('check-all.messages.deleted', [
+            'type' => $request->input('resource'),
+        ]));
+
+        return back();
+    }
 }

@@ -119,4 +119,64 @@ class AdminController extends Controller
 
         return redirect()->route('dashboard.admins.index');
     }
+
+    /**
+     * Display a listing of the trashed resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        $this->authorize('viewTrash', Admin::class);
+
+        $admins = Admin::onlyTrashed()->paginate();
+
+        return view('dashboard.accounts.admins.trashed', compact('admins'));
+    }
+
+    /**
+     * Display the specified trashed resource.
+     *
+     * @param \App\Models\Admin $admin
+     * @return \Illuminate\Http\Response
+     */
+    public function showTrashed(Admin $admin)
+    {
+        return view('dashboard.accounts.admins.show', compact('admin'));
+    }
+
+    /**
+     * Restore the trashed resource.
+     *
+     * @param \App\Models\Admin $admin
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore(Admin $admin)
+    {
+        $this->authorize('restore', $admin);
+
+        $admin->restore();
+
+        flash()->success(trans('admins.messages.restored'));
+
+        return redirect()->route('dashboard.admins.trashed');
+    }
+
+    /**
+     * Force delete the specified resource from storage.
+     *
+     * @param \App\Models\Admin $admin
+     * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function forceDelete(Admin $admin)
+    {
+        $this->authorize('forceDelete', $admin);
+
+        $admin->forceDelete();
+
+        flash(trans('admins.messages.deleted'));
+
+        return redirect()->route('dashboard.admins.trashed');
+    }
 }

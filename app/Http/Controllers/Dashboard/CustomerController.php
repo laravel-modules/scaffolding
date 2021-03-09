@@ -118,4 +118,64 @@ class CustomerController extends Controller
 
         return redirect()->route('dashboard.customers.index');
     }
+
+    /**
+     * Display a listing of the trashed resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        $this->authorize('viewTrash', Customer::class);
+
+        $customers = Customer::onlyTrashed()->paginate();
+
+        return view('dashboard.accounts.customers.trashed', compact('customers'));
+    }
+
+    /**
+     * Display the specified trashed resource.
+     *
+     * @param \App\Models\Customer $customer
+     * @return \Illuminate\Http\Response
+     */
+    public function showTrashed(Customer $customer)
+    {
+        return view('dashboard.accounts.customers.show', compact('customer'));
+    }
+
+    /**
+     * Restore the trashed resource.
+     *
+     * @param \App\Models\Customer $customer
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore(Customer $customer)
+    {
+        $this->authorize('restore', $customer);
+
+        $customer->restore();
+
+        flash()->success(trans('customers.messages.restored'));
+
+        return redirect()->route('dashboard.customers.trashed');
+    }
+
+    /**
+     * Force delete the specified resource from storage.
+     *
+     * @param \App\Models\Customer $customer
+     * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function forceDelete(Customer $customer)
+    {
+        $this->authorize('forceDelete', $customer);
+
+        $customer->forceDelete();
+
+        flash(trans('customers.messages.deleted'));
+
+        return redirect()->route('dashboard.customers.trashed');
+    }
 }

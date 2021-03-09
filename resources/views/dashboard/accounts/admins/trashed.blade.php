@@ -1,4 +1,4 @@
-<x-layout :title="trans('admins.plural')" :breadcrumbs="['dashboard.admins.index']">
+<x-layout :title="trans('admins.trashed')" :breadcrumbs="['dashboard.admins.trashed']">
     @include('dashboard.accounts.admins.partials.filter')
 
     @component('dashboard::components.table-box')
@@ -10,16 +10,12 @@
         <thead>
         <tr>
             <th colspan="100">
-                <div class="d-flex">
-                    <x-check-all-delete
-                            type="{{ \App\Models\Admin::class }}"
-                            :resource="trans('admins.plural')"></x-check-all-delete>
-
-                    <div class="ml-2 d-flex justify-content-between flex-grow-1">
-                        @include('dashboard.accounts.admins.partials.actions.create')
-                        @include('dashboard.accounts.admins.partials.actions.trashed')
-                    </div>
-                </div>
+                <x-check-all-force-delete
+                        type="{{ \App\Models\Admin::class }}"
+                        :resource="trans('admins.plural')"></x-check-all-force-delete>
+                <x-check-all-restore
+                        type="{{ \App\Models\Admin::class }}"
+                        :resource="trans('admins.plural')"></x-check-all-restore>
             </th>
         </tr>
         <tr>
@@ -40,7 +36,7 @@
                     <x-check-all-item :model="$admin"></x-check-all-item>
                 </td>
                 <td>
-                    <a href="{{ route('dashboard.admins.show', $admin) }}"
+                    <a href="{{ route('dashboard.admins.trashed.show', $admin) }}"
                        class="text-decoration-none text-ellipsis">
                             <span class="index-flag">
                             @include('dashboard.accounts.admins.partials.flags.svg')
@@ -60,8 +56,8 @@
 
                 <td style="width: 160px">
                     @include('dashboard.accounts.admins.partials.actions.show')
-                    @include('dashboard.accounts.admins.partials.actions.edit')
-                    @include('dashboard.accounts.admins.partials.actions.delete')
+                    @include('dashboard.accounts.admins.partials.actions.restore')
+                    @include('dashboard.accounts.admins.partials.actions.forceDelete')
                 </td>
             </tr>
         @empty
@@ -77,4 +73,3 @@
         @endif
     @endcomponent
 </x-layout>
-

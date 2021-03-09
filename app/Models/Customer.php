@@ -6,6 +6,7 @@ use Parental\HasParent;
 use App\Http\Filters\CustomerFilter;
 use App\Http\Resources\CustomerResource;
 use App\Models\Relations\CustomerRelations;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends User
@@ -13,6 +14,7 @@ class Customer extends User
     use HasFactory;
     use HasParent;
     use CustomerRelations;
+    use SoftDeletes;
 
     /**
      * The model filter name.

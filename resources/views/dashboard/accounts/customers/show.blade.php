@@ -36,6 +36,8 @@
         @slot('footer')
             @include('dashboard.accounts.customers.partials.actions.edit')
             @include('dashboard.accounts.customers.partials.actions.delete')
+            @include('dashboard.accounts.customers.partials.actions.restore')
+            @include('dashboard.accounts.customers.partials.actions.forceDelete')
         @endslot
     @endcomponent
 </x-layout>

@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\SettingsServiceProvider::class,
         App\Providers\LayoutsServiceProvider::class,
+        App\Providers\SoftDeletesServiceProvider::class,
 
     ],
 
