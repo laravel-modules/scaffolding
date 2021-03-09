@@ -15,6 +15,8 @@ return [
         'new' => 'New',
         'edit' => 'Edit Supervisor',
         'delete' => 'Delete Supervisor',
+        'restore' => 'Restore',
+        'forceDelete' => 'Force Delete',
         'save' => 'Save',
         'filter' => 'Filter',
     ],

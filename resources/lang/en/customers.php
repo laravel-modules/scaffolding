@@ -15,6 +15,8 @@ return [
         'new' => 'New',
         'edit' => 'Edit Customer',
         'delete' => 'Delete Customer',
+        'restore' => 'Restore',
+        'forceDelete' => 'Force Delete',
         'save' => 'Save',
         'filter' => 'Filter',
     ],
