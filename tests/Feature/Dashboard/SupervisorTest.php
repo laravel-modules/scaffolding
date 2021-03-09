@@ -125,6 +125,42 @@ class SupervisorTest extends TestCase
     }
 
     /** @test */
+    public function it_can_display_trashed_supervisors()
+    {
+        if (! $this->useSoftDeletes($model = Supervisor::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        Supervisor::factory()->create(['deleted_at' => now(), 'name' => 'Ahmed']);
+
+        $this->actingAsAdmin();
+
+        $response = $this->get(route('dashboard.supervisors.trashed'));
+
+        $response->assertSuccessful();
+
+        $response->assertSee('Ahmed');
+    }
+
+    /** @test */
+    public function it_can_display_trashed_supervisor_details()
+    {
+        if (! $this->useSoftDeletes($model = Supervisor::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        $supervisor = Supervisor::factory()->create(['deleted_at' => now(), 'name' => 'Ahmed']);
+
+        $this->actingAsAdmin();
+
+        $response = $this->get(route('dashboard.supervisors.trashed.show', $supervisor));
+
+        $response->assertSuccessful();
+
+        $response->assertSee('Ahmed');
+    }
+
+    /** @test */
     public function it_can_restore_deleted_supervisor()
     {
         if (! $this->useSoftDeletes($model = Supervisor::class)) {

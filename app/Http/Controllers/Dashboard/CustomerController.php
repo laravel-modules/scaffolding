@@ -141,6 +141,8 @@ class CustomerController extends Controller
      */
     public function showTrashed(Customer $customer)
     {
+        $this->authorize('viewTrash', Customer::class);
+
         return view('dashboard.accounts.customers.show', compact('customer'));
     }
 

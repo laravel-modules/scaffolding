@@ -1,4 +1,4 @@
-<x-layout :title="trans('feedback.plural')" :breadcrumbs="['dashboard.feedback.index']">
+<x-layout :title="trans('feedback.trashed')" :breadcrumbs="['dashboard.feedback.trashed']">
     @include('dashboard.feedback.partials.filter')
 
     @component('dashboard::components.table-box')
@@ -10,14 +10,13 @@
         <tr>
             <th colspan="100">
                 <div class="d-flex">
-                    <x-check-all-delete
+                    <x-check-all-force-delete
                             type="{{ \App\Models\Feedback::class }}"
-                            :resource="trans('feedback.plural')"></x-check-all-delete>
-                    <div class="ml-2 d-flex justify-content-between flex-grow-1">
-                        <div>
-                            @include('dashboard.feedback.partials.actions.read')
-                        </div>
-                        @include('dashboard.feedback.partials.actions.trashed')
+                            :resource="trans('feedback.plural')"></x-check-all-force-delete>
+                    <div class="ml-2">
+                        <x-check-all-restore
+                                type="{{ \App\Models\Feedback::class }}"
+                                :resource="trans('feedback.plural')"></x-check-all-restore>
                     </div>
                 </div>
             </th>

@@ -8,6 +8,7 @@ return [
     'search' => 'Search',
     'select' => 'Select Feedback',
     'permission' => 'Manage Feedback',
+    'trashed' => 'Trashed Feedback',
     'perPage' => 'Results Per Page',
     'filter' => 'Search for feedback',
     'actions' => [
@@ -16,6 +17,8 @@ return [
         'show' => 'Show feedback',
         'edit' => 'Edit feedback',
         'delete' => 'Delete feedback',
+        'restore' => 'Restore',
+        'forceDelete' => 'Force Delete',
         'read' => 'Mark As Read',
         'unread' => 'Mark As Unread',
         'options' => 'Options',
@@ -25,6 +28,7 @@ return [
     'messages' => [
         'sent' => 'The feedback has been sent successfully.',
         'deleted' => 'The feedback has been deleted successfully.',
+        'restored' => 'The feedback has been restored successfully.',
     ],
     'attributes' => [
         'name' => 'Name',
@@ -40,6 +44,18 @@ return [
             'title' => 'Warning !',
             'info' => 'Are you sure you want to delete the feedback?',
             'confirm' => 'Delete',
+            'cancel' => 'Cancel',
+        ],
+        'restore' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to restore the feedback ?',
+            'confirm' => 'Restore',
+            'cancel' => 'Cancel',
+        ],
+        'forceDelete' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to force delete the feedback ?',
+            'confirm' => 'Force',
             'cancel' => 'Cancel',
         ],
     ],

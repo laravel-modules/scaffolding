@@ -7,12 +7,14 @@ use App\Support\Traits\Selectable;
 use App\Http\Filters\FeedbackFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Feedback extends Model
 {
     use HasFactory;
     use Filterable;
     use Selectable;
+    use SoftDeletes;
 
     /**
      * The query parameter's filter of the model.

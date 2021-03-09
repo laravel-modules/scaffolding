@@ -28,6 +28,8 @@
 
                 @slot('footer')
                     @include('dashboard.feedback.partials.actions.delete')
+                    @include('dashboard.feedback.partials.actions.restore')
+                    @include('dashboard.feedback.partials.actions.forceDelete')
                 @endslot
             @endcomponent
         </div>

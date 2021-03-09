@@ -149,6 +149,8 @@ class SupervisorController extends Controller
      */
     public function showTrashed(Supervisor $supervisor)
     {
+        $this->authorize('viewTrash', Supervisor::class);
+
         return view('dashboard.accounts.supervisors.show', compact('supervisor'));
     }
 

@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\Feedback;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class FeedbackPolicy
@@ -66,5 +67,64 @@ class FeedbackPolicy
     public function delete(User $user, Feedback $feedback)
     {
         return $user->isAdmin() || $user->hasPermissionTo('manage.feedback');
+    }
+
+    /**
+     * Determine whether the user can view trashed feedback.
+     *
+     * @param \App\Models\User $user
+     * @return mixed
+     */
+    public function viewTrash(User $user)
+    {
+        return ($user->isAdmin() || $user->hasPermissionTo('manage.feedback')) && $this->hasSoftDeletes();
+    }
+
+    /**
+     * Determine whether the user can restore the model.
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Feedback $feedback
+     * @return mixed
+     */
+    public function restore(User $user, Feedback $feedback)
+    {
+        return ($user->isAdmin() || $user->hasPermissionTo('manage.feedback')) && $this->trashed($feedback);
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Feedback $feedback
+     * @return mixed
+     */
+    public function forceDelete(User $user, Feedback $feedback)
+    {
+        return ($user->isAdmin() && $user->isNot($feedback) || $user->hasPermissionTo('manage.feedback')) && $this->trashed($feedback);
+    }
+
+    /**
+     * Determine wither the given feedback is trashed.
+     *
+     * @param $feedback
+     * @return bool
+     */
+    public function trashed($feedback)
+    {
+        return $this->hasSoftDeletes() && method_exists($feedback, 'trashed') && $feedback->trashed();
+    }
+
+    /**
+     * Determine wither the model use soft deleting trait.
+     *
+     * @return bool
+     */
+    public function hasSoftDeletes()
+    {
+        return in_array(
+            SoftDeletes::class,
+            array_keys((new \ReflectionClass(Feedback::class))->getTraits())
+        );
     }
 }

@@ -63,6 +63,81 @@ class FeedbackTest extends TestCase
         $this->assertEquals(Feedback::count(), $feedbackCount - 1);
     }
 
+
+    /** @test */
+    public function it_can_display_trashed_feedback()
+    {
+        if (! $this->useSoftDeletes($model = Feedback::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        Feedback::factory()->create(['deleted_at' => now(), 'name' => 'Ahmed']);
+
+        $this->actingAsAdmin();
+
+        $response = $this->get(route('dashboard.feedback.trashed'));
+
+        $response->assertSuccessful();
+
+        $response->assertSee('Ahmed');
+    }
+
+    /** @test */
+    public function it_can_display_trashed_feedback_details()
+    {
+        if (! $this->useSoftDeletes($model = Feedback::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        $feedback = Feedback::factory()->create(['deleted_at' => now(), 'name' => 'Ahmed']);
+
+        $this->actingAsAdmin();
+
+        $response = $this->get(route('dashboard.feedback.trashed.show', $feedback));
+
+        $response->assertSuccessful();
+
+        $response->assertSee('Ahmed');
+    }
+
+    /** @test */
+    public function it_can_restore_deleted_feedback()
+    {
+        if (! $this->useSoftDeletes($model = Feedback::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        $feedback = Feedback::factory()->create(['deleted_at' => now()]);
+
+        $this->actingAsAdmin();
+
+        $response = $this->post(route('dashboard.feedback.restore', $feedback));
+
+        $response->assertRedirect();
+
+        $this->assertNull($feedback->refresh()->deleted_at);
+    }
+
+    /** @test */
+    public function it_can_force_delete_feedback()
+    {
+        if (! $this->useSoftDeletes($model = Feedback::class)) {
+            $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
+        }
+
+        $feedback = Feedback::factory()->create(['deleted_at' => now()]);
+
+        $feedbackCount = Feedback::withTrashed()->count();
+
+        $this->actingAsAdmin();
+
+        $response = $this->delete(route('dashboard.feedback.forceDelete', $feedback));
+
+        $response->assertRedirect();
+
+        $this->assertEquals(Feedback::withoutTrashed()->count(), $feedbackCount - 1);
+    }
+
     /** @test */
     public function it_can_mark_the_selected_feedback_as_read()
     {

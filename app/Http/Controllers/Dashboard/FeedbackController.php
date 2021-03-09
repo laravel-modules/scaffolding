@@ -63,6 +63,68 @@ class FeedbackController extends Controller
     }
 
     /**
+     * Display a listing of the trashed resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        $this->authorize('viewTrash', Feedback::class);
+
+        $feedback = Feedback::onlyTrashed()->paginate();
+
+        return view('dashboard.feedback.trashed', compact('feedback'));
+    }
+
+    /**
+     * Display the specified trashed resource.
+     *
+     * @param \App\Models\Feedback $feedback
+     * @return \Illuminate\Http\Response
+     */
+    public function showTrashed(Feedback $feedback)
+    {
+        $this->authorize('viewTrash', Feedback::class);
+
+        return view('dashboard.feedback.show', compact('feedback'));
+    }
+
+    /**
+     * Restore the trashed resource.
+     *
+     * @param \App\Models\Feedback $feedback
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function restore(Feedback $feedback)
+    {
+        $this->authorize('restore', $feedback);
+
+        $feedback->restore();
+
+        flash()->success(trans('feedback.messages.restored'));
+
+        return redirect()->route('dashboard.feedback.trashed');
+    }
+
+    /**
+     * Force delete the specified resource from storage.
+     *
+     * @param \App\Models\Feedback $feedback
+     * @throws \Exception
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function forceDelete(Feedback $feedback)
+    {
+        $this->authorize('forceDelete', $feedback);
+
+        $feedback->forceDelete();
+
+        flash(trans('feedback.messages.deleted'));
+
+        return redirect()->route('dashboard.feedback.trashed');
+    }
+
+    /**
      * Mark the selected messages as read.
      *
      * @param \Illuminate\Http\Request $request

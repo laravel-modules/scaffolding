@@ -142,6 +142,8 @@ class AdminController extends Controller
      */
     public function showTrashed(Admin $admin)
     {
+        $this->authorize('viewTrash', Admin::class);
+
         return view('dashboard.accounts.admins.show', compact('admin'));
     }
 

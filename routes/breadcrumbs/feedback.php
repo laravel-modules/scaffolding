@@ -5,6 +5,11 @@ Breadcrumbs::for('dashboard.feedback.index', function ($breadcrumb) {
     $breadcrumb->push(trans('feedback.plural'), route('dashboard.feedback.index'));
 });
 
+Breadcrumbs::for('dashboard.feedback.trashed', function ($breadcrumb) {
+    $breadcrumb->parent('dashboard.feedback.index');
+    $breadcrumb->push(trans('feedback.trashed'), route('dashboard.feedback.trashed'));
+});
+
 Breadcrumbs::for('dashboard.feedback.create', function ($breadcrumb) {
     $breadcrumb->parent('dashboard.feedback.index');
     $breadcrumb->push(trans('feedback.actions.create'), route('dashboard.feedback.create'));

@@ -21,6 +21,7 @@ class CreateFeedbackTable extends Migration
             $table->text('message')->nullable();
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
