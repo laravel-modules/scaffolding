@@ -6,7 +6,7 @@ return [
     'empty' => 'There are no supervisors',
     'select' => 'Select Supervisor',
     'permission' => 'Manage Supervisors',
-    'trashed' => 'Trashed Supervisor',
+    'trashed' => 'Trashed Supervisors',
     'perPage' => 'Count Results Per Page',
     'actions' => [
         'list' => 'List Supervisors',
