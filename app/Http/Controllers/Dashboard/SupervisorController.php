@@ -60,7 +60,7 @@ class SupervisorController extends Controller
 
         $supervisor->addAllMediaFromTokens();
 
-        flash(trans('supervisors.messages.created'));
+        flash()->success(trans('supervisors.messages.created'));
 
         return redirect()->route('dashboard.supervisors.show', $supervisor);
     }
@@ -106,7 +106,7 @@ class SupervisorController extends Controller
 
         $supervisor->addAllMediaFromTokens();
 
-        flash(trans('supervisors.messages.updated'));
+        flash()->success(trans('supervisors.messages.updated'));
 
         return redirect()->route('dashboard.supervisors.show', $supervisor);
     }
@@ -122,7 +122,7 @@ class SupervisorController extends Controller
     {
         $supervisor->delete();
 
-        flash(trans('supervisors.messages.deleted'));
+        flash()->success(trans('supervisors.messages.deleted'));
 
         return redirect()->route('dashboard.supervisors.index');
     }
@@ -184,7 +184,7 @@ class SupervisorController extends Controller
 
         $supervisor->forceDelete();
 
-        flash(trans('supervisors.messages.deleted'));
+        flash()->success(trans('supervisors.messages.deleted'));
 
         return redirect()->route('dashboard.supervisors.trashed');
     }

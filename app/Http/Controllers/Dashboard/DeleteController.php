@@ -25,7 +25,7 @@ class DeleteController extends Controller
                 });
         }
 
-        flash(trans('check-all.messages.deleted', [
+        flash()->success(trans('check-all.messages.deleted', [
             'type' => $request->input('resource'),
         ]));
 
@@ -49,7 +49,7 @@ class DeleteController extends Controller
                 });
         }
 
-        flash(trans('check-all.messages.restored', [
+        flash()->success(trans('check-all.messages.restored', [
             'type' => $request->input('resource'),
         ]));
 
@@ -73,7 +73,7 @@ class DeleteController extends Controller
                 });
         }
 
-        flash(trans('check-all.messages.deleted', [
+        flash()->success(trans('check-all.messages.deleted', [
             'type' => $request->input('resource'),
         ]));
 

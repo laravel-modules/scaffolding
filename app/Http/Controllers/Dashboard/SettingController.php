@@ -67,7 +67,7 @@ class SettingController extends Controller
 
         app(SettingJson::class)->update();
 
-        flash(trans('settings.messages.updated'));
+        flash()->success(trans('settings.messages.updated'));
 
         return back();
     }

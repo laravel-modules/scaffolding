@@ -57,7 +57,7 @@ class FeedbackController extends Controller
     {
         $feedback->delete();
 
-        flash(trans('feedback.messages.deleted'));
+        flash()->success(trans('feedback.messages.deleted'));
 
         return redirect()->route('dashboard.feedback.index');
     }
@@ -119,7 +119,7 @@ class FeedbackController extends Controller
 
         $feedback->forceDelete();
 
-        flash(trans('feedback.messages.deleted'));
+        flash()->success(trans('feedback.messages.deleted'));
 
         return redirect()->route('dashboard.feedback.trashed');
     }

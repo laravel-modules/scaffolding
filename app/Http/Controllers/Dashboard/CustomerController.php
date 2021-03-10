@@ -56,7 +56,7 @@ class CustomerController extends Controller
 
         $customer->addAllMediaFromTokens();
 
-        flash(trans('customers.messages.created'));
+        flash()->success(trans('customers.messages.created'));
 
         return redirect()->route('dashboard.customers.show', $customer);
     }
@@ -98,7 +98,7 @@ class CustomerController extends Controller
 
         $customer->addAllMediaFromTokens();
 
-        flash(trans('customers.messages.updated'));
+        flash()->success(trans('customers.messages.updated'));
 
         return redirect()->route('dashboard.customers.show', $customer);
     }
@@ -114,7 +114,7 @@ class CustomerController extends Controller
     {
         $customer->delete();
 
-        flash(trans('customers.messages.deleted'));
+        flash()->success(trans('customers.messages.deleted'));
 
         return redirect()->route('dashboard.customers.index');
     }
@@ -176,7 +176,7 @@ class CustomerController extends Controller
 
         $customer->forceDelete();
 
-        flash(trans('customers.messages.deleted'));
+        flash()->success(trans('customers.messages.deleted'));
 
         return redirect()->route('dashboard.customers.trashed');
     }

@@ -57,7 +57,7 @@ class AdminController extends Controller
 
         $admin->addAllMediaFromTokens();
 
-        flash(trans('admins.messages.created'));
+        flash()->success(trans('admins.messages.created'));
 
         return redirect()->route('dashboard.admins.show', $admin);
     }
@@ -99,7 +99,7 @@ class AdminController extends Controller
 
         $admin->addAllMediaFromTokens();
 
-        flash(trans('admins.messages.updated'));
+        flash()->success(trans('admins.messages.updated'));
 
         return redirect()->route('dashboard.admins.show', $admin);
     }
@@ -115,7 +115,7 @@ class AdminController extends Controller
     {
         $admin->delete();
 
-        flash(trans('admins.messages.deleted'));
+        flash()->success(trans('admins.messages.deleted'));
 
         return redirect()->route('dashboard.admins.index');
     }
@@ -177,7 +177,7 @@ class AdminController extends Controller
 
         $admin->forceDelete();
 
-        flash(trans('admins.messages.deleted'));
+        flash()->success(trans('admins.messages.deleted'));
 
         return redirect()->route('dashboard.admins.trashed');
     }
