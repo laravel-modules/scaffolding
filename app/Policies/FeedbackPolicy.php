@@ -75,9 +75,21 @@ class FeedbackPolicy
      * @param \App\Models\User $user
      * @return mixed
      */
-    public function viewTrash(User $user)
+    public function viewAnyTrash(User $user)
     {
         return ($user->isAdmin() || $user->hasPermissionTo('manage.feedback')) && $this->hasSoftDeletes();
+    }
+
+    /**
+     * Determine whether the user can view trashed feedback.
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Feedback $feedback
+     * @return mixed
+     */
+    public function viewTrash(User $user, Feedback $feedback)
+    {
+        return $this->view($user, $feedback) && $this->trashed($feedback);
     }
 
     /**

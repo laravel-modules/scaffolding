@@ -87,9 +87,21 @@ class CustomerPolicy
      * @param \App\Models\User $user
      * @return mixed
      */
-    public function viewTrash(User $user)
+    public function viewAnyTrash(User $user)
     {
         return ($user->isAdmin() || $user->hasPermissionTo('manage.customers')) && $this->hasSoftDeletes();
+    }
+
+    /**
+     * Determine whether the user can view trashed customer.
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Customer $customer
+     * @return mixed
+     */
+    public function viewTrash(User $user, Customer $customer)
+    {
+        return $this->view($user, $customer) && $this->trashed($customer);
     }
 
     /**

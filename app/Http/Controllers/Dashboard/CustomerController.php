@@ -126,7 +126,7 @@ class CustomerController extends Controller
      */
     public function trashed()
     {
-        $this->authorize('viewTrash', Customer::class);
+        $this->authorize('viewAnyTrash', Customer::class);
 
         $customers = Customer::onlyTrashed()->paginate();
 
@@ -141,7 +141,7 @@ class CustomerController extends Controller
      */
     public function showTrashed(Customer $customer)
     {
-        $this->authorize('viewTrash', Customer::class);
+        $this->authorize('viewTrash', $customer);
 
         return view('dashboard.accounts.customers.show', compact('customer'));
     }

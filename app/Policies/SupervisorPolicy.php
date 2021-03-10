@@ -87,9 +87,21 @@ class SupervisorPolicy
      * @param \App\Models\User $user
      * @return mixed
      */
-    public function viewTrash(User $user)
+    public function viewAnyTrash(User $user)
     {
         return ($user->isAdmin() || $user->hasPermissionTo('manage.supervisors')) && $this->hasSoftDeletes();
+    }
+
+    /**
+     * Determine whether the user can view trashed supervisor.
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Supervisor $supervisor
+     * @return mixed
+     */
+    public function viewTrash(User $user, Supervisor $supervisor)
+    {
+        return $this->view($user, $supervisor) && $this->trashed($supervisor);
     }
 
     /**

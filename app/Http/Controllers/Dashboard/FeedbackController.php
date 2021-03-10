@@ -69,7 +69,7 @@ class FeedbackController extends Controller
      */
     public function trashed()
     {
-        $this->authorize('viewTrash', Feedback::class);
+        $this->authorize('viewAnyTrash', Feedback::class);
 
         $feedback = Feedback::onlyTrashed()->paginate();
 
@@ -84,7 +84,7 @@ class FeedbackController extends Controller
      */
     public function showTrashed(Feedback $feedback)
     {
-        $this->authorize('viewTrash', Feedback::class);
+        $this->authorize('viewTrash', $feedback);
 
         return view('dashboard.feedback.show', compact('feedback'));
     }

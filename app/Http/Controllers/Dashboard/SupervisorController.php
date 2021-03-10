@@ -134,7 +134,7 @@ class SupervisorController extends Controller
      */
     public function trashed()
     {
-        $this->authorize('viewTrash', Supervisor::class);
+        $this->authorize('viewAnyTrash', Supervisor::class);
 
         $supervisors = Supervisor::onlyTrashed()->paginate();
 
@@ -149,7 +149,7 @@ class SupervisorController extends Controller
      */
     public function showTrashed(Supervisor $supervisor)
     {
-        $this->authorize('viewTrash', Supervisor::class);
+        $this->authorize('viewTrash', $supervisor);
 
         return view('dashboard.accounts.supervisors.show', compact('supervisor'));
     }

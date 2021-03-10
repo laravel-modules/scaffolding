@@ -87,9 +87,21 @@ class AdminPolicy
      * @param \App\Models\User $user
      * @return mixed
      */
-    public function viewTrash(User $user)
+    public function viewAnyTrash(User $user)
     {
         return $user->isAdmin() && $this->hasSoftDeletes();
+    }
+
+    /**
+     * Determine whether the user can view trashed admin.
+     *
+     * @param \App\Models\User $user
+     * @param \App\Models\Admin $admin
+     * @return mixed
+     */
+    public function viewTrash(User $user, Admin $admin)
+    {
+        return $this->view($user, $admin) && $this->trashed($admin);
     }
 
     /**

@@ -127,7 +127,7 @@ class AdminController extends Controller
      */
     public function trashed()
     {
-        $this->authorize('viewTrash', Admin::class);
+        $this->authorize('viewAnyTrash', Admin::class);
 
         $admins = Admin::onlyTrashed()->paginate();
 
@@ -142,7 +142,7 @@ class AdminController extends Controller
      */
     public function showTrashed(Admin $admin)
     {
-        $this->authorize('viewTrash', Admin::class);
+        $this->authorize('viewTrash', $admin);
 
         return view('dashboard.accounts.admins.show', compact('admin'));
     }
