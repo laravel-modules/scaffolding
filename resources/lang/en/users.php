@@ -7,9 +7,9 @@ return [
     'verified' => 'Verified',
     'unverified' => 'Unverified',
     'types' => [
-        \App\Models\User::ADMIN_TYPE => 'Admin',
-        \App\Models\User::SUPERVISOR_TYPE => 'Supervisor',
-        \App\Models\User::CUSTOMER_TYPE => 'Customer',
+        'admin' => 'Admin',
+        'supervisor' => 'Supervisor',
+        'customer' => 'Customer',
     ],
     'impersonate' => [
         'go' => 'Go To Dashboard',

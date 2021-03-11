@@ -19,7 +19,8 @@ return [
         'adminlte3' => 'Adminlte 3',
         'vali' => 'Vali',
     ],
-    'frontend_templates' => [],
+    'frontend_templates' => [
+    ],
     'messages' => [
         'updated' => 'Application settings has been updated successfully.',
     ],

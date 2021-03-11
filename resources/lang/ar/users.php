@@ -7,9 +7,9 @@ return [
     'verified' => 'مفعل',
     'unverified' => 'غير مفعل',
     'types' => [
-        \App\Models\User::ADMIN_TYPE => 'مسئول',
-        \App\Models\User::SUPERVISOR_TYPE => 'مشرف',
-        \App\Models\User::CUSTOMER_TYPE => 'عميل',
+        'admin' => 'مسئول',
+        'supervisor' => 'مشرف',
+        'customer' => 'عميل',
     ],
     'impersonate' => [
         'go' => 'الذهاب للوحة التحكم',
