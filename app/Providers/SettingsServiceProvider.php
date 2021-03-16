@@ -16,12 +16,11 @@ class SettingsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (Schema::hasTable('settings')) {
+        if (! app()->runningInConsole() && Schema::hasTable('settings')) {
             $this->configureTemplates();
             $this->configureMail();
             $this->configurePusher();
         }
-        //dd(config('broadcasting.connections.pusher'));
     }
 
     /**
