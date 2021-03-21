@@ -47,16 +47,16 @@ class SendForgetPasswordCodeNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->greeting(trans('accounts::auth.emails.forget-password.greeting', [
+            ->greeting(trans('auth.emails.forget-password.greeting', [
                 'user' => $notifiable->name,
             ]))
-            ->subject(trans('accounts::auth.emails.forget-password.subject'))
-            ->line(trans('accounts::auth.emails.forget-password.line', [
+            ->subject(trans('auth.emails.forget-password.subject'))
+            ->line(trans('auth.emails.forget-password.line', [
                 'code' => $this->code,
                 'minutes' => ResetPasswordCode::EXPIRE_DURATION / 60,
             ]))
-            ->line(trans('accounts::auth.emails.forget-password.footer'))
-            ->salutation(trans('accounts::auth.emails.forget-password.salutation', [
+            ->line(trans('auth.emails.forget-password.footer'))
+            ->salutation(trans('auth.emails.forget-password.salutation', [
                 'app' => Config::get('app.name'),
             ]));
     }

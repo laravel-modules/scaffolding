@@ -31,13 +31,13 @@ class PasswordUpdatedNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->greeting(trans('accounts::auth.emails.reset-password.greeting', [
+            ->greeting(trans('auth.emails.reset-password.greeting', [
                 'user' => $notifiable->name,
             ]))
-            ->subject(trans('accounts::auth.emails.reset-password.subject'))
-            ->line(trans('accounts::auth.emails.reset-password.line'))
-            ->line(trans('accounts::auth.emails.reset-password.footer'))
-            ->salutation(trans('accounts::auth.emails.reset-password.salutation', [
+            ->subject(trans('auth.emails.reset-password.subject'))
+            ->line(trans('auth.emails.reset-password.line'))
+            ->line(trans('auth.emails.reset-password.footer'))
+            ->salutation(trans('auth.emails.reset-password.salutation', [
                 'app' => Config::get('app.name'),
             ]));
     }

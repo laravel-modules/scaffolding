@@ -41,6 +41,6 @@ class PasswordRule implements Rule
      */
     public function message()
     {
-        return trans('accounts::auth.password');
+        return trans('auth.password');
     }
 }
