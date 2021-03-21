@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Feedback;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Laraeast\LaravelSettings\Facades\Settings;
 
 class FeedbackPolicy
 {
@@ -66,7 +67,11 @@ class FeedbackPolicy
      */
     public function delete(User $user, Feedback $feedback)
     {
-        return $user->isAdmin() || $user->hasPermissionTo('manage.feedback');
+        return (
+                $user->isAdmin()
+                || $user->hasPermissionTo('manage.feedback')
+            )
+            && ! $this->trashed($feedback);
     }
 
     /**
@@ -77,7 +82,11 @@ class FeedbackPolicy
      */
     public function viewAnyTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.feedback')) && $this->hasSoftDeletes();
+        return (
+                $user->isAdmin()
+                || $user->hasPermissionTo('manage.feedback')
+            )
+            && $this->hasSoftDeletes();
     }
 
     /**
@@ -101,7 +110,11 @@ class FeedbackPolicy
      */
     public function restore(User $user, Feedback $feedback)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.feedback')) && $this->trashed($feedback);
+        return (
+                $user->isAdmin()
+                || $user->hasPermissionTo('manage.feedback')
+            )
+            && $this->trashed($feedback);
     }
 
     /**
@@ -113,7 +126,12 @@ class FeedbackPolicy
      */
     public function forceDelete(User $user, Feedback $feedback)
     {
-        return ($user->isAdmin() && $user->isNot($feedback) || $user->hasPermissionTo('manage.feedback')) && $this->trashed($feedback);
+        return (
+                $user->isAdmin()
+                || $user->hasPermissionTo('manage.feedback')
+            )
+            && $this->trashed($feedback)
+            && Settings::get('delete_forever');
     }
 
     /**

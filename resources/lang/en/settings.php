@@ -41,6 +41,7 @@ return [
         '%copyright%' => 'Copyright',
         'logo' => 'Logo',
         'favicon' => 'Favicon',
+        'delete_forever' => 'Enable Delete Forever Feature',
         'about' => 'About Us',
         'terms' => 'Terms & Conditions',
         'privacy' => 'Privacy Policy',

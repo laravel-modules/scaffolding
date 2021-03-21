@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Laraeast\LaravelSettings\Facades\Settings;
 
 class CustomerPolicy
 {
@@ -31,7 +32,9 @@ class CustomerPolicy
      */
     public function view(User $user, Customer $customer)
     {
-        return $user->isAdmin() || $user->is($customer) || $user->hasPermissionTo('manage.customers');
+        return $user->isAdmin()
+            || $user->is($customer)
+            || $user->hasPermissionTo('manage.customers');
     }
 
     /**
@@ -54,7 +57,12 @@ class CustomerPolicy
      */
     public function update(User $user, Customer $customer)
     {
-        return ($user->isAdmin() || $user->is($customer) || $user->hasPermissionTo('manage.customers')) && ! $this->trashed($customer);
+        return (
+                $user->isAdmin()
+                || $user->is($customer)
+                || $user->hasPermissionTo('manage.customers')
+            )
+            && ! $this->trashed($customer);
     }
 
     /**
@@ -78,7 +86,12 @@ class CustomerPolicy
      */
     public function delete(User $user, Customer $customer)
     {
-        return ($user->isAdmin() && $user->isNot($customer) || $user->hasPermissionTo('manage.customers')) && ! $this->trashed($customer);
+        return (
+                $user->isAdmin()
+                && $user->isNot($customer)
+                || $user->hasPermissionTo('manage.customers')
+            )
+            && ! $this->trashed($customer);
     }
 
     /**
@@ -89,7 +102,11 @@ class CustomerPolicy
      */
     public function viewAnyTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.customers')) && $this->hasSoftDeletes();
+        return (
+                $user->isAdmin()
+                || $user->hasPermissionTo('manage.customers')
+            )
+            && $this->hasSoftDeletes();
     }
 
     /**
@@ -113,7 +130,11 @@ class CustomerPolicy
      */
     public function restore(User $user, Customer $customer)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.customers')) && $this->trashed($customer);
+        return (
+                $user->isAdmin()
+                || $user->hasPermissionTo('manage.customers')
+            )
+            && $this->trashed($customer);
     }
 
     /**
@@ -125,7 +146,13 @@ class CustomerPolicy
      */
     public function forceDelete(User $user, Customer $customer)
     {
-        return ($user->isAdmin() && $user->isNot($customer) || $user->hasPermissionTo('manage.customers')) && $this->trashed($customer);
+        return (
+                $user->isAdmin()
+                && $user->isNot($customer)
+                || $user->hasPermissionTo('manage.customers')
+            )
+            && $this->trashed($customer)
+            && Settings::get('delete_forever');
     }
 
     /**

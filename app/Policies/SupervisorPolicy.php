@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Supervisor;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Laraeast\LaravelSettings\Facades\Settings;
 
 class SupervisorPolicy
 {
@@ -31,7 +32,9 @@ class SupervisorPolicy
      */
     public function view(User $user, Supervisor $supervisor)
     {
-        return $user->isAdmin() || $user->is($supervisor) || $user->hasPermissionTo('manage.supervisors');
+        return $user->isAdmin()
+            || $user->is($supervisor)
+            || $user->hasPermissionTo('manage.supervisors');
     }
 
     /**
@@ -54,7 +57,12 @@ class SupervisorPolicy
      */
     public function update(User $user, Supervisor $supervisor)
     {
-        return ($user->isAdmin() || $user->is($supervisor) || $user->hasPermissionTo('manage.supervisors')) && ! $this->trashed($supervisor);
+        return (
+                $user->isAdmin()
+                || $user->is($supervisor)
+                || $user->hasPermissionTo('manage.supervisors')
+            )
+            && ! $this->trashed($supervisor);
     }
 
     /**
@@ -66,7 +74,9 @@ class SupervisorPolicy
      */
     public function updateType(User $user, Supervisor $supervisor)
     {
-        return $user->isAdmin() && $user->isNot($supervisor) || $user->hasPermissionTo('manage.supervisors');
+        return $user->isAdmin()
+            && $user->isNot($supervisor)
+            || $user->hasPermissionTo('manage.supervisors');
     }
 
     /**
@@ -78,7 +88,12 @@ class SupervisorPolicy
      */
     public function delete(User $user, Supervisor $supervisor)
     {
-        return ($user->isAdmin() && $user->isNot($supervisor) || $user->hasPermissionTo('manage.supervisors')) && ! $this->trashed($supervisor);
+        return (
+                $user->isAdmin()
+                && $user->isNot($supervisor)
+                || $user->hasPermissionTo('manage.supervisors')
+            )
+            && ! $this->trashed($supervisor);
     }
 
     /**
@@ -89,7 +104,11 @@ class SupervisorPolicy
      */
     public function viewAnyTrash(User $user)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.supervisors')) && $this->hasSoftDeletes();
+        return (
+                $user->isAdmin()
+                || $user->hasPermissionTo('manage.supervisors')
+            )
+            && $this->hasSoftDeletes();
     }
 
     /**
@@ -113,7 +132,11 @@ class SupervisorPolicy
      */
     public function restore(User $user, Supervisor $supervisor)
     {
-        return ($user->isAdmin() || $user->hasPermissionTo('manage.supervisors')) && $this->trashed($supervisor);
+        return (
+                $user->isAdmin()
+                || $user->hasPermissionTo('manage.supervisors')
+            )
+            && $this->trashed($supervisor);
     }
 
     /**
@@ -125,7 +148,13 @@ class SupervisorPolicy
      */
     public function forceDelete(User $user, Supervisor $supervisor)
     {
-        return ($user->isAdmin() && $user->isNot($supervisor) || $user->hasPermissionTo('manage.supervisors')) && $this->trashed($supervisor);
+        return (
+                $user->isAdmin()
+                && $user->isNot($supervisor)
+                || $user->hasPermissionTo('manage.supervisors')
+            )
+            && $this->trashed($supervisor)
+            && Settings::get('delete_forever');
     }
 
     /**
@@ -136,7 +165,9 @@ class SupervisorPolicy
      */
     public function trashed($supervisor)
     {
-        return $this->hasSoftDeletes() && method_exists($supervisor, 'trashed') && $supervisor->trashed();
+        return $this->hasSoftDeletes()
+            && method_exists($supervisor, 'trashed')
+            && $supervisor->trashed();
     }
 
     /**

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Laraeast\LaravelSettings\Facades\Settings;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -29,6 +30,8 @@ abstract class TestCase extends BaseTestCase
         $this->app->make(\Spatie\Permission\PermissionRegistrar::class)->registerPermissions();
 
         $this->seed(RolesAndPermissionsSeeder::class);
+
+        Settings::set('delete_forever', true);
     }
 
     /**

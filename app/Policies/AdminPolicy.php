@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Admin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laraeast\LaravelSettings\Facades\Settings;
 
 class AdminPolicy
 {
@@ -125,7 +126,10 @@ class AdminPolicy
      */
     public function forceDelete(User $user, Admin $admin)
     {
-        return $user->isAdmin() && $user->isNot($admin) && $this->trashed($admin);
+        return $user->isAdmin()
+            && $user->isNot($admin)
+            && $this->trashed($admin)
+            && Settings::get('delete_forever');
     }
 
     /**

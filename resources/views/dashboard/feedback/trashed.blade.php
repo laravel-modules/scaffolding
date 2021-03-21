@@ -50,7 +50,8 @@
 
                 <td style="width: 160px">
                     @include('dashboard.feedback.partials.actions.show', ['feedback' => $message])
-                    @include('dashboard.feedback.partials.actions.delete', ['feedback' => $message])
+                    @include('dashboard.feedback.partials.actions.restore', ['feedback' => $message])
+                    @include('dashboard.feedback.partials.actions.forceDelete', ['feedback' => $message])
                 </td>
             </tr>
         @empty

@@ -22,6 +22,8 @@
                     ->value(Settings::get('frontend_template', config('layouts.frontend'))) }}
         @endif
 
+        {{ BsForm::checkbox('delete_forever')->value(1)->checked(Settings::get('delete_forever'))->withDefault() }}
+
         <div class="row">
             <div class="col-md-6">
                 {{ BsForm::image('logo')->collection('logo')->files(
