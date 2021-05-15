@@ -1,8 +1,6 @@
 <x-layout :title="trans('settings.tabs.about')" :breadcrumbs="['dashboard.settings.index']">
     {{ BsForm::resource('settings')->patch(route('dashboard.settings.update')) }}
     @component('dashboard::components.box')
-            {{ BsForm::price('name') }}
-            {{ BsForm::color('name') }}
         @bsMultilangualFormTabs
         {{ BsForm::textarea('about')
             ->attribute('class', 'form-control textarea')
