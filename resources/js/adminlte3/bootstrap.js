@@ -17,4 +17,6 @@ try {
     require('select2/dist/js/select2.full');
     require('../echo');
     require('../editor');
+    require('../datepicker');
+    require('../tagsinput');
 } catch (e) {}

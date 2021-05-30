@@ -7,6 +7,7 @@ mix.js([
   'resources/js/adminlte3/adminlte3-auth.js'
 ], 'public/js').vue();
 mix.sass('resources/sass/adminlte3/adminlte3.scss', 'public/css');
+mix.sass('resources/sass/adminlte3/adminlte3-auth.scss', 'public/css');
 
 // Vali Template
 mix.js('resources/js/vali/vali.js', 'public/js').vue();

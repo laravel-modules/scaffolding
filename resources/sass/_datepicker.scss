@@ -1,0 +1,14 @@
+/*! purgecss start ignore */
+@import "~jquery-datetimepicker/build/jquery.datetimepicker.min.css";
+/*! purgecss end ignore */
+/*!rtl:raw:
+.xdsoft_datetimepicker .xdsoft_monthpicker .xdsoft_prev {
+    background-position: 0 100% !important;
+}
+.xdsoft_datetimepicker .xdsoft_monthpicker .xdsoft_next {
+    background-position: -20px 0 !important;
+}
+.xdsoft_datetimepicker.xdsoft_rtl .xdsoft_timepicker .xdsoft_next, .xdsoft_datetimepicker.xdsoft_rtl .xdsoft_timepicker .xdsoft_prev {
+    margin-right: auto !important;
+}
+*/
