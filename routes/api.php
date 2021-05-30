@@ -23,6 +23,7 @@ Route::post('/password/reset', 'ResetPasswordController@reset')->name('password.
 Route::get('/select/users', 'UserController@select')->name('users.select');
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::post('password', 'VerificationController@password')->name('password.check');
     Route::post('verification/send', 'VerificationController@send')->name('verification.send');
     Route::post('verification/verify', 'VerificationController@verify')->name('verification.verify');
     Route::get('profile', 'ProfileController@show')->name('profile.show');

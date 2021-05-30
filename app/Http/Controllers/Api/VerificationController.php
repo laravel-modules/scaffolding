@@ -25,22 +25,15 @@ class VerificationController extends Controller
     {
         $this->validate($request, [
             'phone' => ['required', 'unique:users,phone,'.auth()->id()],
-            'password' => 'required',
         ], [], trans('verification.attributes'));
 
         $user = auth()->user();
-
-        if (! Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'password' => [trans('auth.password')],
-            ]);
-        }
 
         $verification = Verification::updateOrCreate([
             'user_id' => $user->id,
         ], [
             'phone' => $request->phone,
-            'code' => rand(111111, 999999),
+            'code' => rand(1111, 9999),
         ]);
 
         event(new VerificationCreated($verification));
@@ -82,5 +75,27 @@ class VerificationController extends Controller
         $verification->delete();
 
         return $verification->user->getResource();
+    }
+
+    /**
+     * Check if the password of the authenticated user is correct.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @throws \Illuminate\Validation\ValidationException
+     * @return \Illuminate\Http\Resources\Json\JsonResource
+     */
+    public function password(Request $request)
+    {
+        $request->validate([
+            'password' => 'required',
+        ], [], trans('auth.attributes'));
+
+        if (! Hash::check($request->password, $request->user()->password)) {
+            throw ValidationException::withMessages([
+                'password' => [trans('auth.password')],
+            ]);
+        }
+
+        return $request->user()->getResource();
     }
 }

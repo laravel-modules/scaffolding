@@ -11,6 +11,26 @@ use Illuminate\Support\Facades\Event;
 class PhoneVerificationTest extends TestCase
 {
     /** @test */
+    public function it_can_determine_if_the_authenticated_user_password_is_correct()
+    {
+        $this->postJson(route('api.password.check'), [
+            'password' => 'password',
+        ])->assertStatus(401);
+
+        $customer = $this->actingAsCustomer();
+
+        $this->postJson(route('api.password.check'), [
+            'password' => '123456',
+        ])->assertJsonValidationErrors(['password']);
+
+        $response = $this->postJson(route('api.password.check'), [
+            'password' => 'password',
+        ])->assertSuccessful();
+
+        $this->assertEquals($response->json('data.name'), $customer->name);
+    }
+
+    /** @test */
     public function it_can_send_or_resend_the_phone_verification_code()
     {
         $this->actingAsCustomer();
@@ -19,10 +39,8 @@ class PhoneVerificationTest extends TestCase
 
         Customer::factory(['phone' => '123456789'])->create();
 
-
         $this->postJson(route('api.verification.send'), [
             'phone' => '123456',
-            'password' => 'password',
         ])->assertSuccessful();
 
         Event::assertDispatched(VerificationCreated::class);

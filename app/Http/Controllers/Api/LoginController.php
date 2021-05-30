@@ -45,7 +45,11 @@ class LoginController extends Controller
         $user = User::where(function (Builder $query) use ($request) {
             $query->where('email', $request->username);
             $query->orWhere('phone', $request->username);
-        })->first();
+        })
+            ->when($request->type, function (Builder $builder) use ($request) {
+                $builder->where('type', $request->type);
+            })
+            ->first();
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
