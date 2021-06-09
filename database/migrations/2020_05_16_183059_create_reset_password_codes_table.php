@@ -17,7 +17,7 @@ class CreateResetPasswordCodesTable extends Migration
             $table->id('id');
             $table->string('username')->index();
             $table->string('code');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 

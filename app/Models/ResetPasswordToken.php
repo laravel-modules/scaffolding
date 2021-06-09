@@ -24,18 +24,13 @@ class ResetPasswordToken extends Model
     ];
 
     /**
-     * const.
-     */
-    const UPDATED_AT = null;
-
-    /**
      * Check if this code has been expired.
      *
      * @return bool
      */
     public function isExpired()
     {
-        return $this->created_at->addSeconds(static::EXPIRE_DURATION)->isPast();
+        return $this->updated_at->addSeconds(static::EXPIRE_DURATION)->isPast();
     }
 
     /**

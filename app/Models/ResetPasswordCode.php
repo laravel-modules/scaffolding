@@ -14,13 +14,6 @@ class ResetPasswordCode extends Model
     const EXPIRE_DURATION = 10 * 60;
 
     /**
-     * The name of the "updated at" column.
-     *
-     * @var string
-     */
-    const UPDATED_AT = null;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -37,6 +30,6 @@ class ResetPasswordCode extends Model
      */
     public function isExpired()
     {
-        return $this->created_at->addSeconds(static::EXPIRE_DURATION)->isPast();
+        return $this->updated_at->addSeconds(static::EXPIRE_DURATION)->isPast();
     }
 }
