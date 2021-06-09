@@ -38,6 +38,6 @@ class Verification extends Model
      */
     public function isExpired()
     {
-        return $this->created_at->addMinutes(5)->isPast();
+        return $this->updated_at->addMinutes(5)->isPast();
     }
 }
