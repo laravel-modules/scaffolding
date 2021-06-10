@@ -90,7 +90,7 @@ class RegisterController extends Controller
             'user_id' => $user->id,
             'phone' => $user->phone,
         ], [
-            'code' => rand(111111, 999999),
+            'code' => rand(1111, 9999),
         ]);
 
         event(new VerificationCreated($verification));
