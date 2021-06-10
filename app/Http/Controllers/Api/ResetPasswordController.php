@@ -48,7 +48,7 @@ class ResetPasswordController extends Controller
             'username' => $request->username,
         ], [
             'username' => $request->username,
-            'code' => Str::random(6),
+            'code' => rand(1111, 9999),
         ]);
 
         try {
