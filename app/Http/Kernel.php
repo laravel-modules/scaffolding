@@ -44,6 +44,7 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\SetApplicationLocale::class,
+            \App\Http\Middleware\DeleteMediaMiddleware::class,
         ],
         'dashboard' => [
             'web',
