@@ -6,7 +6,7 @@
 
 try {
     window.$ = window.jQuery = require('jquery');
-    require('admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js')
+    require('bootstrap')
     require('admin-lte/dist/js/adminlte.min.js')
 
     global.moment = require('moment');
