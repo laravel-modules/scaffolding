@@ -22,7 +22,7 @@ ask_secure_question(){
     echo "${ANSWER:-$2}"
 }
 # Let user write the app domain and the database name, username and password.
-APP_DOMAIN=$(ask_question "Enter App Domain" "$PROJECT_NAME.test")
+APP_URL=$(ask_question "Enter App Url" "http://$PROJECT_NAME.test")
 DB_DATABASE=$(ask_question "Enter The Database Name" "$PROJECT_NAME")
 DB_USERNAME=$(ask_question "Enter The Database Username" "root")
 DB_PASSWORD=$(ask_secure_question "Enter The Database Password" "")
@@ -35,7 +35,7 @@ mysql -u root --password=$DB_PASSWORD -e "create database $DB_DATABASE CHARACTER
 sed -e "s|DB_DATABASE=laravel|DB_DATABASE=$DB_DATABASE|"\
     -e "s|DB_USERNAME=root|DB_USERNAME=$DB_USERNAME|"\
     -e "s|DB_PASSWORD=|DB_PASSWORD=$DB_PASSWORD|"\
-    -e "s|APP_DOMAIN=localhost|APP_DOMAIN=$APP_DOMAIN|" ./.env.example > ./.env
+    -e "s|APP_URL=http://localhost|APP_URL=$APP_URL|" ./.env.example > ./.env
 
 # Install dependencies.
 composer install
@@ -50,4 +50,4 @@ php artisan storage:link
 php artisan migrate:fresh --seed
 
 # Print the project's URL.
-echo APP_URL: http://$APP_DOMAIN
+echo APP_URL: $APP_URL
