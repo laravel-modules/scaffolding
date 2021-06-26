@@ -49,6 +49,3 @@ Otherwise, you should configure your environment manually by the following steps
         - Default Admin  Credentials:
             - **Email:** admin@demo.com
             - **Password:** password
-
-### TODO
-- Add `notifications` management.
