@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Http\Filters\Filterable;
+use App\Models\Contracts\NotificationTarget;
 use App\Support\Traits\Selectable;
 use App\Http\Filters\FeedbackFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Feedback extends Model
+class Feedback extends Model implements NotificationTarget
 {
     use HasFactory;
     use Filterable;
@@ -91,5 +92,66 @@ class Feedback extends Model
     public function scopeUnread($query)
     {
         return $query->whereNull('read_at');
+    }
+
+    /**
+     * The title of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return string
+     */
+    public function getNotificationTitle(NotificationModel $notification): string
+    {
+        return config('app.name');
+    }
+
+    /**
+     * The body of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return string
+     */
+    public function getNotificationBody(NotificationModel $notification): string
+    {
+        return trans('notifications.new-feedback', [
+            'user' => $this->name,
+        ]);
+    }
+
+    /**
+     * The image of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return string
+     */
+    public function getNotificationImage(NotificationModel $notification): string
+    {
+        return 'https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm';
+    }
+
+    /**
+     * The data of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return mixed|void
+     */
+    public function getNotificationData(NotificationModel $notification)
+    {
+        //
+    }
+
+    /**
+     * The dashboard url of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return string
+     */
+    public function getNotificationDashboardUrl(NotificationModel $notification): string
+    {
+        return route('dashboard.feedback.show', [
+            $this,
+            'notification_id' => $notification->id,
+            'action' => 'delete',
+        ]);
     }
 }

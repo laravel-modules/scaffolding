@@ -34,5 +34,8 @@ Route::get('/settings', 'SettingController@index')->name('settings.index');
 Route::get('/settings/pages/{page}', 'SettingController@page')
     ->where('page', 'about|terms|privacy')->name('settings.page');
 
+Route::get('notifications/count', 'NotificationController@count')->name('notifications.count');
+Route::middleware('auth:sanctum')->get('notifications', 'NotificationController@index')->name('notifications.index');
+
 Route::post('feedback', 'FeedbackController@store')->name('feedback.send');
 /*  The routes of generated crud will set here: Don't remove this line  */

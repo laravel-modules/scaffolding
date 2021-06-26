@@ -16,11 +16,12 @@ use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
 use Lab404\Impersonate\Models\Impersonate;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use App\Models\Contracts\NotificationTarget;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable implements HasMedia, NotificationTarget
 {
     use HasFactory;
     use Notifiable;
@@ -219,5 +220,90 @@ class User extends Authenticatable implements HasMedia
     public function canBeImpersonated()
     {
         return $this->isSupervisor();
+    }
+
+    /**
+     * Get the entity's notifications.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function notifications()
+    {
+        return $this->morphMany(NotificationModel::class, 'notifiable')->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * The title of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return string
+     */
+    public function getNotificationTitle(NotificationModel $notification): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * The body of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return string
+     */
+    public function getNotificationBody(NotificationModel $notification): string
+    {
+        if ($notification->user->isCustomer()) {
+            return trans('notifications.new-customer', [
+                'user' => $this->name,
+            ]);
+        }
+
+        return __('New user has been registered.');
+    }
+
+    /**
+     * The image of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return string
+     */
+    public function getNotificationImage(NotificationModel $notification): string
+    {
+        return $this->getAvatar();
+    }
+
+    /**
+     * The data of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return mixed|void
+     */
+    public function getNotificationData(NotificationModel $notification)
+    {
+        return $this->getResource();
+    }
+
+    /**
+     * The dashboard url of the notification.
+     *
+     * @param \App\Models\NotificationModel $notification
+     * @return string
+     */
+    public function getNotificationDashboardUrl(NotificationModel $notification): string
+    {
+        $parameters = [
+            $this,
+            'notification_id' => $notification->id,
+            'action' => 'delete',
+        ];
+
+        if ($this->isAdmin()) {
+            return route('dashboard.admins.show', $parameters);
+        }
+
+        if ($this->isSupervisor()) {
+            return route('dashboard.supervisors.show', $parameters);
+        }
+
+        return route('dashboard.customers.show', $parameters);
     }
 }

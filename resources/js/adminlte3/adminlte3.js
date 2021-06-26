@@ -54,6 +54,7 @@ const i18n = new VueInternationalization({
  */
 
 Vue.component('select2', require('../components/Select2Component').default);
+Vue.component('adminte3-notification-dropdown', require('./components/NotificationDropdown').default);
 
 const app = new Vue({
     el: '#app',
