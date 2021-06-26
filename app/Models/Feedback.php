@@ -102,7 +102,7 @@ class Feedback extends Model implements NotificationTarget
      */
     public function getNotificationTitle(NotificationModel $notification): string
     {
-        return config('app.name');
+        return $this->name;
     }
 
     /**
