@@ -27,7 +27,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::filter()->paginate();
+        $customers = Customer::filter()->latest()->paginate();
 
         return view('dashboard.accounts.customers.index', compact('customers'));
     }
@@ -128,7 +128,7 @@ class CustomerController extends Controller
     {
         $this->authorize('viewAnyTrash', Customer::class);
 
-        $customers = Customer::onlyTrashed()->paginate();
+        $customers = Customer::onlyTrashed()->latest('deleted_at')->paginate();
 
         return view('dashboard.accounts.customers.trashed', compact('customers'));
     }

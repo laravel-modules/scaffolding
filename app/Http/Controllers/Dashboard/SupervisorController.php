@@ -27,7 +27,7 @@ class SupervisorController extends Controller
      */
     public function index()
     {
-        $supervisors = Supervisor::filter()->paginate();
+        $supervisors = Supervisor::filter()->latest()->paginate();
 
         return view('dashboard.accounts.supervisors.index', compact('supervisors'));
     }
@@ -136,7 +136,7 @@ class SupervisorController extends Controller
     {
         $this->authorize('viewAnyTrash', Supervisor::class);
 
-        $supervisors = Supervisor::onlyTrashed()->paginate();
+        $supervisors = Supervisor::onlyTrashed()->latest('deleted_at')->paginate();
 
         return view('dashboard.accounts.supervisors.trashed', compact('supervisors'));
     }

@@ -28,7 +28,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = Admin::filter()->paginate();
+        $admins = Admin::filter()->latest()->paginate();
 
         return view('dashboard.accounts.admins.index', compact('admins'));
     }
@@ -129,7 +129,7 @@ class AdminController extends Controller
     {
         $this->authorize('viewAnyTrash', Admin::class);
 
-        $admins = Admin::onlyTrashed()->paginate();
+        $admins = Admin::onlyTrashed()->latest('deleted_at')->paginate();
 
         return view('dashboard.accounts.admins.trashed', compact('admins'));
     }

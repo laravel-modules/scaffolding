@@ -28,7 +28,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedback = Feedback::filter()->paginate();
+        $feedback = Feedback::filter()->latest()->paginate();
 
         return view('dashboard.feedback.index', compact('feedback'));
     }
@@ -71,7 +71,7 @@ class FeedbackController extends Controller
     {
         $this->authorize('viewAnyTrash', Feedback::class);
 
-        $feedback = Feedback::onlyTrashed()->paginate();
+        $feedback = Feedback::onlyTrashed()->latest('deleted_at')->paginate();
 
         return view('dashboard.feedback.trashed', compact('feedback'));
     }
