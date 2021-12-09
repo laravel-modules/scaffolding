@@ -60,6 +60,16 @@ class SettingSeeder extends Seeder
         Settings::set('phone', '123456');
         Settings::set('email', 'support@demo.com');
 
+        Settings::set('logo')
+            ->addMedia(public_path('images/AdminLTELogo.png'))
+            ->preservingOriginal()
+            ->toMediaCollection('logo');
+
+        Settings::set('favicon')
+            ->addMedia(public_path('images/AdminLTELogo.png'))
+            ->preservingOriginal()
+            ->toMediaCollection('favicon');
+
         app(SettingJson::class)->update();
     }
 }
