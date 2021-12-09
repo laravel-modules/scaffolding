@@ -4340,6 +4340,102 @@
             /**
      * 
      *
+     * @see \Illuminate\Encryption\Encrypter
+     */ 
+        class Crypt {
+                    /**
+         * Determine if the given key and cipher combination is valid.
+         *
+         * @param string $key
+         * @param string $cipher
+         * @return bool 
+         * @static 
+         */ 
+        public static function supported($key, $cipher)
+        {
+                        return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
+        }
+                    /**
+         * Create a new encryption key for the given cipher.
+         *
+         * @param string $cipher
+         * @return string 
+         * @static 
+         */ 
+        public static function generateKey($cipher)
+        {
+                        return \Illuminate\Encryption\Encrypter::generateKey($cipher);
+        }
+                    /**
+         * Encrypt the given value.
+         *
+         * @param mixed $value
+         * @param bool $serialize
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\EncryptException
+         * @static 
+         */ 
+        public static function encrypt($value, $serialize = true)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->encrypt($value, $serialize);
+        }
+                    /**
+         * Encrypt a string without serialization.
+         *
+         * @param string $value
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\EncryptException
+         * @static 
+         */ 
+        public static function encryptString($value)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->encryptString($value);
+        }
+                    /**
+         * Decrypt the given value.
+         *
+         * @param string $payload
+         * @param bool $unserialize
+         * @return mixed 
+         * @throws \Illuminate\Contracts\Encryption\DecryptException
+         * @static 
+         */ 
+        public static function decrypt($payload, $unserialize = true)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->decrypt($payload, $unserialize);
+        }
+                    /**
+         * Decrypt the given string without unserialization.
+         *
+         * @param string $payload
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\DecryptException
+         * @static 
+         */ 
+        public static function decryptString($payload)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->decryptString($payload);
+        }
+                    /**
+         * Get the encryption key.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getKey()
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->getKey();
+        }
+         
+    }
+            /**
+     * 
+     *
      * @see \Illuminate\Database\DatabaseManager
      * @see \Illuminate\Database\Connection
      */ 
@@ -16999,6 +17095,92 @@
      
 }
 
+    namespace Laraeast\LaravelSettings\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Settings {
+                    /**
+         * Set a new settings item.
+         *
+         * @param $key
+         * @param null $value
+         * @return \Laraeast\LaravelSettings\Models\Setting 
+         * @static 
+         */ 
+        public static function set($key, $value = null)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->set($key, $value);
+        }
+                    /**
+         * Set the settings locale.
+         *
+         * @param null $locale
+         * @return \Laraeast\LaravelSettings\DatabaseSettingsHandler 
+         * @static 
+         */ 
+        public static function locale($locale = null)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->locale($locale);
+        }
+                    /**
+         * Get the given item.
+         *
+         * @param $key
+         * @param null $default
+         * @return mixed 
+         * @static 
+         */ 
+        public static function get($key, $default = null)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->get($key, $default);
+        }
+                    /**
+         * Get the settings row.
+         *
+         * @param $key
+         * @param null $default
+         * @return mixed 
+         * @static 
+         */ 
+        public static function instance($key, $default = null)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->instance($key, $default);
+        }
+                    /**
+         * Determine whether the key is already exists.
+         *
+         * @param string $key
+         * @return bool 
+         * @static 
+         */ 
+        public static function has($key)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->has($key);
+        }
+                    /**
+         * Delete the given key from storage.
+         *
+         * @param string $key
+         * @return \Laraeast\LaravelSettings\DatabaseSettingsHandler 
+         * @static 
+         */ 
+        public static function delete($key)
+        {
+                        /** @var \Laraeast\LaravelSettings\DatabaseSettingsHandler $instance */
+                        return $instance->delete($key);
+        }
+         
+    }
+     
+}
+
     namespace Collective\Html { 
             /**
      * 
@@ -18292,6 +18474,7 @@ namespace  {
             class Cache extends \Illuminate\Support\Facades\Cache {}
             class Config extends \Illuminate\Support\Facades\Config {}
             class Cookie extends \Illuminate\Support\Facades\Cookie {}
+            class Crypt extends \Illuminate\Support\Facades\Crypt {}
             class DB extends \Illuminate\Support\Facades\DB {}
             class Eloquent extends \Illuminate\Database\Eloquent\Model {             
                 /**
@@ -21731,6 +21914,7 @@ namespace  {
             class Flash extends \Laracasts\Flash\Flash {}
             class BsForm extends \Laraeast\LaravelBootstrapForms\Facades\BsForm {}
             class Locales extends \Laraeast\LaravelLocales\Facades\Locales {}
+            class Settings extends \Laraeast\LaravelSettings\Facades\Settings {}
             class Form extends \Collective\Html\FormFacade {}
             class Html extends \Collective\Html\HtmlFacade {}
      
