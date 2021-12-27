@@ -13,6 +13,7 @@
         "@ahmed-aliraqi/check-all": "^1.0.4",
         "admin-lte": "^3.1.0-rc",
         "axios": "^0.21",
+        "bootstrap": "^4.6.0",
         "icomoon": "^1.0.0",
         "inputmask": "^5.0.5",
         "jquery-datetimepicker": "^2.5.21",
@@ -23,15 +24,17 @@
         "postcss": "^8.2.10",
         "pusher-js": "^7.0.3",
         "resolve-url-loader": "^3.1.2",
-        "sass": "^1.32.2",
+        "sass": "^1.43.4",
         "sass-loader": "^8.0.2",
         "select2": "^4.0.13",
+        "summernote": "0.8.17",
         "tailwind-color-palette": "^1.0.3",
         "vali-admin": "^3.0.0",
         "vue": "^2.6.12",
         "vue-i18n": "^8.22.2",
         "vue-loader": "^15.9.6",
         "vue-template-compiler": "^2.6.12",
-        "webpack-rtl-plugin": "^2.0.0"
+        "webpack-rtl-plugin": "^2.0.0",
+        "popper.js": "^1.16.0"
     }
 }

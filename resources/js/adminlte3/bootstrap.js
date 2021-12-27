@@ -7,7 +7,7 @@
 try {
     window.$ = window.jQuery = require('jquery');
     require('bootstrap')
-    require('admin-lte/dist/js/adminlte.min.js')
+    require('admin-lte')
 
     global.moment = require('moment');
     require('daterangepicker');

@@ -6,7 +6,7 @@ let PUSHER_APP_CLUSTER = document.head.querySelector('meta[name="PUSHER_APP_CLUS
 let PUSHER_APP_HOST = document.head.querySelector('meta[name="PUSHER_APP_HOST"]');
 let PUSHER_APP_PORT = document.head.querySelector('meta[name="PUSHER_APP_PORT"]');
 
-if (PUSHER_APP_KEY) {
+if (PUSHER_APP_KEY && PUSHER_APP_KEY.content) {
   window.Echo = new Echo({
     broadcaster: 'pusher',
     key: PUSHER_APP_KEY ? PUSHER_APP_KEY.content : process.env.MIX_PUSHER_APP_KEY,

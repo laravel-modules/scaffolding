@@ -10,13 +10,13 @@
 @import '~vali-admin/src/sass/1-tools/fonts';
 @import '~vali-admin/src/sass/1-tools/vars';
 @import '~vali-admin/src/sass/1-tools/customize-bootstrap';
-@import '~vali-admin/src/sass/1-tools/bootstrap-source/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 
 // Vendor plugin files
 // Can be excluded based on your needs
 @import '~vali-admin/src/sass/1-tools/dataTables.bootstrap';
 @import '~vali-admin/src/sass/1-tools/bootstrap-datepicker';
-@import '~vali-admin/src/sass/1-tools/sweetalert';
+//@import '~vali-admin/src/sass/1-tools/sweetalert';
 @import '~vali-admin/src/sass/1-tools/notify';
 @import '~vali-admin/src/sass/1-tools/select2/select2';
 @import '~vali-admin/src/sass/1-tools/pace';
