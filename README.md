@@ -1,6 +1,8 @@
 # Laravel Scaffolding
 The laravel scaffolding of our projects.
 
+> This project using laravel 9.x if you still using laravel 8.x you should checkout to `8.x` branch by running `git checkout 8.x` command. 
+
 ## Deploying To Local Server
 If you use valet just execute the `init.sh` file to configure your environment automatically.
 ```bash
