@@ -181,7 +181,7 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
     {
         $this
             ->addMediaCollection('avatars')
-            ->useFallbackUrl('https://www.gravatar.com/avatar/'.md5($this->email).'?d=mm')
+            ->useFallbackUrl('https://www.gravatar.com/avatar/'.md5($this->email ?: '').'?d=mm')
             ->singleFile()
             ->registerMediaConversions(function () {
                 $this->addMediaConversion('thumb')

@@ -42,6 +42,14 @@ return [
                 'port' => env('PUSHER_APP_PORT', 443),
                 'scheme' => env('PUSHER_APP_SCHEME'),
             ],
+            'client_options' => [
+                // Guzzle client options: https://docs.guzzlephp.org/en/stable/request-options.html
+            ],
+        ],
+
+        'ably' => [
+            'driver' => 'ably',
+            'key' => env('ABLY_KEY'),
         ],
 
         'redis' => [
