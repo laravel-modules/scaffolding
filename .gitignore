@@ -3,6 +3,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/media-library
 /storage/settings.json
 /storage/debugbar
 /vendor
