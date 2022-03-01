@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS scaffoldig_db;
+CREATE DATABASE IF NOT EXISTS scaffolding_db;
