@@ -61,9 +61,6 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "classmap": [
-            "database/seeds"
-        ],
         "files": [
             "app/Support/helpers.php"
         ]
