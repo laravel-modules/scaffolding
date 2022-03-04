@@ -33,9 +33,10 @@ mysql -u root --password=$DB_PASSWORD -e "create database $DB_DATABASE CHARACTER
 
 # Create the project's .env file.
 sed -e "s|DB_DATABASE=laravel|DB_DATABASE=$DB_DATABASE|"\
-    -e "s|DB_USERNAME=root|DB_USERNAME=$DB_USERNAME|"\
-    -e "s|DB_PASSWORD=|DB_PASSWORD=$DB_PASSWORD|"\
-    -e "s|APP_URL=http://localhost|APP_URL=$APP_URL|" ./.env.example > ./.env
+    -e "s|DB_USERNAME=laravel|DB_USERNAME=$DB_USERNAME|"\
+    -e "s|DB_HOST=mysql|DB_HOST=localhost|"\
+    -e "s|DB_PASSWORD=password|DB_PASSWORD=$DB_PASSWORD|"\
+    -e "s|APP_URL=http://localhost:8080|APP_URL=$APP_URL|" ./.env.example > ./.env
 
 # Install dependencies.
 composer install
@@ -44,7 +45,7 @@ composer install
 php artisan key:generate
 
 # Create symlink for storage and media files.
-php artisan storage:link
+php artisan storage:link --force
 
 # Migrate the tables and seed accounts and dummy data.
 php artisan migrate:fresh --seed

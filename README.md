@@ -51,6 +51,8 @@ Otherwise, you should configure your environment manually by the following steps
 ```shell
 cp .env.example .env
 docker-compose run --rm artisan key:generate
+docker-compose run --rm artisan storage:link --force
+docker-compose run --rm artisan migrate --seed
 docker-compose up # turn on all services...
 ```
 - To access the project go to your browser and visit: [http://localhost:8080](http://localhost:8080)
