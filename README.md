@@ -48,20 +48,13 @@ Otherwise, you should configure your environment manually by the following steps
         ```
 - Go to your browser and visit: [http://localhost:8000](http://localhost:8000)
 ## Deploying Using Docker Container
-- First you should make sure that the docker is installed in your machine then run the following command:
-    ```shell
-    docker-compose up --build
-    ```
-  > This will take a few minutes in the first time
-  
-  > note: add the `--build` flag only in the first time.
-  > and you can add `-d` to run container in background.
-  
-  > Any change in `.env` file you should restart the container
-  
-- You can set the app port from `.env` file in `APP_PORT` variable.
-- To access the project go to your browser and visit: [http://localhost:5000](http://localhost:5000)
-- To access phpmyadmin go to your browser and visit: [http://localhost:5050](http://localhost:5050)
+```shell
+cp .env.example .env
+docker-compose run --rm artisan key:generate
+docker-compose up # turn on all services...
+```
+- To access the project go to your browser and visit: [http://localhost:8080](http://localhost:8080)
+- To access phpmyadmin go to your browser and visit: [http://localhost:8088](http://localhost:8088)
 - To access mailhog go to your browser and visit: [http://0.0.0.0:8025](http://0.0.0.0:8025)
 
 - Default Admin  Credentials:
