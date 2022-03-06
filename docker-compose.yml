@@ -69,6 +69,12 @@ services:
         env_file:
             - .env
         entrypoint: ["php", "/var/www/html/artisan"]
+    npm:
+        image: node:17.6.0-alpine
+        volumes:
+            - .:/var/www/html
+        working_dir: /var/www/html
+        entrypoint: ["npm"]
     phpmyadmin:
         depends_on:
             - mysql
