@@ -21,7 +21,7 @@ class LoginController extends Controller
     /**
      * @var \App\Support\FirebaseToken
      */
-    private $firebaseToken;
+    private FirebaseToken $firebaseToken;
 
     /**
      * LoginController constructor.
@@ -78,10 +78,8 @@ class LoginController extends Controller
         $verifier = $this->firebaseToken->accessToken($request->access_token);
 
         $phone = $verifier->getPhoneNumber();
-
         $email = $verifier->getEmail();
         $name = $verifier->getName();
-
         $firebaseId = $verifier->getFirebaseId();
 
         $userQuery = User::where(compact('phone'))
