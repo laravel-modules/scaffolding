@@ -39,7 +39,7 @@ class FirebaseToken
     }
 
     /**
-     * Get the valid phone number from access token.
+     * Get the email address from access token.
      *
      * @throws AuthenticationException
      * @return string|null
@@ -50,7 +50,7 @@ class FirebaseToken
     }
 
     /**
-     * Get the valid phone number from access token.
+     * Get the name of user from access token.
      *
      * @throws AuthenticationException
      * @return string|null
@@ -61,7 +61,7 @@ class FirebaseToken
     }
 
     /**
-     * Get the valid phone number from access token.
+     * Get the firebase id from access token.
      *
      * @throws AuthenticationException
      * @return string|null
