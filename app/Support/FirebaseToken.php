@@ -2,15 +2,25 @@
 
 namespace App\Support;
 
-use Firebase\Auth\Token\Verifier;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Auth\AuthenticationException;
+use Kreait\Firebase\JWT\Contract\Token;
+use Kreait\Firebase\JWT\IdTokenVerifier;
 
 class FirebaseToken
 {
-    protected $verifierId;
+    /**
+     * @var string
+     */
+    protected string $verifierId;
 
-    public function accessToken($token)
+    /**
+     * Set the verifier id.
+     *
+     * @param string $token
+     * @return $this
+     */
+    public function accessToken(string $token): static
     {
         $this->verifierId = $token;
 
@@ -21,66 +31,71 @@ class FirebaseToken
      * Get the valid phone number from access token.
      *
      * @throws AuthenticationException
-     * @return string
+     * @return string|null
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): string|null
     {
-        return $this->getVerifier()->hasClaim('phone_number')
-            ? $this->getVerifier()->getClaim('phone_number') : null;
+        return data_get($this->getPayload(), 'phone_number');
     }
 
     /**
      * Get the valid phone number from access token.
      *
      * @throws AuthenticationException
-     * @return string
+     * @return string|null
      */
-    public function getEmail()
+    public function getEmail(): string|null
     {
-        return $this->getVerifier()->hasClaim('email')
-            ? $this->getVerifier()->getClaim('email') : null;
+        return data_get($this->getPayload(), 'email');
     }
 
     /**
      * Get the valid phone number from access token.
      *
      * @throws AuthenticationException
-     * @return string
+     * @return string|null
      */
-    public function getName()
+    public function getName(): string|null
     {
-        return $this->getVerifier()->hasClaim('name')
-            ? $this->getVerifier()->getClaim('name') : null;
+        return data_get($this->getPayload(), 'name');
     }
 
     /**
      * Get the valid phone number from access token.
      *
      * @throws AuthenticationException
-     * @return string
+     * @return string|null
      */
-    public function getFirebaseId()
+    public function getFirebaseId(): string|null
     {
-        return $this->getVerifier()->hasClaim('user_id')
-            ? $this->getVerifier()->getClaim('user_id') : null;
+        return data_get($this->getPayload(), 'user_id');
     }
 
     /**
      * @throws \Illuminate\Auth\AuthenticationException
-     * @return \Lcobucci\JWT\Token
+     * @return \Kreait\Firebase\JWT\Contract\Token
      */
-    public function getVerifier()
+    public function getVerifier(): Token
     {
         $projectId = Config::get('accounts.firebase_project_id');
 
-        $verifier = new Verifier($projectId);
+        $verifier = IdTokenVerifier::createWithProjectId($projectId);
 
         try {
-            $verifiedIdToken = $verifier->verifyIdToken($this->verifierId);
-
-            return $verifiedIdToken;
+            return $verifier->verifyIdToken($this->verifierId);
         } catch (\Throwable $e) {
             throw new AuthenticationException('Invalid access token!');
         }
+    }
+
+    /**
+     * Get the verifier payload.
+     *
+     * @throws \Illuminate\Auth\AuthenticationException
+     * @return array
+     */
+    public function getPayload(): array
+    {
+        return $this->getVerifier()->payload();
     }
 }

@@ -16,7 +16,7 @@
         "diglactic/laravel-breadcrumbs": "^7.0",
         "doctrine/dbal": "^2.9",
         "fruitcake/laravel-cors": "^2.0.5",
-        "kreait/firebase-tokens": "^1.10",
+        "kreait/firebase-tokens": "^2.3",
         "lab404/laravel-impersonate": "^1.7",
         "laracasts/flash": "^3.0",
         "ahmed-aliraqi/presenter": "^1.0",
