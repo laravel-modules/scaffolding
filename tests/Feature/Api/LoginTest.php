@@ -51,10 +51,12 @@ class LoginTest extends TestCase
     {
         $this->partialMock(FirebaseToken::class, function ($mock) {
             $mock->shouldReceive('accessToken')->with('dummy token')->andReturnSelf();
-            $mock->shouldReceive('getPhoneNumber')->andReturns('123456789');
-            $mock->shouldReceive('getEmail')->andReturns('demo@demo.com');
-            $mock->shouldReceive('getName')->andReturns('Ahmed');
-            $mock->shouldReceive('getFirebaseId')->andReturns(123);
+            $mock->shouldReceive('getPayload')->andReturns([
+                'name' => 'Jane Doe',
+                'user_id' => 'W0IturDwy4TYTmX6ilkd2ZbAXRp2',
+                'email' => 'jane@doe.tld',
+                'phone_number' => '+1234567890',
+            ]);
         });
 
         // Test validation.
@@ -70,10 +72,9 @@ class LoginTest extends TestCase
             ])
             ->assertJsonStructure(['token']);
 
-        $this->assertEquals($user->phone, '123456789');
-        $this->assertEquals($user->phone, '123456789');
-        $this->assertEquals($user->email, 'demo@demo.com');
-        $this->assertEquals($user->name, 'Ahmed');
-        $this->assertEquals($user->firebase_id, 123);
+        $this->assertEquals($user->phone, '+1234567890');
+        $this->assertEquals($user->email, 'jane@doe.tld');
+        $this->assertEquals($user->name, 'Jane Doe');
+        $this->assertEquals($user->firebase_id, 'W0IturDwy4TYTmX6ilkd2ZbAXRp2');
     }
 }
