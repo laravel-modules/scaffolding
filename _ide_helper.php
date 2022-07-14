@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.11.0.
+ * Generated for Laravel 9.20.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2795,11 +2795,12 @@
      *
      * @method static \Illuminate\Broadcasting\Broadcasters\Broadcaster channel(string $channel, callable|string  $callback, array $options = [])
      * @method static mixed auth(\Illuminate\Http\Request $request)
+     * @method static void resolveAuthenticatedUserUsing(Closure $callback)
      * @see \Illuminate\Contracts\Broadcasting\Factory
      */ 
         class Broadcast {
                     /**
-         * Register the routes for handling broadcast authentication and sockets.
+         * Register the routes for handling broadcast channel authentication and sockets.
          *
          * @param array|null $attributes
          * @return void 
@@ -2809,6 +2810,32 @@
         {
                         /** @var \Illuminate\Broadcasting\BroadcastManager $instance */
                         $instance->routes($attributes);
+        }
+                    /**
+         * Register the routes for handling broadcast user authentication.
+         *
+         * @param array|null $attributes
+         * @return void 
+         * @static 
+         */ 
+        public static function userRoutes($attributes = null)
+        {
+                        /** @var \Illuminate\Broadcasting\BroadcastManager $instance */
+                        $instance->userRoutes($attributes);
+        }
+                    /**
+         * Register the routes for handling broadcast authentication and sockets.
+         * 
+         * Alias of "routes" method.
+         *
+         * @param array|null $attributes
+         * @return void 
+         * @static 
+         */ 
+        public static function channelRoutes($attributes = null)
+        {
+                        /** @var \Illuminate\Broadcasting\BroadcastManager $instance */
+                        $instance->channelRoutes($attributes);
         }
                     /**
          * Get the socket ID for the given request.
@@ -5208,6 +5235,52 @@
                         $instance->logQuery($query, $bindings, $time);
         }
                     /**
+         * Register a callback to be invoked when the connection queries for longer than a given amount of time.
+         *
+         * @param \DateTimeInterface|\Carbon\CarbonInterval|float|int $threshold
+         * @param callable $handler
+         * @return void 
+         * @static 
+         */ 
+        public static function whenQueryingForLongerThan($threshold, $handler)
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        $instance->whenQueryingForLongerThan($threshold, $handler);
+        }
+                    /**
+         * Allow all the query duration handlers to run again, even if they have already run.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function allowQueryDurationHandlersToRunAgain()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        $instance->allowQueryDurationHandlersToRunAgain();
+        }
+                    /**
+         * Get the duration of all run queries in milliseconds.
+         *
+         * @return float 
+         * @static 
+         */ 
+        public static function totalQueryDuration()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        return $instance->totalQueryDuration();
+        }
+                    /**
+         * Reset the duration of all run queries.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function resetTotalQueryDuration()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        $instance->resetTotalQueryDuration();
+        }
+                    /**
          * Register a hook to be run just before a database query is executed.
          *
          * @param \Closure $callback
@@ -6063,7 +6136,7 @@
          * Assert if an event has a listener attached to it.
          *
          * @param string $expectedEvent
-         * @param string $expectedListener
+         * @param string|array $expectedListener
          * @return void 
          * @static 
          */ 
@@ -6523,6 +6596,19 @@
         {
                         /** @var \Illuminate\Filesystem\Filesystem $instance */
                         return $instance->isDirectory($directory);
+        }
+                    /**
+         * Determine if the given path is a directory that does not contain any other files or directories.
+         *
+         * @param string $directory
+         * @param bool $ignoreDotFiles
+         * @return bool 
+         * @static 
+         */ 
+        public static function isEmptyDirectory($directory, $ignoreDotFiles = false)
+        {
+                        /** @var \Illuminate\Filesystem\Filesystem $instance */
+                        return $instance->isEmptyDirectory($directory, $ignoreDotFiles);
         }
                     /**
          * Determine if the given path is readable.
@@ -7070,6 +7156,33 @@
                         /** @var \Illuminate\Auth\Access\Gate $instance */
                         return $instance->setContainer($container);
         }
+                    /**
+         * Deny with a HTTP status code.
+         *
+         * @param int $status
+         * @param \Illuminate\Auth\Access\?string $message
+         * @param \Illuminate\Auth\Access\?int $code
+         * @return \Illuminate\Auth\Access\Response 
+         * @static 
+         */ 
+        public static function denyWithStatus($status, $message = null, $code = null)
+        {
+                        /** @var \Illuminate\Auth\Access\Gate $instance */
+                        return $instance->denyWithStatus($status, $message, $code);
+        }
+                    /**
+         * Deny with a 404 HTTP status code.
+         *
+         * @param \Illuminate\Auth\Access\?string $message
+         * @param \Illuminate\Auth\Access\?int $code
+         * @return \Illuminate\Auth\Access\Response 
+         * @static 
+         */ 
+        public static function denyAsNotFound($message = null, $code = null)
+        {
+                        /** @var \Illuminate\Auth\Access\Gate $instance */
+                        return $instance->denyAsNotFound($message, $code);
+        }
          
     }
             /**
@@ -7264,7 +7377,8 @@
      * @method static \Illuminate\Http\Client\PendingRequest contentType(string $contentType)
      * @method static \Illuminate\Http\Client\PendingRequest dd()
      * @method static \Illuminate\Http\Client\PendingRequest dump()
-     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleep = 0, ?callable $when = null, bool $throw = true)
+     * @method static \Illuminate\Http\Client\PendingRequest maxRedirects(int $max)
+     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleepMilliseconds = 0, ?callable $when = null, bool $throw = true)
      * @method static \Illuminate\Http\Client\PendingRequest sink(string|resource $to)
      * @method static \Illuminate\Http\Client\PendingRequest stub(callable $callback)
      * @method static \Illuminate\Http\Client\PendingRequest timeout(int $seconds)
@@ -7280,6 +7394,8 @@
      * @method static \Illuminate\Http\Client\PendingRequest withoutRedirecting()
      * @method static \Illuminate\Http\Client\PendingRequest withoutVerifying()
      * @method static \Illuminate\Http\Client\PendingRequest throw(callable $callback = null)
+     * @method static \Illuminate\Http\Client\PendingRequest throwIf($condition)
+     * @method \Illuminate\Http\Client\PendingRequest throwUnless($condition)
      * @method static array pool(callable $callback)
      * @method static \Illuminate\Http\Client\Response delete(string $url, array $data = [])
      * @method static \Illuminate\Http\Client\Response get(string $url, array|string|null $query = null)
@@ -7294,7 +7410,7 @@
                     /**
          * Create a new response instance for use during stubbing.
          *
-         * @param array|string $body
+         * @param array|string|null $body
          * @param int $status
          * @param array $headers
          * @return \GuzzleHttp\Promise\PromiseInterface 
@@ -7352,6 +7468,29 @@
         {
                         /** @var \Illuminate\Http\Client\Factory $instance */
                         return $instance->stubUrl($url, $callback);
+        }
+                    /**
+         * Indicate that an exception should not be thrown if any request is not faked.
+         *
+         * @param bool $prevent
+         * @return \Illuminate\Http\Client\Factory 
+         * @static 
+         */ 
+        public static function preventStrayRequests($prevent = true)
+        {
+                        /** @var \Illuminate\Http\Client\Factory $instance */
+                        return $instance->preventStrayRequests($prevent);
+        }
+                    /**
+         * Indicate that an exception should not be thrown if any request is not faked.
+         *
+         * @return \Illuminate\Http\Client\Factory 
+         * @static 
+         */ 
+        public static function allowStrayRequests()
+        {
+                        /** @var \Illuminate\Http\Client\Factory $instance */
+                        return $instance->allowStrayRequests();
         }
                     /**
          * Record a request response pair.
@@ -7650,6 +7789,18 @@
                         return $instance->parseKey($key);
         }
                     /**
+         * Specify a callback that should be invoked to determined the applicable locale array.
+         *
+         * @param callable $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function determineLocalesUsing($callback)
+        {
+                        /** @var \Illuminate\Translation\Translator $instance */
+                        $instance->determineLocalesUsing($callback);
+        }
+                    /**
          * Get the message selector instance.
          *
          * @return \Illuminate\Translation\MessageSelector 
@@ -7883,6 +8034,40 @@
         {
                         /** @var \Illuminate\Log\LogManager $instance */
                         return $instance->driver($driver);
+        }
+                    /**
+         * Share context across channels and stacks.
+         *
+         * @param array $context
+         * @return \Illuminate\Log\LogManager 
+         * @static 
+         */ 
+        public static function shareContext($context)
+        {
+                        /** @var \Illuminate\Log\LogManager $instance */
+                        return $instance->shareContext($context);
+        }
+                    /**
+         * The context shared across channels and stacks.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function sharedContext()
+        {
+                        /** @var \Illuminate\Log\LogManager $instance */
+                        return $instance->sharedContext();
+        }
+                    /**
+         * Flush the shared context.
+         *
+         * @return \Illuminate\Log\LogManager 
+         * @static 
+         */ 
+        public static function flushSharedContext()
+        {
+                        /** @var \Illuminate\Log\LogManager $instance */
+                        return $instance->flushSharedContext();
         }
                     /**
          * Get the default log driver name.
@@ -8718,6 +8903,18 @@
                         $instance->assertSentTimes($notification, $expectedCount);
         }
                     /**
+         * Assert the total count of notification that were sent.
+         *
+         * @param int $expectedCount
+         * @return void 
+         * @static 
+         */ 
+        public static function assertCount($expectedCount)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\NotificationFake $instance */
+                        $instance->assertCount($expectedCount);
+        }
+                    /**
          * Assert the total amount of times a notification was sent.
          *
          * @param int $expectedCount
@@ -9533,6 +9730,7 @@
          *
          * @param int $status
          * @return \Illuminate\Http\RedirectResponse 
+         * @deprecated Will be removed in a future Laravel version.
          * @static 
          */ 
         public static function home($status = 302)
@@ -9585,7 +9783,7 @@
                     /**
          * Create a new redirect response to the previously intended location.
          *
-         * @param string $default
+         * @param mixed $default
          * @param int $status
          * @param array $headers
          * @param bool|null $secure
@@ -9964,6 +10162,39 @@
                         return $instance->fullUrlIs(...$patterns);
         }
                     /**
+         * Get the host name.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function host()
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->host();
+        }
+                    /**
+         * Get the HTTP host being requested.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function httpHost()
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->httpHost();
+        }
+                    /**
+         * Get the scheme and HTTP host.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function schemeAndHttpHost()
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->schemeAndHttpHost();
+        }
+                    /**
          * Determine if the request is the result of an AJAX call.
          *
          * @return bool 
@@ -10162,6 +10393,7 @@
                     /**
          * Gets the Session.
          *
+         * @throws SessionNotFoundException When session is not set properly
          * @static 
          */ 
         public static function getSession()
@@ -15513,7 +15745,7 @@
                     /**
          * Get the container instance used by the validation factory.
          *
-         * @return \Illuminate\Contracts\Container\Container 
+         * @return \Illuminate\Contracts\Container\Container|null 
          * @static 
          */ 
         public static function getContainer()
@@ -19851,7 +20083,7 @@ namespace  {
              * Find a model by its primary key.
              *
              * @param mixed $id
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|null 
              * @static 
              */ 
@@ -19865,7 +20097,7 @@ namespace  {
              * Find multiple models by their primary keys.
              *
              * @param \Illuminate\Contracts\Support\Arrayable|array $ids
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Collection 
              * @static 
              */ 
@@ -19879,7 +20111,7 @@ namespace  {
              * Find a model by its primary key or throw an exception.
              *
              * @param mixed $id
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static|static[] 
              * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<\Illuminate\Database\Eloquent\Model>
              * @static 
@@ -19894,7 +20126,7 @@ namespace  {
              * Find a model by its primary key or return fresh model instance.
              *
              * @param mixed $id
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Model|static 
              * @static 
              */ 
@@ -19908,7 +20140,7 @@ namespace  {
              * Find a model by its primary key or call a callback.
              *
              * @param mixed $id
-             * @param \Closure|array $columns
+             * @param \Closure|array|string $columns
              * @param \Closure|null $callback
              * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Collection|static[]|static|mixed 
              * @static 
@@ -19964,7 +20196,7 @@ namespace  {
                 /**
              * Execute the query and get the first result or throw an exception.
              *
-             * @param array $columns
+             * @param array|string $columns
              * @return \Illuminate\Database\Eloquent\Model|static 
              * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<\Illuminate\Database\Eloquent\Model>
              * @static 
@@ -19978,7 +20210,7 @@ namespace  {
                 /**
              * Execute the query and get the first result or call a callback.
              *
-             * @param \Closure|array $columns
+             * @param \Closure|array|string $columns
              * @param \Closure|null $callback
              * @return \Illuminate\Database\Eloquent\Model|static|mixed 
              * @static 
@@ -20114,8 +20346,8 @@ namespace  {
                 /**
              * Paginate the given query.
              *
-             * @param int|null $perPage
-             * @param array $columns
+             * @param int|null|\Closure $perPage
+             * @param array|string $columns
              * @param string $pageName
              * @param int|null $page
              * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator 
@@ -20132,7 +20364,7 @@ namespace  {
              * Paginate the given query into a simple paginator.
              *
              * @param int|null $perPage
-             * @param array $columns
+             * @param array|string $columns
              * @param string $pageName
              * @param int|null $page
              * @return \Illuminate\Contracts\Pagination\Paginator 
@@ -20148,7 +20380,7 @@ namespace  {
              * Paginate the given query into a cursor paginator.
              *
              * @param int|null $perPage
-             * @param array $columns
+             * @param array|string $columns
              * @param string $cursorName
              * @param \Illuminate\Pagination\Cursor|string|null $cursor
              * @return \Illuminate\Contracts\Pagination\CursorPaginator 
@@ -20351,6 +20583,19 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->setEagerLoads($eagerLoad);
+            }
+             
+                /**
+             * Indicate that the given relationships should not be eagerly loaded.
+             *
+             * @param array $relations
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function withoutEagerLoad($relations)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->withoutEagerLoad($relations);
             }
              
                 /**
@@ -20726,6 +20971,24 @@ namespace  {
             }
              
                 /**
+             * Add a relationship count / exists condition to the query with where clauses.
+             * 
+             * Also load the relationship with same condition.
+             *
+             * @param string $relation
+             * @param \Closure|null $callback
+             * @param string $operator
+             * @param int $count
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function withWhereHas($relation, $callback = null, $operator = '>=', $count = 1)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->withWhereHas($relation, $callback, $operator, $count);
+            }
+             
+                /**
              * Add a relationship count / exists condition to the query with where clauses and an "or".
              *
              * @param string $relation
@@ -20978,6 +21241,20 @@ namespace  {
             }
              
                 /**
+             * Add a not morph-to relationship condition to the query.
+             *
+             * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
+             * @param \Illuminate\Database\Eloquent\Model|string $model
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function whereNotMorphedTo($relation, $model, $boolean = 'and')
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->whereNotMorphedTo($relation, $model, $boolean);
+            }
+             
+                /**
              * Add a morph-to relationship condition to the query with an "or where" clause.
              *
              * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
@@ -20989,6 +21266,20 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->orWhereMorphedTo($relation, $model);
+            }
+             
+                /**
+             * Add a not morph-to relationship condition to the query with an "or where" clause.
+             *
+             * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
+             * @param \Illuminate\Database\Eloquent\Model|string $model
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function orWhereNotMorphedTo($relation, $model)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->orWhereNotMorphedTo($relation, $model);
             }
              
                 /**
@@ -21430,13 +21721,13 @@ namespace  {
              *
              * @param array $wheres
              * @param array $bindings
-             * @return void 
+             * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
             public static function mergeWheres($wheres, $bindings)
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                $instance->mergeWheres($wheres, $bindings);
+                                return $instance->mergeWheres($wheres, $bindings);
             }
              
                 /**
@@ -22323,8 +22614,8 @@ namespace  {
              * Add a "having" clause to the query.
              *
              * @param \Closure|string $column
-             * @param string|null $operator
-             * @param string|null $value
+             * @param string|int|float|null $operator
+             * @param string|int|float|null $value
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder 
              * @static 
@@ -22339,8 +22630,8 @@ namespace  {
              * Add an "or having" clause to the query.
              *
              * @param \Closure|string $column
-             * @param string|null $operator
-             * @param string|null $value
+             * @param string|int|float|null $operator
+             * @param string|int|float|null $value
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -22481,7 +22772,7 @@ namespace  {
                 /**
              * Add an "order by" clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Expression|string $column
              * @param string $direction
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException
@@ -22496,7 +22787,7 @@ namespace  {
                 /**
              * Add a descending "order by" clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Expression|string $column
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
