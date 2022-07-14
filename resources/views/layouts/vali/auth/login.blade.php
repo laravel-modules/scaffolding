@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@lang('dashboard.auth.login.title') | {{ config('app.name', 'Laravel') }}</title>
+    <title>@lang('dashboard.auth.login.title') | {{ app_name() }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
@@ -20,7 +20,7 @@
 </section>
 <section class="login-content" id="app">
     <div class="logo">
-        <h1>{{ config('app.name') }}</h1>
+        <h1>{{ app_name() }}</h1>
     </div>
     <div class="login-box">
         <form class="login-form" action="{{ route('login') }}" method="post">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@lang('dashboard.auth.forget.title') | {{ config('app.name', 'Laravel') }}</title>
+    <title>@lang('dashboard.auth.forget.title') | {{ app_name() }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,7 +16,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/') }}"><b>{{ config('app.name') }}</b></a>
+        <a href="{{ url('/') }}"><b>{{ app_name() }}</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
