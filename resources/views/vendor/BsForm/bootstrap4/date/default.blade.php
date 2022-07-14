@@ -1,16 +1,15 @@
 <?php $invalidClass = $errors->{$errorBag}->has($nameWithoutBrackets) ? ' is-invalid' : ''; ?>
+<?php $value = $value && ! Str::contains($value, '___') ? \Carbon\Carbon::parse($value)
+    ->format(
+        isset($attributes['data-format']) ? $attributes['data-format'] : 'Y/m/d H:i'
+    ): $value ?>
 <div class="form-group">
     @if($label)
         {{ Form::label($name, $label) }}
     @endif
-    <?php
-    $format = $attributes['data-format'] ?? 'Y/m/d';
-    $value = $value instanceof \Carbon\Carbon ? $value->format($format) : $value;
-    ?>
     {{ Form::text($name, $value, array_merge([
         'class' => 'datepicker form-control'.$invalidClass,
         'autocomplete' => 'off',
-        'data-datepicker' => '1',
     ], $attributes)) }}
 
     @if($inlineValidation)
