@@ -35,40 +35,40 @@ class FirebaseToken
      */
     public function getPhoneNumber(): string|null
     {
-        return data_get($this->getPayload(), 'phone_number');
+        return data_get($this->getVerifier()->payload(), 'phone_number');
     }
 
     /**
-     * Get the email address from access token.
+     * Get the valid phone number from access token.
      *
      * @throws AuthenticationException
      * @return string|null
      */
     public function getEmail(): string|null
     {
-        return data_get($this->getPayload(), 'email');
+        return data_get($this->getVerifier()->payload(), 'email');
     }
 
     /**
-     * Get the name of user from access token.
+     * Get the valid phone number from access token.
      *
      * @throws AuthenticationException
      * @return string|null
      */
     public function getName(): string|null
     {
-        return data_get($this->getPayload(), 'name');
+        return data_get($this->getVerifier()->payload(), 'name');
     }
 
     /**
-     * Get the firebase id from access token.
+     * Get the valid phone number from access token.
      *
      * @throws AuthenticationException
      * @return string|null
      */
     public function getFirebaseId(): string|null
     {
-        return data_get($this->getPayload(), 'user_id');
+        return data_get($this->getVerifier()->payload(), 'user_id');
     }
 
     /**
@@ -86,16 +86,5 @@ class FirebaseToken
         } catch (\Throwable $e) {
             throw new AuthenticationException('Invalid access token!');
         }
-    }
-
-    /**
-     * Get the verifier payload.
-     *
-     * @throws \Illuminate\Auth\AuthenticationException
-     * @return array
-     */
-    public function getPayload(): array
-    {
-        return $this->getVerifier()->payload();
     }
 }

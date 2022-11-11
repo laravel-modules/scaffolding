@@ -173,6 +173,24 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function fcmTokens()
+    {
+        return $this->hasMany(FcmToken::class, 'user_id');
+    }
+
+    /**
+     * Specifies the user's FCM token
+     *
+     * @return string|array
+     */
+    public function routeNotificationForFcm()
+    {
+        return $this->fcmTokens()->pluck('token')->toArray();
+    }
+
+    /**
      * Define the media collections.
      *
      * @return void

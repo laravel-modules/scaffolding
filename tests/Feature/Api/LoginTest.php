@@ -51,12 +51,10 @@ class LoginTest extends TestCase
     {
         $this->partialMock(FirebaseToken::class, function ($mock) {
             $mock->shouldReceive('accessToken')->with('dummy token')->andReturnSelf();
-            $mock->shouldReceive('getPayload')->andReturns([
-                'name' => 'Jane Doe',
-                'user_id' => 'W0IturDwy4TYTmX6ilkd2ZbAXRp2',
-                'email' => 'jane@doe.tld',
-                'phone_number' => '+1234567890',
-            ]);
+            $mock->shouldReceive('getName')->andReturns('Jane Doe');
+            $mock->shouldReceive('getEmail')->andReturns('jane@doe.tld');
+            $mock->shouldReceive('getPhoneNumber')->andReturns('+1234567890');
+            $mock->shouldReceive('getFirebaseId')->andReturns('W0IturDwy4TYTmX6ilkd2ZbAXRp2');
         });
 
         // Test validation.
