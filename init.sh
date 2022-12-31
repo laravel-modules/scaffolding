@@ -23,7 +23,7 @@ ask_secure_question(){
 }
 # Let user write the app domain and the database name, username and password.
 APP_URL=$(ask_question "Enter App Url" "http://$PROJECT_NAME.test")
-DB_DATABASE=$(ask_question "Enter The Database Name" "$PROJECT_NAME")
+DB_DATABASE=$(ask_question "Enter The Database Name" "${PROJECT_NAME//-/_}")
 DB_USERNAME=$(ask_question "Enter The Database Username" "root")
 DB_PASSWORD=$(ask_secure_question "Enter The Database Password" "")
 echo " "
