@@ -12,14 +12,14 @@ class FeedbackFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'name' => $this->faker->word,
-            'phone' => $this->faker->phoneNumber,
-            'email' => $this->faker->companyEmail,
-            'message' => $this->faker->sentence,
-            'read_at' => $this->faker->randomElement([null, now()]),
+            'name' => fake()->word,
+            'phone' => fake()->phoneNumber,
+            'email' => fake()->companyEmail,
+            'message' => fake()->sentence,
+            'read_at' => fake()->randomElement([null, now()]),
         ];
     }
 }

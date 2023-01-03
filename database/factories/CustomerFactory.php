@@ -16,9 +16,9 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'phone' => $this->faker->unique()->phoneNumber,
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail,
+            'phone' => fake()->unique()->phoneNumber,
             'phone_verified_at' => now(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -27,7 +27,7 @@ class CustomerFactory extends Factory
     }
 
     /**
-     * Configure the model factory.
+     * Configure the factory.
      *
      * @return $this
      */
@@ -54,7 +54,7 @@ class CustomerFactory extends Factory
                     public_path('images/user7-128x128.jpg'),
                     public_path('images/user8-128x128.jpg'),
                 ];
-                $user->addMedia($this->faker->randomElement($avatars))
+                $user->addMedia(fake()->randomElement($avatars))
                     ->preservingOriginal()
                     ->toMediaCollection('avatars');
             });
