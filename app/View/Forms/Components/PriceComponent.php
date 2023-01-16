@@ -28,7 +28,7 @@ class PriceComponent extends BaseComponent
      */
     public function init(...$arguments)
     {
-        $this->name = $name = $arguments[0] ?? null;
+        $this->name($name = $arguments[0] ?? null);
 
         $this->value($arguments[1] ?? null ?: old($name));
 
