@@ -52,6 +52,11 @@ export default {
       axios.get('/api/profile')
           .then(response => {
             this.auth = response.data.data;
+
+            if (typeof Echo === 'undefined') {
+              return;
+            }
+
             Echo.join(`user-${this.auth.id}`)
                 .listenToAll(() => {
                   this.getUnreadNotifications();
