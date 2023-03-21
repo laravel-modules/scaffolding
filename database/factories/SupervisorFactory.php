@@ -13,12 +13,12 @@ class SupervisorFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'phone' => $this->faker->unique()->phoneNumber,
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail,
+            'phone' => fake()->unique()->phoneNumber,
             'phone_verified_at' => now(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
@@ -27,7 +27,19 @@ class SupervisorFactory extends Factory
     }
 
     /**
-     * Configure the model factory.
+     * Indicate that the model's email address should be unverified.
+     *
+     * @return $this
+     */
+    public function unverified(): static
+    {
+        return $this->state(fn(array $attributes) => [
+            'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Configure the factory.
      *
      * @return $this
      */
@@ -54,7 +66,7 @@ class SupervisorFactory extends Factory
                     public_path('images/user7-128x128.jpg'),
                     public_path('images/user8-128x128.jpg'),
                 ];
-                $user->addMedia($this->faker->randomElement($avatars))
+                $user->addMedia(fake()->randomElement($avatars))
                     ->preservingOriginal()
                     ->toMediaCollection('avatars');
             });
