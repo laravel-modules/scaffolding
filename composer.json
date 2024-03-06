@@ -7,6 +7,12 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://modules.laraeast.com"
+        }
+    ],
     "require": {
         "php": "^8.1",
         "ext-intl": "*",
