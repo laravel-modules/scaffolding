@@ -14,14 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('dashboard.locales')->group(function () {
-    Auth::routes();
-});
+foreach (glob(__DIR__.'/web/*.php') as $routes) {
+    include $routes;
+}
 
-Route::redirect('/home', '/dashboard');
-
-Route::impersonate();
-
-Route::get('/', function () {
-    return view('welcome');
-});
