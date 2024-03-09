@@ -19,7 +19,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // create permissions
         foreach (config('permission.supported') as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::query()->updateOrCreate(['name' => $permission]);
         }
     }
 }
