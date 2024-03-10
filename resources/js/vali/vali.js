@@ -113,6 +113,9 @@ CheckAll.onChange(function (el) {
 
 // Initialization
 $(function () {
+    $('.tags').tagsinput({
+        tagClass: 'badge badge-primary'
+    });
     var Inputmask = require('inputmask').default;
     // $('.price').mask('9999.999');
     // $(".price").inputmask({ alias : "currency", prefix: '₱ ' });

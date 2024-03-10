@@ -13,6 +13,8 @@ mix.sass('resources/sass/adminlte3/adminlte3-auth.scss', 'public/css');
 mix.js('resources/js/vali/vali.js', 'public/js').vue();
 mix.sass('resources/sass/vali/vali.scss', 'public/css');
 
+mix.options({ autoprefixer: false });
+
 // Handle rtl
 mix.webpackConfig({
   plugins: [
