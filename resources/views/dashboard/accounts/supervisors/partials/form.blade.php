@@ -18,7 +18,24 @@
 @endif
 
 @isset($supervisor)
-    {{ BsForm::image('avatar')->collection('avatars')->files($supervisor->getMediaResource('avatars')) }}
+    <file-uploader :media="{{ $supervisor->getMediaResource('avatars') }}"
+                   name="avatar"
+                   :max="1"
+                   collection="avatars"
+                   :tokens="{{ json_encode(old('avatar', [])) }}"
+                   label="{{ __('supervisors.attributes.avatar') }}"
+                   notes="Supported types: jpeg, png,jpg,gif"
+                   accept="image/jpeg,image/png,image/jpg,image/gif"
+    ></file-uploader>
 @else
-    {{ BsForm::image('avatar')->collection('avatars') }}
+    <file-uploader
+        :media="[]"
+        name="avatar"
+        :max="1"
+        collection="avatars"
+        :tokens="{{ json_encode(old('avatar', [])) }}"
+        label="{{ __('supervisors.attributes.avatar') }}"
+        notes="Supported types: jpeg, png,jpg,gif"
+        accept="image/jpeg,image/png,image/jpg,image/gif"
+    ></file-uploader>
 @endisset
