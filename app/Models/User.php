@@ -29,7 +29,6 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
     use HasChildren;
     use InteractsWithMedia;
     use HasApiTokens;
-    use HasChildren;
     use PresentableTrait;
     use Filterable;
     use Selectable;
