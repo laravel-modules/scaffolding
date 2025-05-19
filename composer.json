@@ -16,7 +16,7 @@
     "require": {
         "php": "^8.1",
         "ext-intl": "*",
-        "ahmed-aliraqi/laravel-media-uploader": "^7.0",
+        "ahmed-aliraqi/laravel-media-uploader": "^8.0",
         "astrotomic/laravel-translatable": "^11.8",
         "calebporzio/parental": "^1.1",
         "diglactic/laravel-breadcrumbs": "^8.1",
@@ -26,6 +26,7 @@
         "lab404/laravel-impersonate": "^1.7",
         "laracasts/flash": "^3.0",
         "laracasts/presenter": "0.2.*",
+        "laraeast/laravel-bootstrap-forms": "^6.0",
         "laraeast/laravel-settings": "^1.3",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
