@@ -54,7 +54,7 @@ class CustomerController extends Controller
 
         $customer->setType($request->type);
 
-        $customer->addAllMediaFromTokens();
+        $customer->addAllMediaFromTokens($request->avatar);
 
         flash()->success(trans('customers.messages.created'));
 
@@ -96,7 +96,7 @@ class CustomerController extends Controller
 
         $customer->setType($request->type);
 
-        $customer->addAllMediaFromTokens();
+        $customer->addAllMediaFromTokens($request->avatar);
 
         flash()->success(trans('customers.messages.updated'));
 

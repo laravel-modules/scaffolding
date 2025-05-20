@@ -26,14 +26,26 @@
 
         <div class="row">
             <div class="col-md-6">
-                {{ BsForm::image('logo')->collection('logo')->files(
-         optional(Settings::instance('logo'))->getMediaResource('logo')
- ) }}
+                <file-uploader :media="{{ optional(Settings::instance('logo'))->getMediaResource('logo') }}"
+                               name="logo"
+                               :max="1"
+                               collection="logo"
+                               :tokens="{{ json_encode(old('logo', [])) }}"
+                               label="{{ __('settings.attributes.logo') }}"
+                               notes="Supported types: jpeg, png,jpg,gif"
+                               accept="image/jpeg,image/png,image/jpg,image/gif"
+                ></file-uploader>
             </div>
             <div class="col-md-6">
-                {{ BsForm::image('favicon')->collection('favicon')->files(
-           optional(Settings::instance('favicon'))->getMediaResource('favicon')
-   ) }}
+                <file-uploader :media="{{ optional(Settings::instance('favicon'))->getMediaResource('favicon') }}"
+                               name="favicon"
+                               :max="1"
+                               collection="favicon"
+                               :tokens="{{ json_encode(old('favicon', [])) }}"
+                               label="{{ __('settings.attributes.favicon') }}"
+                               notes="Supported types: jpeg, png,jpg,gif"
+                               accept="image/jpeg,image/png,image/jpg,image/gif"
+                ></file-uploader>
             </div>
         </div>
 

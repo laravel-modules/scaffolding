@@ -6,7 +6,24 @@
 {{ BsForm::password('password_confirmation') }}
 
 @isset($customer)
-    {{ BsForm::image('avatar')->collection('avatars')->files($customer->getMediaResource('avatars')) }}
+    <file-uploader :media="{{ $customer->getMediaResource('avatars') }}"
+                   name="avatar"
+                   :max="1"
+                   collection="avatars"
+                   :tokens="{{ json_encode(old('avatar', [])) }}"
+                   label="{{ __('customers.attributes.avatar') }}"
+                   notes="Supported types: jpeg, png,jpg,gif"
+                   accept="image/jpeg,image/png,image/jpg,image/gif"
+    ></file-uploader>
 @else
-    {{ BsForm::image('avatar')->collection('avatars') }}
+    <file-uploader
+        :media="[]"
+        name="avatar"
+        :max="1"
+        collection="avatars"
+        :tokens="{{ json_encode(old('avatar', [])) }}"
+        label="{{ __('customers.attributes.avatar') }}"
+        notes="Supported types: jpeg, png,jpg,gif"
+        accept="image/jpeg,image/png,image/jpg,image/gif"
+    ></file-uploader>
 @endisset

@@ -58,7 +58,7 @@ class SupervisorController extends Controller
             $supervisor->syncPermissions($request->input('permissions', []));
         }
 
-        $supervisor->addAllMediaFromTokens();
+        $supervisor->addAllMediaFromTokens($request->avatar);
 
         flash()->success(trans('supervisors.messages.created'));
 
@@ -104,7 +104,7 @@ class SupervisorController extends Controller
             $supervisor->syncPermissions($request->input('permissions', []));
         }
 
-        $supervisor->addAllMediaFromTokens();
+        $supervisor->addAllMediaFromTokens($request->avatar);
 
         flash()->success(trans('supervisors.messages.updated'));
 

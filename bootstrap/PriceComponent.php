@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Forms\Components;
+namespace bootstrap;
 
 use Laraeast\LaravelBootstrapForms\Components\BaseComponent;
 
@@ -8,25 +8,18 @@ class PriceComponent extends BaseComponent
 {
     /**
      * The component view path.
-     *
-     * @var string
      */
-    protected $viewPath = 'price';
+    protected string $viewPath = 'price';
 
     /**
      * The currency that will append to price.
-     *
-     * @var string
      */
-    protected $currency;
+    protected string $currency = '';
 
     /**
      * Initialized the input arguments.
-     *
-     * @param mixed ...$arguments
-     * @return $this
      */
-    public function init(...$arguments)
+    public function init(...$arguments): self
     {
         $this->name($name = $arguments[0] ?? null);
 
@@ -43,11 +36,8 @@ class PriceComponent extends BaseComponent
 
     /**
      * Set the price currency.
-     *
-     * @param $currency
-     * @return $this
      */
-    public function currency($currency)
+    public function currency(string $currency): self
     {
         $this->currency = $currency;
 
@@ -55,11 +45,9 @@ class PriceComponent extends BaseComponent
     }
 
     /**
-     * The variables with registered in view component.
-     *
-     * @return array
+     * The registered variables in view component.
      */
-    protected function viewComposer()
+    protected function viewComposer(): array
     {
         return [
             'currency' => $this->currency,

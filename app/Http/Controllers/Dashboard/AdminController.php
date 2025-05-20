@@ -55,7 +55,7 @@ class AdminController extends Controller
 
         $admin->setType($request->type);
 
-        $admin->addAllMediaFromTokens();
+        $admin->addAllMediaFromTokens($request->avatar);
 
         flash()->success(trans('admins.messages.created'));
 
@@ -97,7 +97,7 @@ class AdminController extends Controller
 
         $admin->setType($request->type);
 
-        $admin->addAllMediaFromTokens();
+        $admin->addAllMediaFromTokens($request->avatar);
 
         flash()->success(trans('admins.messages.updated'));
 
