@@ -10,7 +10,7 @@ return [
      * - 'BsForm::bootstrap4'  - Bootstrap 4
      * - 'BsForm::bootstrap3'  - Bootstrap 3
      */
-    'views' => 'BsForm::bootstrap5',
+    'views' => 'BsForm::bootstrap4',
 
     /**
      * The default form style to be used.
