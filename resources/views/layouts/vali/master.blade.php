@@ -50,17 +50,17 @@
             <li class="dropdown">
                 <a class="app-nav__item text-decoration-none"
                    href="#" data-toggle="dropdown" aria-label="Open Profile Menu">
-                    <img src="{{ Locales::getFlag() }}" alt="">
+                    {{ Locales::getSvgFlag(20, 20) }}
                     <span class="d-none d-md-inline">
                         {{ Locales::getName() }}
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right p-0">
                     @foreach(Locales::get() as $locale)
-                        <a href="{{ route('dashboard.locale', $locale->code) }}"
-                           class="dropdown-item {{ app()->getLocale() == $locale->code ? 'active' : '' }}">
-                            <img src="{{ $locale->flag }}" alt="">
-                            {{ $locale->name }}
+                        <a href="{{ route('dashboard.locale', $locale->getCode()) }}"
+                           class="dropdown-item {{ app()->getLocale() == $locale->getCode() ? 'active' : '' }}">
+                            {{ $locale->getSvgFlag(20, 20) }}
+                            <span class="ms-1">{{ $locale->getName() }}</span>
                         </a>
                     @endforeach
                 </div>
