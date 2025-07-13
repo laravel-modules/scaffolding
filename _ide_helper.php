@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 11.44.7.
+ * Generated for Laravel 11.45.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -11869,6 +11869,7 @@ namespace Illuminate\Support\Facades {
      * @method static void deleteToken(\Illuminate\Contracts\Auth\CanResetPassword $user)
      * @method static bool tokenExists(\Illuminate\Contracts\Auth\CanResetPassword $user, string $token)
      * @method static \Illuminate\Auth\Passwords\TokenRepositoryInterface getRepository()
+     * @method static \Illuminate\Support\Timebox getTimebox()
      * @see \Illuminate\Auth\Passwords\PasswordBrokerManager
      * @see \Illuminate\Auth\Passwords\PasswordBroker
      */
@@ -23308,8 +23309,10 @@ namespace Laraeast\LaravelBootstrapForms\Facades {
      * @method static \Laraeast\LaravelBootstrapForms\Components\SelectComponent select(?string $name = null, array $options = [], mixed $value = null)
      * @method static \Laraeast\LaravelBootstrapForms\Components\PriceComponent price(?string $name = null, mixed $value = null)
      * @method static \Laraeast\LaravelBootstrapForms\Components\ColorComponent color(?string $name = null, mixed $value = null)
+     * @method static \Laraeast\LaravelBootstrapForms\Components\Base64ImageComponent base64Image(?string $name = null, mixed $value = null)
+     * @method static \Laraeast\LaravelBootstrapForms\Components\AttachmentComponent attachment(?string $name = null, mixed $value = null)
+     * @method static \Laraeast\LaravelBootstrapForms\Components\PhoneComponent phone(?string $name = null, mixed $value = null)
      * @method static \Laraeast\LaravelBootstrapForms\Components\SubmitComponent submit(?string $label = null, ?string $name = null, mixed $value = null)
-     * @package Laraeast\LaravelBootstrapForms\Facades
      */
     class BsForm {
         /**
@@ -23381,7 +23384,6 @@ namespace Laraeast\LaravelBootstrapForms\Facades {
         /**
          * Set the input inline validation errors option.
          *
-         * @param bool $bool
          * @return \Laraeast\LaravelBootstrapForms\BsForm 
          * @static 
          */
@@ -23404,7 +23406,7 @@ namespace Laraeast\LaravelBootstrapForms\Facades {
         /**
          * 
          *
-         * @return array 
+         * @return \Laraeast\LaravelLocales\Enums\Language[] 
          * @static 
          */
         public static function getLocales()
@@ -23530,13 +23532,12 @@ namespace Laraeast\LaravelLocales\Facades {
     /**
      * Class Locales
      *
-     * @package Laraeast\LaravelLocales\Facades
      */
     class Locales {
         /**
          * Get the supported locales.
          *
-         * @return array 
+         * @return \Laraeast\LaravelLocales\Enums\Language[] 
          * @static 
          */
         public static function get()
@@ -23548,7 +23549,6 @@ namespace Laraeast\LaravelLocales\Facades {
         /**
          * Get the application locale.
          *
-         * @return object|null 
          * @static 
          */
         public static function current()
@@ -23558,23 +23558,20 @@ namespace Laraeast\LaravelLocales\Facades {
         }
 
         /**
-         * Set the supported locales.
+         * Set the application language.
          *
-         * @param string $locale
-         * @return void 
          * @throws \Laraeast\LaravelLocales\Exceptions\NotSupportedLocaleException
          * @static 
          */
         public static function set($locale)
         {
             /** @var \Laraeast\LaravelLocales\LocalesBuilder $instance */
-            $instance->set($locale);
+            return $instance->set($locale);
         }
 
         /**
          * The code of current locale.
          *
-         * @return string 
          * @static 
          */
         public static function getCode()
@@ -23586,7 +23583,6 @@ namespace Laraeast\LaravelLocales\Facades {
         /**
          * The name of current locale.
          *
-         * @return string 
          * @static 
          */
         public static function getName()
@@ -23598,7 +23594,6 @@ namespace Laraeast\LaravelLocales\Facades {
         /**
          * The direction of current locale.
          *
-         * @return string 
          * @static 
          */
         public static function getDir()
@@ -23610,13 +23605,23 @@ namespace Laraeast\LaravelLocales\Facades {
         /**
          * The flag url of current locale.
          *
-         * @return string 
          * @static 
          */
-        public static function getFlag()
+        public static function getSvgFlag($width = 30, $height = 30)
         {
             /** @var \Laraeast\LaravelLocales\LocalesBuilder $instance */
-            return $instance->getFlag();
+            return $instance->getSvgFlag($width, $height);
+        }
+
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function from($locale)
+        {
+            /** @var \Laraeast\LaravelLocales\LocalesBuilder $instance */
+            return $instance->from($locale);
         }
 
             }
@@ -24961,6 +24966,42 @@ namespace Illuminate\Http {
             return \Illuminate\Http\Request::hasValidRelativeSignatureWhileIgnoring($ignoreQuery);
         }
 
+        /**
+         * 
+         *
+         * @see \Laraeast\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider::boot()
+         * @param mixed $phone
+         * @static 
+         */
+        public static function phone($phone)
+        {
+            return \Illuminate\Http\Request::phone($phone);
+        }
+
+        /**
+         * 
+         *
+         * @see \Laraeast\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider::boot()
+         * @param mixed $phone
+         * @static 
+         */
+        public static function allWithPhoneNumber($phone)
+        {
+            return \Illuminate\Http\Request::allWithPhoneNumber($phone);
+        }
+
+        /**
+         * 
+         *
+         * @see \Laraeast\LaravelBootstrapForms\Providers\BootstrapFormsServiceProvider::boot()
+         * @param mixed $phone
+         * @static 
+         */
+        public static function validatedWithPhoneNumber($phone)
+        {
+            return \Illuminate\Http\Request::validatedWithPhoneNumber($phone);
+        }
+
             }
     }
 
@@ -24996,6 +25037,17 @@ namespace Illuminate\Validation {
         public static function translatableExists($model, $field)
         {
             return \Illuminate\Validation\Rule::translatableExists($model, $field);
+        }
+
+        /**
+         * 
+         *
+         * @see \Propaganistas\LaravelPhone\PhoneServiceProvider::register()
+         * @static 
+         */
+        public static function phone()
+        {
+            return \Illuminate\Validation\Rule::phone();
         }
 
             }
