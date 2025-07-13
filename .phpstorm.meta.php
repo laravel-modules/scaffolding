@@ -3166,10 +3166,10 @@ namespace PHPSTORM_META {
 'dashboard.supervisors.trashed','dashboard.supervisors.trashed.show','dashboard.supervisors.restore','dashboard.supervisors.forceDelete','dashboard.supervisors.index',
 'dashboard.supervisors.create','dashboard.supervisors.store','dashboard.supervisors.show','dashboard.supervisors.edit','dashboard.supervisors.update',
 'dashboard.supervisors.destroy','login','logout','register','password.request','password.email','password.reset','password.update',
-'password.confirm','impersonate','impersonate.leave','api.sanctum.register','api.sanctum.login','api.password.forget','api.password.code',
-'api.password.reset','api.password.check','api.verification.send','api.verification.verify','api.profile.show',
-'api.profile.update','api.editor.upload','api.feedback.send','api.notifications.count','api.notifications.index',
-'api.settings.index','api.settings.page','api.users.select',);
+'password.confirm','impersonate','impersonate.leave','api.sanctum.register','api.sanctum.login','api.sanctum.login.firebase','api.password.forget',
+'api.password.code','api.password.reset','api.password.check','api.verification.send','api.verification.verify',
+'api.profile.show','api.profile.update','api.editor.upload','api.feedback.send','api.notifications.count',
+'api.notifications.index','api.settings.index','api.settings.page','api.users.select',);
         registerArgumentsSet('views', 
 'auth.login','auth.passwords.confirm','auth.passwords.email','auth.passwords.reset','auth.register',
 'auth.verify','components.boolean','components.check-all','components.check-all-delete','components.check-all-force-delete',

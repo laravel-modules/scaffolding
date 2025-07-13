@@ -8979,16 +8979,16 @@
     "packages-dev": [
         {
             "name": "ahmed-aliraqi/crud-generator",
-            "version": "v5.0.0",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ahmed-aliraqi/crud-generator.git",
-                "reference": "a6f4d7fac0e5059e011638afb5ac487bf6bcf090"
+                "reference": "a91617e14809d36c9ee3f4d58440c9d7de87151a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ahmed-aliraqi/crud-generator/zipball/a6f4d7fac0e5059e011638afb5ac487bf6bcf090",
-                "reference": "a6f4d7fac0e5059e011638afb5ac487bf6bcf090",
+                "url": "https://api.github.com/repos/ahmed-aliraqi/crud-generator/zipball/a91617e14809d36c9ee3f4d58440c9d7de87151a",
+                "reference": "a91617e14809d36c9ee3f4d58440c9d7de87151a",
                 "shasum": ""
             },
             "require": {
@@ -9022,9 +9022,9 @@
             "description": "This package is a useful tool to generate simple crud for laravel-modules/scaffolding",
             "support": {
                 "issues": "https://github.com/ahmed-aliraqi/crud-generator/issues",
-                "source": "https://github.com/ahmed-aliraqi/crud-generator/tree/v5.0.0"
+                "source": "https://github.com/ahmed-aliraqi/crud-generator/tree/v5.0.1"
             },
-            "time": "2025-07-13T18:13:45+00:00"
+            "time": "2025-07-13T19:06:08+00:00"
         },
         {
             "name": "ahmed-aliraqi/lang-generator",
