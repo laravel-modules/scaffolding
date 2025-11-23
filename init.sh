@@ -1,54 +1,74 @@
 #!/bin/bash
 # Initialize the project's environment.
 
-# Set the project's name from directory.
-PROJECT_NAME=$(basename $(pwd))
+set -e  # Exit immediately if any command fails.
+
+PROJECT_NAME=$(basename "$(pwd)")
 
 ask_question(){
-    # ask_question <question> <default>
     local ANSWER
     read -r -p "$1 ($2): " ANSWER
     echo "${ANSWER:-$2}"
 }
 
 ask_secure_question(){
-    # ask_secure_question <question> <default>
     local ANSWER
-    if [ $2 ]; then
+    if [ "$2" ]; then
         read -r -sp "$1 ($2): " ANSWER
-        else
+    else
         read -r -sp "$1: " ANSWER
     fi
     echo "${ANSWER:-$2}"
 }
-# Let user write the app domain and the database name, username and password.
+
+# Ask user for environment details
+APP_NAME=$(ask_question "Enter App Name" "$PROJECT_NAME")
 APP_URL=$(ask_question "Enter App Url" "http://$PROJECT_NAME.test")
 DB_DATABASE=$(ask_question "Enter The Database Name" "${PROJECT_NAME//[-\.]/_}")
 DB_USERNAME=$(ask_question "Enter The Database Username" "root")
 DB_PASSWORD=$(ask_secure_question "Enter The Database Password" "")
 echo " "
+SESSION_DRIVER=$(ask_question "Enter Session Driver" "database")
+CACHE_STORE=$(ask_question "Enter Cache Store" "database")
+QUEUE_CONNECTION=$(ask_question "Enter Queue Connection" "sync")
+PHP=$(ask_question "Enter PHP Version (binary name)" "php")
+COMPOSER_CMD="$PHP $(which composer)"
 
-# Create the mysql database.
-mysql -u root --password=$DB_PASSWORD -e "create database $DB_DATABASE CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+# Create database if not exists
+mysql -u"$DB_USERNAME" --password="$DB_PASSWORD" \
+  -e "CREATE DATABASE IF NOT EXISTS \`$DB_DATABASE\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
 
-# Create the project's .env file.
-sed -e "s|DB_DATABASE=laravel|DB_DATABASE=$DB_DATABASE|"\
-    -e "s|DB_USERNAME=laravel|DB_USERNAME=$DB_USERNAME|"\
-    -e "s|DB_HOST=mysql|DB_HOST=localhost|"\
-    -e "s|DB_PASSWORD=password|DB_PASSWORD=$DB_PASSWORD|"\
-    -e "s|APP_URL=http://localhost:8080|APP_URL=$APP_URL|" ./.env.example > ./.env
+# Copy .env.example to .env
+cp .env.example .env
 
-# Install dependencies.
-composer install
+# Uncomment and configure .env values
+sed -i -E '
+  s|^#[[:space:]]*(DB_HOST=)|\1|;
+  s|^#[[:space:]]*(DB_PORT=)|\1|;
+  s|^#[[:space:]]*(DB_DATABASE=)|\1|;
+  s|^#[[:space:]]*(DB_USERNAME=)|\1|;
+  s|^#[[:space:]]*(DB_PASSWORD=)|\1|;
+  s|^#[[:space:]]*(SESSION_DRIVER=)|\1|;
+' .env
 
-# Generate the app key.
-php artisan key:generate
+# Force DB_CONNECTION to mysql
+sed -i -E "s|^DB_CONNECTION=.*|DB_CONNECTION=mysql|" .env
 
-# Create symlink for storage and media files.
-php artisan storage:link --force
+# Apply user-provided values
+sed -i -E "s|^APP_NAME=.*|APP_NAME=\"$APP_NAME\"|" .env
+sed -i -E "s|^APP_URL=.*|APP_URL=$APP_URL|" .env
+sed -i -E "s|^DB_HOST=.*|DB_HOST=127.0.0.1|" .env
+sed -i -E "s|^DB_DATABASE=.*|DB_DATABASE=$DB_DATABASE|" .env
+sed -i -E "s|^DB_USERNAME=.*|DB_USERNAME=$DB_USERNAME|" .env
+sed -i -E "s|^DB_PASSWORD=.*|DB_PASSWORD=$DB_PASSWORD|" .env
+sed -i -E "s|^SESSION_DRIVER=.*|SESSION_DRIVER=$SESSION_DRIVER|" .env
+sed -i -E "s|^CACHE_STORE=.*|CACHE_STORE=$CACHE_STORE|" .env
+sed -i -E "s|^QUEUE_CONNECTION=.*|QUEUE_CONNECTION=$QUEUE_CONNECTION|" .env
 
-# Migrate the tables and seed accounts and dummy data.
-php artisan migrate:fresh --seed
+# Install dependencies & run Laravel setup
+$COMPOSER_CMD install
+$PHP artisan key:generate
+$PHP artisan storage:link --force
+$PHP artisan migrate:fresh --seed
 
-# Print the project's URL.
-echo APP_URL: $APP_URL
+echo "APP_URL: $APP_URL"
