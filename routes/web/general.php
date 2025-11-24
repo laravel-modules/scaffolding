@@ -1,7 +1,7 @@
 <?php
 
 Route::middleware('dashboard.locales')->group(function () {
-    Auth::routes();
+    //Auth::routes();
 });
 
 Route::redirect('/home', '/dashboard');

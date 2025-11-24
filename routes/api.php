@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-foreach (glob(__DIR__.'/api/*.php') as $routes) {
-    include $routes;
-}
-
-/*  The routes of generated crud will set here: Don't remove this line  */
+Route::middleware('api')
+    ->namespace('App\Http\Controllers\Api')
+    ->as('api.')
+    ->group(function () {
+        foreach (glob(__DIR__.'/api/*.php') as $routes) {
+            include $routes;
+        }
+    });
