@@ -1,26 +1,30 @@
 <?php
 
+use Laraeast\LaravelLocales\Enums\Language;
+
 return [
     /*
     |--------------------------------------------------------------------------
     | Application Locales
     |--------------------------------------------------------------------------
     |
-    | Contains an array with the applications available locales.
+    | Contains the application's supported locales.
     |
     */
     'languages' => [
-        'ar' => [
-            'code' => 'ar',
-            'name' => 'العربية',
-            'dir' => 'rtl',
-            'flag' => '/images/flags/sa.png',
-        ],
-        'en' => [
-            'code' => 'en',
-            'name' => 'English',
-            'dir' => 'ltr',
-            'flag' => '/images/flags/us.png',
-        ],
+        Language::EN,
+        Language::AR,
+    ],
+
+    'js' => [
+        /*
+        |--------------------------------------------------------------------------
+        | Using javascript
+        |--------------------------------------------------------------------------
+        |
+        | Generated locales file path for javascript when run "php artisan locales:generate-js"
+        |
+        */
+        'file_path' => resource_path('/js/data/supported-locales.ts'),
     ],
 ];

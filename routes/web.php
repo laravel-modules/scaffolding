@@ -18,3 +18,12 @@ foreach (glob(__DIR__.'/web/*.php') as $routes) {
     include $routes;
 }
 
+Route::prefix('dashboard')
+    ->namespace('App\Http\Controllers\Dashboard')
+    ->middleware('dashboard')
+    ->as('dashboard.')
+    ->group(function () {
+        foreach (glob(__DIR__.'/dashboard/*.php') as $routes) {
+            include $routes;
+        }
+    });

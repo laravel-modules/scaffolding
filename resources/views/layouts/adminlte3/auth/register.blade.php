@@ -106,10 +106,10 @@
                 </div>
                 <small class="mb-1 mt-2 text-right float-right">
                     @foreach(Locales::get() as $locale)
-                        <a href="{{ route('login', ['language' => $locale->code]) }}"
-                           class="mx-2 {{ app()->getLocale() == $locale->code ? 'active' : '' }}">
-                            <img src="{{ $locale->flag }}" alt="">
-                            {{ $locale->name }}
+                        <a href="{{ route('login', ['language' => $locale->getCode()]) }}"
+                           class="mx-2 {{ app()->getLocale() == $locale->getCode() ? 'active' : '' }}">
+                            {{ $locale->getSvgFlag(20, 20) }}
+                            <span class="ms-1">{{ $locale->getName() }}</span>
                         </a>
                     @endforeach
                 </small>

@@ -74,14 +74,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Language Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link d-flex align-items-center" data-toggle="dropdown" href="#">
-                    <img src="{{ Locales::getFlag() }}" alt="{{ Locales::getName() }}">
+                    {{ Locales::getSvgFlag(24, 24) }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right p-0">
                     @foreach(Locales::get() as $locale)
-                        <a href="{{ route('dashboard.locale', $locale->code) }}"
-                           class="dropdown-item {{ app()->getLocale() == $locale->code ? 'active' : '' }}">
-                            <img src="{{ $locale->flag }}" alt="{{ $locale->name }}" class="mr-2">
-                            {{ $locale->name }}
+                        <a href="{{ route('dashboard.locale', $locale->getCode()) }}"
+                           class="dropdown-item {{ app()->getLocale() == $locale->getCode() ? 'active' : '' }}">
+                            {{ $locale->getSvgFlag(20, 20) }}
+                            <span class="ms-1">{{ $locale->getName() }}</span>
                         </a>
                     @endforeach
                 </div>

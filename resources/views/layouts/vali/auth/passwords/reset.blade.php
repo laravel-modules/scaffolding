@@ -21,7 +21,7 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <form action="{{ route('password.update') }}" method="post">
+            <form action="{{ route('password.store') }}" method="post">
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
                 <div class="input-group mb-4">
