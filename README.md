@@ -1,7 +1,7 @@
 # Laravel Scaffolding
 The laravel scaffolding of our projects.
 
-> This project using laravel 10.x if you still using laravel 9.x or 8.x you should checkout to `9.x` or `8.x` branch by running `git checkout 9.x` command. 
+> This project using laravel 11.x if you still using laravel 10.x or 9.x you should check out to `10.x`, `9.x` or `8.x` branch by running `git checkout 10.x` command. 
 
 ## Deploying To Local Server
 If you use valet just execute the `init.sh` file to configure your environment automatically.
