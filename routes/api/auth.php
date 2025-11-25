@@ -2,7 +2,6 @@
 
 Route::post('/register', 'RegisterController@register')->name('sanctum.register');
 Route::post('/login', 'LoginController@login')->name('sanctum.login');
-Route::post('/firebase/login', 'LoginController@firebase')->name('sanctum.login.firebase');
 
 Route::post('/password/forget', 'ResetPasswordController@forget')->name('password.forget');
 Route::post('/password/code', 'ResetPasswordController@code')->name('password.code');

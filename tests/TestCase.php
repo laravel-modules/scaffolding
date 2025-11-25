@@ -17,9 +17,10 @@ abstract class TestCase extends BaseTestCase
     use RefreshDatabase;
 
     /**
-     * Setup the test environment.
+     * Set up the test environment.
      *
      * @return void
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function setUp(): void
     {
