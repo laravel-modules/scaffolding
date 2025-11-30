@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Support\SettingJson;
 use Illuminate\Database\Seeder;
 use Laraeast\LaravelSettings\Facades\Settings;
 
@@ -69,7 +68,5 @@ class SettingSeeder extends Seeder
             ->addMedia(public_path('images/AdminLTELogo.png'))
             ->preservingOriginal()
             ->toMediaCollection('favicon');
-
-        app(SettingJson::class)->update();
     }
 }
