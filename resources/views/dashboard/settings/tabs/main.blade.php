@@ -2,13 +2,13 @@
     {{ BsForm::resource('settings')->patch(route('dashboard.settings.update')) }}
     @component('dashboard::components.box')
 
-        @bsMultilangualFormTabs
+        @multilingualFormTabs
 
-        {{ BsForm::text('name')->value(Settings::locale($locale->code)->get('name')) }}
+        {{ BsForm::text('name')->value(Settings::locale($locale->getCode())->get('name')) }}
 
-        {{ BsForm::text('copyright')->value(Settings::locale($locale->code)->get('copyright')) }}
+        {{ BsForm::text('copyright')->value(Settings::locale($locale->getCode())->get('copyright')) }}
 
-        @endBsMultilangualFormTabs
+        @endMultilingualFormTabs
 
         @if(is_array(trans('settings.dashboard_templates')) && ! empty(trans('settings.dashboard_templates')))
             {{ BsForm::select('dashboard_template')
@@ -26,7 +26,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                <file-uploader :media="{{ optional(Settings::instance('logo'))->getMediaResource('logo') }}"
+                <file-uploader :media="{{ Settings::instance('logo')?->getMediaResource('logo') ?: '[]' }}"
                                name="logo"
                                :max="1"
                                collection="logo"
@@ -37,7 +37,7 @@
                 ></file-uploader>
             </div>
             <div class="col-md-6">
-                <file-uploader :media="{{ optional(Settings::instance('favicon'))->getMediaResource('favicon') }}"
+                <file-uploader :media="{{ Settings::instance('favicon')?->getMediaResource('favicon') ?: '[]' }}"
                                name="favicon"
                                :max="1"
                                collection="favicon"

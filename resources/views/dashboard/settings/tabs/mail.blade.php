@@ -1,25 +1,24 @@
 <x-layout :title="trans('settings.tabs.mail')" :breadcrumbs="['dashboard.settings.index']">
-    {{ BsForm::resource('settings')->patch(route('dashboard.settings.update')) }}
+    {{ BsForm::resource('settings')->patch(route('dashboard.settings.env')) }}
+
+    @include('dashboard.settings.partials.env-note')
+
     @component('dashboard::components.box')
         <div dir="ltr" style="text-align: left;">
-            {{ BsForm::select('mail_driver')
+            {{ BsForm::select('MAIL_MAILER')
+                ->label('Mail Mailer')
                 ->options([
-                    'smtp' => 'smtp',
-                    'sendmail' => 'sendmail',
-                    'mailgun' => 'mailgun',
-                    'ses' => 'ses',
-                    'postmark' => 'postmark',
-                    'log' => 'log',
-                    'array' => 'array',
+                    'smtp' => 'SMTP',
+                    'log' => 'Log',
+                    'array' => 'Array',
                 ])
-                ->value(Settings::get('mail_driver', env('MAIL_DRIVER'))) }}
-            {{ BsForm::text('mail_host')->value(Settings::get('mail_host', env('MAIL_HOST'))) }}
-            {{ BsForm::text('mail_port')->value(Settings::get('mail_port', env('MAIL_PORT'))) }}
-            {{ BsForm::text('mail_username')->value(Settings::get('mail_username', env('MAIL_USERNAME'))) }}
-            {{ BsForm::text('mail_password')->value(Settings::get('mail_password', env('MAIL_PASSWORD'))) }}
-            {{ BsForm::text('mail_encryption')->value(Settings::get('mail_encryption', 'tls')) }}
-            {{ BsForm::text('mail_from_address')->value(Settings::get('mail_from_address', env('MAIL_FROM_ADDRESS'))) }}
-            {{ BsForm::text('mail_from_name')->value(Settings::get('mail_from_name', env('MAIL_FROM_NAME'))) }}
+                ->value(config('mail.default')) }}
+            {{ BsForm::text('MAIL_HOST')->label('Mail Host')->value(config('mail.mailers.smtp.host')) }}
+            {{ BsForm::number('MAIL_PORT')->label('Mail Port')->required()->value(config('mail.mailers.smtp.port')) }}
+            {{ BsForm::text('MAIL_USERNAME')->label('Mail Username')->value(config('mail.mailers.smtp.username')) }}
+            {{ BsForm::text('MAIL_PASSWORD')->label('Mail Password')->value(config('mail.mailers.smtp.password')) }}
+            {{ BsForm::text('MAIL_FROM_ADDRESS')->label('Mail From Address')->value(config('mail.from.address')) }}
+            {{ BsForm::text('MAIL_FROM_NAME')->label('Mail From Name')->value(old('MAIL_FROM_NAME', config('mail.from.name'))) }}
         </div>
 
         @slot('footer')

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Setting;
-use App\Support\SettingJson;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Laraeast\LaravelSettings\Facades\Settings;
+use LaravelModules\ModuleGenerator\Generator;
 
 class SettingController extends Controller
 {
@@ -65,7 +66,29 @@ class SettingController extends Controller
             Settings::set($file)->addAllMediaFromTokens($request->input($file), $file);
         }
 
-        app(SettingJson::class)->update();
+        flash()->success(trans('settings.messages.updated'));
+
+        return back();
+    }
+
+    /**
+     * Update the environment credentials.
+     */
+    public function env(Request $request): RedirectResponse
+    {
+        $env = app(Generator::class)->environment(envFile: '.env');
+
+        foreach ($request->except(['_token', '_method']) as $key => $value) {
+            $env->set($key, $value);
+        }
+
+        $env->publish();
+
+        if (app()->configurationIsCached()) {
+            Artisan::call('config:cache');
+        }
+
+        Artisan::call('queue:restart');
 
         flash()->success(trans('settings.messages.updated'));
 
