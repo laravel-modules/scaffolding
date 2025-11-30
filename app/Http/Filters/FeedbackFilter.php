@@ -2,48 +2,38 @@
 
 namespace App\Http\Filters;
 
-class FeedbackFilter extends BaseFilters
+use AhmedAliraqi\LaravelFilterable\BaseFilter;
+
+class FeedbackFilter extends BaseFilter
 {
     /**
-     * Registered filters to operate upon.
-     *
-     * @var array
+     * The list of relations that are allowed to be included with the query.
      */
-    protected $filters = [
+    protected array $supportedInclude = [];
+
+    /**
+     * Registered filters to operate upon.
+     */
+    protected array $filters = [
         'name',
         'status',
     ];
 
     /**
-     * Filter the query by a given name.
-     *
-     * @param string|int $value
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Apply a filter to the query based on the "name" field.
      */
-    protected function name($value)
+    protected function name(mixed $value): void
     {
-        if ($value) {
-            return $this->builder->where('name', 'like', "%$value%");
-        }
-
-        return $this->builder;
+        $this->builder->where('name', 'like', "%$value%");
     }
 
     /**
-     * Filter the query by a given status.
-     *
-     * @param string|int $value
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Sorting results by the given ids.
      */
-    protected function status($value)
+    public function selectedId($ids): void
     {
-        if ($value == 'read') {
-            return $this->builder->whereNotNull('read_at');
+        if ($ids) {
+            $this->builder->sortingByIds($ids);
         }
-        if ($value == 'unread') {
-            return $this->builder->whereNull('read_at');
-        }
-
-        return $this->builder;
     }
 }

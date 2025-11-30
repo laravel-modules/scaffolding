@@ -2,14 +2,19 @@
 
 namespace App\Http\Filters;
 
-class SupervisorFilter extends BaseFilters
+use AhmedAliraqi\LaravelFilterable\BaseFilter;
+
+class SupervisorFilter extends BaseFilter
 {
     /**
-     * Registered filters to operate upon.
-     *
-     * @var array
+     * The list of relations that are allowed to be included with the query.
      */
-    protected $filters = [
+    protected array $supportedInclude = [];
+
+    /**
+     * Registered filters to operate upon.
+     */
+    protected array $filters = [
         'name',
         'type',
         'email',
@@ -18,77 +23,44 @@ class SupervisorFilter extends BaseFilters
     ];
 
     /**
-     * Filter the query by a given name.
-     *
-     * @param string|int $value
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Apply a filter to the query based on the "name" field.
      */
-    protected function name($value)
+    protected function name(mixed $value): void
     {
-        if ($value) {
-            return $this->builder->where('name', 'like', "%$value%");
-        }
-
-        return $this->builder;
+        $this->builder->where('name', 'like', "%$value%");
     }
 
     /**
-     * Filter the query to include users by type.
-     *
-     * @param string|int $value
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Apply a filter to the query based on the "type" field.
      */
-    protected function type($value)
+    protected function type(mixed $value): void
     {
-        if ($value) {
-            return $this->builder->where('type', $value);
-        }
-
-        return $this->builder;
+        $this->builder->where('type', $value);
     }
 
     /**
-     * Filter the query to include users by email.
-     *
-     * @param string|int $value
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Apply a filter to the query based on the "email" field.
      */
-    protected function email($value)
+    protected function email(mixed $value): void
     {
-        if ($value) {
-            return $this->builder->where('email', 'like', "%$value%");
-        }
-
-        return $this->builder;
+        $this->builder->where('email', 'like', "%$value%");
     }
 
     /**
-     * Filter the query to include users by phone.
-     *
-     * @param string|int $value
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Apply a filter to the query based on the "phone" field.
      */
-    protected function phone($value)
+    protected function phone(mixed $value): void
     {
-        if ($value) {
-            return $this->builder->where('phone', 'like', "%$value%");
-        }
-
-        return $this->builder;
+        $this->builder->where('email', 'like', "%$value%");
     }
 
     /**
-     * Sorting results by the given id.
-     *
-     * @param $value
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Sorting results by the given ids.
      */
-    public function selectedId($value)
+    public function selectedId($ids): void
     {
-        if ($value) {
-            $this->builder->sortingByIds($value);
+        if ($ids) {
+            $this->builder->sortingByIds($ids);
         }
-
-        return $this->builder;
     }
 }

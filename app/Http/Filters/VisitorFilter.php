@@ -4,7 +4,7 @@ namespace App\Http\Filters;
 
 use AhmedAliraqi\LaravelFilterable\BaseFilter;
 
-class UserFilter extends BaseFilter
+class VisitorFilter extends BaseFilter
 {
     /**
      * The list of relations that are allowed to be included with the query.
@@ -16,8 +16,6 @@ class UserFilter extends BaseFilter
      */
     protected array $filters = [
         'name',
-        'type',
-        'email',
         'selected_id',
     ];
 
@@ -27,22 +25,6 @@ class UserFilter extends BaseFilter
     protected function name(mixed $value): void
     {
         $this->builder->where('name', 'like', "%$value%");
-    }
-
-    /**
-     * Apply a filter to the query based on the "type" field.
-     */
-    protected function type(mixed $value): void
-    {
-        $this->builder->where('type', $value);
-    }
-
-    /**
-     * Apply a filter to the query based on the "email" field.
-     */
-    protected function email(mixed $value): void
-    {
-        $this->builder->where('email', 'like', "%$value%");
     }
 
     /**

@@ -4,8 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1303fc6992a769687cbb7184f18f0335",
+    "content-hash": "21afbb2a10e44a70d87ca9dc3e6565d6",
     "packages": [
+        {
+            "name": "ahmed-aliraqi/laravel-filterable",
+            "version": "v2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ahmed-aliraqi/laravel-filterable.git",
+                "reference": "fc0b26b16833ad8936d53c3e03e6c851a39eb56b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ahmed-aliraqi/laravel-filterable/zipball/fc0b26b16833ad8936d53c3e03e6c851a39eb56b",
+                "reference": "fc0b26b16833ad8936d53c3e03e6c851a39eb56b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^9.0|^10.0|^11.0|^12.0",
+                "illuminate/database": "^9.0|^10.0|^11.0|^12.0",
+                "illuminate/http": "^9.0|^10.0|^11.0|^12.0",
+                "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^9.0|^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AhmedAliraqi\\LaravelFilterable\\FilterableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AhmedAliraqi\\LaravelFilterable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Fathy",
+                    "homepage": "https://fathy.me"
+                }
+            ],
+            "description": "Elegant query filtering for Laravel Eloquent models",
+            "support": {
+                "issues": "https://github.com/ahmed-aliraqi/laravel-filterable/issues",
+                "source": "https://github.com/ahmed-aliraqi/laravel-filterable/tree/v2.1.2"
+            },
+            "time": "2025-06-29T08:09:58+00:00"
+        },
         {
             "name": "ahmed-aliraqi/laravel-media-uploader",
             "version": "v8.1.0",

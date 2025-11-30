@@ -2,39 +2,39 @@
 
 namespace App\Models;
 
-use Parental\HasChildren;
-use App\Http\Filters\Filterable;
+use AhmedAliraqi\LaravelFilterable\Filterable;
+use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 use App\Http\Filters\UserFilter;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\MediaLibrary\HasMedia;
-use App\Support\Traits\Selectable;
-use App\Models\Helpers\UserHelpers;
-use Spatie\Permission\Traits\HasRoles;
 use App\Http\Resources\CustomerResource;
-use App\Models\Presenters\UserPresenter;
-use Illuminate\Notifications\Notifiable;
-use Laracasts\Presenter\PresentableTrait;
-use Lab404\Impersonate\Models\Impersonate;
-use Spatie\MediaLibrary\InteractsWithMedia;
 use App\Models\Contracts\NotificationTarget;
+use App\Models\Helpers\UserHelpers;
+use App\Models\Presenters\UserPresenter;
+use App\Support\Traits\Selectable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
+use Illuminate\Notifications\Notifiable;
+use Lab404\Impersonate\Models\Impersonate;
+use Laracasts\Presenter\PresentableTrait;
+use Laravel\Sanctum\HasApiTokens;
+use Parental\HasChildren;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia, NotificationTarget
 {
-    use HasFactory;
-    use Notifiable;
-    use UserHelpers;
-    use HasChildren;
-    use InteractsWithMedia;
-    use HasApiTokens;
-    use PresentableTrait;
     use Filterable;
-    use Selectable;
+    use HasApiTokens;
+    use HasChildren;
+    use HasFactory;
+    use HasRoles;
     use HasUploader;
     use Impersonate;
-    use HasRoles;
+    use InteractsWithMedia;
+    use Notifiable;
+    use PresentableTrait;
+    use Selectable;
+    use UserHelpers;
 
     /**
      * The code of admin type.
@@ -128,8 +128,6 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
 
     /**
      * Get the dashboard profile link.
-     *
-     * @return string
      */
     public function dashboardProfile(): string
     {
@@ -159,7 +157,7 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
     /**
      * Get the access token currently associated with the user. Create a new.
      *
-     * @param string|null $device
+     * @param  string|null  $device
      * @return string
      */
     public function createTokenForDevice($device = null)
@@ -191,8 +189,6 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
 
     /**
      * Define the media collections.
-     *
-     * @return void
      */
     public function registerMediaCollections(): void
     {
@@ -251,9 +247,6 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
 
     /**
      * The title of the notification.
-     *
-     * @param \App\Models\NotificationModel $notification
-     * @return string
      */
     public function getNotificationTitle(NotificationModel $notification): string
     {
@@ -262,9 +255,6 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
 
     /**
      * The body of the notification.
-     *
-     * @param \App\Models\NotificationModel $notification
-     * @return string
      */
     public function getNotificationBody(NotificationModel $notification): string
     {
@@ -279,9 +269,6 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
 
     /**
      * The image of the notification.
-     *
-     * @param \App\Models\NotificationModel $notification
-     * @return string
      */
     public function getNotificationImage(NotificationModel $notification): string
     {
@@ -291,7 +278,6 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
     /**
      * The data of the notification.
      *
-     * @param \App\Models\NotificationModel $notification
      * @return mixed|void
      */
     public function getNotificationData(NotificationModel $notification)
@@ -301,9 +287,6 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
 
     /**
      * The dashboard url of the notification.
-     *
-     * @param \App\Models\NotificationModel $notification
-     * @return string
      */
     public function getNotificationDashboardUrl(NotificationModel $notification): string
     {
