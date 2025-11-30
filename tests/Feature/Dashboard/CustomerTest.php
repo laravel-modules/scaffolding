@@ -7,8 +7,7 @@ use App\Models\Customer;
 
 class CustomerTest extends TestCase
 {
-    /** @test */
-    public function it_can_display_list_of_customers()
+    public function test_can_display_list_of_customers()
     {
         $this->actingAsAdmin();
 
@@ -21,8 +20,7 @@ class CustomerTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_customer_details()
+    public function test_can_display_customer_details()
     {
         $this->actingAsAdmin();
 
@@ -35,8 +33,7 @@ class CustomerTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_customer_create_form()
+    public function test_can_display_customer_create_form()
     {
         $this->actingAsAdmin();
 
@@ -47,8 +44,7 @@ class CustomerTest extends TestCase
         $response->assertSee(trans('customers.actions.create'));
     }
 
-    /** @test */
-    public function it_can_create_customers()
+    public function test_can_create_customers()
     {
         $this->actingAsAdmin();
 
@@ -68,8 +64,7 @@ class CustomerTest extends TestCase
         $this->assertEquals(Customer::count(), $customersCount + 1);
     }
 
-    /** @test */
-    public function it_can_display_customer_edit_form()
+    public function test_can_display_customer_edit_form()
     {
         $this->actingAsAdmin();
 
@@ -82,8 +77,7 @@ class CustomerTest extends TestCase
         $response->assertSee(trans('customers.actions.edit'));
     }
 
-    /** @test */
-    public function it_can_update_customers()
+    public function test_can_update_customers()
     {
         $this->actingAsAdmin();
 
@@ -105,8 +99,7 @@ class CustomerTest extends TestCase
         $this->assertEquals($customer->name, 'Customer');
     }
 
-    /** @test */
-    public function it_can_delete_customer()
+    public function test_can_delete_customer()
     {
         $this->actingAsAdmin();
 
@@ -119,8 +112,8 @@ class CustomerTest extends TestCase
 
         $this->assertEquals(Customer::count(), $customersCount - 1);
     }
-    /** @test */
-    public function it_can_display_trashed_customers()
+
+    public function test_can_display_trashed_customers()
     {
         if (! $this->useSoftDeletes($model = Customer::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -137,8 +130,7 @@ class CustomerTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_trashed_customer_details()
+    public function test_can_display_trashed_customer_details()
     {
         if (! $this->useSoftDeletes($model = Customer::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -154,8 +146,8 @@ class CustomerTest extends TestCase
 
         $response->assertSee('Ahmed');
     }
-    /** @test */
-    public function it_can_restore_deleted_customer()
+
+    public function test_can_restore_deleted_customer()
     {
         if (! $this->useSoftDeletes($model = Customer::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -172,8 +164,7 @@ class CustomerTest extends TestCase
         $this->assertNull($customer->refresh()->deleted_at);
     }
 
-    /** @test */
-    public function it_can_force_delete_customer()
+    public function test_can_force_delete_customer()
     {
         if (! $this->useSoftDeletes($model = Customer::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -192,8 +183,7 @@ class CustomerTest extends TestCase
         $this->assertEquals(Customer::withoutTrashed()->count(), $customerCount - 1);
     }
 
-    /** @test */
-    public function it_can_filter_customers_by_name()
+    public function test_can_filter_customers_by_name()
     {
         $this->actingAsAdmin();
 
@@ -209,8 +199,7 @@ class CustomerTest extends TestCase
             ->assertDontSee('Mohamed');
     }
 
-    /** @test */
-    public function it_can_filter_customers_by_email()
+    public function test_can_filter_customers_by_email()
     {
         $this->actingAsAdmin();
 
@@ -232,8 +221,7 @@ class CustomerTest extends TestCase
             ->assertDontSee('FooBar2');
     }
 
-    /** @test */
-    public function it_can_filter_customers_by_phone()
+    public function test_can_filter_customers_by_phone()
     {
         $this->actingAsAdmin();
 

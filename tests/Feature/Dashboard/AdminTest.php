@@ -7,8 +7,7 @@ use App\Models\Admin;
 
 class AdminTest extends TestCase
 {
-    /** @test */
-    public function it_can_display_list_of_admins()
+    public function test_can_display_list_of_admins()
     {
         $this->actingAsAdmin();
 
@@ -21,8 +20,7 @@ class AdminTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_admin_details()
+    public function test_can_display_admin_details()
     {
         $this->actingAsAdmin();
 
@@ -35,8 +33,7 @@ class AdminTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_admin_create_form()
+    public function test_can_display_admin_create_form()
     {
         $this->actingAsAdmin();
 
@@ -47,8 +44,7 @@ class AdminTest extends TestCase
         $response->assertSee(trans('admins.actions.create'));
     }
 
-    /** @test */
-    public function it_can_create_admins()
+    public function test_can_create_admins()
     {
         $this->actingAsAdmin();
 
@@ -68,8 +64,7 @@ class AdminTest extends TestCase
         $this->assertEquals(Admin::count(), $adminsCount + 1);
     }
 
-    /** @test */
-    public function it_can_display_admin_edit_form()
+    public function test_can_display_admin_edit_form()
     {
         $this->actingAsAdmin();
 
@@ -82,8 +77,7 @@ class AdminTest extends TestCase
         $response->assertSee(trans('admins.actions.edit'));
     }
 
-    /** @test */
-    public function it_can_update_admins()
+    public function test_can_update_admins()
     {
         $this->actingAsAdmin();
 
@@ -105,8 +99,7 @@ class AdminTest extends TestCase
         $this->assertEquals($admin->name, 'Admin');
     }
 
-    /** @test */
-    public function it_can_delete_admin()
+    public function test_can_delete_admin()
     {
         $this->actingAsAdmin();
 
@@ -120,8 +113,7 @@ class AdminTest extends TestCase
         $this->assertEquals(Admin::count(), $adminsCount - 1);
     }
 
-    /** @test */
-    public function it_can_display_trashed_admins()
+    public function test_can_display_trashed_admins()
     {
         if (! $this->useSoftDeletes($model = Admin::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -138,8 +130,7 @@ class AdminTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_trashed_admin_details()
+    public function test_can_display_trashed_admin_details()
     {
         if (! $this->useSoftDeletes($model = Admin::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -156,8 +147,7 @@ class AdminTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_restore_deleted_admin()
+    public function test_can_restore_deleted_admin()
     {
         if (! $this->useSoftDeletes($model = Admin::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -174,8 +164,7 @@ class AdminTest extends TestCase
         $this->assertNull($admin->refresh()->deleted_at);
     }
 
-    /** @test */
-    public function it_can_force_delete_admin()
+    public function test_can_force_delete_admin()
     {
         if (! $this->useSoftDeletes($model = Admin::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -194,8 +183,7 @@ class AdminTest extends TestCase
         $this->assertEquals(Admin::withoutTrashed()->count(), $adminCount - 1);
     }
 
-    /** @test */
-    public function it_can_filter_admins_by_name()
+    public function test_can_filter_admins_by_name()
     {
         $this->actingAsAdmin();
 
@@ -211,8 +199,7 @@ class AdminTest extends TestCase
             ->assertDontSee('Mohamed');
     }
 
-    /** @test */
-    public function it_can_filter_admins_by_email()
+    public function test_can_filter_admins_by_email()
     {
         $this->actingAsAdmin();
 
@@ -234,8 +221,7 @@ class AdminTest extends TestCase
             ->assertDontSee('FooBar2');
     }
 
-    /** @test */
-    public function it_can_filter_admins_by_phone()
+    public function test_can_filter_admins_by_phone()
     {
         $this->actingAsAdmin();
 

@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Event;
 
 class PhoneVerificationTest extends TestCase
 {
-    /** @test */
-    public function it_can_determine_if_the_authenticated_user_password_is_correct()
+    public function test_it_can_determine_if_the_authenticated_user_password_is_correct()
     {
         $this->postJson(route('api.password.check'), [
             'password' => 'password',
@@ -30,8 +29,7 @@ class PhoneVerificationTest extends TestCase
         $this->assertEquals($response->json('data.name'), $customer->name);
     }
 
-    /** @test */
-    public function it_can_send_or_resend_the_phone_verification_code()
+    public function test_it_can_send_or_resend_the_phone_verification_code()
     {
         $this->actingAsCustomer();
 
@@ -46,8 +44,7 @@ class PhoneVerificationTest extends TestCase
         Event::assertDispatched(VerificationCreated::class);
     }
 
-    /** @test */
-    public function it_can_verify_the_phone_number()
+    public function test_it_can_verify_the_phone_number()
     {
         $customer = $this->actingAsCustomer();
 

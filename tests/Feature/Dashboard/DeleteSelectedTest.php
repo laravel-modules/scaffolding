@@ -7,8 +7,7 @@ use App\Models\Customer;
 
 class DeleteSelectedTest extends TestCase
 {
-    /** @test */
-    public function it_can_delete_multiple_models()
+    public function test_can_delete_multiple_models()
     {
         $this->actingAsAdmin();
 

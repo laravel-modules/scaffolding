@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Notification;
 
 class NotificationTest extends TestCase
 {
-    /** @test */
-    public function only_authenticated_user_can_list_his_notifications()
+    public function test_only_authenticated_user_can_list_his_notifications()
     {
         $admin = Admin::factory()->create();
 
@@ -42,7 +41,6 @@ class NotificationTest extends TestCase
         );
     }
 
-    /** @test */
     public function test_notifications_count()
     {
         $admin = Admin::factory()->create();

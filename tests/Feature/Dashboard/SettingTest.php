@@ -3,18 +3,12 @@
 namespace Tests\Feature\Dashboard;
 
 use Tests\TestCase;
-use App\Support\SettingJson;
 use Laraeast\LaravelSettings\Facades\Settings;
 
 class SettingTest extends TestCase
 {
-    /** @test */
     public function test_settings()
     {
-        $this->partialMock(SettingJson::class, function ($m) {
-            $m->shouldReceive('update');
-        });
-
         $this->actingAsAdmin();
 
         $this->assertFalse(Settings::locale()->has('about'));

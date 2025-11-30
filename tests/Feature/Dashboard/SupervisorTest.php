@@ -7,8 +7,7 @@ use App\Models\Supervisor;
 
 class SupervisorTest extends TestCase
 {
-    /** @test */
-    public function it_can_display_list_of_supervisors()
+    public function test_can_display_list_of_supervisors()
     {
         $this->actingAsAdmin();
 
@@ -21,8 +20,7 @@ class SupervisorTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_supervisor_details()
+    public function test_can_display_supervisor_details()
     {
         $this->actingAsAdmin();
 
@@ -35,8 +33,7 @@ class SupervisorTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_supervisor_create_form()
+    public function test_can_display_supervisor_create_form()
     {
         $this->actingAsAdmin();
 
@@ -47,8 +44,7 @@ class SupervisorTest extends TestCase
         $response->assertSee(trans('supervisors.actions.create'));
     }
 
-    /** @test */
-    public function it_can_create_supervisors()
+    public function test_can_create_supervisors()
     {
         $this->actingAsAdmin();
 
@@ -70,8 +66,7 @@ class SupervisorTest extends TestCase
         $this->assertEquals(Supervisor::count(), $supervisorsCount + 1);
     }
 
-    /** @test */
-    public function it_can_display_supervisor_edit_form()
+    public function test_can_display_supervisor_edit_form()
     {
         $this->actingAsAdmin();
 
@@ -84,8 +79,7 @@ class SupervisorTest extends TestCase
         $response->assertSee(trans('supervisors.actions.edit'));
     }
 
-    /** @test */
-    public function it_can_update_supervisors()
+    public function test_can_update_supervisors()
     {
         $this->actingAsAdmin();
 
@@ -109,8 +103,7 @@ class SupervisorTest extends TestCase
         $this->assertEquals($supervisor->name, 'Supervisor');
     }
 
-    /** @test */
-    public function it_can_delete_supervisor()
+    public function test_can_delete_supervisor()
     {
         $this->actingAsAdmin();
 
@@ -124,8 +117,7 @@ class SupervisorTest extends TestCase
         $this->assertEquals(Supervisor::count(), $supervisorsCount - 1);
     }
 
-    /** @test */
-    public function it_can_display_trashed_supervisors()
+    public function test_can_display_trashed_supervisors()
     {
         if (! $this->useSoftDeletes($model = Supervisor::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -142,8 +134,7 @@ class SupervisorTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_trashed_supervisor_details()
+    public function test_can_display_trashed_supervisor_details()
     {
         if (! $this->useSoftDeletes($model = Supervisor::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -160,8 +151,7 @@ class SupervisorTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_restore_deleted_supervisor()
+    public function test_can_restore_deleted_supervisor()
     {
         if (! $this->useSoftDeletes($model = Supervisor::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -178,8 +168,7 @@ class SupervisorTest extends TestCase
         $this->assertNull($supervisor->refresh()->deleted_at);
     }
 
-    /** @test */
-    public function it_can_force_delete_supervisor()
+    public function test_can_force_delete_supervisor()
     {
         if (! $this->useSoftDeletes($model = Supervisor::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -198,8 +187,7 @@ class SupervisorTest extends TestCase
         $this->assertEquals(Supervisor::withoutTrashed()->count(), $supervisorCount - 1);
     }
 
-    /** @test */
-    public function it_can_filter_supervisors_by_name()
+    public function test_can_filter_supervisors_by_name()
     {
         $this->actingAsAdmin();
 
@@ -215,8 +203,7 @@ class SupervisorTest extends TestCase
             ->assertDontSee('Mohamed');
     }
 
-    /** @test */
-    public function it_can_filter_supervisors_by_email()
+    public function test_can_filter_supervisors_by_email()
     {
         $this->actingAsAdmin();
 
@@ -238,8 +225,7 @@ class SupervisorTest extends TestCase
             ->assertDontSee('FooBar2');
     }
 
-    /** @test */
-    public function it_can_filter_supervisors_by_phone()
+    public function test_can_filter_supervisors_by_phone()
     {
         $this->actingAsAdmin();
 

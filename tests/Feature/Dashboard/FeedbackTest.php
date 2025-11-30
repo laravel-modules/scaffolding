@@ -7,8 +7,7 @@ use App\Models\Feedback;
 
 class FeedbackTest extends TestCase
 {
-    /** @test */
-    public function it_can_display_a_list_of_feedback_messages()
+    public function test_can_display_a_list_of_feedback_messages()
     {
         $this->actingAsAdmin();
 
@@ -21,8 +20,7 @@ class FeedbackTest extends TestCase
         $response->assertSee('User');
     }
 
-    /** @test */
-    public function it_can_display_the_feedback_details()
+    public function test_can_display_the_feedback_details()
     {
         $this->actingAsAdmin();
 
@@ -35,8 +33,7 @@ class FeedbackTest extends TestCase
         $response->assertSee('User');
     }
 
-    /** @test */
-    public function it_can_mark_the_feedback_as_read()
+    public function test_can_mark_the_feedback_as_read()
     {
         $this->actingAsAdmin();
 
@@ -49,8 +46,7 @@ class FeedbackTest extends TestCase
         $this->assertTrue($feedback->refresh()->read());
     }
 
-    /** @test */
-    public function it_can_delete_the_feedback()
+    public function test_can_delete_the_feedback()
     {
         $this->actingAsAdmin();
 
@@ -64,8 +60,7 @@ class FeedbackTest extends TestCase
     }
 
 
-    /** @test */
-    public function it_can_display_trashed_feedback()
+    public function test_can_display_trashed_feedback()
     {
         if (! $this->useSoftDeletes($model = Feedback::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -82,8 +77,7 @@ class FeedbackTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_display_trashed_feedback_details()
+    public function test_can_display_trashed_feedback_details()
     {
         if (! $this->useSoftDeletes($model = Feedback::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -100,8 +94,7 @@ class FeedbackTest extends TestCase
         $response->assertSee('Ahmed');
     }
 
-    /** @test */
-    public function it_can_restore_deleted_feedback()
+    public function test_can_restore_deleted_feedback()
     {
         if (! $this->useSoftDeletes($model = Feedback::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -118,8 +111,7 @@ class FeedbackTest extends TestCase
         $this->assertNull($feedback->refresh()->deleted_at);
     }
 
-    /** @test */
-    public function it_can_force_delete_feedback()
+    public function test_can_force_delete_feedback()
     {
         if (! $this->useSoftDeletes($model = Feedback::class)) {
             $this->markTestSkipped("The '$model' doesn't use soft deletes trait.");
@@ -138,8 +130,7 @@ class FeedbackTest extends TestCase
         $this->assertEquals(Feedback::withoutTrashed()->count(), $feedbackCount - 1);
     }
 
-    /** @test */
-    public function it_can_mark_the_selected_feedback_as_read()
+    public function test_can_mark_the_selected_feedback_as_read()
     {
         $this->actingAsAdmin();
 
@@ -158,8 +149,7 @@ class FeedbackTest extends TestCase
         });
     }
 
-    /** @test */
-    public function it_can_mark_the_selected_feedback_as_unread()
+    public function test_can_mark_the_selected_feedback_as_unread()
     {
         $this->actingAsAdmin();
 

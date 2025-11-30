@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Event;
 
 class FeedbackTest extends TestCase
 {
-    /** @test */
-    public function anyone_can_send_feedback_message()
+    public function test_anyone_can_send_feedback_message()
     {
         Event::fake();
 

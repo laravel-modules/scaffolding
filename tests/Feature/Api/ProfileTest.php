@@ -8,8 +8,7 @@ use Laravel\Sanctum\Sanctum;
 
 class ProfileTest extends TestCase
 {
-    /** @test */
-    public function only_to_authenticated_user_can_display_his_profile()
+    public function test_only_to_authenticated_user_can_display_his_profile()
     {
         $user = User::factory()->create();
 
@@ -22,8 +21,7 @@ class ProfileTest extends TestCase
             ->assertSuccessful();
     }
 
-    /** @test */
-    public function only_to_authenticated_user_can_update_his_profile()
+    public function test_only_to_authenticated_user_can_update_his_profile()
     {
         $user = User::factory()->create([
             'name' => 'Ahmed',
