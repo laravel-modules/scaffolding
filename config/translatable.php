@@ -10,7 +10,10 @@ return [
     | Contains an array with the applications available locales.
     |
     */
-    'locales' => array_keys((require __DIR__.'/locales.php')['languages']) ?? [],
+    'locales' => [
+        'ar',
+        'en',
+    ],
 
     /*
     |--------------------------------------------------------------------------
