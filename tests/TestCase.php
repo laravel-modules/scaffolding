@@ -5,8 +5,8 @@ namespace Tests;
 use App\Models\Admin;
 use App\Models\Customer;
 use App\Models\Supervisor;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Database\Seeders\RolesAndPermissionsSeeder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Laraeast\LaravelSettings\Facades\Settings;
@@ -19,10 +19,9 @@ abstract class TestCase extends BaseTestCase
     /**
      * Set up the test environment.
      *
-     * @return void
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         // first include all the normal setUp operations
         parent::setUp();
@@ -38,7 +37,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Set the currently logged in admin for the application.
      *
-     * @param null $driver
+     * @param  null  $driver
      * @return \App\Models\Admin
      */
     public function actingAsAdmin($driver = null)
@@ -53,7 +52,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Set the currently logged in supervisor for the application.
      *
-     * @param null $driver
+     * @param  null  $driver
      * @return \App\Models\Supervisor
      */
     public function actingAsSupervisor($driver = null)
@@ -68,7 +67,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Set the currently logged in customer for the application.
      *
-     * @param null $driver
+     * @param  null  $driver
      * @return \App\Models\Customer
      */
     public function actingAsCustomer($driver = null)
@@ -83,7 +82,6 @@ abstract class TestCase extends BaseTestCase
     /**
      * Determine wither the model use soft deleting trait.
      *
-     * @param $model
      * @return bool
      */
     public function useSoftDeletes($model)

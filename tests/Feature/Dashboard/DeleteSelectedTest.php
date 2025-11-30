@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Dashboard;
 
-use Tests\TestCase;
 use App\Models\Customer;
+use Tests\TestCase;
 
 class DeleteSelectedTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Api;
 
+use App\Http\Requests\Concerns\WithHashedPassword;
 use App\Models\User;
 use App\Rules\PasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Requests\Concerns\WithHashedPassword;
 
 class ProfileRequest extends FormRequest
 {

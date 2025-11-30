@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
+use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
+use Laraeast\LaravelSettings\Models\Setting as BaseSettingModel;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Laraeast\LaravelSettings\Models\Setting as BaseSettingModel;
-use AhmedAliraqi\LaravelMediaUploader\Entities\Concerns\HasUploader;
 
 class Setting extends BaseSettingModel implements HasMedia
 {
-    use InteractsWithMedia;
     use HasUploader;
+    use InteractsWithMedia;
 
     /**
      * The table associated with the model.
@@ -21,8 +21,6 @@ class Setting extends BaseSettingModel implements HasMedia
 
     /**
      * Define the media collections.
-     *
-     * @return void
      */
     public function registerMediaCollections(): void
     {

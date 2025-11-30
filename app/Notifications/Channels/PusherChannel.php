@@ -2,8 +2,8 @@
 
 namespace App\Notifications\Channels;
 
-use Illuminate\Support\Arr;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Arr;
 use Pusher\PushNotifications\PushNotifications;
 
 class PusherChannel
@@ -11,8 +11,6 @@ class PusherChannel
     /**
      * Send the given notification.
      *
-     * @param $notifiable
-     * @param \Illuminate\Notifications\Notification $notification
      * @throws \Exception
      */
     public function send($notifiable, Notification $notification)
@@ -25,14 +23,14 @@ class PusherChannel
 
         $this->getPushNotifications()
             ->publishToUsers($this->getInterests($notifiable, $notifiable), [
-                "fcm" => [
-                    "notification" => $data,
-                    "data" => $data,
+                'fcm' => [
+                    'notification' => $data,
+                    'data' => $data,
                 ],
-                "apns" => [
-                    "aps" => [
-                        "alert" => $data,
-                        "sound" => 'default',
+                'apns' => [
+                    'aps' => [
+                        'alert' => $data,
+                        'sound' => 'default',
                     ],
                 ],
             ]);
@@ -41,8 +39,6 @@ class PusherChannel
     /**
      * Get the interests of the notification.
      *
-     * @param $notifiable
-     * @param $notification
      * @return \Illuminate\Support\Collection|mixed|string[]
      */
     protected function getInterests($notifiable, $notification)
@@ -61,7 +57,6 @@ class PusherChannel
      * Create PushNotification instance.
      *
      * @throws \Exception
-     * @return \Pusher\PushNotifications\PushNotifications
      */
     protected function getPushNotifications(): PushNotifications
     {

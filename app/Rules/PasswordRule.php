@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class PasswordRule implements Rule
 {
@@ -14,8 +14,6 @@ class PasswordRule implements Rule
 
     /**
      * Create a new rule instance.
-     *
-     * @param $password
      */
     public function __construct($password)
     {

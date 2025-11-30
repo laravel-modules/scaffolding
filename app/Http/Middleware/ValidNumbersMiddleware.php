@@ -18,8 +18,8 @@ class ValidNumbersMiddleware extends TransformsRequest
     /**
      * Transform the given value.
      *
-     * @param string $key
-     * @param mixed $value
+     * @param  string  $key
+     * @param  mixed  $value
      * @return mixed
      */
     protected function transform($key, $value)
@@ -34,7 +34,6 @@ class ValidNumbersMiddleware extends TransformsRequest
     /**
      * Convert arabic & persian decimal to valid decimal.
      *
-     * @param $string
      * @return string|string[]
      */
     public function replaceNumbers($string)

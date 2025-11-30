@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Parental\HasParent;
 use App\Http\Filters\AdminFilter;
 use App\Http\Resources\AdminResource;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Parental\HasParent;
 
 class Admin extends User
 {
@@ -51,8 +51,6 @@ class Admin extends User
 
     /**
      * Get the dashboard profile link.
-     *
-     * @return string
      */
     public function dashboardProfile(): string
     {

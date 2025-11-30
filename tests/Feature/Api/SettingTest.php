@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Api;
 
-use Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Laraeast\LaravelSettings\Facades\Settings;
+use Tests\TestCase;
 
 class SettingTest extends TestCase
 {

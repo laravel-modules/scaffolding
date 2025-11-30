@@ -24,7 +24,7 @@ return [
         'supervisors' => base_path('lang/{lang}/supervisors.php'),
         'users' => base_path('lang/{lang}/users.php'),
         'verification' => base_path('lang/{lang}/verification.php'),
-        /*  The lang of generated crud will set here: Don't remove this line  */
+        /*  The lang of generated crud will set here: Don't remove this line */
     ],
 
     /*

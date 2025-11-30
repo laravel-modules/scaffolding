@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Api;
 
-use Tests\TestCase;
 use App\Models\Admin;
 use App\Models\Feedback;
-use Laravel\Sanctum\Sanctum;
 use App\Models\NotificationModel;
 use App\Notifications\CustomNotification;
 use Illuminate\Support\Facades\Notification;
+use Laravel\Sanctum\Sanctum;
+use Tests\TestCase;
 
 class NotificationTest extends TestCase
 {

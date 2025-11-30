@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\User;
-use App\Models\Customer;
-use App\Models\Verification;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
 use App\Events\VerificationCreated;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Validation\ValidationException;
 use App\Http\Requests\Api\RegisterRequest;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Models\Customer;
+use App\Models\User;
+use App\Models\Verification;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -21,11 +20,11 @@ class RegisterController extends Controller
     /**
      * Handle a login request to the application.
      *
-     * @param \App\Http\Requests\Api\RegisterRequest $request
+     * @return \Illuminate\Http\Resources\Json\JsonResource
+     *
      * @throws \Illuminate\Validation\ValidationException
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
      * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
-     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function register(RegisterRequest $request)
     {
@@ -56,12 +55,11 @@ class RegisterController extends Controller
     /**
      * Create new customer to register to the application.
      *
-     * @param \App\Http\Requests\Api\RegisterRequest $request
      * @return \App\Models\Customer
      */
     public function createCustomer(RegisterRequest $request)
     {
-        $customer = new Customer();
+        $customer = new Customer;
 
         $customer
             ->forceFill($request->only('phone', 'type'))
@@ -74,9 +72,7 @@ class RegisterController extends Controller
     /**
      * Send the phone number verification code.
      *
-     * @param \App\Models\User $user
      * @throws \Illuminate\Validation\ValidationException
-     * @return void
      */
     protected function sendVerificationCode(User $user): void
     {

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Dashboard;
 
-use Tests\TestCase;
 use App\Models\Admin;
+use Tests\TestCase;
 
 class AdminTest extends TestCase
 {

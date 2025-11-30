@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Routing\Controller;
 use App\Http\Requests\Api\ProfileRequest;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller;
 
 class ProfileController extends Controller
 {
@@ -24,7 +24,6 @@ class ProfileController extends Controller
     /**
      * Update the authenticated user profile.
      *
-     * @param \App\Http\Requests\Api\ProfileRequest $request
      * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function update(ProfileRequest $request)

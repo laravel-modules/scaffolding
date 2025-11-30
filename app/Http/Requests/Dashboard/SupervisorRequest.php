@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Dashboard;
 
-use Illuminate\Validation\Rule;
-use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Concerns\WithHashedPassword;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SupervisorRequest extends FormRequest
 {
@@ -59,8 +59,8 @@ class SupervisorRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:users,email,' . $this->route('supervisor')->id],
-            'phone' => ['required', 'unique:users,phone,' . $this->route('supervisor')->id],
+            'email' => ['required', 'email', 'unique:users,email,'.$this->route('supervisor')->id],
+            'phone' => ['required', 'unique:users,phone,'.$this->route('supervisor')->id],
             'password' => ['nullable', 'min:8', 'confirmed'],
             'type' => ['sometimes', 'nullable', Rule::in(array_keys(trans('users.types')))],
         ];

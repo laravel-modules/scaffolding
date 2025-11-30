@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Api;
 
-use Tests\TestCase;
+use App\Events\VerificationCreated;
 use App\Models\Customer;
 use App\Models\Verification;
-use App\Events\VerificationCreated;
 use Illuminate\Support\Facades\Event;
+use Tests\TestCase;
 
 class PhoneVerificationTest extends TestCase
 {

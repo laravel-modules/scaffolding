@@ -62,7 +62,7 @@ if (! function_exists('count_formatted')) {
      * Format numbers to nearest thousands such as
      * Kilos, Millions, Billions, and Trillions with comma.
      *
-     * @param int|float $num
+     * @param  int|float  $num
      * @return float|string
      */
     function count_formatted($num)

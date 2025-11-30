@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Feedback;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use App\Http\Requests\Feedback\FeedbackRequest;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class FeedbackController extends Controller
 {
@@ -36,7 +35,6 @@ class FeedbackController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Feedback $feedback
      * @return \Illuminate\Http\Response
      */
     public function show(Feedback $feedback)
@@ -49,9 +47,9 @@ class FeedbackController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Feedback $feedback
-     * @throws \Exception
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception
      */
     public function destroy(Feedback $feedback)
     {
@@ -79,7 +77,6 @@ class FeedbackController extends Controller
     /**
      * Display the specified trashed resource.
      *
-     * @param \App\Models\Feedback $feedback
      * @return \Illuminate\Http\Response
      */
     public function showTrashed(Feedback $feedback)
@@ -92,7 +89,6 @@ class FeedbackController extends Controller
     /**
      * Restore the trashed resource.
      *
-     * @param \App\Models\Feedback $feedback
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore(Feedback $feedback)
@@ -109,9 +105,9 @@ class FeedbackController extends Controller
     /**
      * Force delete the specified resource from storage.
      *
-     * @param \App\Models\Feedback $feedback
-     * @throws \Exception
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception
      */
     public function forceDelete(Feedback $feedback)
     {
@@ -127,7 +123,6 @@ class FeedbackController extends Controller
     /**
      * Mark the selected messages as read.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function read(Request $request)
@@ -142,7 +137,6 @@ class FeedbackController extends Controller
     /**
      * Mark the selected messages as unread.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function unread(Request $request)

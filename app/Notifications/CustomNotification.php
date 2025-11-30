@@ -16,8 +16,6 @@ class CustomNotification extends Notification
 
     /**
      * Create a new notification instance.
-     *
-     * @param array $data
      */
     public function __construct(array $data)
     {
@@ -27,7 +25,7 @@ class CustomNotification extends Notification
     /**
      * Get the notification's delivery channels.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -38,7 +36,6 @@ class CustomNotification extends Notification
     /**
      * The pusher instance for the notifiable.
      *
-     * @param $notifiable
      * @return string[]
      */
     public function pusherInterests($notifiable)
@@ -49,7 +46,7 @@ class CustomNotification extends Notification
     /**
      * Get the pusher representation of the notification.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function toPusher($notifiable)
@@ -64,7 +61,7 @@ class CustomNotification extends Notification
     /**
      * Get the array representation of the notification.
      *
-     * @param mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function toArray($notifiable)

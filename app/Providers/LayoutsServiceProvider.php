@@ -16,13 +16,13 @@ class LayoutsServiceProvider extends ServiceProvider
     {
         // Load Dashboard Layout.
         $this->loadViewsFrom(
-            resource_path('/views/layouts/'. Config::get('layouts.dashboard')),
+            resource_path('/views/layouts/'.Config::get('layouts.dashboard')),
             'dashboard'
         );
 
         // Load Frontend Layout.
         $this->loadViewsFrom(
-            resource_path('/views/layouts/'. Config::get('layouts.frontend')),
+            resource_path('/views/layouts/'.Config::get('layouts.frontend')),
             'frontend'
         );
     }

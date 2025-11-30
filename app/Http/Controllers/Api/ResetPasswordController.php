@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\User;
-use Illuminate\Support\Str;
+use App\Http\Requests\Api\ForgetPasswordRequest;
+use App\Http\Requests\Api\ResetPasswordCodeRequest;
+use App\Http\Requests\Api\ResetPasswordRequest;
 use App\Models\ResetPasswordCode;
-use Illuminate\Auth\Events\Login;
 use App\Models\ResetPasswordToken;
+use App\Models\User;
+use App\Notifications\Accounts\PasswordUpdatedNotification;
+use App\Notifications\Accounts\SendForgetPasswordCodeNotification;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use App\Http\Requests\Api\ResetPasswordRequest;
-use App\Http\Requests\Api\ForgetPasswordRequest;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use App\Notifications\Accounts\PasswordUpdatedNotification;
-use App\Http\Requests\Api\ResetPasswordCodeRequest;
-use App\Notifications\Accounts\SendForgetPasswordCodeNotification;
 
 class ResetPasswordController extends Controller
 {
@@ -27,9 +27,9 @@ class ResetPasswordController extends Controller
     /**
      * Send the forget password code to the user.
      *
-     * @param \App\Http\Requests\Api\ForgetPasswordRequest $request
-     * @throws \Illuminate\Validation\ValidationException
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function forget(ForgetPasswordRequest $request)
     {
@@ -77,9 +77,9 @@ class ResetPasswordController extends Controller
     /**
      * Get the reset password token using verification code.
      *
-     * @param \App\Http\Requests\Api\ResetPasswordCodeRequest $request
-     * @throws \Illuminate\Validation\ValidationException
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function code(ResetPasswordCodeRequest $request)
     {
@@ -141,7 +141,7 @@ class ResetPasswordController extends Controller
         ]);
 
         try {
-            $user->notify(new PasswordUpdatedNotification());
+            $user->notify(new PasswordUpdatedNotification);
         } catch (\Exception $exception) {
         }
 

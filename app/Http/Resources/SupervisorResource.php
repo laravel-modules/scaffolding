@@ -11,8 +11,9 @@ class SupervisorResource extends JsonResource
      * Transform the resource into an array.
      *
      * @param \Illuminate\Http\Request
-     * @throws \Laracasts\Presenter\Exceptions\PresenterException
      * @return array
+     *
+     * @throws \Laracasts\Presenter\Exceptions\PresenterException
      */
     public function toArray($request)
     {

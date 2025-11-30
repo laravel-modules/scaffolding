@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
@@ -27,8 +27,9 @@ class SettingController extends Controller
     /**
      * Display the settings page.
      *
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function index()
     {
@@ -48,7 +49,6 @@ class SettingController extends Controller
     /**
      * Update the website global settings.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request)
@@ -56,8 +56,7 @@ class SettingController extends Controller
         foreach (
             $request->except(
                 array_merge(['_token', '_method', 'media'], $this->files)
-            )
-            as $key => $value
+            ) as $key => $value
         ) {
             Settings::set($key, $value);
         }
@@ -98,8 +97,9 @@ class SettingController extends Controller
     /**
      * Download a fresh database and storage backup.
      *
-     * @throws \Illuminate\Validation\ValidationException
      * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function downloadBackup()
     {

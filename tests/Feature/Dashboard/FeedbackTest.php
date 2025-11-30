@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Dashboard;
 
-use Tests\TestCase;
 use App\Models\Feedback;
+use Tests\TestCase;
 
 class FeedbackTest extends TestCase
 {
@@ -58,7 +58,6 @@ class FeedbackTest extends TestCase
 
         $this->assertEquals(Feedback::count(), $feedbackCount - 1);
     }
-
 
     public function test_can_display_trashed_feedback()
     {

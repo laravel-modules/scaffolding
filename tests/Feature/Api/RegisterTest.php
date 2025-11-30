@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Api;
 
-use Tests\TestCase;
+use App\Events\VerificationCreated;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
-use App\Events\VerificationCreated;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Api;
 
-use Tests\TestCase;
-use App\Models\Feedback;
 use App\Events\FeedbackSent;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Event;
+use Tests\TestCase;
 
 class FeedbackTest extends TestCase
 {

@@ -58,7 +58,7 @@ class SettingController extends Controller
 
     public function page($page)
     {
-        $title = trans('settings.tabs.'. $page);
+        $title = trans('settings.tabs.'.$page);
 
         $content = Settings::locale()->get($page);
 

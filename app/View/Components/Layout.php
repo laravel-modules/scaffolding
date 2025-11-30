@@ -19,8 +19,8 @@ class Layout extends Component
     /**
      * Create a new component instance.
      *
-     * @param null $title
-     * @param array $breadcrumbs
+     * @param  null  $title
+     * @param  array  $breadcrumbs
      */
     public function __construct($title = null, $breadcrumbs = [])
     {

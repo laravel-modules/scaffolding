@@ -2,17 +2,15 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\NotificationModel;
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\NotificationModel;
 
 class ReadNotificationsMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)

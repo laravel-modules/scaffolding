@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Dashboard;
 
-use Illuminate\Validation\Rule;
-use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Concerns\WithHashedPassword;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CustomerRequest extends FormRequest
 {
@@ -59,8 +59,8 @@ class CustomerRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:users,email,' . $this->route('customer')->id],
-            'phone' => ['required', 'unique:users,phone,' . $this->route('customer')->id],
+            'email' => ['required', 'email', 'unique:users,email,'.$this->route('customer')->id],
+            'phone' => ['required', 'unique:users,phone,'.$this->route('customer')->id],
             'password' => ['nullable', 'min:8', 'confirmed'],
             'type' => ['sometimes', 'nullable', Rule::in(array_keys(trans('users.types')))],
         ];

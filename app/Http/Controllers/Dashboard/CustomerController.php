@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Customer;
-use Illuminate\Routing\Controller;
 use App\Http\Requests\Dashboard\CustomerRequest;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Models\Customer;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller;
 
 class CustomerController extends Controller
 {
@@ -45,7 +45,6 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Dashboard\CustomerRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CustomerRequest $request)
@@ -64,7 +63,6 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Customer $customer
      * @return \Illuminate\Http\Response
      */
     public function show(Customer $customer)
@@ -75,7 +73,6 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Customer $customer
      * @return \Illuminate\Http\Response
      */
     public function edit(Customer $customer)
@@ -86,8 +83,6 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Dashboard\CustomerRequest $request
-     * @param \App\Models\Customer $customer
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(CustomerRequest $request, Customer $customer)
@@ -106,9 +101,9 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Customer $customer
-     * @throws \Exception
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception
      */
     public function destroy(Customer $customer)
     {
@@ -136,7 +131,6 @@ class CustomerController extends Controller
     /**
      * Display the specified trashed resource.
      *
-     * @param \App\Models\Customer $customer
      * @return \Illuminate\Http\Response
      */
     public function showTrashed(Customer $customer)
@@ -149,7 +143,6 @@ class CustomerController extends Controller
     /**
      * Restore the trashed resource.
      *
-     * @param \App\Models\Customer $customer
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore(Customer $customer)
@@ -166,9 +159,9 @@ class CustomerController extends Controller
     /**
      * Force delete the specified resource from storage.
      *
-     * @param \App\Models\Customer $customer
-     * @throws \Exception
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception
      */
     public function forceDelete(Customer $customer)
     {

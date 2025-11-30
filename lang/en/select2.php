@@ -5,8 +5,8 @@ return [
     'inputTooLong' => 'Please delete :overChars characters',
     'inputTooShort' => 'Please enter :remainingChars characters',
     'loadingMore' => 'Loading more results…',
-    'maximumSelected' =>  'You can only select :maximum items',
-    'noResults' =>  'No results found',
-    'searching' =>  'Searching …',
-    'removeAllItems' =>  'Remove all items',
+    'maximumSelected' => 'You can only select :maximum items',
+    'noResults' => 'No results found',
+    'searching' => 'Searching …',
+    'removeAllItems' => 'Remove all items',
 ];

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Admin;
-use Illuminate\Routing\Controller;
 use App\Http\Requests\Dashboard\AdminRequest;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Models\Admin;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
 {
@@ -14,7 +14,6 @@ class AdminController extends Controller
 
     /**
      * AdminController constructor.
-     *
      */
     public function __construct()
     {
@@ -46,7 +45,6 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Dashboard\AdminRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(AdminRequest $request)
@@ -65,7 +63,6 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Admin $admin
      * @return \Illuminate\Http\Response
      */
     public function show(Admin $admin)
@@ -76,7 +73,6 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Admin $admin
      * @return \Illuminate\Http\Response
      */
     public function edit(Admin $admin)
@@ -87,8 +83,6 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Dashboard\AdminRequest $request
-     * @param \App\Models\Admin $admin
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(AdminRequest $request, Admin $admin)
@@ -107,9 +101,9 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Admin $admin
-     * @throws \Exception
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception
      */
     public function destroy(Admin $admin)
     {
@@ -137,7 +131,6 @@ class AdminController extends Controller
     /**
      * Display the specified trashed resource.
      *
-     * @param \App\Models\Admin $admin
      * @return \Illuminate\Http\Response
      */
     public function showTrashed(Admin $admin)
@@ -150,7 +143,6 @@ class AdminController extends Controller
     /**
      * Restore the trashed resource.
      *
-     * @param \App\Models\Admin $admin
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore(Admin $admin)
@@ -167,9 +159,9 @@ class AdminController extends Controller
     /**
      * Force delete the specified resource from storage.
      *
-     * @param \App\Models\Admin $admin
-     * @throws \Exception
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception
      */
     public function forceDelete(Admin $admin)
     {

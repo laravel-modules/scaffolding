@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Verification;
-use Illuminate\Http\Request;
 use App\Events\VerificationCreated;
 use App\Http\Controllers\Controller;
+use App\Models\Verification;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class VerificationController extends Controller
 {
@@ -17,9 +17,9 @@ class VerificationController extends Controller
     /**
      * Send or resend the verification code.
      *
-     * @param \Illuminate\Http\Request $request
-     * @throws \Illuminate\Validation\ValidationException
      * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function send(Request $request)
     {
@@ -46,9 +46,9 @@ class VerificationController extends Controller
     /**
      * Verify the user's phone number.
      *
-     * @param \Illuminate\Http\Request $request
-     * @throws \Illuminate\Validation\ValidationException
      * @return \Illuminate\Http\Resources\Json\JsonResource
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function verify(Request $request)
     {
@@ -80,9 +80,9 @@ class VerificationController extends Controller
     /**
      * Check if the password of the authenticated user is correct.
      *
-     * @param \Illuminate\Http\Request $request
-     * @throws \Illuminate\Validation\ValidationException
      * @return \Illuminate\Http\Resources\Json\JsonResource
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function password(Request $request)
     {

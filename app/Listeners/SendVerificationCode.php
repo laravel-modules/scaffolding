@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use App\Events\VerificationCreated;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendVerificationCode
 {
@@ -22,7 +20,6 @@ class SendVerificationCode
     /**
      * Handle the event.
      *
-     * @param VerificationCreated $event
      * @return void
      */
     public function handle(VerificationCreated $event)

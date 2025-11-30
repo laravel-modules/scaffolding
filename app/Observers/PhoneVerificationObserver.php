@@ -9,7 +9,6 @@ class PhoneVerificationObserver
     /**
      * Handle the User "saving" event.
      *
-     * @param  \App\Models\User  $user
      * @return void
      */
     public function saving(User $user)

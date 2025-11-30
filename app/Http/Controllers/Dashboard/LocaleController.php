@@ -10,7 +10,7 @@ class LocaleController extends Controller
     /**
      * Change the dashboard language.
      *
-     * @param string $locale
+     * @param  string  $locale
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($locale)

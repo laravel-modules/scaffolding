@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Api;
 
-use Tests\TestCase;
 use App\Models\User;
+use Tests\TestCase;
 
 class UserTest extends TestCase
 {

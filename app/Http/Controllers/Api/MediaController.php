@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Laraeast\LaravelSettings\Facades\Settings;
 
 class MediaController extends Controller
@@ -11,7 +11,6 @@ class MediaController extends Controller
     /**
      * Upload the image from editor.
      *
-     * @param \Illuminate\Http\Request $request
      * @return string
      */
     public function editorUpload(Request $request)

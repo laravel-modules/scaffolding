@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SoftDeletesServiceProvider extends ServiceProvider
 {
@@ -27,6 +27,7 @@ class SoftDeletesServiceProvider extends ServiceProvider
             });
         }
     }
+
     /**
      * Determine wither the model use soft deleting trait.
      *

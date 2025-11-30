@@ -11,7 +11,6 @@ class DeleteController extends Controller
     /**
      * Delete the given items of the given model type.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request)
@@ -35,7 +34,6 @@ class DeleteController extends Controller
     /**
      * Restore the given items of the given model type.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore(Request $request)
@@ -59,7 +57,6 @@ class DeleteController extends Controller
     /**
      * Force delete the given items of the given model type.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function forceDelete(Request $request)

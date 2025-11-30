@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Models\Contracts\NotificationTarget;
-use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\DatabaseNotification;
 
 class NotificationModel extends DatabaseNotification
 {
@@ -36,8 +36,6 @@ class NotificationModel extends DatabaseNotification
 
     /**
      * Retrieve the notification target instance.
-     *
-     * @return \App\Models\Contracts\NotificationTarget
      */
     public function target(): NotificationTarget
     {

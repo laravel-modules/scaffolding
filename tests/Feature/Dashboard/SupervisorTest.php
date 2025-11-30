@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Dashboard;
 
-use Tests\TestCase;
 use App\Models\Supervisor;
+use Tests\TestCase;
 
 class SupervisorTest extends TestCase
 {

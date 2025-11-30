@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Locale;
-use Closure;
 use Carbon\Carbon;
+use Closure;
+use Locale;
 
 class SetApplicationLocale
 {
@@ -12,7 +12,6 @@ class SetApplicationLocale
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
      * @return mixed
      */
     public function handle($request, Closure $next)

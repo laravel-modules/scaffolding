@@ -2,10 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\Supervisor;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laraeast\LaravelSettings\Facades\Settings;
 
 class SupervisorPolicy
@@ -15,7 +15,6 @@ class SupervisorPolicy
     /**
      * Determine whether the user can view any supervisors.
      *
-     * @param \App\Models\User $user
      * @return mixed
      */
     public function viewAny(User $user)
@@ -26,8 +25,6 @@ class SupervisorPolicy
     /**
      * Determine whether the user can view the supervisor.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\Supervisor $supervisor
      * @return mixed
      */
     public function view(User $user, Supervisor $supervisor)
@@ -40,7 +37,6 @@ class SupervisorPolicy
     /**
      * Determine whether the user can create supervisors.
      *
-     * @param \App\Models\User $user
      * @return mixed
      */
     public function create(User $user)
@@ -51,25 +47,21 @@ class SupervisorPolicy
     /**
      * Determine whether the user can update the supervisor.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\Supervisor $supervisor
      * @return mixed
      */
     public function update(User $user, Supervisor $supervisor)
     {
         return (
-                $user->isAdmin()
-                || $user->is($supervisor)
-                || $user->hasPermissionTo('manage.supervisors')
-            )
+            $user->isAdmin()
+            || $user->is($supervisor)
+            || $user->hasPermissionTo('manage.supervisors')
+        )
             && ! $this->trashed($supervisor);
     }
 
     /**
      * Determine whether the user can update the type of the supervisor.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\Supervisor $supervisor
      * @return mixed
      */
     public function updateType(User $user, Supervisor $supervisor)
@@ -82,40 +74,35 @@ class SupervisorPolicy
     /**
      * Determine whether the user can delete the supervisor.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\Supervisor $supervisor
      * @return mixed
      */
     public function delete(User $user, Supervisor $supervisor)
     {
         return (
-                $user->isAdmin()
-                && $user->isNot($supervisor)
-                || $user->hasPermissionTo('manage.supervisors')
-            )
+            $user->isAdmin()
+            && $user->isNot($supervisor)
+            || $user->hasPermissionTo('manage.supervisors')
+        )
             && ! $this->trashed($supervisor);
     }
 
     /**
      * Determine whether the user can view trashed supervisors.
      *
-     * @param \App\Models\User $user
      * @return mixed
      */
     public function viewAnyTrash(User $user)
     {
         return (
-                $user->isAdmin()
-                || $user->hasPermissionTo('manage.supervisors')
-            )
+            $user->isAdmin()
+            || $user->hasPermissionTo('manage.supervisors')
+        )
             && $this->hasSoftDeletes();
     }
 
     /**
      * Determine whether the user can view trashed supervisor.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\Supervisor $supervisor
      * @return mixed
      */
     public function viewTrash(User $user, Supervisor $supervisor)
@@ -126,33 +113,29 @@ class SupervisorPolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\Supervisor $supervisor
      * @return mixed
      */
     public function restore(User $user, Supervisor $supervisor)
     {
         return (
-                $user->isAdmin()
-                || $user->hasPermissionTo('manage.supervisors')
-            )
+            $user->isAdmin()
+            || $user->hasPermissionTo('manage.supervisors')
+        )
             && $this->trashed($supervisor);
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\Supervisor $supervisor
      * @return mixed
      */
     public function forceDelete(User $user, Supervisor $supervisor)
     {
         return (
-                $user->isAdmin()
-                && $user->isNot($supervisor)
-                || $user->hasPermissionTo('manage.supervisors')
-            )
+            $user->isAdmin()
+            && $user->isNot($supervisor)
+            || $user->hasPermissionTo('manage.supervisors')
+        )
             && $this->trashed($supervisor)
             && Settings::get('delete_forever');
     }
@@ -160,7 +143,6 @@ class SupervisorPolicy
     /**
      * Determine wither the given supervisor is trashed.
      *
-     * @param $supervisor
      * @return bool
      */
     public function trashed($supervisor)

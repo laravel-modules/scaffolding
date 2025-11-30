@@ -12,7 +12,6 @@ class SettingPolicy
     /**
      * Determine whether the user can manage settings.
      *
-     * @param  \App\Models\User  $user
      * @return mixed
      */
     public function manage(User $user)

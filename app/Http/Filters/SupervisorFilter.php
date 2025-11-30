@@ -51,7 +51,7 @@ class SupervisorFilter extends BaseFilter
      */
     protected function phone(mixed $value): void
     {
-        $this->builder->where('email', 'like', "%$value%");
+        $this->builder->where('phone', 'like', "%$value%");
     }
 
     /**

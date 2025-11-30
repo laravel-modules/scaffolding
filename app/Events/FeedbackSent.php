@@ -4,25 +4,20 @@ namespace App\Events;
 
 use App\Models\Admin;
 use App\Models\Feedback;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class FeedbackSent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    /**
-     * @var \App\Models\Feedback
-     */
     public Feedback $feedback;
 
     /**
      * Create a new event instance.
-     *
-     * @param \App\Models\Feedback $feedback
      */
     public function __construct(Feedback $feedback)
     {
@@ -52,7 +47,7 @@ class FeedbackSent implements ShouldBroadcast
      */
     public function broadcastAs()
     {
-        return "new-feedback";
+        return 'new-feedback';
     }
 
     /**

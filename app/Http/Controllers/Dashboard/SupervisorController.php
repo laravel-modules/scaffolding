@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Supervisor;
-use Illuminate\Routing\Controller;
 use App\Http\Requests\Dashboard\SupervisorRequest;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Models\Supervisor;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller;
 
 class SupervisorController extends Controller
 {
@@ -45,7 +45,6 @@ class SupervisorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \App\Http\Requests\Dashboard\SupervisorRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(SupervisorRequest $request)
@@ -68,7 +67,6 @@ class SupervisorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Supervisor $supervisor
      * @return \Illuminate\Http\Response
      */
     public function show(Supervisor $supervisor)
@@ -79,7 +77,6 @@ class SupervisorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Supervisor $supervisor
      * @return \Illuminate\Http\Response
      */
     public function edit(Supervisor $supervisor)
@@ -90,8 +87,6 @@ class SupervisorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\Dashboard\SupervisorRequest $request
-     * @param \App\Models\Supervisor $supervisor
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(SupervisorRequest $request, Supervisor $supervisor)
@@ -114,9 +109,9 @@ class SupervisorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Supervisor $supervisor
-     * @throws \Exception
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception
      */
     public function destroy(Supervisor $supervisor)
     {
@@ -144,7 +139,6 @@ class SupervisorController extends Controller
     /**
      * Display the specified trashed resource.
      *
-     * @param \App\Models\Supervisor $supervisor
      * @return \Illuminate\Http\Response
      */
     public function showTrashed(Supervisor $supervisor)
@@ -157,7 +151,6 @@ class SupervisorController extends Controller
     /**
      * Restore the trashed resource.
      *
-     * @param \App\Models\Supervisor $supervisor
      * @return \Illuminate\Http\RedirectResponse
      */
     public function restore(Supervisor $supervisor)
@@ -174,9 +167,9 @@ class SupervisorController extends Controller
     /**
      * Force delete the specified resource from storage.
      *
-     * @param \App\Models\Supervisor $supervisor
-     * @throws \Exception
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Exception
      */
     public function forceDelete(Supervisor $supervisor)
     {

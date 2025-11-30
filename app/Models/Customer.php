@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
-use Parental\HasParent;
 use App\Http\Filters\CustomerFilter;
 use App\Http\Resources\CustomerResource;
 use App\Models\Relations\CustomerRelations;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Parental\HasParent;
 
 class Customer extends User
 {
+    use CustomerRelations;
     use HasFactory;
     use HasParent;
-    use CustomerRelations;
     use SoftDeletes;
 
     /**
@@ -53,8 +53,6 @@ class Customer extends User
 
     /**
      * Get the dashboard profile link.
-     *
-     * @return string
      */
     public function dashboardProfile(): string
     {
