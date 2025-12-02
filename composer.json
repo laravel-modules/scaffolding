@@ -29,6 +29,7 @@
         "laravel/ui": "^4.0",
         "pusher/pusher-php-server": "^7.2",
         "pusher/pusher-push-notifications": "^1.1",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-backup": "^9.0",
         "spatie/laravel-permission": "^6.0",
         "tightenco/parental": "^1.4"
