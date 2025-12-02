@@ -34,7 +34,7 @@
         "tightenco/parental": "^1.4"
     },
     "require-dev": {
-        "ahmed-aliraqi/crud-generator": "^5.0",
+        "ahmed-aliraqi/crud-generator": "^6.0",
         "ahmed-aliraqi/lang-generator": "^3.0",
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^3.5",

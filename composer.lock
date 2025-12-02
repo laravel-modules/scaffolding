@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21afbb2a10e44a70d87ca9dc3e6565d6",
+    "content-hash": "603a606ff4c2ef9db1417bbd074871f6",
     "packages": [
         {
             "name": "ahmed-aliraqi/laravel-filterable",
@@ -3795,20 +3795,20 @@
         },
         {
             "name": "nette/utils",
-            "version": "v4.0.9",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "505a30ad386daa5211f08a318e47015b501cad30"
+                "reference": "fa1f0b8261ed150447979eb22e373b7b7ad5a8e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/505a30ad386daa5211f08a318e47015b501cad30",
-                "reference": "505a30ad386daa5211f08a318e47015b501cad30",
+                "url": "https://api.github.com/repos/nette/utils/zipball/fa1f0b8261ed150447979eb22e373b7b7ad5a8e0",
+                "reference": "fa1f0b8261ed150447979eb22e373b7b7ad5a8e0",
                 "shasum": ""
             },
             "require": {
-                "php": "8.0 - 8.5"
+                "php": "8.2 - 8.5"
             },
             "conflict": {
                 "nette/finder": "<3",
@@ -3831,7 +3831,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0-dev"
+                    "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -3878,9 +3878,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.0.9"
+                "source": "https://github.com/nette/utils/tree/v4.1.0"
             },
-            "time": "2025-10-31T00:45:47+00:00"
+            "time": "2025-12-01T17:49:23+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -9052,22 +9052,24 @@
     "packages-dev": [
         {
             "name": "ahmed-aliraqi/crud-generator",
-            "version": "v5.0.2",
+            "version": "v6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ahmed-aliraqi/crud-generator.git",
-                "reference": "bb4bf1b7f73d6215e266a11ead3bd58e5dd18f46"
+                "reference": "433d04f9b0b02faecae2684e3596af91c5401fc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ahmed-aliraqi/crud-generator/zipball/bb4bf1b7f73d6215e266a11ead3bd58e5dd18f46",
-                "reference": "bb4bf1b7f73d6215e266a11ead3bd58e5dd18f46",
+                "url": "https://api.github.com/repos/ahmed-aliraqi/crud-generator/zipball/433d04f9b0b02faecae2684e3596af91c5401fc7",
+                "reference": "433d04f9b0b02faecae2684e3596af91c5401fc7",
                 "shasum": ""
             },
             "require": {
                 "illuminate/console": ">=9.0",
                 "illuminate/support": ">=9.0",
-                "php": ">=8.0"
+                "laravel-modules/module-generator": "^3.2",
+                "laravel/prompts": "^0.3.8",
+                "php": ">=8.2"
             },
             "type": "library",
             "extra": {
@@ -9095,9 +9097,9 @@
             "description": "This package is a useful tool to generate simple crud for laravel-modules/scaffolding",
             "support": {
                 "issues": "https://github.com/ahmed-aliraqi/crud-generator/issues",
-                "source": "https://github.com/ahmed-aliraqi/crud-generator/tree/v5.0.2"
+                "source": "https://github.com/ahmed-aliraqi/crud-generator/tree/v6.0.0"
             },
-            "time": "2025-07-13T19:33:57+00:00"
+            "time": "2025-12-02T08:14:51+00:00"
         },
         {
             "name": "ahmed-aliraqi/lang-generator",
@@ -9856,16 +9858,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.91.0",
+            "version": "v3.91.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "c4a25f20390337789c26b693ae46faa125040352"
+                "reference": "f171dc216bc8a4192d5a0876a899cce6f9e379d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/c4a25f20390337789c26b693ae46faa125040352",
-                "reference": "c4a25f20390337789c26b693ae46faa125040352",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/f171dc216bc8a4192d5a0876a899cce6f9e379d6",
+                "reference": "f171dc216bc8a4192d5a0876a899cce6f9e379d6",
                 "shasum": ""
             },
             "require": {
@@ -9921,7 +9923,7 @@
                     "PhpCsFixer\\": "src/"
                 },
                 "exclude-from-classmap": [
-                    "src/Fixer/Internal/*"
+                    "src/**/Internal/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -9947,7 +9949,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.91.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.91.2"
             },
             "funding": [
                 {
@@ -9955,7 +9957,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-28T22:07:42+00:00"
+            "time": "2025-12-01T20:56:13+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -11045,16 +11047,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.44",
+            "version": "11.5.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c346885c95423eda3f65d85a194aaa24873cda82"
+                "reference": "faf5fff4fb9beb290affa53f812b05380819c51a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c346885c95423eda3f65d85a194aaa24873cda82",
-                "reference": "c346885c95423eda3f65d85a194aaa24873cda82",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/faf5fff4fb9beb290affa53f812b05380819c51a",
+                "reference": "faf5fff4fb9beb290affa53f812b05380819c51a",
                 "shasum": ""
             },
             "require": {
@@ -11126,7 +11128,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.44"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.45"
             },
             "funding": [
                 {
@@ -11150,7 +11152,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-11-13T07:17:35+00:00"
+            "time": "2025-12-01T07:38:43+00:00"
         },
         {
             "name": "react/cache",
