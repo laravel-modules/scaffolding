@@ -9,11 +9,9 @@ return [
     |
     | Contains an array with the applications available locales.
     |
+    | Configured from \App\Providers\LocalesServiceProvider
     */
-    'locales' => [
-        'ar',
-        'en',
-    ],
+    'locales' => [],
 
     /*
     |--------------------------------------------------------------------------
