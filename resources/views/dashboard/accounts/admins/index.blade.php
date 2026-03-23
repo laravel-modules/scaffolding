@@ -10,14 +10,17 @@
         <thead>
         <tr>
             <th colspan="100">
-                <div class="d-flex">
-                    <x-check-all-delete
-                            type="{{ \App\Models\Admin::class }}"
-                            :resource="trans('admins.plural')"></x-check-all-delete>
-
-                    <div class="ml-2 d-flex justify-content-between flex-grow-1">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex" style="gap: .5rem">
                         @include('dashboard.accounts.admins.partials.actions.create')
+                        <x-excel-export model="App\Models\Admin"></x-excel-export>
+                        <x-excel-import model="App\Models\Admin"></x-excel-import>
                         @include('dashboard.accounts.admins.partials.actions.trashed')
+                    </div>
+                    <div>
+                        <x-check-all-delete
+                            type="{{ \App\Models\Admin::class }}"
+                            :resource="__('admins.plural')"></x-check-all-delete>
                     </div>
                 </div>
             </th>

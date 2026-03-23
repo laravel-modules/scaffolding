@@ -9,15 +9,16 @@
         <thead>
         <tr>
             <th colspan="100">
-                <div class="d-flex">
-                    <x-check-all-delete
-                            type="{{ \App\Models\Feedback::class }}"
-                            :resource="trans('feedback.plural')"></x-check-all-delete>
-                    <div class="ml-2 d-flex justify-content-between flex-grow-1">
-                        <div>
-                            @include('dashboard.feedback.partials.actions.read')
-                        </div>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex" style="gap: .5rem">
+                        <x-excel-export model="App\Models\Feedback"></x-excel-export>
+                        <x-excel-import model="App\Models\Feedback"></x-excel-import>
                         @include('dashboard.feedback.partials.actions.trashed')
+                    </div>
+                    <div>
+                        <x-check-all-delete
+                            type="{{ \App\Models\Feedback::class }}"
+                            :resource="__('supervisors.plural')"></x-check-all-delete>
                     </div>
                 </div>
             </th>

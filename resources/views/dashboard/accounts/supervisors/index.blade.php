@@ -10,14 +10,17 @@
         <thead>
         <tr>
             <th colspan="100">
-                <div class="d-flex">
-                    <x-check-all-delete
-                            type="{{ \App\Models\Supervisor::class }}"
-                            :resource="trans('supervisors.plural')"></x-check-all-delete>
-
-                    <div class="ml-2 d-flex justify-content-between flex-grow-1">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex" style="gap: .5rem">
                         @include('dashboard.accounts.supervisors.partials.actions.create')
+                        <x-excel-export model="App\Models\Supervisor"></x-excel-export>
+                        <x-excel-import model="App\Models\Supervisor"></x-excel-import>
                         @include('dashboard.accounts.supervisors.partials.actions.trashed')
+                    </div>
+                    <div>
+                        <x-check-all-delete
+                            type="{{ \App\Models\Supervisor::class }}"
+                            :resource="__('supervisors.plural')"></x-check-all-delete>
                     </div>
                 </div>
             </th>

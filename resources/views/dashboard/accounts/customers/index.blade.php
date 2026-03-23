@@ -10,14 +10,17 @@
         <thead>
         <tr>
             <th colspan="100">
-                <div class="d-flex">
-                    <x-check-all-delete
-                            type="{{ \App\Models\Customer::class }}"
-                            :resource="trans('customers.plural')"></x-check-all-delete>
-
-                    <div class="ml-2 d-flex justify-content-between flex-grow-1">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex" style="gap: .5rem">
                         @include('dashboard.accounts.customers.partials.actions.create')
+                        <x-excel-export model="App\Models\Customer"></x-excel-export>
+                        <x-excel-import model="App\Models\Customer"></x-excel-import>
                         @include('dashboard.accounts.customers.partials.actions.trashed')
+                    </div>
+                    <div>
+                        <x-check-all-delete
+                            type="{{ \App\Models\Customer::class }}"
+                            :resource="__('customers.plural')"></x-check-all-delete>
                     </div>
                 </div>
             </th>

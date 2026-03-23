@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Excel;
+
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Model;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
+
+class GenericImport implements ShouldQueue, ToModel, WithChunkReading, WithHeadingRow, WithValidation
+{
+    /**
+     * @param  class-string<\App\Excel\Importable>  $importable
+     */
+    public function __construct(
+        protected string $importable
+    ) {}
+
+    /**
+     * @return Model|Model[]|null
+     */
+    public function model(array $row): Model|array|null
+    {
+        return $this->importable::makeFromExcel($row);
+    }
+
+    public function rules(): array
+    {
+        return $this->importable::validationRules();
+    }
+
+    public function chunkSize(): int
+    {
+        return 100;
+    }
+}
