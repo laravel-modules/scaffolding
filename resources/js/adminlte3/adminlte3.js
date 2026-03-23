@@ -71,7 +71,7 @@ CheckAll.onChange(function (el) {
 });
 (function ($) {
 
-    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    $('div.alert').not('.alert-important').delay(10000).fadeOut(350);
     $('#flash-overlay-modal').modal();
 
     $('.nav-sidebar .nav-treeview .nav-item .active').each((index, el) => {
