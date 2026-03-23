@@ -1,4 +1,5 @@
 <x-layout :title="trans('customers.plural')" :breadcrumbs="['dashboard.customers.index']">
+    @include('dashboard.errors')
     @include('dashboard.accounts.customers.partials.filter')
 
     @component('dashboard::components.table-box')

@@ -1,4 +1,5 @@
 <x-layout :title="trans('feedback.plural')" :breadcrumbs="['dashboard.feedback.index']">
+    @include('dashboard.errors')
     @include('dashboard.feedback.partials.filter')
 
     @component('dashboard::components.table-box')

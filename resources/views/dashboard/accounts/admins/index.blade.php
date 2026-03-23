@@ -1,4 +1,5 @@
 <x-layout :title="trans('admins.plural')" :breadcrumbs="['dashboard.admins.index']">
+    @include('dashboard.errors')
     @include('dashboard.accounts.admins.partials.filter')
 
     @component('dashboard::components.table-box')
