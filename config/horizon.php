@@ -210,6 +210,13 @@ return [
             'timeout' => 60,
             'nice' => 0,
         ],
+        'supervisor-emails' => [
+            'connection' => 'redis',
+            'queue' => ['emails'],
+            'balance' => 'auto',
+            'processes' => 1,
+            'tries' => 5,
+        ],
     ],
 
     'environments' => [
