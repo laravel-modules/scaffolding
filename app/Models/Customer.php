@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Emails\Concerns\HasEmailTemplate;
+use App\Emails\Contracts\HasEmailTemplateContract;
 use App\Http\Filters\CustomerFilter;
 use App\Http\Resources\CustomerResource;
 use App\Models\Relations\CustomerRelations;
@@ -9,9 +11,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Parental\HasParent;
 
-class Customer extends User
+class Customer extends User implements HasEmailTemplateContract
 {
     use CustomerRelations;
+    use HasEmailTemplate;
     use HasFactory;
     use HasParent;
     use SoftDeletes;
@@ -44,7 +47,7 @@ class Customer extends User
     }
 
     /**
-     * @return \App\Http\Resources\CustomerResource
+     * @return CustomerResource
      */
     public function getResource()
     {

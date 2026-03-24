@@ -38,4 +38,14 @@ interface HasEmailTemplateContract
      * Send email using template content.
      */
     public function sendEmail(string $subject, string $content): void;
+
+    /**
+     * Retrieve the recipient profile link.
+     */
+    public function getRecipientProfileLink(): string;
+
+    /**
+     * Retrieve the recipient profile link.
+     */
+    public function getRecipientName(): string;
 }

@@ -1,8 +1,17 @@
 <x-layout :title="trans('settings.tabs.mail')" :breadcrumbs="['dashboard.settings.index']">
-    {{ BsForm::resource('settings')->patch(route('dashboard.settings.env')) }}
+
+    {{ BsForm::resource('emails')->patch(route('dashboard.settings.update')) }}
+
+    @component('dashboard::components.box', ['title' => __('emails.settings')])
+        {{ BsForm::number('emails_per_day')->required()->value(Settings::get('emails_per_day', 100)) }}
+
+        @slot('footer')
+            {{ BsForm::submit()->label(trans('settings.actions.save')) }}
+        @endslot
+    @endcomponent
+    {{ BsForm::resource('emails')->patch(route('dashboard.settings.env')) }}
 
     @include('dashboard.settings.partials.env-note')
-
     @component('dashboard::components.box')
         <div dir="ltr" style="text-align: left;">
             {{ BsForm::select('MAIL_MAILER')

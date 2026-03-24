@@ -2,5 +2,6 @@
     "manage.supervisors",
     "manage.customers",
     "manage.feedback",
-    "manage.settings"
+    "manage.settings",
+    "manage.mail_templates"
 ]

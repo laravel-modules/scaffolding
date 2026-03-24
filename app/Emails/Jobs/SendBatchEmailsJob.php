@@ -9,14 +9,13 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Laraeast\LaravelSettings\Facades\Settings;
 
 class SendBatchEmailsJob implements ShouldQueue
 {
     use Dispatchable, Queueable;
 
     public int $tries = 5;
-
-    public int $emailsPerDay = 17280;
 
     /**
      * @param  HasEmailTemplateContract[]  $emails
@@ -25,8 +24,13 @@ class SendBatchEmailsJob implements ShouldQueue
         public array|Collection $emails,
         public ?string $subject = null,
         public ?string $content = null,
+        public ?int $emailsPerDay = null,
     ) {
         $this->onQueue('emails');
+
+        if (! $this->emailsPerDay) {
+            $this->emailsPerDay = Settings::get('emails_per_day', 100);
+        }
     }
 
     public function handle(): void

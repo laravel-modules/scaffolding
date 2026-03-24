@@ -1,0 +1,62 @@
+<?php
+
+return [
+    'singular' => 'Mail Template',
+    'plural' => 'Mail Templates',
+    'empty' => 'There are no mail templates yet.',
+    'count' => 'Mail templates count.',
+    'search' => 'Search',
+    'select' => 'Select Mail template',
+    'permission' => 'Manage mail templates',
+    'trashed' => 'Trashed mail templates',
+    'perPage' => 'Results per page',
+    'filter' => 'Search for mail template',
+    'variables' => 'Variables',
+    'actions' => [
+        'list' => 'List all',
+        'create' => 'Create a new mail template',
+        'show' => 'Show mail template',
+        'edit' => 'Edit mail template',
+        'delete' => 'Delete mail template',
+        'restore' => 'Restore',
+        'forceDelete' => 'Delete Forever',
+        'options' => 'Options',
+        'save' => 'Save',
+        'filter' => 'Filter',
+    ],
+    'messages' => [
+        'created' => 'The mail template has been created successfully.',
+        'updated' => 'The mail template has been updated successfully.',
+        'deleted' => 'The mail template has been deleted successfully.',
+        'restored' => 'The mail template has been restored successfully.',
+    ],
+    'attributes' => [
+        'model_type' => 'Type',
+        'name' => 'Templates Name',
+        '%name%' => 'Templates Name',
+        'subject' => 'Mail Subject',
+        '%subject%' => 'Mail Subject',
+        'content' => 'Mail Content',
+        '%content%' => 'Mail Content',
+    ],
+    'dialogs' => [
+        'delete' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to delete the mail template ?',
+            'confirm' => 'Delete',
+            'cancel' => 'Cancel',
+        ],
+        'restore' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to restore the mail template ?',
+            'confirm' => 'Restore',
+            'cancel' => 'Cancel',
+        ],
+        'forceDelete' => [
+            'title' => 'Warning !',
+            'info' => 'Are you sure you want to delete the mail template forever ?',
+            'confirm' => 'Delete Forever',
+            'cancel' => 'Cancel',
+        ],
+    ],
+];

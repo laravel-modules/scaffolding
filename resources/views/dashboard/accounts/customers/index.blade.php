@@ -16,6 +16,7 @@
                         @include('dashboard.accounts.customers.partials.actions.create')
                         <x-excel-export model="App\Models\Customer"></x-excel-export>
                         <x-excel-import model="App\Models\Customer"></x-excel-import>
+                        <x-send-batch-email model="App\Models\Customer"></x-send-batch-email>
                         @include('dashboard.accounts.customers.partials.actions.trashed')
                     </div>
                     <div>

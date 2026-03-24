@@ -2,7 +2,7 @@
     @slot('can', ['ability' => 'manage', 'model' => \App\Models\Setting::class])
     @slot('url', '#')
     @slot('name', trans('settings.plural'))
-    @slot('active', request()->routeIs('*settings*'))
+    @slot('active', request()->routeIs('*settings*') && request('tab') !== 'mail')
     @slot('icon', 'fas fa-cogs')
     @slot('tree', [
         [
@@ -29,11 +29,6 @@
             'name' => trans('settings.tabs.privacy'),
             'url' => route('dashboard.settings.index', ['tab' => 'privacy']),
             'active' => request()->routeIs('*settings*') && request('tab') == 'privacy',
-        ],
-        [
-            'name' => trans('settings.tabs.mail'),
-            'url' => route('dashboard.settings.index', ['tab' => 'mail']),
-            'active' => request()->routeIs('*settings*') && request('tab') == 'mail',
         ],
         [
             'name' => trans('backup.download'),

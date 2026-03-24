@@ -8,4 +8,5 @@
 @include('dashboard.accounts.sidebar')
 {{-- The sidebar of generated crud will set here: Don't remove this line --}}
 @include('dashboard.feedback.partials.actions.sidebar')
+@include('dashboard.mail-templates.partials.actions.sidebar')
 @include('dashboard.settings.sidebar')

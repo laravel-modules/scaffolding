@@ -3,6 +3,7 @@
 namespace App\Emails\Concerns;
 
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
 use Laraeast\LaravelSettings\Facades\Settings;
 
 trait HasEmailTemplate
@@ -112,5 +113,25 @@ trait HasEmailTemplate
             $message->to($this->getEmailAddress())
                 ->subject($subject);
         });
+    }
+
+    /**
+     * Retrieve the recipient profile link.
+     */
+    public function getRecipientProfileLink(): string
+    {
+        $resource = str(class_basename($this))->lower()->snake()->plural()->toString();
+
+        $routeKey = "dashboard.$resource.show";
+
+        return Route::has($routeKey) ? route($routeKey, $this) : '#';
+    }
+
+    /**
+     * Retrieve the recipient name.
+     */
+    public function getRecipientName(): string
+    {
+        return $this->name ?? $this->getEmailAddress();
     }
 }

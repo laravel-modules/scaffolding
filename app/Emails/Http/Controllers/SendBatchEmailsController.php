@@ -5,8 +5,10 @@ namespace App\Emails\Http\Controllers;
 use App\Emails\Contracts\HasEmailTemplateContract;
 use App\Emails\Jobs\SendBatchEmailsJob;
 use App\Http\Controllers\Controller;
+use App\Models\MailTemplate;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Laraeast\LaravelSettings\Facades\Settings;
 
 class SendBatchEmailsController extends Controller
 {
@@ -19,9 +21,8 @@ class SendBatchEmailsController extends Controller
     {
         $data = $request->validate([
             'model' => ['required', 'string'],
-            'ids' => ['required', 'array'],
-            'subject' => ['required', 'string', 'max:255'],
-            'content' => ['required', 'string'],
+            'items' => ['required', 'array'],
+            'mail_template_id' => ['required', 'exists:mail_templates,id'],
         ]);
 
         $modelClass = $data['model'];
@@ -32,10 +33,15 @@ class SendBatchEmailsController extends Controller
             ]);
         }
 
+        $template = MailTemplate::find($request->mail_template_id);
+
+        $emailsPerDay = Settings::get('emails_per_day', 100);
+
         SendBatchEmailsJob::dispatch(
-            $modelClass::whereIn('id', $request->input('ids', []))->get(),
-            $request->input('subject'),
-            $request->input('content'),
+            $modelClass::whereIn('id', $request->input('items', []))->get(),
+            $template->subject,
+            $template->content,
+            $emailsPerDay,
         );
 
         flash()->success(trans('emails.messages.sending', [
