@@ -16,10 +16,12 @@ class Email extends Model
         'subject',
         'content',
         'status',
+        'send_at',
     ];
 
     protected $casts = [
         'status' => EmailStatus::class,
+        'send_at' => 'datetime',
     ];
 
     public function model(): MorphTo

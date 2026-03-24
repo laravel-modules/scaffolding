@@ -16,7 +16,7 @@ class SendBatchEmailsJob implements ShouldQueue
 
     public int $tries = 5;
 
-    public int $emailsPerDay = 100;
+    public int $emailsPerDay = 17280;
 
     /**
      * @param  HasEmailTemplateContract[]  $emails
@@ -46,10 +46,11 @@ class SendBatchEmailsJob implements ShouldQueue
                 'subject' => $model->applyEmailReplacements($this->subject),
                 'content' => $model->applyEmailReplacements($this->content),
                 'status' => EmailStatus::QUEUED,
+                'send_at' => now()->addSeconds($interval * $index),
             ]);
 
             SendSingleEmailJob::dispatch($model, $email)
-                ->delay(now()->addSeconds($interval * $index))
+                ->delay($email->send_at)
                 ->onQueue('emails');
         }
     }
