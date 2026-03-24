@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Setting;
+
 return [
 
     /*
@@ -51,5 +53,5 @@ return [
     |
     */
 
-    'model_class' => App\Models\Setting::class,
+    'model_class' => Setting::class,
 ];

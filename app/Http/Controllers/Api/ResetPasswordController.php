@@ -14,6 +14,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -27,9 +28,9 @@ class ResetPasswordController extends Controller
     /**
      * Send the forget password code to the user.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function forget(ForgetPasswordRequest $request)
     {
@@ -77,9 +78,9 @@ class ResetPasswordController extends Controller
     /**
      * Get the reset password token using verification code.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function code(ResetPasswordCodeRequest $request)
     {

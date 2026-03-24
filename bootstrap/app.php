@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\DashboardAccessMiddleware;
+use App\Http\Middleware\DashboardLocaleMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,8 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->statefulApi();
 
         $middleware->alias([
-            'dashboard.access' => \App\Http\Middleware\DashboardAccessMiddleware::class,
-            'dashboard.locales' => \App\Http\Middleware\DashboardLocaleMiddleware::class,
+            'dashboard.access' => DashboardAccessMiddleware::class,
+            'dashboard.locales' => DashboardLocaleMiddleware::class,
         ]);
 
         $middleware->group('dashboard', [

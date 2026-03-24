@@ -11,14 +11,15 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Exception;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ExcelController extends Controller
 {
     /**
-     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws Exception
      * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function export(Request $request): BinaryFileResponse
     {

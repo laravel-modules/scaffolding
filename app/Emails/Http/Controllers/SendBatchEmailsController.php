@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Emails\Http\Controllers;
 
 use App\Emails\Contracts\HasEmailTemplateContract;
 use App\Emails\Jobs\SendBatchEmailsJob;
@@ -13,7 +13,7 @@ class SendBatchEmailsController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function __invoke(Request $request)
     {

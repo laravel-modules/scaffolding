@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('api')
-    ->namespace('App\Http\Controllers\Api')
     ->as('api.')
     ->group(function () {
         foreach (glob(__DIR__.'/api/*.php') as $routes) {

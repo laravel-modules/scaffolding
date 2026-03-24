@@ -15,10 +15,11 @@ class SendBatchEmailsJob implements ShouldQueue
     use Dispatchable, Queueable;
 
     public int $tries = 5;
+
     public int $emailsPerDay = 100;
 
     /**
-     * @param HasEmailTemplateContract[] $emails
+     * @param  HasEmailTemplateContract[]  $emails
      */
     public function __construct(
         public array|Collection $emails,

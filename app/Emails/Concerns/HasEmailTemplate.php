@@ -28,7 +28,7 @@ trait HasEmailTemplate
             $value = is_object($this->{$field}) && enum_exists(get_class($this->{$field}))
                 ? $this->{$field}->value : $this->{$field};
 
-            $key = '%' . $model . '_' . strtoupper($field) . '%';
+            $key = '%'.$model.'_'.strtoupper($field).'%';
 
             $replacements[$key] = $value;
         }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -11,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Laraeast\LaravelSettings\Facades\Settings;
 use LaravelModules\ModuleGenerator\Generator;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class SettingController extends Controller
 {
@@ -27,9 +30,9 @@ class SettingController extends Controller
     /**
      * Display the settings page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse
+     * @return Factory|RedirectResponse
      *
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws AuthorizationException
      */
     public function index()
     {
@@ -49,7 +52,7 @@ class SettingController extends Controller
     /**
      * Update the website global settings.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(Request $request)
     {
@@ -97,9 +100,9 @@ class SettingController extends Controller
     /**
      * Download a fresh database and storage backup.
      *
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @return BinaryFileResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function downloadBackup()
     {

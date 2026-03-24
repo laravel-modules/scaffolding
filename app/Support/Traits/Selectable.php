@@ -14,7 +14,7 @@ trait Selectable
      * Sorting the query result by the given ids.
      *
      * @param  mixed  $ids
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function scopeSortingByIds(Builder $builder, $ids)
     {

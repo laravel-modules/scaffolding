@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Gate;
@@ -11,7 +12,7 @@ class DeleteController extends Controller
     /**
      * Delete the given items of the given model type.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function destroy(Request $request)
     {
@@ -34,7 +35,7 @@ class DeleteController extends Controller
     /**
      * Restore the given items of the given model type.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function restore(Request $request)
     {
@@ -57,7 +58,7 @@ class DeleteController extends Controller
     /**
      * Force delete the given items of the given model type.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function forceDelete(Request $request)
     {

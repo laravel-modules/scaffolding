@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\RouteServiceProvider;
+
 return [
 
     /*
@@ -28,7 +30,7 @@ return [
      * Only used in the built-in controller.
      * * Use 'back' to redirect to the previous page
      */
-    'take_redirect_to' => \App\Providers\RouteServiceProvider::HOME,
+    'take_redirect_to' => RouteServiceProvider::HOME,
 
     /*
      * The URI to redirect after leaving an impersonation.
@@ -36,6 +38,6 @@ return [
      * Only used in the built-in controller.
      * Use 'back' to redirect to the previous page
      */
-    'leave_redirect_to' => \App\Providers\RouteServiceProvider::HOME,
+    'leave_redirect_to' => RouteServiceProvider::HOME,
 
 ];

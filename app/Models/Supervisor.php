@@ -42,7 +42,7 @@ class Supervisor extends User
     }
 
     /**
-     * @return \App\Http\Resources\CustomerResource
+     * @return CustomerResource
      */
     public function getResource()
     {

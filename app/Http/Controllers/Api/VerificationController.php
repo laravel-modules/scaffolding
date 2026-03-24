@@ -6,7 +6,9 @@ use App\Events\VerificationCreated;
 use App\Http\Controllers\Controller;
 use App\Models\Verification;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -17,9 +19,9 @@ class VerificationController extends Controller
     /**
      * Send or resend the verification code.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function send(Request $request)
     {
@@ -46,9 +48,9 @@ class VerificationController extends Controller
     /**
      * Verify the user's phone number.
      *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @return JsonResource
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function verify(Request $request)
     {
@@ -80,9 +82,9 @@ class VerificationController extends Controller
     /**
      * Check if the password of the authenticated user is correct.
      *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @return JsonResource
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function password(Request $request)
     {

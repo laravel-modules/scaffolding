@@ -11,6 +11,8 @@ use App\Models\Helpers\UserHelpers;
 use App\Models\Presenters\UserPresenter;
 use App\Support\Traits\Selectable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
@@ -147,7 +149,7 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
     /**
      * Get the resource for customer type.
      *
-     * @return \App\Http\Resources\CustomerResource
+     * @return CustomerResource
      */
     public function getResource()
     {
@@ -170,7 +172,7 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function fcmTokens()
     {
@@ -238,7 +240,7 @@ class User extends Authenticatable implements HasMedia, NotificationTarget
     /**
      * Get the entity's notifications.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return MorphMany
      */
     public function notifications()
     {

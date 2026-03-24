@@ -10,8 +10,11 @@ use App\Models\Verification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
 
 class RegisterController extends Controller
 {
@@ -20,11 +23,11 @@ class RegisterController extends Controller
     /**
      * Handle a login request to the application.
      *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @return JsonResource
      *
-     * @throws \Illuminate\Validation\ValidationException
-     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
-     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
+     * @throws ValidationException
+     * @throws FileDoesNotExist
+     * @throws FileIsTooBig
      */
     public function register(RegisterRequest $request)
     {
@@ -55,7 +58,7 @@ class RegisterController extends Controller
     /**
      * Create new customer to register to the application.
      *
-     * @return \App\Models\Customer
+     * @return Customer
      */
     public function createCustomer(RegisterRequest $request)
     {
@@ -72,7 +75,7 @@ class RegisterController extends Controller
     /**
      * Send the phone number verification code.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     protected function sendVerificationCode(User $user): void
     {

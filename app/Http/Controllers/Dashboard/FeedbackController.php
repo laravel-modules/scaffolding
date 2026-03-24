@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Feedback;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
 class FeedbackController extends Controller
@@ -23,7 +25,7 @@ class FeedbackController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -35,7 +37,7 @@ class FeedbackController extends Controller
     /**
      * Display the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Feedback $feedback)
     {
@@ -47,7 +49,7 @@ class FeedbackController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      *
      * @throws \Exception
      */
@@ -63,7 +65,7 @@ class FeedbackController extends Controller
     /**
      * Display a listing of the trashed resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function trashed()
     {
@@ -77,7 +79,7 @@ class FeedbackController extends Controller
     /**
      * Display the specified trashed resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function showTrashed(Feedback $feedback)
     {
@@ -89,7 +91,7 @@ class FeedbackController extends Controller
     /**
      * Restore the trashed resource.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function restore(Feedback $feedback)
     {
@@ -105,7 +107,7 @@ class FeedbackController extends Controller
     /**
      * Force delete the specified resource from storage.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      *
      * @throws \Exception
      */
@@ -123,7 +125,7 @@ class FeedbackController extends Controller
     /**
      * Mark the selected messages as read.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function read(Request $request)
     {
@@ -137,7 +139,7 @@ class FeedbackController extends Controller
     /**
      * Mark the selected messages as unread.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function unread(Request $request)
     {

@@ -11,7 +11,7 @@ enum EmailStatus: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::QUEUED => __('emails.statuses.queued'),
             self::SENDING => __('emails.statuses.sending'),
             self::SENT => __('emails.statuses.sent'),

@@ -6,10 +6,12 @@ use App\Models\Admin;
 use App\Models\Customer;
 use App\Models\Supervisor;
 use Database\Seeders\RolesAndPermissionsSeeder;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Laraeast\LaravelSettings\Facades\Settings;
+use Spatie\Permission\PermissionRegistrar;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -19,7 +21,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Set up the test environment.
      *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws BindingResolutionException
      */
     protected function setUp(): void
     {
@@ -27,7 +29,7 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         // now re-register all the roles and permissions (clears cache and reloads relations)
-        $this->app->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+        $this->app->make(PermissionRegistrar::class)->forgetCachedPermissions();
 
         $this->seed(RolesAndPermissionsSeeder::class);
 
@@ -38,7 +40,7 @@ abstract class TestCase extends BaseTestCase
      * Set the currently logged in admin for the application.
      *
      * @param  null  $driver
-     * @return \App\Models\Admin
+     * @return Admin
      */
     public function actingAsAdmin($driver = null)
     {
@@ -53,7 +55,7 @@ abstract class TestCase extends BaseTestCase
      * Set the currently logged in supervisor for the application.
      *
      * @param  null  $driver
-     * @return \App\Models\Supervisor
+     * @return Supervisor
      */
     public function actingAsSupervisor($driver = null)
     {
@@ -68,7 +70,7 @@ abstract class TestCase extends BaseTestCase
      * Set the currently logged in customer for the application.
      *
      * @param  null  $driver
-     * @return \App\Models\Customer
+     * @return Customer
      */
     public function actingAsCustomer($driver = null)
     {

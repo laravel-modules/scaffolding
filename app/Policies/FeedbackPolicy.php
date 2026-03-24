@@ -15,7 +15,7 @@ class FeedbackPolicy
     /**
      * Determine whether the user can view any feedback.
      *
-     * @param  \App\Models\User|null  $user
+     * @param  User|null  $user
      * @return mixed
      */
     public function viewAny(User $user)
@@ -26,7 +26,7 @@ class FeedbackPolicy
     /**
      * Determine whether the user can view the feedback.
      *
-     * @param  \App\Models\User|null  $user
+     * @param  User|null  $user
      * @return mixed
      */
     public function view(User $user, Feedback $feedback)

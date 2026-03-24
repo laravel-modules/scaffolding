@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\Api\ProfileRequest;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Controller;
 
 class ProfileController extends Controller
@@ -14,7 +15,7 @@ class ProfileController extends Controller
     /**
      * Display the authenticated user resource.
      *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @return JsonResource
      */
     public function show()
     {
@@ -24,7 +25,7 @@ class ProfileController extends Controller
     /**
      * Update the authenticated user profile.
      *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @return JsonResource
      */
     public function update(ProfileRequest $request)
     {

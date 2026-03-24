@@ -1,8 +1,13 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use App\Providers\HorizonServiceProvider;
+use App\Providers\LayoutsServiceProvider;
+use App\Providers\SoftDeletesServiceProvider;
+
 return [
-    App\Providers\AppServiceProvider::class,
-    App\Providers\HorizonServiceProvider::class,
-    App\Providers\LayoutsServiceProvider::class,
-    App\Providers\SoftDeletesServiceProvider::class,
+    AppServiceProvider::class,
+    HorizonServiceProvider::class,
+    LayoutsServiceProvider::class,
+    SoftDeletesServiceProvider::class,
 ];

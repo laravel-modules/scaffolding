@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\NotificationResource;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Notifications\DatabaseNotification;
 
 class NotificationController extends Controller
@@ -11,7 +13,7 @@ class NotificationController extends Controller
     /**
      * Display a list of authenticated user's notifications.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return AnonymousResourceCollection
      */
     public function index()
     {
@@ -33,7 +35,7 @@ class NotificationController extends Controller
     /**
      * Retrieve the count of the unread notifications with json response.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function count()
     {

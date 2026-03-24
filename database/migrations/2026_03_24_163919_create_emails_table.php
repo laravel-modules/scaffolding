@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('subject');
             $table->text('content');
             $table->string('status')->default('queued');
+            $table->timestamp('send_at');
             $table->timestamps();
         });
     }

@@ -42,7 +42,7 @@ class Admin extends User
     }
 
     /**
-     * @return \App\Http\Resources\AdminResource
+     * @return AdminResource
      */
     public function getResource()
     {

@@ -1,3 +1,5 @@
 <?php
 
-Route::post('/editor/upload', 'MediaController@editorUpload')->name('editor.upload');
+use App\Http\Controllers\Api\MediaController;
+
+Route::post('/editor/upload', [MediaController::class, 'editorUpload'])->name('editor.upload');

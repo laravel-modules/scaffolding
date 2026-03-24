@@ -6,8 +6,10 @@ use App\Events\FeedbackSent;
 use App\Models\Feedback;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Validation\ValidationException;
 
 class FeedbackController extends Controller
 {
@@ -16,9 +18,9 @@ class FeedbackController extends Controller
     /**
      * Display a listing of the feedback.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function store(Request $request)
     {

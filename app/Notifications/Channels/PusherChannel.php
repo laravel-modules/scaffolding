@@ -4,6 +4,7 @@ namespace App\Notifications\Channels;
 
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Pusher\PushNotifications\PushNotifications;
 
 class PusherChannel
@@ -39,7 +40,7 @@ class PusherChannel
     /**
      * Get the interests of the notification.
      *
-     * @return \Illuminate\Support\Collection|mixed|string[]
+     * @return Collection|mixed|string[]
      */
     protected function getInterests($notifiable, $notification)
     {

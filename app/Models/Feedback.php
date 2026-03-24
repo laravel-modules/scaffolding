@@ -6,6 +6,7 @@ use AhmedAliraqi\LaravelFilterable\Filterable;
 use App\Http\Filters\FeedbackFilter;
 use App\Models\Contracts\NotificationTarget;
 use App\Support\Traits\Selectable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -86,7 +87,7 @@ class Feedback extends Model implements NotificationTarget
     /**
      * Scope the query to include only unread messages.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
     public function scopeUnread($query)
     {

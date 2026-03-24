@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Supervisor>
+ * @extends Factory<Supervisor>
  */
 class SupervisorFactory extends Factory
 {

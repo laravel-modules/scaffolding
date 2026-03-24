@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 class GenericImport implements ShouldQueue, ToModel, WithChunkReading, WithHeadingRow, WithValidation
 {
     /**
-     * @param  class-string<\App\Excel\Importable>  $importable
+     * @param  class-string<Importable>  $importable
      */
     public function __construct(
         protected string $importable

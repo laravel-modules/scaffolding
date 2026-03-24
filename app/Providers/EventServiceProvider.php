@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\FeedbackSent;
+use App\Events\VerificationCreated;
+use App\Listeners\SendFeedbackMessage;
+use App\Listeners\SendVerificationCode;
 use App\Models\Customer;
 use App\Observers\PhoneVerificationObserver;
 use Illuminate\Auth\Events\Registered;
@@ -19,11 +23,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        \App\Events\FeedbackSent::class => [
-            \App\Listeners\SendFeedbackMessage::class,
+        FeedbackSent::class => [
+            SendFeedbackMessage::class,
         ],
-        \App\Events\VerificationCreated::class => [
-            \App\Listeners\SendVerificationCode::class,
+        VerificationCreated::class => [
+            SendVerificationCode::class,
         ],
     ];
 

@@ -2,18 +2,21 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Admin;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Laracasts\Presenter\Exceptions\PresenterException;
 
-/** @mixin \App\Models\Admin */
+/** @mixin Admin */
 class AdminResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request
+     * @param Request
      * @return array
      *
-     * @throws \Laracasts\Presenter\Exceptions\PresenterException
+     * @throws PresenterException
      */
     public function toArray($request)
     {

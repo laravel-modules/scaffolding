@@ -2,18 +2,21 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Customer;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Laracasts\Presenter\Exceptions\PresenterException;
 
-/** @mixin \App\Models\Customer */
+/** @mixin Customer */
 class CustomerResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @param \Illuminate\Http\Request
+     * @param Request
      * @return array
      *
-     * @throws \Laracasts\Presenter\Exceptions\PresenterException
+     * @throws PresenterException
      */
     public function toArray($request)
     {

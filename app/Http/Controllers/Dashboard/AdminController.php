@@ -6,6 +6,8 @@ use App\Http\Requests\Dashboard\AdminRequest;
 use App\Models\Admin;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
@@ -23,7 +25,7 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -35,7 +37,7 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -45,7 +47,7 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(AdminRequest $request)
     {
@@ -63,7 +65,7 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show(Admin $admin)
     {
@@ -73,7 +75,7 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(Admin $admin)
     {
@@ -83,7 +85,7 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function update(AdminRequest $request, Admin $admin)
     {
@@ -101,7 +103,7 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      *
      * @throws \Exception
      */
@@ -117,7 +119,7 @@ class AdminController extends Controller
     /**
      * Display a listing of the trashed resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function trashed()
     {
@@ -131,7 +133,7 @@ class AdminController extends Controller
     /**
      * Display the specified trashed resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function showTrashed(Admin $admin)
     {
@@ -143,7 +145,7 @@ class AdminController extends Controller
     /**
      * Restore the trashed resource.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function restore(Admin $admin)
     {
@@ -159,7 +161,7 @@ class AdminController extends Controller
     /**
      * Force delete the specified resource from storage.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      *
      * @throws \Exception
      */

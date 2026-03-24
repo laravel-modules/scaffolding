@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -36,9 +37,9 @@ class LoginController extends Controller
      *
      * @apiResourceModel App\Models\Customer
      *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @return JsonResource
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function login(LoginRequest $request)
     {
@@ -58,7 +59,7 @@ class LoginController extends Controller
             ]);
         }
 
-        /** @var \App\Models\User $user */
+        /** @var User $user */
         if ($token = $request->fcm_token) {
             $user->fcmTokens()->updateOrCreate(compact('token'));
         }

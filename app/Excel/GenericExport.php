@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 class GenericExport implements FromCollection
 {
     /**
-     * @param  class-string<\App\Excel\Exportable>  $exportable
+     * @param  class-string<Exportable>  $exportable
      */
     public function __construct(
         protected Collection $items,

@@ -20,15 +20,6 @@ class RouteServiceProvider extends ServiceProvider
     public const HOME = '/dashboard';
 
     /**
-     * If specified, this namespace is automatically applied to your controller routes.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'App\Http\Controllers';
-
-    /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
     public function boot(): void
@@ -37,17 +28,14 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::prefix('dashboard')
-                ->namespace($this->namespace.'\Dashboard')
                 ->middleware('dashboard')
                 ->as('dashboard.')
                 ->group(base_path('routes/dashboard.php'));
 
             Route::middleware('web')
-                ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
             Route::prefix('api')
-                ->namespace($this->namespace.'\Api')
                 ->middleware('api')
                 ->as('api.')
                 ->group(base_path('routes/api.php'));

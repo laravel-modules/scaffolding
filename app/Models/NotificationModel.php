@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Contracts\NotificationTarget;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\DatabaseNotification;
 
 class NotificationModel extends DatabaseNotification
@@ -51,7 +52,7 @@ class NotificationModel extends DatabaseNotification
     /**
      * The user who associated the notification.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user()
     {
@@ -61,7 +62,7 @@ class NotificationModel extends DatabaseNotification
     /**
      * The feedback that associated the notification.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function feedback()
     {
