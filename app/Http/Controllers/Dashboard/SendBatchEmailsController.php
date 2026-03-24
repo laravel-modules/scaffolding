@@ -20,6 +20,8 @@ class SendBatchEmailsController extends Controller
         $data = $request->validate([
             'model' => ['required', 'string'],
             'ids' => ['required', 'array'],
+            'subject' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string'],
         ]);
 
         $modelClass = $data['model'];
@@ -32,8 +34,8 @@ class SendBatchEmailsController extends Controller
 
         SendBatchEmailsJob::dispatch(
             $modelClass::whereIn('id', $request->input('ids', []))->get(),
-            'Test Subject',
-            'Test Content Welcome %CUSTOMER_NAME%,',
+            $request->input('subject'),
+            $request->input('content'),
         );
 
         flash()->success(trans('emails.messages.sending', [
