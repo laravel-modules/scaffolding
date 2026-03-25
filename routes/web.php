@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,15 +13,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::prefix(LaravelLocalization::setLocale())
-    ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
-    ->group(function () {
-        foreach (glob(__DIR__.'/localization/*.php') as $routes) {
-            include $routes;
-        }
-    });
-
-
 
 foreach (glob(__DIR__.'/web/*.php') as $routes) {
     include $routes;
@@ -33,4 +25,10 @@ Route::prefix('dashboard')
         foreach (glob(__DIR__.'/dashboard/*.php') as $routes) {
             include $routes;
         }
+    });
+
+Route::prefix(LaravelLocalization::setLocale())
+    ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
+    ->group(function () {
+        Route::get('{view?}', WebController::class)->name('web.view');
     });
