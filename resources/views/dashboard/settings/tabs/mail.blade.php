@@ -9,6 +9,8 @@
             {{ BsForm::submit()->label(trans('settings.actions.save')) }}
         @endslot
     @endcomponent
+    {{ BsForm::close() }}
+
     {{ BsForm::resource('emails')->patch(route('dashboard.settings.env')) }}
 
     @include('dashboard.settings.partials.env-note')
