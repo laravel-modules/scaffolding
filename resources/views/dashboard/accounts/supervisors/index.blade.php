@@ -16,6 +16,7 @@
                         @include('dashboard.accounts.supervisors.partials.actions.create')
                         <x-excel-export model="App\Models\Supervisor"></x-excel-export>
                         <x-excel-import model="App\Models\Supervisor"></x-excel-import>
+                        <x-send-batch-email model="App\Models\Supervisor"></x-send-batch-email>
                         @include('dashboard.accounts.supervisors.partials.actions.trashed')
                     </div>
                     <div>
