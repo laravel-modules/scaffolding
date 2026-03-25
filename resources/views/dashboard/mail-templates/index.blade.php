@@ -31,6 +31,7 @@
               <x-check-all></x-check-all>
             </th>
             <th>@lang('mail-templates.attributes.name')</th>
+            <th>@lang('mail-templates.attributes.model_type')</th>
             <th>@lang('mail-templates.attributes.subject')</th>
             <th style="width: 160px">...</th>
         </tr>
@@ -47,6 +48,7 @@
                         {{ $mailTemplate->name }}
                     </a>
                 </td>
+                <td>{{ data_get(\App\Models\MailTemplate::types(), $mailTemplate->model_type) }}</td>
                 <td>{{ $mailTemplate->subject }}</td>
 
                 <td style="width: 160px">
