@@ -16,6 +16,7 @@
                         @include('dashboard.accounts.admins.partials.actions.create')
                         <x-excel-export model="App\Models\Admin"></x-excel-export>
                         <x-excel-import model="App\Models\Admin"></x-excel-import>
+                        <x-send-batch-email model="App\Models\Admin"></x-send-batch-email>
                         @include('dashboard.accounts.admins.partials.actions.trashed')
                     </div>
                     <div>
