@@ -5,11 +5,20 @@ namespace App\Excel;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class GenericImport implements ShouldQueue, ToModel, WithChunkReading, WithHeadingRow, WithValidation
+class GenericImport implements
+    ShouldQueue,
+    ToModel,
+    WithChunkReading,
+    WithHeadingRow,
+    WithValidation,
+    WithUpserts,
+    WithBatchInserts
 {
     /**
      * @param  class-string<Importable>  $importable
@@ -34,5 +43,18 @@ class GenericImport implements ShouldQueue, ToModel, WithChunkReading, WithHeadi
     public function chunkSize(): int
     {
         return 100;
+    }
+
+    public function uniqueBy()
+    {
+        if (method_exists($this->importable, 'uniqueBy')) {
+            return $this->importable::uniqueBy();
+        }
+        return [];
+    }
+
+    public function batchSize(): int
+    {
+        return 1000;
     }
 }
